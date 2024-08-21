@@ -1,13 +1,6 @@
 Welcome! 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+This is the repo for the Chapter 9 of the UN Household Survey Handbook based on R Markdown and **bookdown**. The chapter can be viewd in the following link:
 
-This template provides a skeleton file structure that you can edit to create your book. 
+https://psirusteam.github.io/Chapter9HHS/). 
 
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
-
-Additional resources:
-
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
-
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
