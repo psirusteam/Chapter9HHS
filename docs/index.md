@@ -1,0 +1,37 @@
+---
+title: "Population models implemented in the 2022 Barbados Census"
+author: "Andrés Gutiérrez^[Experto Regional en Estadísticas Sociales - Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org], Stalyn Guerrero^[Consultor - Comisión Económica para América Latina y el Caribe (CEPAL), guerrerostalyn@gmail.com]"
+date: "2024-08-21"
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+geometry: margin=3cm
+header-includes:
+  - \usepackage[spanish, spanishkw, onelanguage, linesnumbered]{algorithm2e}
+github-repo: psirusteam/coneval
+description: "Methodological Manual."
+knit: "bookdown::render_book"
+lang: es
+linkcolor: blue
+output: 
+  bookdown::pdf_book:
+    toc: true
+    toc_depth: 1
+    keep_tex: true
+    latex_engine: xelatex
+---
+
+
+
+
+# Introducción {-}
+El Censo de Población de Barbados de 2023 representa un hito fundamental en la comprensión de la dinámica demográfica, social y económica de la nación. Esta exhaustiva recopilación de datos permitirá obtener una instantánea precisa de la población barbadense, proporcionando información vital para la toma de decisiones informadas en diversos ámbitos, desde la planificación urbana hasta la asignación de recursos.
+
+En un mundo cada vez más interconectado y dinámico, la modelización estadística se ha convertido en una herramienta indispensable para complementar los esfuerzos censales tradicionales. Al aprovechar las últimas innovaciones en este campo, es posible obtener estimaciones de población más precisas y detalladas, incluso en áreas de difícil acceso o con poblaciones dispersas.
+
+La Comisión Económica para América Latina y el Caribe (CEPAL), en conjunto con el Fondo de Población de las Naciones Unidas (UNFPA), ha implementado un enfoque innovador para analizar datos demográficos, destacando la importancia de la modelización estadística de la población para apoyar los censos. En línea con esta recomendación, el Censo de Barbados se beneficia de las metodologías avanzadas desarrolladas por WorldPop, lo que asegura una mayor precisión y utilidad de los datos recopilados.
+

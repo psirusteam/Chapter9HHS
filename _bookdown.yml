@@ -1,0 +1,10 @@
+book_filename: "Population models implemented in the 2022 Barbados Census"
+delete_merged_file: true
+output_dir: "docs"
+new_session: yes
+
+rmd_files: [
+   "index.Rmd",
+   # "00_Intoduccion.qmd",
+   # "01_Metodologia.qmd"
+]
