@@ -8,11 +8,11 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">Methodological Manual.</a></li>
+        <li><a href="./">Chapter 9 of UN Household Survey Handbook.</a></li>
       after: |
-        <li><a Methodological Manual. </a></li>
+        <li><a Chapter 9 of UN Household Survey Handbook. </a></li>
     download: [pdf, epub, mobi]
-    edit: https://github.com/psirusteam/2023MEXsae/%s
+    edit: https://github.com/psirusteam/Chapter9HHS/%s
     sharing:
       github: yes
       facebook: no

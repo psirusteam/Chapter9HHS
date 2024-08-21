@@ -1,6 +1,6 @@
 ---
-title: "Population models implemented in the 2022 Barbados Census"
-author: "Andrés Gutiérrez^[Experto Regional en Estadísticas Sociales - Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org], Stalyn Guerrero^[Consultor - Comisión Económica para América Latina y el Caribe (CEPAL), guerrerostalyn@gmail.com]"
+title: "CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA"
+author: "Andrés Gutiérrez^[Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org], Pedro Luis do Nascimento Silva^[SCIENCE, pedronsilva@gmail.com]"
 date: "`r Sys.Date()`"
 documentclass: book
 biblio-style: apalike
@@ -10,12 +10,9 @@ lot: yes
 lof: yes
 fontsize: 12pt
 geometry: margin=3cm
-header-includes:
-  - \usepackage[spanish, spanishkw, onelanguage, linesnumbered]{algorithm2e}
-github-repo: psirusteam/coneval
-description: "Methodological Manual."
+github-repo: psirusteam/Chapter9HHS
+description: "Chapter 9 of UN Household Survey Handbook"
 knit: "bookdown::render_book"
-lang: es
 linkcolor: blue
 output: 
   bookdown::pdf_book:
@@ -51,12 +48,14 @@ thematic_on(
   bg = "white", fg = "black", accent = "red",
   font = font_spec("Oxanium", scale = 1.25)
 )
+
+## bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 ```
 
-# Introducción {-}
-El Censo de Población de Barbados de 2023 representa un hito fundamental en la comprensión de la dinámica demográfica, social y económica de la nación. Esta exhaustiva recopilación de datos permitirá obtener una instantánea precisa de la población barbadense, proporcionando información vital para la toma de decisiones informadas en diversos ámbitos, desde la planificación urbana hasta la asignación de recursos.
+# Abstract {-}
 
-En un mundo cada vez más interconectado y dinámico, la modelización estadística se ha convertido en una herramienta indispensable para complementar los esfuerzos censales tradicionales. Al aprovechar las últimas innovaciones en este campo, es posible obtener estimaciones de población más precisas y detalladas, incluso en áreas de difícil acceso o con poblaciones dispersas.
+Analyzing complex household survey data requires knowing and properly applying the foundations of the design-based inference. The researcher will be faced to a small database that contains specific information that will allow her to make conclusions over the whole population. 
 
-La Comisión Económica para América Latina y el Caribe (CEPAL), en conjunto con el Fondo de Población de las Naciones Unidas (UNFPA), ha implementado un enfoque innovador para analizar datos demográficos, destacando la importancia de la modelización estadística de la población para apoyar los censos. En línea con esta recomendación, el Censo de Barbados se beneficia de las metodologías avanzadas desarrolladas por WorldPop, lo que asegura una mayor precisión y utilidad de los datos recopilados.
+The purpose of any analysis on this kind of datasets is not referred to make conclusions on the sample itself – which in most of the cases is a small subgroup of the population - but to the domains of interest and the whole population. Having that into account, the first step in any analysis plan should be devoted to defining the sampling design based on the selection mechanisms used to draw the final sample and the findings on the field related to nonresponse and lack of coverage. 
 
+The chapter covers three main topics of analysis: descriptive statistics; comparisons and association; and modeling of survey data. On the one hand, we introduce simple descriptive statistics, such as totals, frequencies, means and proportions, quantiles and some graphics; on the other, we delve deeper on complex relationships between the variables of the survey. All these analyses rely on the representativity principle of the design-based inference. This way, the reader will find a strong focus, not only on point estimates, but also on uncertainty measures. The chapter also presents a short discussion on the different approaches that can be used to estimate variances; the best way to visualize the estimates; and NSO practical experiences.
