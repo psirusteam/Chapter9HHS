@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-08-21" />
+<meta name="date" content="2024-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,6 +58,28 @@
 <style type="text/css">
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -122,6 +144,7 @@
 <li class="chapter" data-level="6.2" data-path="survival-models.html"><a href="survival-models.html"><i class="fa fa-check"></i><b>6.2</b> Survival models</a></li>
 <li class="chapter" data-level="6.3" data-path="loglinear-models-for-contingency-tables.html"><a href="loglinear-models-for-contingency-tables.html"><i class="fa fa-check"></i><b>6.3</b> Loglinear models for contingency tables</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a Chapter 9 of UN Household Survey Handbook. </a></li>
 
@@ -145,6 +168,44 @@
 <div id="parameters-and-estimators" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Parameters and estimators<a href="parameters-and-estimators.html#parameters-and-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Based on the design-based approach this section will discuss the basic principles of inductive inference and how, using the sampling weights (from chapter 8), we can get unbiased estimators for population parameters, with a special focus on totals and means.</p>
+<p>Under a design-based approach this section presents the basic principles of inductive inference and how, using the <em>sampling weights</em> (from chapter 8), we can get unbiased (or at least consistent) estimators for population parameters, with a special focus on totals and means.</p>
+<p>Let <span class="math inline">\(U = \left\{ 1, \ldots, N \right\}\)</span> denote elementary units in our target population, and <span class="math inline">\(y_i\)</span> the value of a survey variable of interest observed for any unit <span class="math inline">\(i\)</span> in <span class="math inline">\(U\)</span>. Let <span class="math inline">\(Y = \sum _{i \in U} y_i\)</span> and <span class="math inline">\(\overline Y = \frac 1 N \sum _{i \in U} y_i = \frac Y N\)</span> denote the <em>population total</em> and <em>mean</em> of the survey variable <span class="math inline">\(y\)</span>.</p>
+<p>A probability sample <span class="math inline">\(s = \left\{ i_1, \ldots, i_n \right\} \subset U\)</span> is selected from the population <span class="math inline">\(U\)</span> using a probability sampling design <span class="math inline">\(p(s)\)</span>, that ensures strictly positive first order inclusion probabilities <span class="math inline">\(\pi_i = Pr(i \in s), \, \forall \, i \in U\)</span>. These inclusion probabilities are assumed known, at least to the data producers.</p>
+<p>Under the design-based framework for inference, an unbiased estimator for the population total <span class="math inline">\(Y\)</span> is the Horvitz-Thompson estimator given by</p>
+<p><span class="math display">\[
+\widehat Y _{HT} = \sum _{i \in s} \frac {y_i} {\pi_i} =  \sum _{i \in s} d_i {y_i}
+\]</span></p>
+<p>where <span class="math inline">\(d_i = 1 / \pi_i \, \forall \, i \in s\)</span>.</p>
+<p>The sampling variance of <span class="math inline">\(\widehat Y _{HT}\)</span> is given by:</p>
+<p><span class="math display">\[
+V_p \left( \widehat{Y}_{HT} \right) = \sum_{i \in U} \sum_{j \in U} \left( \frac {d_i d_j} {d_{ij}} - 1 \right) y_i y_j
+\]</span></p>
+<p>where <span class="math inline">\(d_{ij} = 1 / \pi_{ij}\)</span> and <span class="math inline">\(\pi_{ij} = Pr(i,j \in s), \, \forall \, i,j \in U\)</span>. This result assumes that the sampling design <span class="math inline">\(p(s)\)</span> is such that <span class="math inline">\(\pi_{ij} &gt; 0 \,\, \forall \, i,j \in U\)</span>.</p>
+<p>This variance can be estimated unbiasedly by</p>
+<p><span class="math display">\[
+\widehat {V_p} \left( \widehat{Y}_{HT} \right) = \sum_{i \in s} \sum_{j \in s} \left( d_i d_j - d_{ij} \right) y_i y_j
+\]</span></p>
+<p>When the population size <span class="math inline">\(N\)</span> is known, the population mean can be estimated unbiasedly using the Horvitz-Thompson estimator:</p>
+<p><span class="math display">\[
+\overline y_{HT} =  \frac 1 N \widehat Y _{HT} = \frac 1 N \sum_{i \in s} d_i y_i
+\]</span></p>
+<p>An alternative estimator, useful when <span class="math inline">\(N\)</span> is unknown, but also because it may have smaller variance, is the Hàjek estimator of the mean given by:</p>
+<p><span class="math display">\[
+\overline y_{H} =  \frac {\widehat Y _{HT}} {\widehat N _{HT}} = \frac {\sum_{i \in s} d_i y_i} {\sum_{i \in s} d_i}
+\]</span></p>
+<p>The variance of the Horvitz-Thompson estimator for the mean is given by:</p>
+<p><span class="math display">\[
+V_p \left( \overline y_{HT} \right) = \frac {1} {N^2} \sum_{i \in U} \sum_{j \in U} \left( \frac {d_i d_j} {d_{ij}} - 1 \right) y_i y_j
+\]</span></p>
+<p>and the corresponding estimator is</p>
+<p><span class="math display">\[
+\widehat {V_p} \left( \overline y_{HT}  \right) = \frac {1} {N^2} \sum_{i \in s} \sum_{j \in s} \left( d_i d_j - d_{ij} \right) y_i y_j
+\]</span></p>
+<p>A variância do estimador <span class="math inline">\(\overline y_{H}\)</span> pode ser estimada usando:</p>
+<p><span class="math display">\[
+\widehat {V_p} \left( \overline y_{H} \right) = \frac {1} {\widehat N^2 _{HT}} \sum_{i \in s} \sum_{j \in s} \left( d_i d_j - d_{ij} \right) (y_i - \overline y_{H}) (y_j - \overline y_{H})
+\]</span></p>
+<p>While the above formulae for variance estimation are general and cover the vast majority of sample designs used in the practice of household sample surveys, they are not used in practice because often the second order inclusion probabilities <span class="math inline">\(\pi_{ij}\)</span> (and corresponding pairwise weights <span class="math inline">\(d_{ij}\)</span>) are unknown to survey data analysts. In fact, even data producers do not compute such weights, since there are more efficient methods for variance estimation that do not require having such weights.</p>
 </div>
             </section>
 
@@ -207,6 +268,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

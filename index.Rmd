@@ -3,6 +3,7 @@ title: "CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA"
 author: "Andrés Gutiérrez^[Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org], Pedro Luis do Nascimento Silva^[SCIENCE, pedronsilva@gmail.com]"
 date: "`r Sys.Date()`"
 documentclass: book
+bibliography: chapterbib.bib
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
