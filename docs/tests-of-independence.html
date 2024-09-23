@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.3 Tests of Independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.3 Tests of Independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-09-11" />
+<meta name="date" content="2024-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,6 +64,7 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -104,19 +105,39 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>1.1</b> Parameters and estimators</a></li>
 <li class="chapter" data-level="1.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>1.2</b> Uncertainty in household surveys</a></li>
-<li class="chapter" data-level="1.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.3</b> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="1.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>1.3</b> Ultimate Cluster Method</a></li>
+<li class="chapter" data-level="1.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.4</b> Using software to generate valid inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>2</b> Descriptive parameters</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a></li>
-<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a></li>
-<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a></li>
+<li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="frequencies.html"><a href="frequencies.html#point-estimation"><i class="fa fa-check"></i><b>2.1.1</b> Point Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#total-estimates"><i class="fa fa-check"></i><b>2.2.1</b> Total Estimates</a></li>
+<li class="chapter" data-level="2.2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#estimation-of-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimation of Averages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient"><i class="fa fa-check"></i><b>2.3.1</b> Estimation of the Gini Coefficient</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="comparisons-and-association.html"><a href="comparisons-and-association.html"><i class="fa fa-check"></i><b>3</b> Comparisons and association</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a></li>
+<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html#contingency-tables"><i class="fa fa-check"></i><b>3.1.1</b> Contingency Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.2.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.2.2</b> Contrasts</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>3.3</b> Tests of Independence</a></li>
 <li class="chapter" data-level="3.4" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.4</b> Correlation</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
@@ -125,8 +146,17 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="to-weight-or-not-to-weight.html"><a href="to-weight-or-not-to-weight.html"><i class="fa fa-check"></i><b>4.1</b> To weight or not to weight?</a></li>
 <li class="chapter" data-level="4.2" data-path="some-inferential-approaches-to-modelling-data.html"><a href="some-inferential-approaches-to-modelling-data.html"><i class="fa fa-check"></i><b>4.2</b> Some inferential approaches to modelling data</a></li>
-<li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a></li>
-<li class="chapter" data-level="4.4" data-path="logistic-models.html"><a href="logistic-models.html"><i class="fa fa-check"></i><b>4.4</b> Logistic models</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-models.html"><a href="linear-models.html#the-pfeffermann-weighting-approach"><i class="fa fa-check"></i><b>4.3.3</b> The Pfeffermann Weighting Approach</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-models.html"><a href="linear-models.html#model-diagnostics"><i class="fa fa-check"></i><b>4.3.4</b> Model Diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="logistic-models.html"><a href="logistic-models.html"><i class="fa fa-check"></i><b>4.4</b> Logistic models</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="logistic-models.html"><a href="logistic-models.html#logistic-regression-model-for-proportions"><i class="fa fa-check"></i><b>4.4.1</b> Logistic Regression Model for Proportions</a></li>
+</ul></li>
 <li class="chapter" data-level="4.5" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
@@ -140,7 +170,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="multilevel-models.html"><a href="multilevel-models.html"><i class="fa fa-check"></i><b>6.1</b> Multilevel models</a></li>
+<li class="chapter" data-level="6.1" data-path="multilevel-models.html"><a href="multilevel-models.html"><i class="fa fa-check"></i><b>6.1</b> Multilevel models</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="multilevel-models.html"><a href="multilevel-models.html#model-with-random-intercept"><i class="fa fa-check"></i><b>6.1.1</b> Model with Random Intercept</a></li>
+<li class="chapter" data-level="6.1.2" data-path="multilevel-models.html"><a href="multilevel-models.html#model-with-random-slope"><i class="fa fa-check"></i><b>6.1.2</b> Model with Random Slope</a></li>
+<li class="chapter" data-level="6.1.3" data-path="multilevel-models.html"><a href="multilevel-models.html#model-with-random-intercept-and-slope"><i class="fa fa-check"></i><b>6.1.3</b> Model with Random Intercept and Slope</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="survival-models.html"><a href="survival-models.html"><i class="fa fa-check"></i><b>6.2</b> Survival models</a></li>
 <li class="chapter" data-level="6.3" data-path="loglinear-models-for-contingency-tables.html"><a href="loglinear-models-for-contingency-tables.html"><i class="fa fa-check"></i><b>6.3</b> Loglinear models for contingency tables</a></li>
 </ul></li>
@@ -167,7 +202,61 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tests-of-independence" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Tests of Independence<a href="tests-of-independence.html#tests-of-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To measure the level of association between categorical variables we present the Rao-Scott correction for the Pearson Chi-squared test of independence.</p>
+<p>Based on the estimated tables, it is possible to perform independence tests to verify whether there is an association between two categorical variables. Two variables are independent if the structural behavior of one variable does not depend on the other, and vice versa. <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span> state that, under simple random sampling, two categorical variables are independent if the expected proportion in row <span class="math inline">\(r\)</span> and column <span class="math inline">\(c\)</span>, denoted as <span class="math inline">\(\pi^{rc}\)</span>, follows the relationship:</p>
+<p><span class="math display">\[
+\pi^{rc} = \frac{n^{r+} \times n^{+c}}{(n^{++})^2}
+\]</span></p>
+<p>Thus, one way to verify if there is independence between the variables of interest is to directly compare the estimated proportions <span class="math inline">\(\hat{p}^{rc}_{\omega}\)</span> with the expected proportions <span class="math inline">\(\pi^{rc}\)</span>. If there is a large difference between them, then the independence hypothesis would not be supported by the collected data. Therefore, the following Rao-Scott <span class="math inline">\(\chi^{2}_{RS}\)</span> statistic <span class="citation">(<a href="#ref-rao1984adjusted">Rao and Scott 1984b</a>)</span>, which follows a chi-square distribution with <span class="math inline">\((R-1) \times (C-1)\)</span> degrees of freedom, is defined:</p>
+<span class="math display">\[\begin{eqnarray}
+\chi^{2}_{RS}  =  \frac{\chi^{2}_{Pearson}}{GDEFF}
+\end{eqnarray}\]</span>
+<p>Where:</p>
+<p><span class="math display">\[
+\chi^{2}_{Pearson} = n^{++} \left( \sum_r \sum_c \frac{(\hat{p}^{rc}_{\omega} - \pi^{rc})^2}{\pi^{rc}} \right)
+\]</span></p>
+<p>Additionally, <span class="math inline">\(GDEFF\)</span> is an estimate of the generalized design effect by Rao–Scott, defined as:</p>
+<p><span class="math display">\[
+GDEFF = \frac{\sum_{r}\sum_{c}\left(1-p_{rc}\right)d^{2}\left(p_{rc}\right)-\sum_{r}\left(1-p_{r+}\right)d^{2}\left(p_{r+}\right)-\sum_{c}\left(1-p_{+c}\right)d^{2}\left(p_{+c}\right)}{\left(R-1\right)\left(C-1\right)}
+\]</span></p>
+<p>As mentioned by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, it was <span class="citation">Fay (<a href="#ref-fay1979adjusting">1979</a>)</span>, along with <span class="citation">Fellegi (<a href="#ref-fellegi1980approximate">1980</a>)</span>, who began proposing corrections to Pearson’s chi-square statistic based on a generalized design effect. <span class="citation">Rao and Scott (<a href="#ref-rao1984chi_squared">1984a</a>)</span> later expanded the theory of generalized design effect corrections for these statistical tests, as did <span class="citation">Thomas and Rao (<a href="#ref-thomas1987small_sample">1987</a>)</span>. The Rao-Scott method requires the calculation of generalized design effects, which are analytically more complex than Fellegi’s approach. Rao-Scott corrections are now the standard for analyzing categorical survey data in software systems such as Stata and SAS.</p>
+<p>Additionally, Fisher’s F-test for independence allows the analysis of whether two dichotomous variables are associated when the observed sample is too small, and the conditions for applying Pearson’s <span class="math inline">\(\chi^{2}\)</span> test are not met. To use this technique, consider the expressions for the estimated probability and Pearson’s <span class="math inline">\(\chi^{2}\)</span> statistic. Based on these, the likelihood ratio statistic is defined as:</p>
+<p><span class="math display">\[
+G^{2} = 2 \times n_{++} \times \sum_{r} \sum_{c} p_{rc} \times \ln \left( \frac{p_{rc}}{\hat{\pi}_{rc}} \right)
+\]</span></p>
+<p>where <span class="math inline">\(r\)</span> is the number of rows, and <span class="math inline">\(c\)</span> represents the number of columns, and the test has <span class="math inline">\((R-1) \times (C-1)\)</span> degrees of freedom. Applying a correction for the generalized design effect, the likelihood ratio statistic is calculated as:</p>
+<p><span class="math display">\[
+G^2_{(R-S)} = \frac{G^2}{GDEFF}
+\]</span></p>
+<p>Thus, the F-statistic for independence based on Pearson’s chi-square test is calculated as follows:</p>
+<p><span class="math display">\[
+F_{R-S,Pearson} = \frac{\chi^{2}_{R-S}}{\left[(R-1)(C-1)\right]} \sim F_{\left(R-1\right)\left(C-1\right),df}
+\]</span></p>
+<p>And, the F-statistic for independence based on the likelihood ratio is calculated as:</p>
+<p><span class="math display">\[
+F_{R-S,LRT} = \frac{G^{2}_{R-S}}{(C-1)} \sim F_{\left(C-1\right),df}
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is the number of columns in the cross-tabulation.</p>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-fay1979adjusting" class="csl-entry">
+Fay, Robert E. 1979. <span>“On Adjusting the Pearson Chi-Square Statistic for Cluster Sampling.”</span> In <em>Proceedings of the Social Statistics Section, American Statistical Association</em>, 402–5. Washington, DC.
+</div>
+<div id="ref-fellegi1980approximate" class="csl-entry">
+Fellegi, Ivan P. 1980. <span>“Approximate Tests of Independence and Goodness of Fit Based on Stratified Multistage Samples.”</span> <em>Journal of the American Statistical Association</em> 75: 261–68.
+</div>
+<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
+</div>
+<div id="ref-rao1984chi_squared" class="csl-entry">
+Rao, J. N. K., and A. J. Scott. 1984a. <span>“On Chi-Squared Test for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12: 46–60.
+</div>
+<div id="ref-rao1984adjusted" class="csl-entry">
+———. 1984b. <span>“On Chi-Squared Tests for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12 (1): 46–60.
+</div>
+<div id="ref-thomas1987small_sample" class="csl-entry">
+Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Level and Power for Simple Goodness-of-Fit Statistics Under Cluster Sampling.”</span> <em>Journal of the American Statistical Association</em> 82: 630–36.
+</div>
 </div>
             </section>
 
