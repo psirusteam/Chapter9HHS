@@ -158,30 +158,9 @@ s_{\omega}(y) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alph
 F(x) = \frac{{ \sum_{i=1}^{N}}I(y_{i}\leq x)}{N}
 \]</span></p>
 <p>Where <span class="math inline">\(I(y_{i}\leq x)\)</span> is an indicator variable that takes the value 1 if <span class="math inline">\(y_{i}\)</span> is less than or equal to a specific value <span class="math inline">\(x\)</span>, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:</p>
-<p><span class="math display">\[
-\hat{F}_{\omega}(x) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_{i}\leq x)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
-\]</span></p>
-<p>Once the CDF is estimated using the survey design weights, the <span class="math inline">\(q\)</span>-th quantile of a variable <span class="math inline">\(y\)</span> is the smallest value of <span class="math inline">\(y\)</span> such that the CDF is greater than or equal to <span class="math inline">\(q\)</span>. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, to estimate quantiles, one first considers the order statistics denoted as <span class="math inline">\(y_{(1)},\ldots,y_{(n)}\)</span> and finds the value of <span class="math inline">\(j\)</span> <span class="math inline">\((j=1,\ldots,n)\)</span> such that:</p>
-<p><span class="math display">\[
-\hat{F}_{\omega}(y_{j})\leq q\leq\hat{F}_{\omega}(y_{j+1})
-\]</span></p>
-<p>Thus, the estimation of the <span class="math inline">\(q\)</span>-th quantile <span class="math inline">\(y_{(q)}\)</span> in a complex sampling design is given by:</p>
-<p><span class="math display">\[
-\hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}(y_{j})}{\hat{F}_{\omega}(y_{j+1})-\hat{F}_{\omega}(y_{j})}(y_{j+1}-y_{j})
-\]</span></p>
-<p>For the variance estimation and confidence intervals of quantiles, <span class="citation">Kovar, Rao, and Wu (<a href="#ref-kovar1988bootstrap">1988</a>)</span> present results from a simulation study where they recommend using the <em>Balanced Repeated Replication</em> (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in <code>R</code>. Specifically, the median estimation can be done using the function <code>survey_median</code>.</p>
 
 </div>
 <!-- </div> -->
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
-Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
-</div>
-<div id="ref-kovar1988bootstrap" class="csl-entry">
-Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other Methods to Measure Errors in Survey Estimates.”</span> <em>Canadian Journal of Statistics</em> 16 (Suppl.): 25–45.
-</div>
-</div>
             </section>
 
           </div>
