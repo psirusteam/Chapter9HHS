@@ -85,3 +85,50 @@ $$
 
 In this model, $\beta_{0j}$ and $\beta_{1j}$ depend on the stratum variable, allowing both the intercept and slope to change according to the group of interest. This provides greater flexibility and better captures the heterogeneity in the data, reflecting how relationships between the variables may differ across subgroups.
 
+
+
+## Survival models
+
+## Loglinear models for contingency tables
+
+When analyzing the relationships between variables that generate estimated totals in a contingency table (a rectangular arrangement that organizes data based on two or more categorical variables, showing the frequency or proportion of cases falling into each combination of categories), it is possible to use a log-linear model. This type of model is used to study the association between categorical variables while controlling for or considering potential effects of other covariates. Additionally, it allows for adjusting the observed associations in the contingency table and assessing whether these associations are statistically significant.
+
+Log-linear models in contingency tables can be used to determine whether there is a significant association between categorical variables; adjust the association between variables of interest by accounting for other variables that may influence the relationship; evaluate how the probability of a category in one categorical variable changes given a change in another categorical variable; and estimate the probability of a case falling into a specific category of a categorical variable given the information from other variables.
+
+The term log-linear essentially describes the role of the link function used in generalized linear models. In the simplest case, with two categorical variables inducing data from counts or proportions in contingency tables, the following statistical model can be formulated:
+
+$$
+\ln(\pi_{ijk}) = \mu + \lambda_i^X + \lambda_j^Y + \lambda_{ij}^{XY},   
+$$
+
+where $\pi_{ijk}$ is the conditional probability of occurrence for the combination of categories $i$ and $j$ in the categorical variables $X$ and $Y$, respectively; $\mu$ is the intercept representing the logarithm of the reference probability; $\lambda_i^X$ and $\lambda_j^Y$ are the main effects associated with categories $i$ and $j$ in the variables $X$ and $Y$, respectively; and finally, $\lambda_{ij}^{XY}$ is the interaction effect between categories $i$ and $j$ in the categorical variables. The natural logarithm function is commonly used in these models to transform conditional probabilities and allow for interpretation in terms of log-odds. In summary, the model describes how the conditional probabilities of categorical events are related to each other and how these relationships can be influenced by main and interaction effects in the categorical variables $X$ and $Y$.
+
+This statistic is applied after a statistical model has been chosen (such as simple linear regression, logistic regression, among others). The Wald chi-squared test statistic for the null hypothesis of independence between rows and columns in a contingency table is defined as follows:
+
+$$
+Q_{wald} = \hat{\boldsymbol{Y}}^{t} \left(\boldsymbol{H} \hat{\boldsymbol{V}} \left(\hat{\boldsymbol{N}}\right) \boldsymbol{H}^{t}\right)^{-1} \hat{\boldsymbol{Y}}
+$$
+
+where 
+
+$$
+\hat{\boldsymbol{Y}} = \left(\hat{N} - E\right)
+$$
+
+is a vector of $R \times C$ differences between observed and expected cell counts, that is, $\hat{N}_{rc} - E_{rc}$. The matrix $\boldsymbol{H} \hat{\boldsymbol{V}} \left(\hat{\boldsymbol{N}}\right) \boldsymbol{H}^{t}$ represents the estimated variance-covariance matrix for the difference vector. In the case of a complex survey design, the variance-covariance matrix of the weighted frequency counts, $\hat{V} \left(\hat{N}\right)$, is estimated using resampling methods or Taylor approximation. The matrix $\boldsymbol{H}$ is the inverse of the matrix $\boldsymbol{J}$ given by:
+
+$$
+\boldsymbol{J} = -\left[\frac{\delta^{2} \ln PL\left(\boldsymbol{B}\right)}{\delta^{2} \boldsymbol{B}}\right] \bigg|_{\boldsymbol{B} = \hat{\boldsymbol{B}}}
+$$
+
+Under the null hypothesis of independence, the Wald statistic follows a chi-squared distribution with $(R-1) \times (C-1)$ degrees of freedom:
+
+$$
+Q_{wald} \sim \chi^{2}_{(R-1)(C-1)}
+$$
+
+The F transformation of the Wald statistic is:
+
+$$
+F_{wald} = Q_{wald} \times \frac{df - (R-1)(C-1) + 1}{(R-1)(C-1) df} \sim F_{(R-1)(C-1), df - (R-1)(C-1) + 1}
+$$

@@ -53,3 +53,5 @@ multilevel-models
 model-with-random-intercept
 model-with-random-slope
 model-with-random-intercept-and-slope
+survival-models
+loglinear-models-for-contingency-tables
