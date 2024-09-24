@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.2 Uncertainty in household surveys | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>2.2 Means, proportions, and ratios | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.2 Uncertainty in household surveys | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="2.2 Means, proportions, and ratios | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.2 Uncertainty in household surveys | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="2.2 Means, proportions, and ratios | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="parameters-and-estimators.html"/>
-<link rel="next" href="ultimate-cluster-method.html"/>
+<link rel="prev" href="frequencies.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,29 +139,46 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="uncertainty-in-household-surveys" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Uncertainty in household surveys<a href="uncertainty-in-household-surveys.html#uncertainty-in-household-surveys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As the sample is typically a small subset of the population, it is important to obtain not only point estimates for the parameters of interest, but also the corresponding uncertainty measures and/or confidence intervals. In this subsection we present some approaches for variance estimation: approximate formulas from <em>Taylor linearization</em> and/or the <em>ultimate cluster</em> approach for variances under multi-stage cluster sampling. We also introduce replication methods and generalized variance functions, which are essential when PSU or strata are missing from the sample dataset.</p>
-<p>A unifying idea of sampling theory is that of estimating equations - <span class="citation">Binder (<a href="#ref-Binder1983">1983</a>)</span>. Many population parameters can be written/obtained as solutions for <em>population estimating equations</em>. A generic population estimating equation is given by $_{i U} z_i () = 0 $, where <span class="math inline">\(z_i(\bullet)\)</span> is an <em>estimating function</em> evaluated for unit <span class="math inline">\(i\)</span> and <span class="math inline">\(\theta\)</span> is a population parameter of interest.</p>
-<p>For the case of the population total, take <span class="math inline">\(z_i(\theta) = y_i - \theta / N\)</span>. The corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta / N) = 0\)</span>, and solving for <span class="math inline">\(\theta\)</span> gives the population total <span class="math inline">\(\theta_U = \sum _{i \in U} y_i \ = \ Y\)</span>. Similarly, take <span class="math inline">\(z_i(\theta) = y_i - \theta\)</span> for the population mean. As a final example, consider the ratio of population totals. Taking <span class="math inline">\(z_i(\theta) = y_i - \theta x_i\)</span>, the corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta x_i) = 0\)</span>. Solving for <span class="math inline">\(\theta\)</span> gives the <em>population ratio</em> <span class="math inline">\(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\)</span>.</p>
-<p>The idea of defining population parameters as solutions to population estimating equations allows defining a general method for obtaining corresponding sample estimators. It is a matter of using the <em>sample estimating equations</em> <span class="math inline">\(\sum _{k \in s} d_k \, z_k (\theta) = 0\)</span>. Under <em>probability sampling</em>, full response and with <span class="math inline">\(d_k = 1 / \pi_k\)</span>, the sample sum in the left hand side is unbiased towards the population sum in the corresponding population estimating equation. Solving the sample estimating equation yields consistent estimators for the corresponding population parameters.</p>
-<p>The case of the population mean yields the sample estimating equation <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta) = 0\)</span>, and by solving on <span class="math inline">\(\theta\)</span>, we recover the Hàjek estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k = \overline y_H\)</span>. In the case of the population ratio, solving <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta x_k) = 0\)</span> on <span class="math inline">\(\theta\)</span>, yields the well-known estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k \, x_k = \widehat R\)</span>.</p>
-<p>The variance of estimators obtained as solutions of sample estimating equations can be obtained as:</p>
+<div id="means-proportions-and-ratios" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Means, proportions, and ratios<a href="means-proportions-and-ratios.html#means-proportions-and-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After conducting the graphical analysis of trends in the continuous survey variables, it is necessary to obtain point estimates of the measured parameters. These estimates can be obtained either generally for the entire population or disaggregated by domains of interest, depending on the research needs. In the context of household surveys, point estimates refer to the estimation of totals, averages, ratios, means, etc. As mentioned by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, the estimation of totals or averages for a variable of interest in the population, along with the estimation of its variance, has played a crucial role in the development of probability sampling theory. These estimates allow for unbiased and accurate results, providing valuable insights into what is happening in the studied households and enabling informed public policy decision-making.</p>
+<div id="total-estimates" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Total Estimates<a href="means-proportions-and-ratios.html#total-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once the sampling design is defined, which was done in the previous section, the estimation processes for the parameters of interest are carried out. For the estimation of totals with complex sampling designs that include stratification <span class="math inline">\(\left(h=1,2,...,H\right)\)</span> and subsampling in PSUs (assumed to be within stratum <span class="math inline">\(h\)</span>) indexed by <span class="math inline">\(\alpha=1,2,...,a_{h}\)</span>, the estimator for the total can be written as:</p>
 <p><span class="math display">\[
-V_p (\widehat \theta) \doteq \left[ J (\theta_U) \right] ^{-1} V_p \left[ \sum _{k \in s} d_k \, z_k (\theta_U) \right] \left[ J (\theta_U) \right] ^{-1}
+\hat{y}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}
 \]</span></p>
-<p>where <span class="math inline">\(J (\theta_U) = \sum _{k \in U} \left[ \partial{z_k (\theta)} / \partial \theta \right]_{\theta = \theta_U}\)</span>, and <span class="math inline">\(\theta_U\)</span> is the solution of the corresponding population estimating equation.</p>
-<p>A consistent estimator of this variance is given by:</p>
+<p>Where <span class="math inline">\(n_{h\alpha}\)</span> is the sample size of households or individuals in PSU <span class="math inline">\(\alpha\)</span> of stratum <span class="math inline">\(h\)</span>; <span class="math inline">\(a_{h}\)</span> is the sample size of PSUs within stratum <span class="math inline">\(h\)</span>; <span class="math inline">\(H\)</span> is the total number of strata in the sampling design. Finally, <span class="math inline">\(y_{h\alpha i}\)</span> and <span class="math inline">\(\omega_{h\alpha i}\)</span> correspond respectively to the observation of the variable of interest and the weight (expansion factor) of element <span class="math inline">\(i\)</span> associated with PSU <span class="math inline">\(\alpha\)</span> within stratum <span class="math inline">\(h\)</span>. The unbiased variance estimator for this total estimator <span class="math inline">\(\hat{y}_{\omega}\)</span> is:</p>
 <p><span class="math display">\[
-\widehat V_p (\widehat \theta) = \left[ \widehat J ( \widehat \theta) \right] ^{-1} \widehat V_p \left[ \sum _{k \in s} d_k \, z_k (\widehat \theta)\right] \left[ \widehat J ( \widehat \theta) \right] ^{-1}
+\widehat{var}\left(\hat{y}_{\omega}\right) = \sum_{h=1}^{H}\frac{a_{h}}{\left(a_{h}-1\right)}\left[\sum_{\alpha=1}^{a_{h}}\left(\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}-\frac{\left({ \sum_{\alpha=1}^{a_{h}}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}}{a_{h}}\right]
 \]</span></p>
-<p>where <span class="math inline">\(\widehat J (\widehat \theta) = \sum _{k \in s} d_i \, \left[ \partial{z_k ( \theta)} / \partial \theta \right]_{\theta = \widehat \theta}\)</span>.</p>
-<p>This approach implies that by one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals. Its simplicity and generality have enabled the development of software such as the <code>R survey</code> package, the <code>Stata svy</code> functions and others.</p>
+<p>As can be seen, calculating the total estimate and its estimated variance is complex. However, these calculations can be performed in <code>R</code> using the <code>svytotal</code> function. The confidence interval is given by the following expression:</p>
+<p><span class="math display">\[
+\hat{y}_{\omega} \pm 1.96 \times \sqrt{\widehat{var}\left(\hat{y}_{\omega}\right)}
+\]</span></p>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div class="csl-entry">
+Binder, David A. 1983. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
 </div>
+<div class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
+</div>
+</div>
+</div>
+</div>
+<!-- </div> -->
+
+
+
+
+
+
+
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-Binder1983" class="csl-entry">
-Binder, David A. 1983. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
+<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>
 </div>
             </section>
@@ -169,8 +186,8 @@ Binder, David A. 1983. <span>“On the Variances of Asymptotically Normal Estima
           </div>
         </div>
       </div>
-<a href="parameters-and-estimators.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ultimate-cluster-method.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="frequencies.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -201,7 +218,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/01SamplingStrategy.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/02DescriptiveParameters.rmd",
 "text": "Edit"
 },
 "history": {

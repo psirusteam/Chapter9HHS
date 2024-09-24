@@ -7,3 +7,5 @@ descriptive-parameters
 frequencies
 point-estimation
 size-estimates
+means-proportions-and-ratios
+total-estimates
