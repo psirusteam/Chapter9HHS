@@ -3,3 +3,16 @@ parameters-and-estimators
 uncertainty-in-household-surveys
 ultimate-cluster-method
 using-software-to-generate-valid-inferences
+descriptive-parameters
+frequencies
+point-estimation
+size-estimates
+means-proportions-and-ratios
+total-estimates
+estimation-of-averages
+proportion-estimation
+relationship-between-variables
+estimation-of-ratios
+percentiles-and-inequality-measures
+estimation-of-the-gini-coefficient
+nso-practical-example

@@ -6,8 +6,8 @@ new_session: yes
 rmd_files: [
   "index.rmd", 
   "00Introduction.rmd",
-  "01SamplingStrategy.rmd"
-  # "02DescriptiveParameters.rmd",
+  "01SamplingStrategy.rmd",
+  "02DescriptiveParameters.rmd"
   # "03Comparissons.rmd",
   # "04Regression.rmd",
   # "05DataVisualization.rmd",
