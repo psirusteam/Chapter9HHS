@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>1.1 Parameters and estimators | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="1.1 Parameters and estimators | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="1.1 Parameters and estimators | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="the-golden-pair-sample-design-and-estimator.html"/>
+<link rel="prev" href="the-golden-pair-sample-design-and-estimator.html"/>
+<link rel="next" href="uncertainty-in-household-surveys.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -128,33 +128,29 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1 unnumbered hasAnchor">
-<h1>Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>A key concern of every agency that produces statistical information is with the <em>correct</em> use of the data that it produces. This is even reflected in the United Nations <em>Fundamental Principles of Official Statistics</em>, namely:</p>
-<ul>
-<li><p><strong>Principle 3.</strong> To facilitate a correct interpretation of the data, the statistical
-agencies are to present information according to scientific standards on the sources,
-methods and procedures of the statistics.</p></li>
-<li><p><strong>Principle 4.</strong> The statistical agencies are entitled to comment on erroneous
-interpretation and misuse of statistics.</p></li>
-</ul>
-<p>Here we emphasize a particular aspect, aiming to empower users when analysing household survey data. The computer revolution, with the resulting ease of access computers, created favorable conditions for the increased use of statistical data, including those resulting from household sample surveys. Sometimes this data is used for purely descriptive purposes. Other times, however, its use is made for analytical purposes, involving the testing of hypothesis or the construction of models, when the objective is to draw conclusions that are also applicable to populations other than the one from which the sample was extracted. In such cases, standard statistical software may provide biased or misleading results. This chapter’s purpose is to present the relevant models, methods and software to enable users to account for the complex survey design frequently used to conduct household sample surveys when analysing the resulting data.</p>
-<p>What makes such data special for those who intend to use them for analytical purposes?
-The answer is that they are obtained through complex sample surveys of finite populations that often involve: <em>stratification</em>, <em>clustering</em> of units of analysis, <em>unequal probabilities of selection</em>, and <em>weighting adjustments</em> to compensate for non-response and/or improve precision.</p>
-<p>Standard data analysis methods and software typically ignore these aspects, and may produce biased estimates of both the target parameters and the variances of these estimates. In this chapter we analyze the impact of simplifications made when using standard data analysis methods and software, and present the necessary adjustments to these procedures in order to appropriately incorporate the aspects highlighted here into the analysis.</p>
-<p>In section 9.1, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from probability sample surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.2, we begin the journey with simple descriptive statistics: means, ratios, proportions and other typical descriptive parameters. Section 9.3 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables, and also consider the problem of correlation and association. Section 9.4 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.5 presents a summary of ideas and tools for survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.</p>
-<p>Most of the sections in the chapter present national experiences that will guide the reader on how NSOs are dealing with the different stages of the analysis of household survey data.</p>
-<p>The purpose of this chapter is defining and explaining basic concepts of the design-based paradigm in household surveys to analyze complex household survey data. In section 9.1, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from this kind of surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.2, we begin the journey with simple descriptive statistics: means, ratios, proportions and other parameters are part of this discussion. Section 9.3 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables. This section also deals with the problem of correlation and association. Section 9.4 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.5 presents a summary on survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.</p>
-<p>Most of the sections in the chapter present national experiences that will guide the reader on how currently NSOs are dealing with the different stages of the analysis of household survey data.</p>
-
+<div id="parameters-and-estimators" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Parameters and estimators<a href="parameters-and-estimators.html#parameters-and-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Under a design-based approach this section presents the basic principles of inductive inference and how, using the <em>sampling weights</em> (from chapter VIII), one can get consistent estimators for population parameters of interest. We adopt the notation introduced in chapter VIII for presenting the expressions required here.</p>
+<p>The <em>population total</em> <span class="math inline">\(Y = \sum _{U} y_k\)</span> and <em>mean</em> <span class="math inline">\(\overline Y = \frac Y N\)</span> of a survey variable <span class="math inline">\(y\)</span> can be estimated by weighted estimators given by <span class="math inline">\(\widehat Y _{HT} = \sum _{s} d_k \ y_k\)</span> and <span class="math inline">\(\overline y_{H} = \frac {\widehat Y_{HT}} {\widehat N_{HT}} = \frac {\sum_{s} d_k \ y_k} {\sum_{s} d_k}\)</span>, respectively. When the survey weights are calibrated and/or non-response adjusted, the above expressions may still be used, but with the calibrated or non-response adjusted weights, <span class="math inline">\(w_k\)</span> say, replacing the design weights <span class="math inline">\(d_k\)</span>, for all <span class="math inline">\(k \in s\)</span>.</p>
+<p>Here <span class="math inline">\(s = \left\{ k_1, \ldots, k_n \right\} \subset U\)</span> denotes the set of units in a sample selected from the population <span class="math inline">\(U\)</span> using a <em>probability sampling design</em> <span class="math inline">\(p(s)\)</span>, that ensures strictly positive first order inclusion probabilities <span class="math inline">\(\pi_k = Pr(k \in s), \, \forall \, k \in U\)</span>. These inclusion probabilities are assumed known <span class="math inline">\(\forall \, k \in s\)</span>, at least to the data producers.</p>
+<p>Under the design-based framework and assuming full response, <span class="math inline">\(\widehat Y _{HT}\)</span> is unbiased for <span class="math inline">\(Y\)</span> and its sampling variance is given by</p>
+<p><span class="math display">\[
+V_p \left( \widehat{Y}_{HT} \right) = \sum_{k \in U} \sum_{j \in U} \left( \frac {d_k d_j} {d_{kj}} - 1 \right) y_k y_j
+\]</span></p>
+<p>where <span class="math inline">\(d_{kj} = 1 / \pi_{kj}\)</span> and <span class="math inline">\(\pi_{kj} = Pr(k,j \in s), \, \forall \, k,j \in U\)</span>. This result assumes that the sampling design <span class="math inline">\(p(s)\)</span> is such that <span class="math inline">\(\pi_{kj} &gt; 0 \,\, \forall \, k,j \in U\)</span>.</p>
+<p>Under full response, this variance can be estimated unbiasedly by</p>
+<p><span class="math display">\[
+\widehat {V_p} \left( \widehat{Y}_{HT} \right) = \sum_{k \in s} \sum_{j \in s} \left( d_k d_j - d_{kj} \right) y_k y_j
+\]</span></p>
+<p>While the above formula for variance estimation is general and covers the vast majority of sample designs used in the practice of household sample surveys, it is not used in practice because the second order inclusion probabilities <span class="math inline">\(\pi_{kj}\)</span> (and corresponding pairwise weights <span class="math inline">\(d_{kj}\)</span>) are generally unknown to survey data analysts. In fact, even data producers do not compute such pairwise weights, since there are more efficient methods for variance estimation that do not require having such weights.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-golden-pair-sample-design-and-estimator.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-golden-pair-sample-design-and-estimator.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="uncertainty-in-household-surveys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -185,7 +181,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/00Introduction.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/01SamplingStrategy.rmd",
 "text": "Edit"
 },
 "history": {
