@@ -135,4 +135,6 @@ $$
 F(x) = \frac{\sum{i=1}^{N}I(y_i \leq x) }{N}
 $$
 
+Where $I(y_i \leq x)$  is an indicator variable that takes the value 1 if $y_i$ is less than or equal to a specific value $x$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
+
 
