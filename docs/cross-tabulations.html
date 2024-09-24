@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Descriptive parameters | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3.1 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Descriptive parameters | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3.1 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Descriptive parameters | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3.1 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-software-to-generate-valid-inferences.html"/>
-<link rel="next" href="frequencies.html"/>
+<link rel="prev" href="comparisons-and-association.html"/>
+<link rel="next" href="tests-for-group-comparisons.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -163,17 +163,157 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="descriptive-parameters" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Descriptive parameters<a href="descriptive-parameters.html#descriptive-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>When analyzing complex survey data, several descriptive parameters are meaningful and important. For example: poverty and unemployment rates are simple parameters that allow decision-making for governments; also, income distribution can be used to monitor inequality along time.</p>
+<div id="cross-tabulations" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Cross-tabulations<a href="cross-tabulations.html#cross-tabulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Contingency tables and tests of independence are essential tools in household survey analysis, as they help explore relationships between categorical variables. These tables organize population estimates based on two or more characteristics, revealing patterns and associations. Independence tests evaluate whether the variables are related or independent. This analysis is crucial in research and decision-making, as it provides insights into the dependence between factors, influencing strategies based on accurate estimates.</p>
+<div id="contingency-tables" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Contingency Tables<a href="cross-tabulations.html#contingency-tables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In specialized literature, contingency tables are also referred to as cross-tabulations. Generally, a table is assumed to be a two-dimensional array with <span class="math inline">\(r=1,\ldots,R\)</span> rows and <span class="math inline">\(c=1,\ldots,C\)</span> columns. These tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts. A contingency table aims to succinctly represent the association between different categorical variables.</p>
+<p>For an unexpanded sample, these tables are defined using unweighted frequencies as shown below:</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Variable 2</strong></th>
+<th><strong>Variable 1</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>0</td>
+<td>1</td>
+<td><strong>Row Marginal</strong></td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td><span class="math inline">\(n^{00}\)</span></td>
+<td><span class="math inline">\(n^{01}\)</span></td>
+<td><span class="math inline">\(n^{0+}\)</span></td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(n^{10}\)</span></td>
+<td><span class="math inline">\(n^{11}\)</span></td>
+<td><span class="math inline">\(n^{1+}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Column Marginal</strong></td>
+<td><span class="math inline">\(n^{+0}\)</span></td>
+<td><span class="math inline">\(n^{+1}\)</span></td>
+<td><span class="math inline">\(n^{++}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For weighted analyses based on an expanded sample, the two-way table presents the population estimate of the frequencies as follows:</p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Variable 2</strong></th>
+<th><strong>Variable 1</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>0</td>
+<td>1</td>
+<td><strong>Row Marginal</strong></td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td><span class="math inline">\(\hat{N}^{00}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{N}^{01}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{N}^{0+}_{\omega}\)</span></td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(\hat{N}^{10}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{N}^{11}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{N}^{1+}_{\omega}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Column Marginal</strong></td>
+<td><span class="math inline">\(\hat{N}^{+0}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{N}^{+1}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{N}_{\omega}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Thus, considering the subscript <span class="math inline">\(i\in\left(r,c\right)\)</span> represents the individuals classified in cell (<span class="math inline">\(r, c\)</span>), the estimator for the frequency in this cell is given by the following expression:</p>
+<p><span class="math display">\[
+\hat{N}^{rc}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i\in\left(r,c\right)}^{n_{h\alpha}}\omega_{h\alpha i}
+\]</span></p>
+<p>The estimators for the other frequencies in the table, including row and column marginals, are defined similarly. The estimated proportions from these weighted sample frequencies are obtained as follows:</p>
+<p><span class="math display">\[
+\hat{p}_{\omega}^{rc} = \frac{\hat{N}^{rc}_{\omega}}{\hat{N}_{\omega}}
+\]</span></p>
+<p>On the other hand, it is also possible to create tables that report estimates of relative frequencies, or percentages, in the population. This analysis is, of course, conducted using weighted data based on the expanded sample. The two-way table with the population estimate of proportions is presented below:</p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Variable 2</strong></th>
+<th><strong>Variable 1</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>0</td>
+<td>1</td>
+<td><strong>Row Marginal</strong></td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td><span class="math inline">\(\hat{p}^{00}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{p}^{01}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{p}^{0+}_{\omega}\)</span></td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(\hat{p}^{10}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{p}^{11}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{p}^{1+}_{\omega}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Column Marginal</strong></td>
+<td><span class="math inline">\(\hat{p}^{+0}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{p}^{+1}_{\omega}\)</span></td>
+<td><span class="math inline">\(\hat{p}_{\omega}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In the same way as for absolute frequencies, considering that the subscript <span class="math inline">\(i\in\left(r,c\right)\)</span> represents the individuals classified in cell (<span class="math inline">\(r, c\)</span>), the estimator for the proportion associated with this cell is given by the following expression:</p>
+<p><span class="math display">\[
+\hat{p}^{rc}_{\omega}=\frac{\hat{N}^{rc}_{\omega}}{\hat{N}_{\omega}}=
+\frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i\in\left(r,c\right)}^{n_{h\alpha}}\omega_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+\]</span></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="using-software-to-generate-valid-inferences.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="frequencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="comparisons-and-association.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tests-for-group-comparisons.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -204,7 +344,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/02DescriptiveParameters.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/03Comparissons.rmd",
 "text": "Edit"
 },
 "history": {

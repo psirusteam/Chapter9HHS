@@ -40,8 +40,9 @@ $$
 Where $n_{h\alpha}$ is the sample size of households or individuals in PSU $\alpha$ of stratum $h$; $a_{h}$ is the sample size of PSUs within stratum $h$; $H$ is the total number of strata in the sampling design. Finally, $y_{h\alpha i}$ and $\omega_{h\alpha i}$ correspond respectively to the observation of the variable of interest and the weight (expansion factor) of element $i$ associated with PSU $\alpha$ within stratum $h$. The unbiased variance estimator for this total estimator $\hat{y}_{\omega}$ is:
 
 $$
-\widehat{var}(\hat{y}_{\omega}) = \sum_{h=1}^{H}\frac{a_{h}}{(a_{h}-1)}[\sum_{\alpha=1}^{a_{h}}(\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i})^{2}-\frac{({ \sum_{\alpha=1}^{a_{h}}}\omega_{h\alpha i}y_{h\alpha i})^{2}}{a_{h}}]
+\widehat{var}\left(\hat{y}_{\omega}\right) = \sum_{h=1}^{H}\frac{a_{h}}{\left(a_{h}-1\right)}\left[\sum_{\alpha=1}^{a_{h}}\left(\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}-\frac{\left({ \sum_{\alpha=1}^{a_{h}}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}}{a_{h}}\right]
 $$
+
 
 As can be seen, calculating the total estimate and its estimated variance is complex. However, these calculations can be performed in `R` using the `svytotal` function. The confidence interval is given by the following expression:
 
@@ -87,16 +88,16 @@ It is common to observe that many statistical packages opt to generate proportio
 
 As is well known in the specialized literature, when the estimated proportion of interest is close to zero or one, the limits of the traditional confidence interval, based on the sampling design, may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. For this reason, to address this issue, alternative confidence interval estimates based on the sampling design can be used, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015. Thus, the confidence interval using the $Logit(p)$ transformation is given by:
 
+
 $$
-IC[logit(p^d)]  =  \{ ln(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d})\pm\frac{t_{1-\alpha/2,\,gl} \times   se(\hat{p}_{\omega}^d)}{\hat{p}_{\omega}^d(1-\hat{p}_{\omega}^d)}\} 
+IC\left[logit\left(p^d\right)\right]  =  \left\{ ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl} \times   se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right\} 
 $$
 
 Therefore, the confidence interval for $p^d$ would be:
 
 $$
-IC(p^d)  =  \{ \frac{exp[ln(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d})\pm\frac{t_{1-\alpha/2,\,gl}\times se(\hat{p}_{\omega}^d)}{\hat{p}_{\omega}^d(1-\hat{p}_{\omega}^d)}]}{1+exp[ln(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d})\pm\frac{t_{1-\alpha/2,\,gl}\times se(\hat{p}_{\omega}^d)}{\hat{p}_{\omega}^d(1-\hat{p}_{\omega}^d)}]}\} 
+IC\left(p^d\right)  =  \left\{ \frac{exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}{1+exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}\right\} 
 $$
-
 
 ### Relationship Between Variables
 
