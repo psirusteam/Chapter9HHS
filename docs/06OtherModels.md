@@ -41,3 +41,47 @@ $$
 $$
 
 A high ICC indicates that a large proportion of the total variation in the variable is due to differences between groups, suggesting that the groups are distinct from one another and that the group effects should be considered in the model. Conversely, a low ICC indicates that most of the variation in the variable occurs within groups, implying that the group effects are not as significant in explaining variability in the variable.
+
+### Model with Random Slope
+
+This type of model allows the relationship between the independent variable and the dependent variable to change according to some other explanatory variable. In other words, it permits the slope of the relationship between the variables to differ as groups or subsets of data are considered. In a simple linear regression model, the relationship is modeled as a straight line with a fixed slope. However, in a model with a random slope, the slope can vary according to another explanatory variable.
+
+In these types of models, the relationship between the variables can imply a curve with different slopes for different subgroups. Random slope models are useful in situations where it is expected that the relationship between the variables changes in a nonlinear way or when differences in slope among subgroups need to be modeled. Consider the following model:
+
+$$
+Income_{ij} = \beta_{0} + \beta_{1j} Spending_{ij} + \epsilon_{ij}
+$$
+
+where $\beta_{1j}$ is given as
+
+$$
+\beta_{1j} = \gamma_{10} + \gamma_{11} Stratum_{j} + \tau_{1j}
+$$
+
+In this particular case, the slope varies according to the sampling strata, while the intercept remains fixed. This allows for a more accurate capture of how the relationship between spending and income may differ across different groups, providing a better understanding of the patterns in the data.
+
+
+### Model with Random Intercept and Slope
+
+Models with random intercepts and slopes are a type of statistical model that allows for modeling the relationship between a response variable and one or more predictor variables, considering both fixed and random effects. In these models, the regression coefficients (i.e., the slope and intercept) are treated as random rather than fixed, meaning these coefficients can vary across units of analysis, which may be individuals, groups, geographical regions, etc. These variations are modeled as random effects incorporated into the regression equation.
+
+Continuing with the context of a household survey, consider the following model:
+
+$$
+Income_{ij} = \beta_{0j} + \beta_{1j} Spending_{ij} + \epsilon_{ij}
+$$
+
+where the intercept and slope are modeled as:
+
+$$
+\beta_{0j} = \gamma_{00} + \gamma_{01} Stratum_{j} + \tau_{0j}
+$$
+
+and 
+
+$$
+\beta_{1j} = \gamma_{10} + \gamma_{11} Stratum_{j} + \tau_{1j}
+$$
+
+In this model, $\beta_{0j}$ and $\beta_{1j}$ depend on the stratum variable, allowing both the intercept and slope to change according to the group of interest. This provides greater flexibility and better captures the heterogeneity in the data, reflecting how relationships between the variables may differ across subgroups.
+

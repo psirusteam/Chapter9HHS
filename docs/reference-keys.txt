@@ -51,3 +51,5 @@ nso-practical-example-3
 other-modeling-scenarios
 multilevel-models
 model-with-random-intercept
+model-with-random-slope
+model-with-random-intercept-and-slope
