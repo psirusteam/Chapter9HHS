@@ -134,27 +134,27 @@ On the other hand, the estimation of income percentiles in a given country can d
 
 Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable $y$ in a finite population of size $N$ is defined as follows:
 
-$$
-F\left(x\right) = \frac{{ \sum_{i=1}^{N}}I\left(y_{i}\leq x\right)}{N}
-$$
+<!-- $$ -->
+<!-- F\left(x\right) = \frac{{ \sum_{i=1}^{N}}I\left(y_{i}\leq x\right)}{N} -->
+<!-- $$ -->
 
-Where $I\left(y_{i}\leq x\right)$ is an indicator variable that takes the value 1 if $y_{i}$ is less than or equal to a specific value $x$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
+<!-- Where $I\left(y_{i}\leq x\right)$ is an indicator variable that takes the value 1 if $y_{i}$ is less than or equal to a specific value $x$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by: -->
 
-$$
-\hat{F}_{\omega}\left(x\right) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I\left(y_{i}\leq x\right)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
-$$
+<!-- $$ -->
+<!-- \hat{F}_{\omega}\left(x\right) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I\left(y_{i}\leq x\right)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}} -->
+<!-- $$ -->
 
-Once the CDF is estimated using the survey design weights, the $q$-th quantile of a variable $y$ is the smallest value of $y$ such that the CDF is greater than or equal to $q$. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of @Heeringa_West_Berglund_2017, to estimate quantiles, one first considers the order statistics denoted as $y_{(1)},\ldots,y_{(n)}$ and finds the value of $j$ $(j=1,\ldots,n)$ such that:
+<!-- Once the CDF is estimated using the survey design weights, the $q$-th quantile of a variable $y$ is the smallest value of $y$ such that the CDF is greater than or equal to $q$. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of @Heeringa_West_Berglund_2017, to estimate quantiles, one first considers the order statistics denoted as $y_{(1)},\ldots,y_{(n)}$ and finds the value of $j$ $(j=1,\ldots,n)$ such that: -->
 
-$$
-\hat{F}_{\omega}\left(y_{j}\right)\leq q\leq\hat{F}_{\omega}\left(y_{j+1}\right)
-$$
+<!-- $$ -->
+<!-- \hat{F}_{\omega}\left(y_{j}\right)\leq q\leq\hat{F}_{\omega}\left(y_{j+1}\right) -->
+<!-- $$ -->
 
-Thus, the estimation of the $q$-th quantile $y_{(q)}$ in a complex sampling design is given by:
+<!-- Thus, the estimation of the $q$-th quantile $y_{(q)}$ in a complex sampling design is given by: -->
 
-$$
-\hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}\left(y_{j}\right)}{\hat{F}_{\omega}\left(y_{j+1}\right)-\hat{F}_{\omega}\left(y_{j}\right)}\left(y_{j+1}-y_{j}\right)
-$$
+<!-- $$ -->
+<!-- \hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}\left(y_{j}\right)}{\hat{F}_{\omega}\left(y_{j+1}\right)-\hat{F}_{\omega}\left(y_{j}\right)}\left(y_{j+1}-y_{j}\right) -->
+<!-- $$ -->
 
-For the variance estimation and confidence intervals of quantiles, @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in `R`. Specifically, the median estimation can be done using the function `survey_median`.
+<!-- For the variance estimation and confidence intervals of quantiles, @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in `R`. Specifically, the median estimation can be done using the function `survey_median`. -->
 
