@@ -159,3 +159,29 @@ $$
 $$
 
 For the variance estimation and confidence intervals of quantiles, @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in `R`. Specifically, the median estimation can be done using the function `survey_median`.
+
+
+### Estimation of the Gini Coefficient
+
+Economic inequality is a common issue worldwide, with particular focus from international institutions. Measuring economic inequality among households is of great interest, and the Gini coefficient ($G$) is the most commonly used indicator for this purpose. The Gini coefficient ranges from 0 to 1, where $G = 0$ indicates perfect equality in wealth distribution, and higher values reflect increasing inequality.
+
+Following the estimation equation proposed by @binder1995estimating, the estimator for the Gini coefficient is given by:
+
+$$
+\widehat{G}_{\omega}(y) = \frac{2 \times \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}^{*}\hat{F}_{\omega}^{h\alpha i}y^{h\alpha i}-1}{\hat{\bar{y}}_{\omega}}
+$$
+
+where $\omega_{h\alpha i}^{*}$ is a normalized weight, defined as:
+
+$$
+\omega_{h\alpha i}^{*} = \frac{\omega_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+$$
+
+In this formula, $\hat{F}_{h\alpha i}{}_{\omega}$ represents the estimated cumulative distribution function (CDF) for individual $i$ in cluster $\alpha$ of stratum $h$, and $\hat{\bar{y}}_{\omega}$ is the estimated mean.
+
+@osier2009variance and @Langel_Tille_2013 provide important computational details for estimating the variance of this complex estimator.
+
+
+## NSO – Practical example
+
+In this subsection a NSO will share how they do disseminate its results on basic descriptive statistics, how they publish the resulting tables and how do they deal with the suppression of estimates that do not reach expected quality. 
