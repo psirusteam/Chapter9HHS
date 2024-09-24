@@ -149,6 +149,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
@@ -229,6 +230,32 @@ cov\left(y_{i},y_{j}\mid x_{i},x_{j}\right)  = 0
 <p><span class="math display">\[
 y_{i}  \sim  N\left(x_{i}\boldsymbol{\beta},\sigma_{y,x}^{2}\right)
 \]</span></p>
+</div>
+<div id="estimation-of-parameters-in-a-regression-model-with-complex-samples" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Estimation of Parameters in a Regression Model with Complex Samples<a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once the assumptions of the model and the distributional characteristics of the errors are established, the next step is the process of parameter estimation. As an illustrative and introductory example, if instead of observing a sample of size <span class="math inline">\(n\)</span> from the <span class="math inline">\(N\)</span> elements of the population, a complete census had been conducted, the finite population regression parameter <span class="math inline">\(\beta_{1}\)</span> could be calculated as follows:</p>
+<p><span class="math display">\[
+\beta_{1}  =  \frac{{ \sum_{i=1}^{N}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}}{\sum_{i=1}^{N}\left(X_{i}-\bar{X}\right)^{2}}
+\]</span></p>
+<p>Now, when estimating the parameters of a linear regression model considering that the observed information comes from surveys with complex samples, the standard approach to estimating regression coefficients and their standard errors is altered. The main reason for this change is that data collected through a complex survey generally does not have an identical distribution, and the assumption of independence cannot be maintained since the sample design is constructed with dependencies (as most complex designs include stratification, clustering, unequal selection probabilities, etc.).</p>
+<p>In this context, when fitting regression models with such datasets, using conventional estimators derived from traditional methods (such as maximum likelihood, for example) will induce bias because these methods assume the data are independently and identically distributed and come from a specific probability distribution (binomial, Poisson, exponential, normal, etc.). Instead, according to <span class="citation">Wolter (<a href="#ref-Wolter_2007">2007</a>)</span>, robust non-parametric methods based on Taylor linearization or variance estimation methods using replication (Jackknife, bootstrapping, etc.) are used to eliminate bias by including the sampling design in the analyses.</p>
+<p>For illustrative purposes, the estimation of the parameter <span class="math inline">\(\beta_{1}\)</span> and its variance for a simple linear regression will be shown. The extension to multiple regression parameter estimation is algebraically complex and beyond the scope of this book. Below is the estimation of the slope and its variance in a simple linear regression model:</p>
+<p><span class="math display">\[
+\hat{\beta_{1}}  =  \frac{{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-\hat{\bar{y}}_{\omega}\right)\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)}}{{ \sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)^{2}}}
+\]</span></p>
+<p>As can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:</p>
+<p><span class="math display">\[
+var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\beta}_{1}^{2}var\left(\hat{t}_{x^{2}}\right)-2\hat{\beta}_{1}cov\left(\hat{t}_{xy},\hat{t}_{x^{2}}\right)}{\left(\hat{t}_{x^{2}}\right)^{2}}
+\]</span></p>
+<p>As a generalization, according to <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>, the variance estimation of coefficients in a multiple linear regression model requires weighted totals for the squares and cross-products of all combinations of <span class="math inline">\(y\)</span> and <span class="math inline">\(x = \{1, x_{1}, \ldots, x_{p}\}\)</span>. Below is the estimation of these variances:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+var\left(\hat{\beta}\right)=\hat{\Sigma}\left(\hat{\beta}\right) &amp; = &amp; \left[\begin{array}{cccc}
+var\left(\hat{\beta}_{0}\right) &amp; cov\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) &amp; \cdots &amp; cov\left(\hat{\beta}_{0},\hat{\beta}_{p}\right)\\
+cov\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) &amp; var\left(\hat{\beta}_{1}\right) &amp; \cdots &amp; cov\left(\hat{\beta}_{1},\hat{\beta}_{p}\right)\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+cov\left(\hat{\beta}_{0},\hat{\beta}_{p}\right) &amp; cov\left(\hat{\beta}_{1},\hat{\beta}_{p}\right) &amp; \cdots &amp; var\left(\hat{\beta}_{p}\right)
+\end{array}\right]
+\end{eqnarray*}\]</span></p>
 
 </div>
 </div>
@@ -258,6 +285,9 @@ Shah, B. V., M. M. Holt, and R. F. Folsom. 1977. <span>“Inference about Regres
 </div>
 <div id="ref-skinner1989analysis" class="csl-entry">
 Skinner, Chris J, Daniell Holt, and Tom M F Smith. 1989. <em>Analysis of Complex Surveys</em>. New York: John Wiley &amp; Sons.
+</div>
+<div id="ref-Wolter_2007" class="csl-entry">
+Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Statistics for Social and Behavioral Sciences. Springer.
 </div>
 </div>
             </section>

@@ -30,6 +30,7 @@ to-weight-or-not-to-weight
 some-inferential-approaches-to-modelling-data
 linear-models
 basic-definitions
+estimation-of-parameters-in-a-regression-model-with-complex-samples
 data-visualization
 weighted-histograms
 bar-charts
