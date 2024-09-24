@@ -97,3 +97,22 @@ $$
 IC\left(p^d\right)  =  \left\{ \frac{exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}{1+exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}\right\} 
 $$
 
+
+### Relationship Between Variables
+
+In many household survey analyses, it is not sufficient to examine individual variables in isolation. For instance, analyzing the average income of men and women in a country is informative, but comparing the income difference between men and women is crucial for addressing the gender pay gap. This section provides computational tools for estimating ratios and explores hypothesis testing for differences in means, including more complex contrasts.
+
+#### Estimation of Ratios
+
+A particular case of a non-linear function of totals is the population ratio. This is defined as the quotient of two population totals for continuous characteristics of interest. In household surveys, there are times when estimating such a parameter is necessary. For example, estimating the ratio of expenditures to income, the number of men per woman, or the number of pets per household in a specific country.
+
+Since the ratio is the quotient of two totals, both the numerator and the denominator are unknown quantities and thus need to be estimated. The point estimator for a ratio in complex surveys is the quotient of the estimators for the totals, as defined by:
+
+$$
+\hat{R}_{\omega} = \frac{\hat{y}_{\omega}}{\hat{x}_{\omega}}
+= \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}x_{h\alpha i}}
+$$
+
+However, because the ratio estimator is a quotient of two estimators (i.e., a quotient of two random variables), calculating the variance of this estimator is not straightforward. To address this, Taylor linearization methods are applied as demonstrated by @Gutierrez_2016.
+
+

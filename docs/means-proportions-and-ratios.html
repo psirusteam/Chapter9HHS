@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="frequencies.html"/>
-
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -119,8 +119,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.1" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#total-estimates"><i class="fa fa-check"></i><b>2.2.1</b> Total Estimates</a></li>
 <li class="chapter" data-level="2.2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#estimation-of-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimation of Averages</a></li>
 <li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a Chapter 9 of UN Household Survey Handbook. </a></li>
 
@@ -191,35 +193,25 @@ IC\left[logit\left(p^d\right)\right]  =  \left\{ ln\left(\frac{\hat{p}_{\omega}^
 <p><span class="math display">\[
 IC\left(p^d\right)  =  \left\{ \frac{exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}{1+exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}\right\}
 \]</span></p>
+</div>
+<div id="relationship-between-variables" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Relationship Between Variables<a href="means-proportions-and-ratios.html#relationship-between-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In many household survey analyses, it is not sufficient to examine individual variables in isolation. For instance, analyzing the average income of men and women in a country is informative, but comparing the income difference between men and women is crucial for addressing the gender pay gap. This section provides computational tools for estimating ratios and explores hypothesis testing for differences in means, including more complex contrasts.</p>
+<div id="estimation-of-ratios" class="section level4 hasAnchor" number="2.2.4.1">
+<h4><span class="header-section-number">2.2.4.1</span> Estimation of Ratios<a href="means-proportions-and-ratios.html#estimation-of-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A particular case of a non-linear function of totals is the population ratio. This is defined as the quotient of two population totals for continuous characteristics of interest. In household surveys, there are times when estimating such a parameter is necessary. For example, estimating the ratio of expenditures to income, the number of men per woman, or the number of pets per household in a specific country.</p>
+<p>Since the ratio is the quotient of two totals, both the numerator and the denominator are unknown quantities and thus need to be estimated. The point estimator for a ratio in complex surveys is the quotient of the estimators for the totals, as defined by:</p>
+<p><span class="math display">\[
+\hat{R}_{\omega} = \frac{\hat{y}_{\omega}}{\hat{x}_{\omega}}
+= \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}x_{h\alpha i}}
+\]</span></p>
+<p>However, because the ratio estimator is a quotient of two estimators (i.e., a quotient of two random variables), calculating the variance of this estimator is not straightforward. To address this, Taylor linearization methods are applied as demonstrated by <span class="citation">Gutiérrez (<a href="#ref-Gutierrez_2016">2016</a>)</span>.</p>
 
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div class="csl-entry">
-Binder, David A. 1983. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
-</div>
-<div class="csl-entry">
-Dean, Natalie, and Marcello Pagano. 2015. <span>“<span class="nocase">Evaluating Confidence Interval Methods for Binomial Proportions in Clustered Surveys</span>.”</span> <em>Journal of Survey Statistics and Methodology</em> 3 (4): 484–503. <a href="https://doi.org/10.1093/jssam/smv024">https://doi.org/10.1093/jssam/smv024</a>.
-</div>
-<div class="csl-entry">
-Gutiérrez, H. A. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
-</div>
-<div class="csl-entry">
-Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
-</div>
-<div class="csl-entry">
-Rust, Keith F., Valerie Hsu, and Westat. 2007. <span>“Confidence Intervals for Statistics for Categorical Variables from Complex Samples.”</span> In. <a href="https://api.semanticscholar.org/CorpusID:195852485">https://api.semanticscholar.org/CorpusID:195852485</a>.
-</div>
 </div>
 </div>
 </div>
 <!-- </div> -->
-
-
-
-
-
-
-
-<h3>References</h3>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-DeanPagano2015" class="csl-entry">
 Dean, Natalie, and Marcello Pagano. 2015. <span>“<span class="nocase">Evaluating Confidence Interval Methods for Binomial Proportions in Clustered Surveys</span>.”</span> <em>Journal of Survey Statistics and Methodology</em> 3 (4): 484–503. <a href="https://doi.org/10.1093/jssam/smv024">https://doi.org/10.1093/jssam/smv024</a>.
@@ -239,8 +231,8 @@ Rust, Keith F., Valerie Hsu, and Westat. 2007. <span>“Confidence Intervals for
           </div>
         </div>
       </div>
-<a href="frequencies.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="frequencies.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
