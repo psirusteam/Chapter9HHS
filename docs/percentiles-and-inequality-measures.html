@@ -147,32 +147,10 @@ div.csl-indent {
 <div id="percentiles-and-inequality-measures" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Percentiles and inequality measures<a href="percentiles-and-inequality-measures.html#percentiles-and-inequality-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In household surveys, it is always necessary to estimate dispersion measures of the studied variables. For example, to understand how disparate incomes are in a given country, which helps inform public policy decisions. Therefore, studying these parameters is crucial. Below is the estimator for the standard deviation:</p>
-<!-- $$ -->
-<!-- s_{w}\left(y\right) =  -->
-<!-- $$ -->
-<!-- $$ -->
-<!-- s_{\omega}\left(y\right) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-\hat{\bar{y}}_{\omega}\right)^{2}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}-1} -->
-<!-- $$ -->
 <p>Non-central location measures (percentiles) are calculated to determine characteristic points of the data distribution beyond central values. Key non-central location measures include the median, quartiles, and percentiles. In most household surveys, not only are totals, means, and proportions estimated; for some indicators, it is necessary to estimate other parameters, such as medians and percentiles.</p>
 <p>The median is a measure of central tendency that, unlike the mean, is not easily influenced by outliers, and is thus considered a robust measure. The median is the value that divides the population into two equal parts, implying that half of the population’s observations fall above the median and the other half fall below.</p>
 <p>On the other hand, the estimation of income percentiles in a given country can define the onset of public policy. For example, a tax could be imposed on individuals in the top 10% of the income distribution, or transport subsidies could be provided to those in the bottom 15% of the income distribution.</p>
 <p>Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable <span class="math inline">\(y\)</span> in a finite population of size <span class="math inline">\(N\)</span> is defined as follows:</p>
-<!-- $$ -->
-<!-- F\left(x\right) = \frac{{ \sum_{i=1}^{N}}I\left(y_{i}\leq x\right)}{N} -->
-<!-- $$ -->
-<!-- Where $I\left(y_{i}\leq x\right)$ is an indicator variable that takes the value 1 if $y_{i}$ is less than or equal to a specific value $x$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by: -->
-<!-- $$ -->
-<!-- \hat{F}_{\omega}\left(x\right) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I\left(y_{i}\leq x\right)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}} -->
-<!-- $$ -->
-<!-- Once the CDF is estimated using the survey design weights, the $q$-th quantile of a variable $y$ is the smallest value of $y$ such that the CDF is greater than or equal to $q$. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of @Heeringa_West_Berglund_2017, to estimate quantiles, one first considers the order statistics denoted as $y_{(1)},\ldots,y_{(n)}$ and finds the value of $j$ $(j=1,\ldots,n)$ such that: -->
-<!-- $$ -->
-<!-- \hat{F}_{\omega}\left(y_{j}\right)\leq q\leq\hat{F}_{\omega}\left(y_{j+1}\right) -->
-<!-- $$ -->
-<!-- Thus, the estimation of the $q$-th quantile $y_{(q)}$ in a complex sampling design is given by: -->
-<!-- $$ -->
-<!-- \hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}\left(y_{j}\right)}{\hat{F}_{\omega}\left(y_{j+1}\right)-\hat{F}_{\omega}\left(y_{j}\right)}\left(y_{j+1}-y_{j}\right) -->
-<!-- $$ -->
-<!-- For the variance estimation and confidence intervals of quantiles, @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in `R`. Specifically, the median estimation can be done using the function `survey_median`. -->
 
 </div>
 <!-- </div> -->
