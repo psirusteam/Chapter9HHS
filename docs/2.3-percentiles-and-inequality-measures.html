@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="References | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+<meta property="og:title" content="2.3 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
 <meta property="og:type" content="book" />
 
 <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
@@ -24,7 +24,7 @@ MathJax.Hub.Config({
 
 <meta name="description" content="Chapter 9 of UN Household Survey Handbook">
 
-<title>References | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+<title>2.3 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -163,87 +163,68 @@ details > summary {
 </div>
 <div class="row">
 <div class="col-sm-12">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-
+<div id="percentiles-and-inequality-measures" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Percentiles and inequality measures</h2>
+<p>In household surveys, it is always necessary to estimate dispersion measures of the studied variables. For example, to understand how disparate incomes are in a given country, which helps inform public policy decisions. Therefore, studying these parameters is crucial. Below is the estimator for the standard deviation:</p>
+<p><span class="math display">\[
+s_{\omega}(y) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}(y_{h\alpha i}-\hat{\bar{y}}_{\omega})^{2}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}-1}
+\]</span></p>
+<p>Non-central location measures (percentiles) are calculated to determine characteristic points of the data distribution beyond central values. Key non-central location measures include the median, quartiles, and percentiles. In most household surveys, not only are totals, means, and proportions estimated; for some indicators, it is necessary to estimate other parameters, such as medians and percentiles.</p>
+<p>The median is a measure of central tendency that, unlike the mean, is not easily influenced by outliers, and is thus considered a robust measure. The median is the value that divides the population into two equal parts, implying that half of the population’s observations fall above the median and the other half fall below.</p>
+<p>On the other hand, the estimation of income percentiles in a given country can define the onset of public policy. For example, a tax could be imposed on individuals in the top 10% of the income distribution, or transport subsidies could be provided to those in the bottom 15% of the income distribution.</p>
+<p>Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable <span class="math inline">\(y\)</span> in a finite population of size <span class="math inline">\(N\)</span> is defined as follows:</p>
+<p><span class="math display">\[
+F(x) = \frac{\sum{i=1}^{N}I(y_i \leq x) }{N}
+\]</span></p>
+<p>Where <span class="math inline">\(I(y_i \leq x)\)</span> is an indicator variable that takes the value 1 if <span class="math inline">\(y_i\)</span> is less than or equal to a specific value <span class="math inline">\(x\)</span>, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:</p>
+<p><span class="math display">\[
+\hat{F}_{\omega}(x) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_{i}\leq x)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+\]</span></p>
+<p>Once the CDF is estimated using the survey design weights, the <span class="math inline">\(q\)</span>-th quantile of a variable <span class="math inline">\(y\)</span> is the smallest value of <span class="math inline">\(y\)</span> such that the CDF is greater than or equal to <span class="math inline">\(q\)</span>. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, to estimate quantiles, one first considers the order statistics denoted as <span class="math inline">\(y_{(1)},\ldots,y_{(n)}\)</span> and finds the value of <span class="math inline">\(j\)</span> <span class="math inline">\((j=1,\ldots,n)\)</span> such that:</p>
+<p><span class="math display">\[
+\hat{F}_{\omega}(y_{j})\leq q\leq\hat{F}_{\omega}(y_{j+1})
+\]</span></p>
+<p>Thus, the estimation of the <span class="math inline">\(q\)</span>-th quantile <span class="math inline">\(y_{(q)}\)</span> in a complex sampling design is given by:</p>
+<p><span class="math display">\[
+\hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}(y_{j})}{\hat{F}_{\omega}(y_{j+1})-\hat{F}_{\omega}(y_{j})}(y_{j+1}-y_{j})
+\]</span></p>
+<p>For the variance estimation and confidence intervals of quantiles, <span class="citation">Kovar, Rao, and Wu (<a href="#ref-kovar1988bootstrap">1988</a>)</span> present results from a simulation study where they recommend using the <em>Balanced Repeated Replication</em> (BRR) technique.</p>
+<div id="estimation-of-the-gini-coefficient" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Estimation of the Gini Coefficient</h3>
+<p>Economic inequality is a common issue worldwide, with particular focus from international institutions. Measuring economic inequality among households is of great interest, and the Gini coefficient (<span class="math inline">\(G\)</span>) is the most commonly used indicator for this purpose. The Gini coefficient ranges from 0 to 1, where <span class="math inline">\(G = 0\)</span> indicates perfect equality in wealth distribution, and higher values reflect increasing inequality.</p>
+<p>Following the estimation equation proposed by <span class="citation">David A. Binder and Kovacevic (<a href="#ref-binder1995estimating">1995</a>)</span>, the estimator for the Gini coefficient is given by:</p>
+<p><span class="math display">\[
+\widehat{G}_{\omega}\left(y\right) = \frac{2 \times \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}^{*}\hat{F}_{\omega}^{h\alpha i}y^{h\alpha i}-1}{\hat{\bar{y}}_{\omega}}
+\]</span></p>
+<p>where <span class="math inline">\(\omega_{h\alpha i}^{*}\)</span> is a normalized weight, defined as:</p>
+<p><span class="math display">\[
+\omega_{h\alpha i}^{*} = \frac{\omega_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+\]</span></p>
+<p>In this formula, <span class="math inline">\(\hat{F}_{h\alpha i}{}_{\omega}\)</span> represents the estimated cumulative distribution function (CDF) for individual <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(\alpha\)</span> of stratum <span class="math inline">\(h\)</span>, and <span class="math inline">\(\hat{\bar{y}}_{\omega}\)</span> is the estimated mean.</p>
+<p><span class="citation">Osier (<a href="#ref-osier2009variance">2009</a>)</span> and <span class="citation">Langel and Tillé (<a href="#ref-Langel_Tille_2013">2013</a>)</span> provide important computational details for estimating the variance of this complex estimator.</p>
+</div>
+</div>
+<h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div class="csl-entry">
-Binder, David A. 1983a. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51: 279–92.
-</div>
-<div class="csl-entry">
-Binder, David A. 1983b. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
-</div>
-<div class="csl-entry">
+<div id="ref-binder1995estimating" class="csl-entry">
 Binder, David A., and Milojica S. Kovacevic. 1995. <span>“Estimating Some Measures of Income Inequality from Survey Data: An Application of the Estimating Equations Approach.”</span> <em>Survey Methodology</em> 21 (2): 137–45.
 </div>
-<div class="csl-entry">
-Dean, Natalie, and Marcello Pagano. 2015. <span>“<span class="nocase">Evaluating Confidence Interval Methods for Binomial Proportions in Clustered Surveys</span>.”</span> <em>Journal of Survey Statistics and Methodology</em> 3 (4): 484–503. <a href="https://doi.org/10.1093/jssam/smv024">https://doi.org/10.1093/jssam/smv024</a>.
-</div>
-<div class="csl-entry">
-Fay, Robert E. 1979. <span>“On Adjusting the Pearson Chi-Square Statistic for Cluster Sampling.”</span> In <em>Proceedings of the Social Statistics Section, American Statistical Association</em>, 402–5. Washington, DC.
-</div>
-<div class="csl-entry">
-Fellegi, Ivan P. 1980. <span>“Approximate Tests of Independence and Goodness of Fit Based on Stratified Multistage Samples.”</span> <em>Journal of the American Statistical Association</em> 75: 261–68.
-</div>
-<div class="csl-entry">
-Fuller, Wayne A. 1975. <span>“Regression Analysis for Sample Survey.”</span> <em>Sankyha, Series C</em> 37: 117–32.
-</div>
-<div class="csl-entry">
-———. 2002. <span>“Regression Estimation for Survey Samples (with Discussion).”</span> <em>Survey Methodology</em> 28 (1): 5–23.
-</div>
-<div class="csl-entry">
-Gutiérrez, H. A. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
-</div>
-<div class="csl-entry">
+<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
 Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>
-<div class="csl-entry">
-Kish, Leslie, and Martin R Frankel. 1974. <span>“Inference from Complex Samples.”</span> <em>Journal of the Royal Statistical Society, Series B</em> 36: 1–37.
-</div>
-<div class="csl-entry">
+<div id="ref-kovar1988bootstrap" class="csl-entry">
 Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other Methods to Measure Errors in Survey Estimates.”</span> <em>Canadian Journal of Statistics</em> 16 (Suppl.): 25–45.
 </div>
-<div class="csl-entry">
+<div id="ref-Langel_Tille_2013" class="csl-entry">
 Langel, Matti, and Yves Tillé. 2013. <span>“Variance Estimation of the Gini Index: Revisiting a Result Several Times Published: Variance Estimation of the Gini Index.”</span> <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 176 (2): 521–40. <a href="https://doi.org/10.1111/j.1467-985X.2012.01048.x">https://doi.org/10.1111/j.1467-985X.2012.01048.x</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-osier2009variance" class="csl-entry">
 Osier, Guillaume. 2009. <span>“Variance Estimation for Complex Indicators of Poverty and Inequality.”</span> <em>Journal of the European Survey Research Association</em> 3 (3): 167–95. <a href="http://ojs.ub.uni-konstanz.de/srm/article/view/369">http://ojs.ub.uni-konstanz.de/srm/article/view/369</a>.
 </div>
-<div class="csl-entry">
-Pfeffermann, Danny. 2011. <span>“Modelling of Complex Survey Data: Why Model? Why Is It a Problem? How Can We Approach It?”</span> <em>Survey Methodology</em> 37 (2): 115–36.
 </div>
-<div class="csl-entry">
-Rao, J. N. K., and A. J. Scott. 1984a. <span>“On Chi-Squared Test for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12: 46–60.
-</div>
-<div class="csl-entry">
-———. 1984b. <span>“On Chi-Squared Tests for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12 (1): 46–60.
-</div>
-<div class="csl-entry">
-Rust, Keith F., Valerie Hsu, and Westat. 2007. <span>“Confidence Intervals for Statistics for Categorical Variables from Complex Samples.”</span> In. <a href="https://api.semanticscholar.org/CorpusID:195852485">https://api.semanticscholar.org/CorpusID:195852485</a>.
-</div>
-<div class="csl-entry">
-Shah, B. V., M. M. Holt, and R. F. Folsom. 1977. <span>“Inference about Regression Models from Sample Survey Data.”</span> <em>Bulletin of the International Statistical Institute</em> 41 (3): 43–57.
-</div>
-<div class="csl-entry">
-Skinner, Chris J, Daniell Holt, and Tom M F Smith. 1989. <em>Analysis of Complex Surveys</em>. New York: John Wiley &amp; Sons.
-</div>
-<div class="csl-entry">
-Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Level and Power for Simple Goodness-of-Fit Statistics Under Cluster Sampling.”</span> <em>Journal of the American Statistical Association</em> 82: 630–36.
-</div>
-<div class="csl-entry">
-Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Statistics for Social and Behavioral Sciences. Springer.
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
 <p style="text-align: center;">
-<a href="4.3-linear-models.html"><button class="btn btn-default">Previous</button></a>
+<a href="2.2-means-proportions-and-ratios.html"><button class="btn btn-default">Previous</button></a>
+<a href="2.4-nso-practical-example.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>
