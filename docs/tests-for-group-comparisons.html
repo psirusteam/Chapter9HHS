@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3.2 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3.2 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3.2 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="some-inferential-approaches-to-modelling-data.html"/>
-<link rel="next" href="references.html"/>
+<link rel="prev" href="cross-tabulations.html"/>
+<link rel="next" href="tests-of-independence.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -173,100 +173,221 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="linear-models" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Linear models<a href="linear-models.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="basic-definitions" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Basic Definitions<a href="linear-models.html#basic-definitions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As noted by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>. Later, <span class="citation">Fuller (<a href="#ref-fuller1975regression">1975</a>)</span> developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.</p>
-<p>As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, <span class="citation">Shah, Holt, and Folsom (<a href="#ref-shah1977inference">1977</a>)</span> discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.</p>
-<p>Similarly, <span class="citation">David A. Binder (<a href="#ref-binder1983variances">1983a</a>)</span> obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. <span class="citation">Skinner, Holt, and Smith (<a href="#ref-skinner1989analysis">1989</a>)</span> studied the properties of variance estimators for regression coefficients under complex sample designs. Later, <span class="citation">Fuller (<a href="#ref-fuller2002regression">2002</a>)</span> provided a summary of estimation methods for regression models containing information related to complex samples. Finally, <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the “<em>q-weighted</em>” method, which is recommended in this document.</p>
-<p>A simple linear regression model is defined as <span class="math inline">\(y=\beta_{0}+\beta_{1}x+\varepsilon\)</span>, where <span class="math inline">\(y\)</span> represents the dependent variable, <span class="math inline">\(x\)</span> is the independent variable, and <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> are the model parameters. The variable <span class="math inline">\(\varepsilon\)</span> is known as the random error of the model and is defined as <span class="math inline">\(\varepsilon=y-\hat{y}=y-\beta_{0}+\beta_{1}x\)</span>.</p>
-<p>Generalizing the previous model, multiple linear regression models are defined by allowing the dependent variable to interact with more than two variables, as presented below:</p>
+<div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
+<div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (<span class="math inline">\(H_0\)</span>) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (<span class="math inline">\(H_1\)</span>), which is the statement opposing the null hypothesis. This statement may be based on some belief or past experience and will be tested using the evidence gathered from the sample data. If it is suspected that the parameter <span class="math inline">\(\theta\)</span> is equal to a particular value <span class="math inline">\(\theta_{0}\)</span>, the possible combinations of hypotheses that can be tested are:</p>
+<span class="math display">\[\begin{eqnarray*}
+\begin{cases}
+H_{0}: &amp; \theta=\theta_{0}\\
+H_{1}: &amp; \theta\neq\theta_{0}
+\end{cases}\,\,\,\,\,\,\,\,\,   
+\begin{cases}
+H_{0}: &amp; \theta=\theta_{0}\\
+H_{1}: &amp; \theta&gt;\theta_{0}
+\end{cases}\,\,\,\,\,\,\,\,\,   
+\begin{cases}
+H_{0}: &amp; \theta=\theta_{0}\\
+H_{1}: &amp; \theta&lt;\theta_{0}
+\end{cases}
+\end{eqnarray*}\]</span>
+<p>One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.</p>
+<p>In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of <span class="math inline">\(j\)</span> descriptive statistics, as shown below:</p>
+<span class="math display">\[\begin{eqnarray*}
+f\left(\theta_{1},\theta_{2},...,\theta_{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}\theta_{j}
+\end{eqnarray*}\]</span>
+<p>In this case, <span class="math inline">\(a_{j}\)</span> are known constants. An estimator of this function is given by:</p>
+<span class="math display">\[\begin{eqnarray}
+\hat{f}_{\omega}\left(\hat{\theta}_{1},\hat{\theta}_{2},...,\hat{\theta}_{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}\hat{\theta}_{j}
+\end{eqnarray}\]</span>
+<p>And its variance is calculated as follows:</p>
+<span class="math display">\[\begin{eqnarray}
+var\left(\sum_{j=1}^{J}a_{j}\hat{\theta}_{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}^{2}var\left(\hat{\theta}_{j}\right)+2\times\sum_{j=1}^{J-1}\sum_{k&gt;j}^{J}a_{j}a_{k}\,cov\left(\hat{\theta}_{j},\hat{\theta}_{k}\right)
+\end{eqnarray}\]</span>
+<p>As seen in the variance equation of the estimator, it incorporates the variances of the individual components’ estimates, as well as the covariances of the estimated pairs.</p>
+<p>Of particular interest is analyzing the difference in population means, which can be written as follows:</p>
 <p><span class="math display">\[
-y  =  \boldsymbol{x}\boldsymbol{\beta}+\varepsilon
-  =  \sum_{j=0}^{p}\beta_{j}x_{j}+\varepsilon
-=  \beta_{0}+\beta_{1}x_{1}+\cdots+\beta_{p}x_{p}+\varepsilon
+\bar{y}^{1}-\bar{y}^{2}
 \]</span></p>
-<p>Another way to write the multiple regression model is:</p>
+<p>Where <span class="math inline">\(\bar{y}_{1}\)</span> is the mean of the first population, for example, the average household income obtained by fathers, and <span class="math inline">\(\bar{y}_{2}\)</span> is the mean of the second population, which in this example could be the average income of mothers in a household. This parameter can be unbiasedly estimated by:</p>
 <p><span class="math display">\[
-y_{i}  =  x_{i}\boldsymbol{\beta}+\varepsilon_{i}
+\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}
 \]</span></p>
-<p>Where, <span class="math inline">\(x_{i}=\left[1\,x_{1i}\,\ldots\,x_{pi}\right]\)</span> and <span class="math inline">\(\boldsymbol{\beta}^{T}=\left[\beta_{0}\,\,\beta_{1}\,\,\ldots\,\,\beta_{p}\right]\)</span>.</p>
-<p>The subscript <span class="math inline">\(i\)</span> refers to the sample element or respondent in the dataset. <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span> present some considerations for regression models, which are described below:</p>
-<ul>
-<li><span class="math inline">\(E\left(\varepsilon_{i}\mid x_{i}\right)=0\)</span>, meaning that the expected value of the residuals conditioned on the covariates is zero.</li>
-<li><span class="math inline">\(Var\left(\varepsilon_{i}\mid x_{i}\right)=\sigma_{y,x}^{2}\)</span> (homogeneity of variance), meaning that the variance of the residuals conditioned on the covariates is constant.</li>
-<li><span class="math inline">\(\varepsilon_{i}\mid x_{i}\sim N\left(0,\,\sigma_{y,x}^{2}\right)\)</span> (normality of errors), meaning that the residuals conditioned on the covariates follow a normal distribution. This property also extends to the response variable <span class="math inline">\(y_{i}\)</span>.</li>
-<li><span class="math inline">\(cov\left(\varepsilon_{i},\,\varepsilon_{j}\mid x_{i},x_{j}\right)\)</span> (independence of residuals), meaning that the residuals in different observed units are not correlated with the values given by their predictor variables.</li>
-</ul>
-<p>Once the linear regression model and its assumptions are defined, it can be deduced that the best unbiased linear estimator is defined as the expected value of the dependent variable conditioned on the independent variables <span class="math inline">\(x\)</span>, as:</p>
+<p>Where <span class="math inline">\(\hat{\bar{y}}_{\omega}^{i}\)</span> is the sample estimator of <span class="math inline">\(\bar{y}^{i}\)</span> (<span class="math inline">\(i = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:</p>
+<span class="math display">\[\begin{eqnarray*}
+\begin{cases}
+H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
+H_{1}:\bar{y}_{1}-\bar{y}_{2}\neq0
+\end{cases} &amp; \begin{cases}
+H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
+H_{1}:\bar{y}_{1}-\bar{y}_{2}&gt;0
+\end{cases} &amp; \begin{cases}
+H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
+H_{1}:\bar{y}_{1}-\bar{y}_{2}&lt;0
+\end{cases}
+\end{eqnarray*}\]</span>
+<p>To test these hypotheses, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</p>
 <p><span class="math display">\[
-E\left(y\mid x\right)=\hat{\beta}_{0}+\hat{\beta_{1}}x_{1}+\hat{\beta}_{2}x_{2}+\cdots+\hat{\beta}_{p}x_{p}
+t = \frac{\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}}{se\left(\bar{y}_{1}-\bar{y}_{2}\right)} \sim t_{df}
 \]</span></p>
+<p>Where:</p>
 <p><span class="math display">\[
-\hat{y}  =  E\left(y\mid x\right)
-=  E\left(\boldsymbol{x}\boldsymbol{\beta}\right)+E\left(\varepsilon\right)
-=  \boldsymbol{x}\boldsymbol{\beta}+0
-  =  \beta_{0}+\beta_{1}x_{1}+\cdots+\beta_{p}x_{p}
+\widehat{se}\left(\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}\right) = \sqrt{\widehat{var}\left(\hat{\bar{y}}_{\omega}^{1}\right) + \widehat{var}\left(\hat{\bar{y}}_{\omega}^{2}\right) - 2 \  \widehat{cov}\left(\hat{\bar{y}}_{\omega}^{1},\hat{\bar{y}}_{\omega}^{2}\right)}
 \]</span></p>
-<p>Additionally,</p>
+<p>If a confidence interval for the difference in means is desired, it would be constructed as follows:</p>
 <p><span class="math display">\[
-var\left(y_{i}\mid x_{i}\right)  =  \sigma_{y,x}^{2}
+\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2} \pm t_{df}\ \widehat{se}\left(\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}\right)
 \]</span></p>
-<p>It is also established that:</p>
+</div>
+<div id="contrasts" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Contrasts<a href="tests-for-group-comparisons.html#contrasts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In many cases, it is necessary to compare more than two populations at the same time. For example, comparing the average household incomes across three regions to identify which regions experienced a greater impact on households. In such cases, the difference of means we studied in previous chapters is not sufficient, as it only allows for pairwise comparisons of populations. Therefore, using contrasts becomes a good alternative to address these types of problems.</p>
+<p>Based on the definitions discussed in this chapter, a contrast is a linear combination of parameters in the form:</p>
+<span class="math display">\[\begin{eqnarray*}
+f = A * \theta = f\left(\theta^{1},\theta^{2},...,\theta^{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}\theta^{j}
+\end{eqnarray*}\]</span>
+<p>Where <span class="math inline">\(A\)</span> is a matrix or vector of constants, and <span class="math inline">\(\theta\)</span> is a matrix or vector of parameters.</p>
+<p>Next, we will perform the calculation of a hypothesis contrast. Suppose we have the estimates shown in the table, where the goal is to compare the average income by region. As a first example, we will compare two populations: the North and South regions. Specifically, we are interested in the income difference (<span class="math inline">\(f = \bar{y}^{North} - \bar{y}^{South}\)</span>). Since the population is divided into five regions and the contrast will only be constructed for two of them (North and South), it is defined as follows:</p>
 <p><span class="math display">\[
-cov\left(y_{i},y_{j}\mid x_{i},x_{j}\right)  = 0
+f = A * \theta = 1 \times \bar{y}^{North} + (-1) \times \bar{y}^{South} + 0 \times \bar{y}^{Center} + 0 \times \bar{y}^{West} + 0 \times \bar{y}^{East}
 \]</span></p>
-<p>Thus, the response variable has the following distribution:</p>
+<p>As can be observed, in this case, the contrast vector is <span class="math inline">\(A = \left[1, -1, 0, 0, 0\right]\)</span>. Mathematically, the estimator for this specific contrast is defined as:</p>
 <p><span class="math display">\[
-y_{i}  \sim  N\left(x_{i}\boldsymbol{\beta},\sigma_{y,x}^{2}\right)
+\hat{f}_{\omega} = A \times \hat{\theta} = \left[1, -1, 0, 0, 0\right] \times \left[
+\begin{array}{c}
+\hat{\bar{y}}^{North}_{\omega} \\
+\hat{\bar{y}}^{South}_{\omega} \\
+\hat{\bar{y}}^{Center}_{\omega} \\
+\hat{\bar{y}}^{West}_{\omega} \\
+\hat{\bar{y}}^{East}_{\omega}
+\end{array}
+\right]
 \]</span></p>
-</div>
-<div id="estimation-of-parameters-in-a-regression-model-with-complex-samples" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Estimation of Parameters in a Regression Model with Complex Samples<a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once the assumptions of the model and the distributional characteristics of the errors are established, the next step is the process of parameter estimation. As an illustrative and introductory example, if instead of observing a sample of size <span class="math inline">\(n\)</span> from the <span class="math inline">\(N\)</span> elements of the population, a complete census had been conducted, the finite population regression parameter <span class="math inline">\(\beta_{1}\)</span> could be calculated as follows:</p>
+<table>
+<caption>Estimation table for regions.</caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Region</th>
+<th>Income</th>
+<th>Standard error (se)</th>
+<th>Lower bound (ci_l)</th>
+<th>Upper bound (ci_u)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>North</td>
+<td>552.3637</td>
+<td>55.35987</td>
+<td>443.8603</td>
+<td>660.8670</td>
+</tr>
+<tr class="even">
+<td>South</td>
+<td>625.7740</td>
+<td>62.40574</td>
+<td>503.4610</td>
+<td>748.0870</td>
+</tr>
+<tr class="odd">
+<td>Center</td>
+<td>650.7820</td>
+<td>61.46886</td>
+<td>530.3053</td>
+<td>771.2588</td>
+</tr>
+<tr class="even">
+<td>West</td>
+<td>517.0071</td>
+<td>46.22077</td>
+<td>426.4161</td>
+<td>607.5982</td>
+</tr>
+<tr class="odd">
+<td>East</td>
+<td>541.7543</td>
+<td>71.66487</td>
+<td>401.2938</td>
+<td>682.2149</td>
+</tr>
+</tbody>
+</table>
+<p>To continue with the example, we take the estimated mean incomes for the North and South regions and calculate the difference:</p>
 <p><span class="math display">\[
-\beta_{1}  =  \frac{ \sum_{i=1}^{N}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}{\sum_{i=1}^{N}\left(X_{i}-\bar{X}\right)^{2}}
+f = A \times \theta = 552.4 - 625.8 = -73.4
 \]</span></p>
-<p>Now, when estimating the parameters of a linear regression model considering that the observed information comes from surveys with complex samples, the standard approach to estimating regression coefficients and their standard errors is altered. The main reason for this change is that data collected through a complex survey generally does not have an identical distribution, and the assumption of independence cannot be maintained since the sample design is constructed with dependencies (as most complex designs include stratification, clustering, unequal selection probabilities, etc.).</p>
-<p>In this context, when fitting regression models with such datasets, using conventional estimators derived from traditional methods (such as maximum likelihood, for example) will induce bias because these methods assume the data are independently and identically distributed and come from a specific probability distribution (binomial, Poisson, exponential, normal, etc.). Instead, according to <span class="citation">Wolter (<a href="#ref-Wolter_2007">2007</a>)</span>, robust non-parametric methods based on Taylor linearization or variance estimation methods using replication (Jackknife, bootstrapping, etc.) are used to eliminate bias by including the sampling design in the analyses.</p>
-<p>For illustrative purposes, the estimation of the parameter <span class="math inline">\(\beta_{1}\)</span> and its variance for a simple linear regression will be shown. The extension to multiple regression parameter estimation is algebraically complex and beyond the scope of this book. Below is the estimation of the slope and its variance in a simple linear regression model:</p>
+<p>The next step is to calculate the variance-covariance matrix and extract the variances for the North and South regions:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>North</th>
+<th>South</th>
+<th>Center</th>
+<th>West</th>
+<th>East</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>North</td>
+<td>3064.715</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td>South</td>
+<td>0.000</td>
+<td>3894.476</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td>Center</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>3778.420</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td>West</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2136.359</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td>East</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>5135.854</td>
+</tr>
+</tbody>
+</table>
+<p>Since the sampling is independent in each region, the covariances in the matrix are zero. To calculate the standard error of the difference (contrast), we will use the properties of variance, as follows:</p>
 <p><span class="math display">\[
-\hat{\beta_{1}} = \frac{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-\hat{\bar{y}}_{\omega}\right)\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)}{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)^{2}}
+se(\hat{f}_{\omega}) = se\left(\hat{\bar{y}}^{North}_{\omega} - \hat{\bar{y}}^{South}_{\omega}\right) = \sqrt{var\left(\hat{\bar{y}}^{North}_{\omega}\right) + var\left(\hat{\bar{y}}^{South}_{\omega}\right) - 2 \, cov\left(\hat{\bar{y}}^{North}_{\omega}, \hat{\bar{y}}^{South}_{\omega}\right)}
 \]</span></p>
-<p>As can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:</p>
-
-</div>
-</div>
-<!-- </div> -->
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-binder1983variances" class="csl-entry">
-Binder, David A. 1983a. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51: 279–92.
-</div>
-<div id="ref-fuller1975regression" class="csl-entry">
-Fuller, Wayne A. 1975. <span>“Regression Analysis for Sample Survey.”</span> <em>Sankyha, Series C</em> 37: 117–32.
-</div>
-<div id="ref-fuller2002regression" class="csl-entry">
-———. 2002. <span>“Regression Estimation for Survey Samples (with Discussion).”</span> <em>Survey Methodology</em> 28 (1): 5–23.
-</div>
-<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
-Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
-</div>
-<div id="ref-kish1974inference" class="csl-entry">
-Kish, Leslie, and Martin R Frankel. 1974. <span>“Inference from Complex Samples.”</span> <em>Journal of the Royal Statistical Society, Series B</em> 36: 1–37.
-</div>
-<div id="ref-pfeffermann2011modelling" class="csl-entry">
-Pfeffermann, Danny. 2011. <span>“Modelling of Complex Survey Data: Why Model? Why Is It a Problem? How Can We Approach It?”</span> <em>Survey Methodology</em> 37 (2): 115–36.
-</div>
-<div id="ref-shah1977inference" class="csl-entry">
-Shah, B. V., M. M. Holt, and R. F. Folsom. 1977. <span>“Inference about Regression Models from Sample Survey Data.”</span> <em>Bulletin of the International Statistical Institute</em> 41 (3): 43–57.
-</div>
-<div id="ref-skinner1989analysis" class="csl-entry">
-Skinner, Chris J, Daniell Holt, and Tom M F Smith. 1989. <em>Analysis of Complex Surveys</em>. New York: John Wiley &amp; Sons.
-</div>
-<div id="ref-Wolter_2007" class="csl-entry">
-Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Statistics for Social and Behavioral Sciences. Springer.
+<p>Therefore, the estimated standard error for this contrast is:</p>
+<p><span class="math display">\[
+se(\hat{f}_{\omega}) = \sqrt{3064.715 + 3894.476 - 2 \times 0} = \sqrt{6959.191}
+\]</span></p>
 </div>
 </div>
             </section>
@@ -274,8 +395,8 @@ Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Stat
           </div>
         </div>
       </div>
-<a href="some-inferential-approaches-to-modelling-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cross-tabulations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tests-of-independence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -306,7 +427,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/04Regression.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/03Comparissons.rmd",
 "text": "Edit"
 },
 "history": {

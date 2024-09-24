@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3.3 Tests of Independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3.3 Tests of Independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3.3 Tests of Independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="the-golden-pair-sample-design-and-estimator.html"/>
+<link rel="prev" href="tests-for-group-comparisons.html"/>
+<link rel="next" href="correlation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -173,33 +173,71 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1 unnumbered hasAnchor">
-<h1>Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>A key concern of every agency that produces statistical information is with the <em>correct</em> use of the data that it produces. This is even reflected in the United Nations <em>Fundamental Principles of Official Statistics</em>, namely:</p>
-<ul>
-<li><p><strong>Principle 3.</strong> To facilitate a correct interpretation of the data, the statistical
-agencies are to present information according to scientific standards on the sources,
-methods and procedures of the statistics.</p></li>
-<li><p><strong>Principle 4.</strong> The statistical agencies are entitled to comment on erroneous
-interpretation and misuse of statistics.</p></li>
-</ul>
-<p>Here we emphasize a particular aspect, aiming to empower users when analysing household survey data. The computer revolution, with the resulting ease of access computers, created favorable conditions for the increased use of statistical data, including those resulting from household sample surveys. Sometimes this data is used for purely descriptive purposes. Other times, however, its use is made for analytical purposes, involving the testing of hypothesis or the construction of models, when the objective is to draw conclusions that are also applicable to populations other than the one from which the sample was extracted. In such cases, standard statistical software may provide biased or misleading results. This chapter’s purpose is to present the relevant models, methods and software to enable users to account for the complex survey design frequently used to conduct household sample surveys when analysing the resulting data.</p>
-<p>What makes such data special for those who intend to use them for analytical purposes?
-The answer is that they are obtained through complex sample surveys of finite populations that often involve: <em>stratification</em>, <em>clustering</em> of units of analysis, <em>unequal probabilities of selection</em>, and <em>weighting adjustments</em> to compensate for non-response and/or improve precision.</p>
-<p>Standard data analysis methods and software typically ignore these aspects, and may produce biased estimates of both the target parameters and the variances of these estimates. In this chapter we analyze the impact of simplifications made when using standard data analysis methods and software, and present the necessary adjustments to these procedures in order to appropriately incorporate the aspects highlighted here into the analysis.</p>
-<p>In section 9.1, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from probability sample surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.2, we begin the journey with simple descriptive statistics: means, ratios, proportions and other typical descriptive parameters. Section 9.3 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables, and also consider the problem of correlation and association. Section 9.4 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.5 presents a summary of ideas and tools for survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.</p>
-<p>Most of the sections in the chapter present national experiences that will guide the reader on how NSOs are dealing with the different stages of the analysis of household survey data.</p>
-<p>The purpose of this chapter is defining and explaining basic concepts of the design-based paradigm in household surveys to analyze complex household survey data. In section 9.1, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from this kind of surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.2, we begin the journey with simple descriptive statistics: means, ratios, proportions and other parameters are part of this discussion. Section 9.3 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables. This section also deals with the problem of correlation and association. Section 9.4 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.5 presents a summary on survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.</p>
-<p>Most of the sections in the chapter present national experiences that will guide the reader on how currently NSOs are dealing with the different stages of the analysis of household survey data.</p>
-
+<div id="tests-of-independence" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Tests of Independence<a href="tests-of-independence.html#tests-of-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Based on the estimated tables, it is possible to perform independence tests to verify whether there is an association between two categorical variables. Two variables are independent if the structural behavior of one variable does not depend on the other, and vice versa. <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span> state that, under simple random sampling, two categorical variables are independent if the expected proportion in row <span class="math inline">\(r\)</span> and column <span class="math inline">\(c\)</span>, denoted as <span class="math inline">\(\pi^{rc}\)</span>, follows the relationship:</p>
+<p><span class="math display">\[
+\pi^{rc} = \frac{n^{r+} \times n^{+c}}{(n^{++})^2}
+\]</span></p>
+<p>Thus, one way to verify if there is independence between the variables of interest is to directly compare the estimated proportions <span class="math inline">\(\hat{p}^{rc}_{\omega}\)</span> with the expected proportions <span class="math inline">\(\pi^{rc}\)</span>. If there is a large difference between them, then the independence hypothesis would not be supported by the collected data. Therefore, the following Rao-Scott <span class="math inline">\(\chi^{2}_{RS}\)</span> statistic <span class="citation">(<a href="#ref-rao1984adjusted">Rao and Scott 1984b</a>)</span>, which follows a chi-square distribution with <span class="math inline">\((R-1) \times (C-1)\)</span> degrees of freedom, is defined:</p>
+<span class="math display">\[\begin{eqnarray}
+\chi^{2}_{RS}  =  \frac{\chi^{2}_{Pearson}}{GDEFF}
+\end{eqnarray}\]</span>
+<p>Where:</p>
+<p><span class="math display">\[
+\chi^{2}_{Pearson} = n^{++} \left( \sum_r \sum_c \frac{(\hat{p}^{rc}_{\omega} - \pi^{rc})^2}{\pi^{rc}} \right)
+\]</span></p>
+<p>Additionally, <span class="math inline">\(GDEFF\)</span> is an estimate of the generalized design effect by Rao–Scott, defined as:</p>
+<p><span class="math display">\[
+GDEFF = \frac{\sum_{r}\sum_{c}\left(1-p_{rc}\right)d^{2}\left(p_{rc}\right)-\sum_{r}\left(1-p_{r+}\right)d^{2}\left(p_{r+}\right)-\sum_{c}\left(1-p_{+c}\right)d^{2}\left(p_{+c}\right)}{\left(R-1\right)\left(C-1\right)}
+\]</span></p>
+<p>As mentioned by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, it was <span class="citation">Fay (<a href="#ref-fay1979adjusting">1979</a>)</span>, along with <span class="citation">Fellegi (<a href="#ref-fellegi1980approximate">1980</a>)</span>, who began proposing corrections to Pearson’s chi-square statistic based on a generalized design effect. <span class="citation">Rao and Scott (<a href="#ref-rao1984chi_squared">1984a</a>)</span> later expanded the theory of generalized design effect corrections for these statistical tests, as did <span class="citation">Thomas and Rao (<a href="#ref-thomas1987small_sample">1987</a>)</span>. The Rao-Scott method requires the calculation of generalized design effects, which are analytically more complex than Fellegi’s approach. Rao-Scott corrections are now the standard for analyzing categorical survey data in software systems such as Stata and SAS.</p>
+<p>Additionally, Fisher’s F-test for independence allows the analysis of whether two dichotomous variables are associated when the observed sample is too small, and the conditions for applying Pearson’s <span class="math inline">\(\chi^{2}\)</span> test are not met. To use this technique, consider the expressions for the estimated probability and Pearson’s <span class="math inline">\(\chi^{2}\)</span> statistic. Based on these, the likelihood ratio statistic is defined as:</p>
+<p><span class="math display">\[
+G^{2} = 2 \times n_{++} \times \sum_{r} \sum_{c} p_{rc} \times \ln \left( \frac{p_{rc}}{\hat{\pi}_{rc}} \right)
+\]</span></p>
+<p>where <span class="math inline">\(r\)</span> is the number of rows, and <span class="math inline">\(c\)</span> represents the number of columns, and the test has <span class="math inline">\((R-1) \times (C-1)\)</span> degrees of freedom. Applying a correction for the generalized design effect, the likelihood ratio statistic is calculated as:</p>
+<p><span class="math display">\[
+G^2_{(R-S)} = \frac{G^2}{GDEFF}
+\]</span></p>
+<p>Thus, the F-statistic for independence based on Pearson’s chi-square test is calculated as follows:</p>
+<p><span class="math display">\[
+F_{R-S,Pearson} = \frac{\chi^{2}_{R-S}}{\left[(R-1)(C-1)\right]} \sim F_{\left(R-1\right)\left(C-1\right),df}
+\]</span></p>
+<p>And, the F-statistic for independence based on the likelihood ratio is calculated as:</p>
+<p><span class="math display">\[
+F_{R-S,LRT} = \frac{G^{2}_{R-S}}{(C-1)} \sim F_{\left(C-1\right),df}
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is the number of columns in the cross-tabulation.</p>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-fay1979adjusting" class="csl-entry">
+Fay, Robert E. 1979. <span>“On Adjusting the Pearson Chi-Square Statistic for Cluster Sampling.”</span> In <em>Proceedings of the Social Statistics Section, American Statistical Association</em>, 402–5. Washington, DC.
+</div>
+<div id="ref-fellegi1980approximate" class="csl-entry">
+Fellegi, Ivan P. 1980. <span>“Approximate Tests of Independence and Goodness of Fit Based on Stratified Multistage Samples.”</span> <em>Journal of the American Statistical Association</em> 75: 261–68.
+</div>
+<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
+</div>
+<div id="ref-rao1984chi_squared" class="csl-entry">
+Rao, J. N. K., and A. J. Scott. 1984a. <span>“On Chi-Squared Test for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12: 46–60.
+</div>
+<div id="ref-rao1984adjusted" class="csl-entry">
+———. 1984b. <span>“On Chi-Squared Tests for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12 (1): 46–60.
+</div>
+<div id="ref-thomas1987small_sample" class="csl-entry">
+Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Level and Power for Simple Goodness-of-Fit Statistics Under Cluster Sampling.”</span> <em>Journal of the American Statistical Association</em> 82: 630–36.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-golden-pair-sample-design-and-estimator.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tests-for-group-comparisons.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -230,7 +268,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/00Introduction.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/03Comparissons.rmd",
 "text": "Edit"
 },
 "history": {

@@ -2,50 +2,63 @@
 <html lang="" xml:lang="">
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
-<meta property="og:type" content="book" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-<meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
-<meta name="github-repo" content="psirusteam/Chapter9HHS" />
+  <meta property="og:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
+  <meta name="github-repo" content="psirusteam/Chapter9HHS" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  
+  <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
+  
 
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
+
 <meta name="date" content="2024-09-24" />
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
 
-<meta name="description" content="Chapter 9 of UN Household Survey Handbook">
-
-<title>CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
-
+<link rel="next" href="introduction.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
 
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -70,106 +83,103 @@ div.csl-indent {
 }
 </style>
 
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-/* show arrow before summary tag as in bootstrap
-TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
-details > summary {
-  display: list-item;
-  cursor: pointer;
-}
-</style>
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
 
-<div class="container-fluid main-container">
 
 
-<div class="row">
-<div class="col-sm-12">
-<div id="TOC">
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Chapter 9 of UN Household Survey Handbook.</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="the-golden-pair-sample-design-and-estimator.html"><a href="the-golden-pair-sample-design-and-estimator.html"><i class="fa fa-check"></i><b>1</b> The golden pair: sample design and estimator</a>
 <ul>
-<li><a href="index.html#abstract" id="toc-abstract">Abstract</a></li>
-<li><a href="introduction.html#introduction" id="toc-introduction">Introduction</a></li>
-<li class="has-sub"><a href="1-the-golden-pair-sample-design-and-estimator.html#the-golden-pair-sample-design-and-estimator" id="toc-the-golden-pair-sample-design-and-estimator"><span class="toc-section-number">1</span> The golden pair: sample design and estimator</a>
-<ul>
-<li><a href="1.1-parameters-and-estimators.html#parameters-and-estimators" id="toc-parameters-and-estimators"><span class="toc-section-number">1.1</span> Parameters and estimators</a></li>
-<li><a href="1.2-uncertainty-in-household-surveys.html#uncertainty-in-household-surveys" id="toc-uncertainty-in-household-surveys"><span class="toc-section-number">1.2</span> Uncertainty in household surveys</a></li>
-<li><a href="1.3-ultimate-cluster-method.html#ultimate-cluster-method" id="toc-ultimate-cluster-method"><span class="toc-section-number">1.3</span> Ultimate Cluster Method</a></li>
-<li><a href="1.4-using-software-to-generate-valid-inferences.html#using-software-to-generate-valid-inferences" id="toc-using-software-to-generate-valid-inferences"><span class="toc-section-number">1.4</span> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="1.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>1.1</b> Parameters and estimators</a></li>
+<li class="chapter" data-level="1.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>1.2</b> Uncertainty in household surveys</a></li>
+<li class="chapter" data-level="1.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>1.3</b> Ultimate Cluster Method</a></li>
+<li class="chapter" data-level="1.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.4</b> Using software to generate valid inferences</a></li>
 </ul></li>
-<li class="has-sub"><a href="2-descriptive-parameters.html#descriptive-parameters" id="toc-descriptive-parameters"><span class="toc-section-number">2</span> Descriptive parameters</a>
+<li class="chapter" data-level="2" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>2</b> Descriptive parameters</a>
 <ul>
-<li class="has-sub"><a href="2.1-frequencies.html#frequencies" id="toc-frequencies"><span class="toc-section-number">2.1</span> Frequencies</a>
+<li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a>
 <ul>
-<li><a href="2.1-frequencies.html#point-estimation" id="toc-point-estimation"><span class="toc-section-number">2.1.1</span> Point Estimation</a></li>
+<li class="chapter" data-level="2.1.1" data-path="frequencies.html"><a href="frequencies.html#point-estimation"><i class="fa fa-check"></i><b>2.1.1</b> Point Estimation</a></li>
 </ul></li>
-<li class="has-sub"><a href="2.2-means-proportions-and-ratios.html#means-proportions-and-ratios" id="toc-means-proportions-and-ratios"><span class="toc-section-number">2.2</span> Means, proportions, and ratios</a>
+<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a>
 <ul>
-<li><a href="2.2-means-proportions-and-ratios.html#total-estimates" id="toc-total-estimates"><span class="toc-section-number">2.2.1</span> Total Estimates</a></li>
-<li><a href="2.2-means-proportions-and-ratios.html#estimation-of-averages" id="toc-estimation-of-averages"><span class="toc-section-number">2.2.2</span> Estimation of Averages</a></li>
-<li><a href="2.2-means-proportions-and-ratios.html#proportion-estimation" id="toc-proportion-estimation"><span class="toc-section-number">2.2.3</span> Proportion Estimation</a></li>
-<li><a href="2.2-means-proportions-and-ratios.html#relationship-between-variables" id="toc-relationship-between-variables"><span class="toc-section-number">2.2.4</span> Relationship Between Variables</a></li>
+<li class="chapter" data-level="2.2.1" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#total-estimates"><i class="fa fa-check"></i><b>2.2.1</b> Total Estimates</a></li>
+<li class="chapter" data-level="2.2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#estimation-of-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimation of Averages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
 </ul></li>
-<li class="has-sub"><a href="2.3-percentiles-and-inequality-measures.html#percentiles-and-inequality-measures" id="toc-percentiles-and-inequality-measures"><span class="toc-section-number">2.3</span> Percentiles and inequality measures</a>
+<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a>
 <ul>
-<li><a href="2.3-percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient" id="toc-estimation-of-the-gini-coefficient"><span class="toc-section-number">2.3.1</span> Estimation of the Gini Coefficient</a></li>
+<li class="chapter" data-level="2.3.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient"><i class="fa fa-check"></i><b>2.3.1</b> Estimation of the Gini Coefficient</a></li>
 </ul></li>
-<li><a href="2.4-nso-practical-example.html#nso-practical-example" id="toc-nso-practical-example"><span class="toc-section-number">2.4</span> NSO – Practical example</a></li>
+<li class="chapter" data-level="2.4" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.4</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="has-sub"><a href="3-comparisons-and-association.html#comparisons-and-association" id="toc-comparisons-and-association"><span class="toc-section-number">3</span> Comparisons and association</a>
+<li class="chapter" data-level="3" data-path="comparisons-and-association.html"><a href="comparisons-and-association.html"><i class="fa fa-check"></i><b>3</b> Comparisons and association</a>
 <ul>
-<li class="has-sub"><a href="3.1-cross-tabulations.html#cross-tabulations" id="toc-cross-tabulations"><span class="toc-section-number">3.1</span> Cross-tabulations</a>
+<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a>
 <ul>
-<li><a href="3.1-cross-tabulations.html#contingency-tables" id="toc-contingency-tables"><span class="toc-section-number">3.1.1</span> Contingency Tables</a></li>
+<li class="chapter" data-level="3.1.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html#contingency-tables"><i class="fa fa-check"></i><b>3.1.1</b> Contingency Tables</a></li>
 </ul></li>
-<li class="has-sub"><a href="3.2-tests-for-group-comparisons.html#tests-for-group-comparisons" id="toc-tests-for-group-comparisons"><span class="toc-section-number">3.2</span> Tests for group comparisons</a>
+<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a>
 <ul>
-<li><a href="3.2-tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" id="toc-hypothesis-test-for-the-difference-of-means"><span class="toc-section-number">3.2.1</span> Hypothesis Test for the Difference of Means</a></li>
-<li><a href="3.2-tests-for-group-comparisons.html#contrasts" id="toc-contrasts"><span class="toc-section-number">3.2.2</span> Contrasts</a></li>
+<li class="chapter" data-level="3.2.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.2.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.2.2</b> Contrasts</a></li>
 </ul></li>
-<li><a href="3.3-tests-of-independence.html#tests-of-independence" id="toc-tests-of-independence"><span class="toc-section-number">3.3</span> Tests of Independence</a></li>
-<li><a href="3.4-correlation.html#correlation" id="toc-correlation"><span class="toc-section-number">3.4</span> Correlation</a></li>
-<li><a href="3.5-nso-practical-example-1.html#nso-practical-example-1" id="toc-nso-practical-example-1"><span class="toc-section-number">3.5</span> NSO – Practical example</a></li>
+<li class="chapter" data-level="3.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>3.3</b> Tests of Independence</a></li>
+<li class="chapter" data-level="3.4" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.4</b> Correlation</a></li>
+<li class="chapter" data-level="3.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="has-sub"><a href="4-regression-modelling-survey-data.html#regression-modelling-survey-data" id="toc-regression-modelling-survey-data"><span class="toc-section-number">4</span> Regression: modelling survey data</a>
+<li class="chapter" data-level="4" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>4</b> Regression: modelling survey data</a>
 <ul>
-<li><a href="4.1-to-weight-or-not-to-weight.html#to-weight-or-not-to-weight" id="toc-to-weight-or-not-to-weight"><span class="toc-section-number">4.1</span> To weight or not to weight?</a></li>
-<li><a href="4.2-some-inferential-approaches-to-modelling-data.html#some-inferential-approaches-to-modelling-data" id="toc-some-inferential-approaches-to-modelling-data"><span class="toc-section-number">4.2</span> Some inferential approaches to modelling data</a></li>
-<li class="has-sub"><a href="4.3-linear-models.html#linear-models" id="toc-linear-models"><span class="toc-section-number">4.3</span> Linear models</a>
+<li class="chapter" data-level="4.1" data-path="to-weight-or-not-to-weight.html"><a href="to-weight-or-not-to-weight.html"><i class="fa fa-check"></i><b>4.1</b> To weight or not to weight?</a></li>
+<li class="chapter" data-level="4.2" data-path="some-inferential-approaches-to-modelling-data.html"><a href="some-inferential-approaches-to-modelling-data.html"><i class="fa fa-check"></i><b>4.2</b> Some inferential approaches to modelling data</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
 <ul>
-<li><a href="4.3-linear-models.html#basic-definitions" id="toc-basic-definitions"><span class="toc-section-number">4.3.1</span> Basic Definitions</a></li>
-<li><a href="4.3-linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples" id="toc-estimation-of-parameters-in-a-regression-model-with-complex-samples"><span class="toc-section-number">4.3.2</span> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
+<li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
 </ul></li>
 </ul></li>
-<li><a href="references.html#references" id="toc-references">References</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a Chapter 9 of UN Household Survey Handbook. </a></li>
+
 </ul>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-12">
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</h1>
-<h4 class="author"><em>Andrés Gutiérrez<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, Pedro Luis do Nascimento Silva<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></em></h4>
-<h4 class="date"><em>2024-09-24</em></h4>
+<p class="author"><em>Andrés Gutiérrez<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, Pedro Luis do Nascimento Silva<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></em></p>
+<p class="date"><em>2024-09-24</em></p>
 </div>
-<div id="abstract" class="section level1 unnumbered">
-<h1>Abstract</h1>
+<div id="abstract" class="section level1 unnumbered hasAnchor">
+<h1>Abstract<a href="index.html#abstract" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Analyzing complex household survey data requires knowing and properly applying the foundations of the design-based inference. The researcher will be faced to a small database that contains specific information that will allow her to make conclusions over the whole population.</p>
 <p>The purpose of any analysis on this kind of datasets is not referred to make conclusions on the sample itself – which in most of the cases is a small subgroup of the population - but to the domains of interest and the whole population. Having that into account, the first step in any analysis plan should be devoted to defining the sampling design based on the selection mechanisms used to draw the final sample and the findings on the field related to nonresponse and lack of coverage.</p>
 <p>The chapter covers three main topics of analysis: descriptive statistics; comparisons and association; and modeling of survey data. On the one hand, we introduce simple descriptive statistics, such as totals, frequencies, means and proportions, quantiles and some graphics; on the other, we delve deeper on complex relationships between the variables of the survey. All these analyses rely on the representativity principle of the design-based inference. This way, the reader will find a strong focus, not only on point estimates, but also on uncertainty measures. The chapter also presents a short discussion on the different approaches that can be used to estimate variances; the best way to visualize the estimates; and NSO practical experiences.</p>
@@ -182,23 +192,81 @@ details > summary {
 <li id="fn2"><p>SCIENCE, <a href="mailto:pedronsilva@gmail.com" class="email">pedronsilva@gmail.com</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
-<p style="text-align: center;">
-<a href="introduction.html"><button class="btn btn-default">Next</button></a>
-</p>
-</div>
-</div>
+            </section>
 
+          </div>
+        </div>
+      </div>
 
-</div>
-
+<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
-
-// add bootstrap table styles to pandoc tables
-$(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/psirusteam/Chapter9HHS/index.rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Chapter 9.pdf", "Chapter 9.epub", "Chapter 9.mobi"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"tconfig": null
 });
-
+});
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
+
 </html>
