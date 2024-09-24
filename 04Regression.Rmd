@@ -201,3 +201,43 @@ Another set of techniques used for model analysis involves examining influential
 3. **$D_{f}Fits_{\left(i\right)}$ Statistic**: This statistic measures the change in the model fit when a particular observation is removed. In this case, the i-th observation is considered influential in the model fit if $\mid DfFits\left(i\right)\mid \geq z\sqrt{\frac{p}{n}}$ with $z = 2$.
 
 
+#### Inference on Model Parameters
+
+Once the proper fit of the model has been evaluated using the methodologies discussed above, and the distributional properties of the errors—and consequently the response variable $y$—have been verified, the next step is to assess whether the estimated parameters are significant. This involves determining whether the covariates used to fit the model add value in explaining and/or predicting the study variable and the phenomenon of interest.
+
+Given the distributional properties of the regression coefficient estimators, a natural test statistic for evaluating the significance of these parameters is based on the t-distribution and is described as follows:
+
+$$
+t = \frac{\hat{\beta}_{k}-\beta_{k}}{se\left(\hat{\beta}_{k}\right)}\sim t_{n-p}
+$$
+
+Where $p$ is the number of model parameters and $n$ is the sample size of the survey. The test statistic above evaluates the hypotheses $H_{0}:\beta_{k}=0$ versus the alternative $H_{1}:\beta_{k}\neq0$. Similarly, a confidence interval of $(1-\alpha)\times100\%$ for $\beta_{k}$ can be constructed, as follows:
+
+$$
+\hat{\beta}_{k}\pm t_{1-\frac{\alpha}{2},\,df}\,se\left(\hat{\beta}_{k}\right)
+$$
+
+Where the degrees of freedom ($df$) for the interval in a household survey (complex samples) is given by the number of final stage clusters minus the number of primary stage strata $\left(df=\sum_{h}a_{h}-H\right)$.
+
+#### Estimation and Prediction
+
+According to @neter1996applied, linear regression models are essentially used for two purposes. One is to explain the variable of interest in terms of covariates that may be found in surveys, administrative records, censuses, etc. Additionally, they are also used to predict values of the variable under study, either within the range of values collected in the sample or outside of it. The first purpose has been addressed throughout this chapter, and the second is achieved as follows:
+
+$$
+\hat{E}(y_{i}\mid\boldsymbol{x}_{obs,i})=\boldsymbol{x}_{obs,i}\hat{\boldsymbol{\beta}}
+$$
+
+Explicitly, in the model exemplified in this chapter, the expression for predictions would be:
+
+$$
+\hat{E}(y_{i}\mid\boldsymbol{x}_{obs,i})=\hat{\beta}_{0}+\hat{\beta}_{1}x_{1i}
+$$
+
+The variance of the estimation is calculated as follows:
+
+$$
+var\left(\hat{E}\left(y_{i}\mid x_{obs,i}\right)\right) 
+=  x'_{obs,i}cov\left(\hat{\beta}\right)x{}_{obs,i}
+$$
+
+

@@ -36,3 +36,5 @@ model-diagnostics
 coefficient-of-determination
 standardized-residuals
 influential-observations
+inference-on-model-parameters
+estimation-and-prediction
