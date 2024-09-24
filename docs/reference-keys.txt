@@ -10,3 +10,4 @@ size-estimates
 means-proportions-and-ratios
 total-estimates
 estimation-of-averages
+proportion-estimation

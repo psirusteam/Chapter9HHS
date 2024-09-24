@@ -66,3 +66,34 @@ $$
 
 As can be observed, calculating the variance estimation involves complex components to compute analytically, such as the covariance between the estimated total and the estimated population size.
 
+
+### Proportion Estimation
+
+The estimation of a proportion for a binary response variable requires a direct extension of the ratio estimator shown in the previous chapter. As mentioned by @Heeringa_West_Berglund_2017, by recoding the original response categories into a single indicator variable $y_{i}$ with possible values of 1 and 0 (e.g., yes = 1, no = 0), the estimator for a proportion is defined as follows:
+
+$$
+\hat{p}_{\omega}^d = \frac{\hat{N}^d_{\omega}}{\hat{N}_{\omega}} 
+= \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\ I(y_i = d)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+$$
+
+By applying Taylor linearization to the above estimator, its variance is given by the following expression:
+
+$$
+var\left(\hat{p}_{\omega}^d\right) \dot{=} \frac{var\left(\hat{N}^{d}_{\omega}\right)+(\hat{p}_{\omega}^d)^{2}var\left(\hat{N}_{\omega}\right)-2\,\hat{p}_{\omega}^d\,cov\left(\hat{N}^{d}_{\omega},\hat{N}_{\omega}\right)}{(\hat{N}_{\omega})^{2}}
+$$
+
+It is common to observe that many statistical packages opt to generate proportion estimates and standard errors on a percentage scale.
+
+
+As is well known in the specialized literature, when the estimated proportion of interest is close to zero or one, the limits of the traditional confidence interval, based on the sampling design, may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. For this reason, to address this issue, alternative confidence interval estimates based on the sampling design can be used, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015. Thus, the confidence interval using the $Logit\left(p\right)$ transformation is given by:
+
+$$
+IC\left[logit\left(p^d\right)\right]  =  \left\{ ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl} \times   se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right\} 
+$$
+
+Therefore, the confidence interval for $p^d$ would be:
+
+$$
+IC\left(p^d\right)  =  \left\{ \frac{exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}{1+exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}\right\} 
+$$
+
