@@ -123,7 +123,7 @@ However, because the ratio estimator is a quotient of two estimators (i.e., a qu
 In household surveys, it is always necessary to estimate dispersion measures of the studied variables. For example, to understand how disparate incomes are in a given country, which helps inform public policy decisions. Therefore, studying these parameters is crucial. Below is the estimator for the standard deviation:
 
 $$
-s_{\omega}\left(y\right) = 
+s_{w}\left(y\right) = 
 $$
 
 <!-- $$ -->
