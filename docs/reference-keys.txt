@@ -25,6 +25,11 @@ contrasts
 tests-of-independence
 correlation
 nso-practical-example-1
+regression-modelling-survey-data
+to-weight-or-not-to-weight
+some-inferential-approaches-to-modelling-data
+linear-models
+basic-definitions
 data-visualization
 weighted-histograms
 bar-charts
@@ -32,10 +37,3 @@ box-plots
 scatter-plots
 maps
 nso-practical-example-2
-other-modeling-scenarios
-multilevel-models
-model-with-random-intercept
-model-with-random-slope
-model-with-random-intercept-and-slope
-survival-models
-loglinear-models-for-contingency-tables

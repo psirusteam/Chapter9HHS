@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="some-inferential-approaches-to-modelling-data.html"/>
-<link rel="next" href="logistic-models.html"/>
+<link rel="next" href="data-visualization.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -149,15 +149,16 @@ div.csl-indent {
 <li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
-<li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
-<li class="chapter" data-level="4.3.3" data-path="linear-models.html"><a href="linear-models.html#the-pfeffermann-weighting-approach"><i class="fa fa-check"></i><b>4.3.3</b> The Pfeffermann Weighting Approach</a></li>
-<li class="chapter" data-level="4.3.4" data-path="linear-models.html"><a href="linear-models.html#model-diagnostics"><i class="fa fa-check"></i><b>4.3.4</b> Model Diagnostics</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="logistic-models.html"><a href="logistic-models.html"><i class="fa fa-check"></i><b>4.4</b> Logistic models</a>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="logistic-models.html"><a href="logistic-models.html#logistic-regression-model-for-proportions"><i class="fa fa-check"></i><b>4.4.1</b> Logistic Regression Model for Proportions</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
+<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
+<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
+<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
+<li class="chapter" data-level="5.6" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -228,133 +229,10 @@ cov\left(y_{i},y_{j}\mid x_{i},x_{j}\right)  = 0
 <p><span class="math display">\[
 y_{i}  \sim  N\left(x_{i}\boldsymbol{\beta},\sigma_{y,x}^{2}\right)
 \]</span></p>
-</div>
-<div id="estimation-of-parameters-in-a-regression-model-with-complex-samples" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Estimation of Parameters in a Regression Model with Complex Samples<a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once the assumptions of the model and the distributional characteristics of the errors are established, the next step is the process of parameter estimation. As an illustrative and introductory example, if instead of observing a sample of size <span class="math inline">\(n\)</span> from the <span class="math inline">\(N\)</span> elements of the population, a complete census had been conducted, the finite population regression parameter <span class="math inline">\(\beta_{1}\)</span> could be calculated as follows:</p>
-<p><span class="math display">\[
-\beta_{1}  =  \frac{{ \sum_{i=1}^{N}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}}{\sum_{i=1}^{N}\left(X_{i}-\bar{X}\right)^{2}}
-\]</span></p>
-<p>Now, when estimating the parameters of a linear regression model considering that the observed information comes from surveys with complex samples, the standard approach to estimating regression coefficients and their standard errors is altered. The main reason for this change is that data collected through a complex survey generally does not have an identical distribution, and the assumption of independence cannot be maintained since the sample design is constructed with dependencies (as most complex designs include stratification, clustering, unequal selection probabilities, etc.).</p>
-<p>In this context, when fitting regression models with such datasets, using conventional estimators derived from traditional methods (such as maximum likelihood, for example) will induce bias because these methods assume the data are independently and identically distributed and come from a specific probability distribution (binomial, Poisson, exponential, normal, etc.). Instead, according to <span class="citation">Wolter (<a href="#ref-Wolter_2007">2007</a>)</span>, robust non-parametric methods based on Taylor linearization or variance estimation methods using replication (Jackknife, bootstrapping, etc.) are used to eliminate bias by including the sampling design in the analyses.</p>
-<p>For illustrative purposes, the estimation of the parameter <span class="math inline">\(\beta_{1}\)</span> and its variance for a simple linear regression will be shown. The extension to multiple regression parameter estimation is algebraically complex and beyond the scope of this book. Below is the estimation of the slope and its variance in a simple linear regression model:</p>
-<p><span class="math display">\[
-\hat{\beta_{1}}  =  \frac{{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-\hat{\bar{y}}_{\omega}\right)\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)}}{{ \sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)^{2}}}
-\]</span></p>
-<p>As can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:</p>
-<p><span class="math display">\[
-var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\beta}_{1}^{2}var\left(\hat{t}_{x^{2}}\right)-2\hat{\beta}_{1}cov\left(\hat{t}_{xy},\hat{t}_{x^{2}}\right)}{\left(\hat{t}_{x^{2}}\right)^{2}}
-\]</span></p>
-<p>As a generalization, according to <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>, the variance estimation of coefficients in a multiple linear regression model requires weighted totals for the squares and cross-products of all combinations of <span class="math inline">\(y\)</span> and <span class="math inline">\(x = \{1, x_{1}, \ldots, x_{p}\}\)</span>. Below is the estimation of these variances:</p>
-<p><span class="math display">\[\begin{eqnarray*}
-var\left(\hat{\beta}\right)=\hat{\Sigma}\left(\hat{\beta}\right) &amp; = &amp; \left[\begin{array}{cccc}
-var\left(\hat{\beta}_{0}\right) &amp; cov\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) &amp; \cdots &amp; cov\left(\hat{\beta}_{0},\hat{\beta}_{p}\right)\\
-cov\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) &amp; var\left(\hat{\beta}_{1}\right) &amp; \cdots &amp; cov\left(\hat{\beta}_{1},\hat{\beta}_{p}\right)\\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-cov\left(\hat{\beta}_{0},\hat{\beta}_{p}\right) &amp; cov\left(\hat{\beta}_{1},\hat{\beta}_{p}\right) &amp; \cdots &amp; var\left(\hat{\beta}_{p}\right)
-\end{array}\right]
-\end{eqnarray*}\]</span></p>
-</div>
-<div id="the-pfeffermann-weighting-approach" class="section level3 hasAnchor" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> The Pfeffermann Weighting Approach<a href="linear-models.html#the-pfeffermann-weighting-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:</p>
-<ul>
-<li><strong>The design-based approach</strong>, illustrated in this document, seeks to make inferences about the entire finite population, and the use of expansion factors ensures that regression parameter estimates are unbiased. However, using survey weights does not protect against model misspecification; if the researcher fits a poorly specified model using expansion factors, unbiased estimates of the regression parameters in a model that does not correctly describe the relationships in the finite population are being computed.</li>
-<li><strong>The population-based modeling approach</strong>, which argues that the use of expansion factors in estimation should not be necessary if the model is correctly specified. Under this approach, including survey weights only serves to increase the variance of the estimators, inducing larger-than-necessary standard errors.</li>
-</ul>
-<p>The choice between these two approaches should depend on the sensitivity of inferences to different estimation methods. It is often recommended to use statistical software to fit regression models with and without survey weights to evaluate the sensitivity of the results. If the use of weights produces substantially different estimates and conclusions, it suggests that the model may be misspecified, and weighted estimates should be preferred. However, if the use of weights does not significantly alter the regression parameter estimates and only considerably increases standard errors, it could indicate that the model is well-specified, and the use of weights may not be necessary.</p>
-<p>An intermediate solution between these two approaches is given by <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span>, who proposed a variant (called the <em>q-weighted approach</em>) with a slightly different specification of the expansion factors, detailed as follows:</p>
-<ol style="list-style-type: decimal">
-<li>Fit a regression model to the final survey weights using the predictor variables in the regression model of interest.</li>
-<li>Obtain the predicted survey weights for each case as a function of the predictor variables in the dataset.</li>
-<li>Divide the survey expansion factors by the predicted values from the previous step.</li>
-<li>Use the new weights obtained for fitting the regression models.</li>
-</ol>
-<p>This method adjusts the survey weights based on the fitted model, balancing between design-based and model-based approaches to reduce variance while accounting for complex survey design.</p>
-</div>
-<div id="model-diagnostics" class="section level3 hasAnchor" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Model Diagnostics<a href="linear-models.html#model-diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When fitting statistical models to household survey data, it is essential to perform quality checks to ensure the validity of the conclusions drawn. Most academic texts provide a detailed overview of the assumptions and considerations necessary for a properly defined model. Below are some of the key aspects to consider:</p>
-<ul>
-<li><strong>Model fit</strong>: It is important to determine whether the model provides an adequate fit to the data.</li>
-<li><strong>Distribution of errors</strong>: Examine whether the errors are normally distributed.</li>
-<li><strong>Error variance</strong>: Check whether the errors have constant variance.</li>
-<li><strong>Error independence</strong>: Verify that the errors can be assumed to be uncorrelated.</li>
-<li><strong>Influential data points</strong>: Identify if any data points have an unusually large influence on the estimated regression model.</li>
-<li><strong>Outliers</strong>: Detect points that do not follow the general trend of the data, known as outliers.</li>
-</ul>
-<div id="coefficient-of-determination" class="section level4 hasAnchor" number="4.3.4.1">
-<h4><span class="header-section-number">4.3.4.1</span> Coefficient of Determination<a href="linear-models.html#coefficient-of-determination" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The coefficient of determination, also known as the multiple correlation coefficient (<span class="math inline">\(R^{2}\)</span>), is a common measure of goodness-of-fit in a regression model. This coefficient estimates the proportion of variance in the dependent variable explained by the model and ranges between 0 and 1. A value close to 1 indicates that the model explains a large proportion of the variability, while a value near 0 suggests the opposite.</p>
-<p>The calculation of this coefficient for a population is done as follows:</p>
-<p><span class="math display">\[
-R^{2} =  1-\frac{SSE}{SST}
-\]</span></p>
-<p>Where:</p>
-<ul>
-<li><span class="math inline">\(SST= \sum_{i=1}^N (y_i - \bar{y})^2\)</span>: This is the total sum of squares, representing the total variability in the dependent variable.</li>
-<li><span class="math inline">\(SSE= \sum_{i=1}^N (y_i - x_i \beta)^2\)</span>: This is the sum of squared errors, representing the variability not explained by the regression model.</li>
-</ul>
-<p>For surveys with complex sampling designs, the weighted estimator of <span class="math inline">\(R^{2}\)</span> is given by:</p>
-<p><span class="math display">\[
-\widehat{R}_{\omega}^{2} = 1-\frac{\widehat{SSE}_{\omega}}{\widehat{SST}_{\omega}}
-\]</span></p>
-<p>Where <span class="math inline">\(\widehat{SSE}_{\omega}\)</span> is the weighted sum of squared errors, defined as:</p>
-<p><span class="math display">\[
-\widehat{SSE}_{\omega}  =  \sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-x_{h\alpha i}\hat{\beta}\right)^{2}
-\]</span></p>
-<p>This estimator adjusts the <span class="math inline">\(R^{2}\)</span> calculation to reflect the characteristics of the sampling design, such as stratification and unequal selection probabilities, ensuring that survey weights are considered when evaluating the goodness-of-fit of the model.</p>
-</div>
-<div id="standardized-residuals" class="section level4 hasAnchor" number="4.3.4.2">
-<h4><span class="header-section-number">4.3.4.2</span> Standardized Residuals<a href="linear-models.html#standardized-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In model diagnostics, analyzing residuals is crucial. These analyses provide, under the assumption that the fitted model is adequate, an estimate of the errors. Therefore, a careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the fitting procedure.</p>
-<p>To analyze the residuals, Pearson residuals <span class="citation">(<a href="#ref-Heeringa_West_Berglund_2017">Heeringa, West, and Berglund 2017</a>)</span> are defined as follows:</p>
-<p><span class="math display">\[
-r_{p_{i}}  =  \left(y_{i}-\mu_{i}\left(\hat{\beta}_{\omega}\right)\right)\sqrt{\frac{\omega_{i}}{V\left(\hat{\mu}_{i}\right)}}
-\]</span></p>
-<p>Where <span class="math inline">\(\mu_{i}\)</span> is the expected value of <span class="math inline">\(y_{i}\)</span>, and <span class="math inline">\(\omega_{i}\)</span> is the survey weight for the i-th individual in the complex sample design. Finally, <span class="math inline">\(V(\mu_{i})\)</span> is the variance function of the outcome. These residuals are used to perform normality and constant variance analyses.</p>
-<p>If the assumption of constant variance is not met, the estimators remain unbiased and consistent, but they are no longer efficient. That is, they are no longer the best in the sense that they no longer have the smallest variance among all unbiased estimators. One way to analyze the assumption of constant variance in the errors is through graphical analysis. This is done by plotting the model residuals against <span class="math inline">\(\hat{y}\)</span> or the model residuals against <span class="math inline">\(X_{i}\)</span>. If these plots reveal any pattern other than a constant cloud of points, it can be concluded that the error variance is not constant.</p>
-</div>
-<div id="influential-observations" class="section level4 hasAnchor" number="4.3.4.3">
-<h4><span class="header-section-number">4.3.4.3</span> Influential Observations<a href="linear-models.html#influential-observations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Another set of techniques used for model analysis involves examining influential observations. An observation is deemed influential if, when removed from the data set, it causes a significant change in the model fit. It is important to note that an influential point may or may not be an outlier. To detect influential observations, it is essential to clarify what type of influence is being sought. For instance, an observation may be influential for parameter estimation but not for error variance estimation. Below are some statistical techniques for detecting influential data points:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Cook’s Distance</strong>: This diagnostic measures whether the i-th observation is influential in the model estimation by being far from the data’s center of mass. Various authors consider an observation influential when this value exceeds 2 or 3.</li>
-<li><strong><span class="math inline">\(D_fBeta_{(i)}\)</span> Statistic</strong>: This statistic measures the change in the estimated regression coefficient vector when the observation is removed. The i-th observation is considered influential for <span class="math inline">\(B_j\)</span> if <span class="math inline">\(\mid D_{f}Betas_{\left(i\right)j}\mid \geq \frac{z}{\sqrt{n}}\)</span> with <span class="math inline">\(z = 2\)</span>. Alternatively, <span class="math inline">\(t_{0.025,n-p}/\sqrt{n}\)</span> can be used, where <span class="math inline">\(t_{0.025,n-p}\)</span> is the 97.5th percentile.</li>
-<li><strong><span class="math inline">\(D_{f}Fits_{\left(i\right)}\)</span> Statistic</strong>: This statistic measures the change in the model fit when a particular observation is removed. In this case, the i-th observation is considered influential in the model fit if <span class="math inline">\(\mid DfFits\left(i\right)\mid \geq z\sqrt{\frac{p}{n}}\)</span> with <span class="math inline">\(z = 2\)</span>.</li>
-</ol>
-</div>
-<div id="inference-on-model-parameters" class="section level4 hasAnchor" number="4.3.4.4">
-<h4><span class="header-section-number">4.3.4.4</span> Inference on Model Parameters<a href="linear-models.html#inference-on-model-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Once the proper fit of the model has been evaluated using the methodologies discussed above, and the distributional properties of the errors—and consequently the response variable <span class="math inline">\(y\)</span>—have been verified, the next step is to assess whether the estimated parameters are significant. This involves determining whether the covariates used to fit the model add value in explaining and/or predicting the study variable and the phenomenon of interest.</p>
-<p>Given the distributional properties of the regression coefficient estimators, a natural test statistic for evaluating the significance of these parameters is based on the t-distribution and is described as follows:</p>
-<p><span class="math display">\[
-t = \frac{\hat{\beta}_{k}-\beta_{k}}{se\left(\hat{\beta}_{k}\right)}\sim t_{n-p}
-\]</span></p>
-<p>Where <span class="math inline">\(p\)</span> is the number of model parameters and <span class="math inline">\(n\)</span> is the sample size of the survey. The test statistic above evaluates the hypotheses <span class="math inline">\(H_{0}:\beta_{k}=0\)</span> versus the alternative <span class="math inline">\(H_{1}:\beta_{k}\neq0\)</span>. Similarly, a confidence interval of <span class="math inline">\((1-\alpha)\times100\%\)</span> for <span class="math inline">\(\beta_{k}\)</span> can be constructed, as follows:</p>
-<p><span class="math display">\[
-\hat{\beta}_{k}\pm t_{1-\frac{\alpha}{2},\,df}\,se\left(\hat{\beta}_{k}\right)
-\]</span></p>
-<p>Where the degrees of freedom (<span class="math inline">\(df\)</span>) for the interval in a household survey (complex samples) is given by the number of final stage clusters minus the number of primary stage strata <span class="math inline">\(\left(df=\sum_{h}a_{h}-H\right)\)</span>.</p>
-</div>
-<div id="estimation-and-prediction" class="section level4 hasAnchor" number="4.3.4.5">
-<h4><span class="header-section-number">4.3.4.5</span> Estimation and Prediction<a href="linear-models.html#estimation-and-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>According to <span class="citation">Neter, Wasserman, and Kutner (<a href="#ref-neter1996applied">1996</a>)</span>, linear regression models are essentially used for two purposes. One is to explain the variable of interest in terms of covariates that may be found in surveys, administrative records, censuses, etc. Additionally, they are also used to predict values of the variable under study, either within the range of values collected in the sample or outside of it. The first purpose has been addressed throughout this chapter, and the second is achieved as follows:</p>
-<p><span class="math display">\[
-\hat{E}(y_{i}\mid\boldsymbol{x}_{obs,i})=\boldsymbol{x}_{obs,i}\hat{\boldsymbol{\beta}}
-\]</span></p>
-<p>Explicitly, in the model exemplified in this chapter, the expression for predictions would be:</p>
-<p><span class="math display">\[
-\hat{E}(y_{i}\mid\boldsymbol{x}_{obs,i})=\hat{\beta}_{0}+\hat{\beta}_{1}x_{1i}
-\]</span></p>
-<p>The variance of the estimation is calculated as follows:</p>
-<p><span class="math display">\[
-var\left(\hat{E}\left(y_{i}\mid x_{obs,i}\right)\right)
-=  x&#39;_{obs,i}cov\left(\hat{\beta}\right)x{}_{obs,i}
-\]</span></p>
+
 </div>
 </div>
-</div>
+<!-- </div> -->
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-binder1983variances" class="csl-entry">
@@ -372,9 +250,6 @@ Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied 
 <div id="ref-kish1974inference" class="csl-entry">
 Kish, Leslie, and Martin R Frankel. 1974. <span>“Inference from Complex Samples.”</span> <em>Journal of the Royal Statistical Society, Series B</em> 36: 1–37.
 </div>
-<div id="ref-neter1996applied" class="csl-entry">
-Neter, John, William Wasserman, and Michael H. Kutner. 1996. <em>Applied Linear Statistical Models</em>. McGraw-Hill.
-</div>
 <div id="ref-pfeffermann2011modelling" class="csl-entry">
 Pfeffermann, Danny. 2011. <span>“Modelling of Complex Survey Data: Why Model? Why Is It a Problem? How Can We Approach It?”</span> <em>Survey Methodology</em> 37 (2): 115–36.
 </div>
@@ -384,9 +259,6 @@ Shah, B. V., M. M. Holt, and R. F. Folsom. 1977. <span>“Inference about Regres
 <div id="ref-skinner1989analysis" class="csl-entry">
 Skinner, Chris J, Daniell Holt, and Tom M F Smith. 1989. <em>Analysis of Complex Surveys</em>. New York: John Wiley &amp; Sons.
 </div>
-<div id="ref-Wolter_2007" class="csl-entry">
-Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Statistics for Social and Behavioral Sciences. Springer.
-</div>
 </div>
             </section>
 
@@ -394,7 +266,7 @@ Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Stat
         </div>
       </div>
 <a href="some-inferential-approaches-to-modelling-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="logistic-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
