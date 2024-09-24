@@ -131,9 +131,8 @@ On the other hand, the estimation of income percentiles in a given country can d
 
 Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable $y$ in a finite population of size $N$ is defined as follows:
 
-
 $$
-F(x) = \frac{{ \sum_{i=1}^{N}}I(y_{i}\leq x)}{N}
+F(x) = \frac{{\sum{i=1}^{N}I(y_i \leq x) }}{N}
 $$
 
 Where $I(y_{i}\leq x)$ is an indicator variable that takes the value 1 if $y_{i}$ is less than or equal to a specific value $x$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
