@@ -13,3 +13,4 @@ estimation-of-averages
 proportion-estimation
 relationship-between-variables
 estimation-of-ratios
+percentiles-and-inequality-measures

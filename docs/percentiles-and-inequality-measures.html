@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>2.3 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="2.3 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="2.3 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="means-proportions-and-ratios.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,32 +144,51 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</h1>
-<p class="author"><em>Andrés Gutiérrez<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, Pedro Luis do Nascimento Silva<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></em></p>
-<p class="date"><em>2024-09-24</em></p>
-</div>
-<div id="abstract" class="section level1 unnumbered hasAnchor">
-<h1>Abstract<a href="index.html#abstract" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Analyzing complex household survey data requires knowing and properly applying the foundations of the design-based inference. The researcher will be faced to a small database that contains specific information that will allow her to make conclusions over the whole population.</p>
-<p>The purpose of any analysis on this kind of datasets is not referred to make conclusions on the sample itself – which in most of the cases is a small subgroup of the population - but to the domains of interest and the whole population. Having that into account, the first step in any analysis plan should be devoted to defining the sampling design based on the selection mechanisms used to draw the final sample and the findings on the field related to nonresponse and lack of coverage.</p>
-<p>The chapter covers three main topics of analysis: descriptive statistics; comparisons and association; and modeling of survey data. On the one hand, we introduce simple descriptive statistics, such as totals, frequencies, means and proportions, quantiles and some graphics; on the other, we delve deeper on complex relationships between the variables of the survey. All these analyses rely on the representativity principle of the design-based inference. This way, the reader will find a strong focus, not only on point estimates, but also on uncertainty measures. The chapter also presents a short discussion on the different approaches that can be used to estimate variances; the best way to visualize the estimates; and NSO practical experiences.</p>
+<div id="percentiles-and-inequality-measures" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Percentiles and inequality measures<a href="percentiles-and-inequality-measures.html#percentiles-and-inequality-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In household surveys, it is always necessary to estimate dispersion measures of the studied variables. For example, to understand how disparate incomes are in a given country, which helps inform public policy decisions. Therefore, studying these parameters is crucial. Below is the estimator for the standard deviation:</p>
+<p><span class="math display">\[
+s_{\omega}\left(y\right) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-\hat{\bar{y}}_{\omega}\right)^{2}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}-1}
+\]</span></p>
+<p>Non-central location measures (percentiles) are calculated to determine characteristic points of the data distribution beyond central values. Key non-central location measures include the median, quartiles, and percentiles. In most household surveys, not only are totals, means, and proportions estimated; for some indicators, it is necessary to estimate other parameters, such as medians and percentiles.</p>
+<p>The median is a measure of central tendency that, unlike the mean, is not easily influenced by outliers, and is thus considered a robust measure. The median is the value that divides the population into two equal parts, implying that half of the population’s observations fall above the median and the other half fall below.</p>
+<p>On the other hand, the estimation of income percentiles in a given country can define the onset of public policy. For example, a tax could be imposed on individuals in the top 10% of the income distribution, or transport subsidies could be provided to those in the bottom 15% of the income distribution.</p>
+<p>Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable <span class="math inline">\(y\)</span> in a finite population of size <span class="math inline">\(N\)</span> is defined as follows:</p>
+<p><span class="math display">\[
+F\left(x\right) = \frac{{ \sum_{i=1}^{N}}I\left(y_{i}\leq x\right)}{N}
+\]</span></p>
+<p>Where <span class="math inline">\(I\left(y_{i}\leq x\right)\)</span> is an indicator variable that takes the value 1 if <span class="math inline">\(y_{i}\)</span> is less than or equal to a specific value <span class="math inline">\(x\)</span>, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:</p>
+<p><span class="math display">\[
+\hat{F}_{\omega}\left(x\right) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I\left(y_{i}\leq x\right)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+\]</span></p>
+<p>Once the CDF is estimated using the survey design weights, the <span class="math inline">\(q\)</span>-th quantile of a variable <span class="math inline">\(y\)</span> is the smallest value of <span class="math inline">\(y\)</span> such that the CDF is greater than or equal to <span class="math inline">\(q\)</span>. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, to estimate quantiles, one first considers the order statistics denoted as <span class="math inline">\(y_{(1)},\ldots,y_{(n)}\)</span> and finds the value of <span class="math inline">\(j\)</span> <span class="math inline">\((j=1,\ldots,n)\)</span> such that:</p>
+<p><span class="math display">\[
+\hat{F}_{\omega}\left(y_{j}\right)\leq q\leq\hat{F}_{\omega}\left(y_{j+1}\right)
+\]</span></p>
+<p>Thus, the estimation of the <span class="math inline">\(q\)</span>-th quantile <span class="math inline">\(y_{(q)}\)</span> in a complex sampling design is given by:</p>
+<p><span class="math display">\[
+\hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}\left(y_{j}\right)}{\hat{F}_{\omega}\left(y_{j+1}\right)-\hat{F}_{\omega}\left(y_{j}\right)}\left(y_{j+1}-y_{j}\right)
+\]</span></p>
+<p>For the variance estimation and confidence intervals of quantiles, <span class="citation">Kovar, Rao, and Wu (<a href="#ref-kovar1988bootstrap">1988</a>)</span> present results from a simulation study where they recommend using the <em>Balanced Repeated Replication</em> (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in <code>R</code>. Specifically, the median estimation can be done using the function <code>survey_median</code>.</p>
 
 </div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Comisión Económica para América Latina y el Caribe (CEPAL) - <a href="mailto:andres.gutierrez@cepal.org" class="email">andres.gutierrez@cepal.org</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>SCIENCE, <a href="mailto:pedronsilva@gmail.com" class="email">pedronsilva@gmail.com</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
+<!-- </div> -->
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
+</div>
+<div id="ref-kovar1988bootstrap" class="csl-entry">
+Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other Methods to Measure Errors in Survey Estimates.”</span> <em>Canadian Journal of Statistics</em> 16 (Suppl.): 25–45.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="means-proportions-and-ratios.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -200,7 +219,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/index.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/02DescriptiveParameters.rmd",
 "text": "Edit"
 },
 "history": {
