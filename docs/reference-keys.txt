@@ -16,12 +16,3 @@ estimation-of-ratios
 percentiles-and-inequality-measures
 estimation-of-the-gini-coefficient
 nso-practical-example
-comparisons-and-association
-cross-tabulations
-contingency-tables
-tests-for-group-comparisons
-hypothesis-test-for-the-difference-of-means
-contrasts
-tests-of-independence
-correlation
-nso-practical-example-1
