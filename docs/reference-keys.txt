@@ -31,3 +31,6 @@ some-inferential-approaches-to-modelling-data
 linear-models
 basic-definitions
 estimation-of-parameters-in-a-regression-model-with-complex-samples
+the-pfeffermann-weighting-approach
+model-diagnostics
+coefficient-of-determination

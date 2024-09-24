@@ -118,4 +118,62 @@ $$
 \end{bmatrix}
 $$
 
+### The Pfeffermann Weighting Approach
+
+@Heeringa_West_Berglund_2017 addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:
+
+- **The design-based approach**, illustrated in this document, seeks to make inferences about the entire finite population, and the use of expansion factors ensures that regression parameter estimates are unbiased. However, using survey weights does not protect against model misspecification; if the researcher fits a poorly specified model using expansion factors, unbiased estimates of the regression parameters in a model that does not correctly describe the relationships in the finite population are being computed.
+- **The population-based modeling approach**, which argues that the use of expansion factors in estimation should not be necessary if the model is correctly specified. Under this approach, including survey weights only serves to increase the variance of the estimators, inducing larger-than-necessary standard errors.
+
+The choice between these two approaches should depend on the sensitivity of inferences to different estimation methods. It is often recommended to use statistical software to fit regression models with and without survey weights to evaluate the sensitivity of the results. If the use of weights produces substantially different estimates and conclusions, it suggests that the model may be misspecified, and weighted estimates should be preferred. However, if the use of weights does not significantly alter the regression parameter estimates and only considerably increases standard errors, it could indicate that the model is well-specified, and the use of weights may not be necessary.
+
+An intermediate solution between these two approaches is given by @pfeffermann2011modelling, who proposed a variant (called the *q-weighted approach*) with a slightly different specification of the expansion factors, detailed as follows:
+
+1. Fit a regression model to the final survey weights using the predictor variables in the regression model of interest.
+2. Obtain the predicted survey weights for each case as a function of the predictor variables in the dataset.
+3. Divide the survey expansion factors by the predicted values from the previous step.
+4. Use the new weights obtained for fitting the regression models.
+
+This method adjusts the survey weights based on the fitted model, balancing between design-based and model-based approaches to reduce variance while accounting for complex survey design.
+
+### Model Diagnostics
+
+When fitting statistical models to household survey data, it is essential to perform quality checks to ensure the validity of the conclusions drawn. Most academic texts provide a detailed overview of the assumptions and considerations necessary for a properly defined model. Below are some of the key aspects to consider:
+
+- **Model fit**: It is important to determine whether the model provides an adequate fit to the data.
+- **Distribution of errors**: Examine whether the errors are normally distributed.
+- **Error variance**: Check whether the errors have constant variance.
+- **Error independence**: Verify that the errors can be assumed to be uncorrelated.
+- **Influential data points**: Identify if any data points have an unusually large influence on the estimated regression model.
+- **Outliers**: Detect points that do not follow the general trend of the data, known as outliers.
+
+#### Coefficient of Determination
+
+The coefficient of determination, also known as the multiple correlation coefficient ($R^{2}$), is a common measure of goodness-of-fit in a regression model. This coefficient estimates the proportion of variance in the dependent variable explained by the model and ranges between 0 and 1. A value close to 1 indicates that the model explains a large proportion of the variability, while a value near 0 suggests the opposite.
+
+The calculation of this coefficient for a population is done as follows:
+
+$$
+R^{2} =  1-\frac{SSE}{SST}
+$$
+
+Where:
+
+- $SST= \sum_{i=1}^N (y_i - \bar{y})^2$: This is the total sum of squares, representing the total variability in the dependent variable.
+- $SSE= \sum_{i=1}^N (y_i - x_i \beta)^2$: This is the sum of squared errors, representing the variability not explained by the regression model.
+
+For surveys with complex sampling designs, the weighted estimator of $R^{2}$ is given by:
+
+$$
+\widehat{R}_{\omega}^{2} = 1-\frac{\widehat{SSE}_{\omega}}{\widehat{SST}_{\omega}}
+$$
+
+Where $\widehat{SSE}_{\omega}$ is the weighted sum of squared errors, defined as:
+
+$$
+\widehat{SSE}_{\omega}  =  \sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-x_{h\alpha i}\hat{\beta}\right)^{2}
+$$
+
+This estimator adjusts the $R^{2}$ calculation to reflect the characteristics of the sampling design, such as stratification and unequal selection probabilities, ensuring that survey weights are considered when evaluating the goodness-of-fit of the model.
+
 

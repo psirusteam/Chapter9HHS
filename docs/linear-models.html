@@ -150,6 +150,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
 <li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-models.html"><a href="linear-models.html#the-pfeffermann-weighting-approach"><i class="fa fa-check"></i><b>4.3.3</b> The Pfeffermann Weighting Approach</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-models.html"><a href="linear-models.html#model-diagnostics"><i class="fa fa-check"></i><b>4.3.4</b> Model Diagnostics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -248,7 +250,58 @@ var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\bet
 \text{cov}\left(\hat{\beta}_{0},\hat{\beta}_{p}\right) &amp; \text{cov}\left(\hat{\beta}_{1},\hat{\beta}_{p}\right) &amp; \cdots &amp; \text{var}\left(\hat{\beta}_{p}\right)
 \end{bmatrix}
 \]</span></p>
+</div>
+<div id="the-pfeffermann-weighting-approach" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> The Pfeffermann Weighting Approach<a href="linear-models.html#the-pfeffermann-weighting-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:</p>
+<ul>
+<li><strong>The design-based approach</strong>, illustrated in this document, seeks to make inferences about the entire finite population, and the use of expansion factors ensures that regression parameter estimates are unbiased. However, using survey weights does not protect against model misspecification; if the researcher fits a poorly specified model using expansion factors, unbiased estimates of the regression parameters in a model that does not correctly describe the relationships in the finite population are being computed.</li>
+<li><strong>The population-based modeling approach</strong>, which argues that the use of expansion factors in estimation should not be necessary if the model is correctly specified. Under this approach, including survey weights only serves to increase the variance of the estimators, inducing larger-than-necessary standard errors.</li>
+</ul>
+<p>The choice between these two approaches should depend on the sensitivity of inferences to different estimation methods. It is often recommended to use statistical software to fit regression models with and without survey weights to evaluate the sensitivity of the results. If the use of weights produces substantially different estimates and conclusions, it suggests that the model may be misspecified, and weighted estimates should be preferred. However, if the use of weights does not significantly alter the regression parameter estimates and only considerably increases standard errors, it could indicate that the model is well-specified, and the use of weights may not be necessary.</p>
+<p>An intermediate solution between these two approaches is given by <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span>, who proposed a variant (called the <em>q-weighted approach</em>) with a slightly different specification of the expansion factors, detailed as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Fit a regression model to the final survey weights using the predictor variables in the regression model of interest.</li>
+<li>Obtain the predicted survey weights for each case as a function of the predictor variables in the dataset.</li>
+<li>Divide the survey expansion factors by the predicted values from the previous step.</li>
+<li>Use the new weights obtained for fitting the regression models.</li>
+</ol>
+<p>This method adjusts the survey weights based on the fitted model, balancing between design-based and model-based approaches to reduce variance while accounting for complex survey design.</p>
+</div>
+<div id="model-diagnostics" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Model Diagnostics<a href="linear-models.html#model-diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When fitting statistical models to household survey data, it is essential to perform quality checks to ensure the validity of the conclusions drawn. Most academic texts provide a detailed overview of the assumptions and considerations necessary for a properly defined model. Below are some of the key aspects to consider:</p>
+<ul>
+<li><strong>Model fit</strong>: It is important to determine whether the model provides an adequate fit to the data.</li>
+<li><strong>Distribution of errors</strong>: Examine whether the errors are normally distributed.</li>
+<li><strong>Error variance</strong>: Check whether the errors have constant variance.</li>
+<li><strong>Error independence</strong>: Verify that the errors can be assumed to be uncorrelated.</li>
+<li><strong>Influential data points</strong>: Identify if any data points have an unusually large influence on the estimated regression model.</li>
+<li><strong>Outliers</strong>: Detect points that do not follow the general trend of the data, known as outliers.</li>
+</ul>
+<div id="coefficient-of-determination" class="section level4 hasAnchor" number="4.3.4.1">
+<h4><span class="header-section-number">4.3.4.1</span> Coefficient of Determination<a href="linear-models.html#coefficient-of-determination" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The coefficient of determination, also known as the multiple correlation coefficient (<span class="math inline">\(R^{2}\)</span>), is a common measure of goodness-of-fit in a regression model. This coefficient estimates the proportion of variance in the dependent variable explained by the model and ranges between 0 and 1. A value close to 1 indicates that the model explains a large proportion of the variability, while a value near 0 suggests the opposite.</p>
+<p>The calculation of this coefficient for a population is done as follows:</p>
+<p><span class="math display">\[
+R^{2} =  1-\frac{SSE}{SST}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(SST= \sum_{i=1}^N (y_i - \bar{y})^2\)</span>: This is the total sum of squares, representing the total variability in the dependent variable.</li>
+<li><span class="math inline">\(SSE= \sum_{i=1}^N (y_i - x_i \beta)^2\)</span>: This is the sum of squared errors, representing the variability not explained by the regression model.</li>
+</ul>
+<p>For surveys with complex sampling designs, the weighted estimator of <span class="math inline">\(R^{2}\)</span> is given by:</p>
+<p><span class="math display">\[
+\widehat{R}_{\omega}^{2} = 1-\frac{\widehat{SSE}_{\omega}}{\widehat{SST}_{\omega}}
+\]</span></p>
+<p>Where <span class="math inline">\(\widehat{SSE}_{\omega}\)</span> is the weighted sum of squared errors, defined as:</p>
+<p><span class="math display">\[
+\widehat{SSE}_{\omega}  =  \sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-x_{h\alpha i}\hat{\beta}\right)^{2}
+\]</span></p>
+<p>This estimator adjusts the <span class="math inline">\(R^{2}\)</span> calculation to reflect the characteristics of the sampling design, such as stratification and unequal selection probabilities, ensuring that survey weights are considered when evaluating the goodness-of-fit of the model.</p>
 
+</div>
 </div>
 </div>
 <!-- </div> -->
