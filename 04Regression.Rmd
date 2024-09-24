@@ -102,12 +102,12 @@ $$
 
 As a generalization, according to @kish1974inference, the variance estimation of coefficients in a multiple linear regression model requires weighted totals for the squares and cross-products of all combinations of $y$ and $x = \{1, x_{1}, \ldots, x_{p}\}$. Below is the estimation of these variances:
 
-\begin{eqnarray*}
+$$
 var\left(\hat{\beta}\right)=\hat{\Sigma}\left(\hat{\beta}\right) & = & \left[\begin{array}{cccc}
 var\left(\hat{\beta}_{0}\right) & cov\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) & \cdots & cov\left(\hat{\beta}_{0},\hat{\beta}_{p}\right)\\
 cov\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) & var\left(\hat{\beta}_{1}\right) & \cdots & cov\left(\hat{\beta}_{1},\hat{\beta}_{p}\right)\\
 \vdots & \vdots & \ddots & \vdots\\
 cov\left(\hat{\beta}_{0},\hat{\beta}_{p}\right) & cov\left(\hat{\beta}_{1},\hat{\beta}_{p}\right) & \cdots & var\left(\hat{\beta}_{p}\right)
 \end{array}\right]
-\end{eqnarray*}
+$$
 
