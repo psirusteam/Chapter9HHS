@@ -31,7 +31,7 @@ After conducting the graphical analysis of trends in the continuous survey varia
 
 ### Total Estimates
 
-Once the sampling design is defined, which was done in the previous section, the estimation processes for the parameters of interest are carried out. For the estimation of totals with complex sampling designs that include stratification $(h=1,2,...,H)$ and subsampling in PSUs (assumed to be within stratum $h$) indexed by $\alpha=1,2,...,a_{h}$, the estimator for the total can be written as:
+Once the sampling design is defined, which was done in the previous section, the estimation processes for the parameters of interest are carried out. For the estimation of totals with complex sampling designs that include stratification $\left(h=1,2,...,H\right)$ and subsampling in PSUs (assumed to be within stratum $h$) indexed by $\alpha=1,2,...,a_{h}$, the estimator for the total can be written as:
 
 $$
 \hat{y}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}
@@ -43,11 +43,10 @@ $$
 \widehat{var}\left(\hat{y}_{\omega}\right) = \sum_{h=1}^{H}\frac{a_{h}}{\left(a_{h}-1\right)}\left[\sum_{\alpha=1}^{a_{h}}\left(\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}-\frac{\left({ \sum_{\alpha=1}^{a_{h}}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}}{a_{h}}\right]
 $$
 
-
 As can be seen, calculating the total estimate and its estimated variance is complex. However, these calculations can be performed in `R` using the `svytotal` function. The confidence interval is given by the following expression:
 
 $$
-\hat{y}_{\omega} \pm 1.96 \times \sqrt{\widehat{var}(\hat{y}_{\omega})}
+\hat{y}_{\omega} \pm 1.96 \times \sqrt{\widehat{var}\left(\hat{y}_{\omega}\right)}
 $$
 
 
@@ -62,11 +61,10 @@ $$
 It should be noted that if $y$ is a binary variable, the weighted mean estimates the population proportion. On the other hand, since $\hat{\bar{y}}_{\omega}$ is not a linear statistic, there is no closed-form formula for the variance of this estimator. For this reason, resampling methods or Taylor series expansions must be used. In this particular case, using Taylor series, the variance of the estimator is as follows:
 
 $$
-var(\hat{\bar{y}}_{\omega}) \dot{=} \frac{var(\hat{y}_{\omega})+\hat{\bar{y}}_{\omega}^{2}\times var(\hat{N}_{\omega})-2\times\hat{\bar{y}}_{\omega}\times cov(\hat{y}_{\omega},\hat{N}_{\omega})}{\hat{N}_{\omega}^{2}}.
+var\left(\hat{\bar{y}}_{\omega}\right) \dot{=} \frac{var\left(\hat{y}_{\omega}\right)+\hat{\bar{y}}_{\omega}^{2}\times var\left(\hat{N}_{\omega}\right)-2\times\hat{\bar{y}}_{\omega}\times cov\left(\hat{y}_{\omega},\hat{N}_{\omega}\right)}{\hat{N}_{\omega}^{2}}.
 $$
 
 As can be observed, calculating the variance estimation involves complex components to compute analytically, such as the covariance between the estimated total and the estimated population size.
-
 
 ### Proportion Estimation
 
@@ -80,14 +78,13 @@ $$
 By applying Taylor linearization to the above estimator, its variance is given by the following expression:
 
 $$
-var(\hat{p}_{\omega}^d) \dot{=} \frac{var(\hat{N}^{d}_{\omega})+(\hat{p}_{\omega}^d)^{2}var(\hat{N}_{\omega})-2\,\hat{p}_{\omega}^d\,cov(\hat{N}^{d}_{\omega},\hat{N}_{\omega})}{(\hat{N}_{\omega})^{2}}
+var\left(\hat{p}_{\omega}^d\right) \dot{=} \frac{var\left(\hat{N}^{d}_{\omega}\right)+(\hat{p}_{\omega}^d)^{2}var\left(\hat{N}_{\omega}\right)-2\,\hat{p}_{\omega}^d\,cov\left(\hat{N}^{d}_{\omega},\hat{N}_{\omega}\right)}{(\hat{N}_{\omega})^{2}}
 $$
 
 It is common to observe that many statistical packages opt to generate proportion estimates and standard errors on a percentage scale.
 
 
-As is well known in the specialized literature, when the estimated proportion of interest is close to zero or one, the limits of the traditional confidence interval, based on the sampling design, may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. For this reason, to address this issue, alternative confidence interval estimates based on the sampling design can be used, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015. Thus, the confidence interval using the $Logit(p)$ transformation is given by:
-
+As is well known in the specialized literature, when the estimated proportion of interest is close to zero or one, the limits of the traditional confidence interval, based on the sampling design, may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. For this reason, to address this issue, alternative confidence interval estimates based on the sampling design can be used, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015. Thus, the confidence interval using the $Logit\left(p\right)$ transformation is given by:
 
 $$
 IC\left[logit\left(p^d\right)\right]  =  \left\{ ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl} \times   se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right\} 
@@ -116,8 +113,7 @@ $$
 
 However, because the ratio estimator is a quotient of two estimators (i.e., a quotient of two random variables), calculating the variance of this estimator is not straightforward. To address this, Taylor linearization methods are applied as demonstrated by @Gutierrez_2016.
 
-
-
+ 
 ## Percentiles and inequality measures
 
 
@@ -127,7 +123,6 @@ $$
 s_{\omega}(y) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}(y_{h\alpha i}-\hat{\bar{y}}_{\omega})^{2}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}-1}
 $$
 
-
 Non-central location measures (percentiles) are calculated to determine characteristic points of the data distribution beyond central values. Key non-central location measures include the median, quartiles, and percentiles. In most household surveys, not only are totals, means, and proportions estimated; for some indicators, it is necessary to estimate other parameters, such as medians and percentiles.
 
 The median is a measure of central tendency that, unlike the mean, is not easily influenced by outliers, and is thus considered a robust measure. The median is the value that divides the population into two equal parts, implying that half of the population's observations fall above the median and the other half fall below.
@@ -135,29 +130,3 @@ The median is a measure of central tendency that, unlike the mean, is not easily
 On the other hand, the estimation of income percentiles in a given country can define the onset of public policy. For example, a tax could be imposed on individuals in the top 10% of the income distribution, or transport subsidies could be provided to those in the bottom 15% of the income distribution.
 
 Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable $y$ in a finite population of size $N$ is defined as follows:
-
-
-$$
-F(x) = \frac{{ \sum_{i=1}^{N}}I(y_{i}\leq x)}{N}
-$$
-
-Where $I(y_{i}\leq x)$ is an indicator variable that takes the value 1 if $y_{i}$ is less than or equal to a specific value $x$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
-
-$$
-\hat{F}_{\omega}(x) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_{i}\leq x)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
-$$
-
-Once the CDF is estimated using the survey design weights, the $q$-th quantile of a variable $y$ is the smallest value of $y$ such that the CDF is greater than or equal to $q$. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of @Heeringa_West_Berglund_2017, to estimate quantiles, one first considers the order statistics denoted as $y_{(1)},\ldots,y_{(n)}$ and finds the value of $j$ $(j=1,\ldots,n)$ such that:
-
-$$
-\hat{F}_{\omega}(y_{j})\leq q\leq\hat{F}_{\omega}(y_{j+1})
-$$
-
-Thus, the estimation of the $q$-th quantile $y_{(q)}$ in a complex sampling design is given by:
-
-$$
-\hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}(y_{j})}{\hat{F}_{\omega}(y_{j+1})-\hat{F}_{\omega}(y_{j})}(y_{j+1}-y_{j})
-$$
-
-For the variance estimation and confidence intervals of quantiles, @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in `R`. Specifically, the median estimation can be done using the function `survey_median`.
-
