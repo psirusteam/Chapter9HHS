@@ -190,13 +190,13 @@ var\left(\hat{p}_{\omega}^d\right) \dot{=} \frac{var\left(\hat{N}^{d}_{\omega}\r
 \]</span></p>
 <p>It is common to observe that many statistical packages opt to generate proportion estimates and standard errors on a percentage scale.</p>
 <p>As is well known in the specialized literature, when the estimated proportion of interest is close to zero or one, the limits of the traditional confidence interval, based on the sampling design, may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. For this reason, to address this issue, alternative confidence interval estimates based on the sampling design can be used, as proposed by <span class="citation">Rust, Hsu, and Westat (<a href="#ref-Rust2007ConfidenceIF">2007</a>)</span> and <span class="citation">Dean and Pagano (<a href="#ref-DeanPagano2015">2015</a>)</span>. Thus, the confidence interval using the <span class="math inline">\(Logit\left(p\right)\)</span> transformation is given by:</p>
-<p><span class="math display">\[\begin{eqnarray}
+<p><span class="math display">\[
 IC\left[logit\left(p^d\right)\right]  =  \left\{ ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl} \times   se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right\}
-\end{eqnarray}\]</span></p>
+\]</span></p>
 <p>Therefore, the confidence interval for <span class="math inline">\(p^d\)</span> would be:</p>
-<p><span class="math display">\[\begin{eqnarray}
+<p><span class="math display">\[
 IC\left(p^d\right)  =  \left\{ \frac{exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}{1+exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}\right\}
-\end{eqnarray}\]</span></p>
+\]</span></p>
 </div>
 <div id="relationship-between-variables" class="section level3 hasAnchor" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Relationship Between Variables<a href="means-proportions-and-ratios.html#relationship-between-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
