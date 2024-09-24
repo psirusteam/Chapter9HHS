@@ -9,7 +9,7 @@ rmd_files: [
   "01SamplingStrategy.rmd",
   "02DescriptiveParameters.rmd",
   "03Comparissons.rmd",
-  # "04Regression.rmd",
+   "04Regression.rmd",
   # "05DataVisualization.rmd",
   # "06OtherModels.rmd", 
    "07References.rmd" 

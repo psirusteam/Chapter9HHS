@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="nso-practical-example-1.html"/>
+<link rel="prev" href="nso-practical-example-2.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -142,6 +142,23 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.4</b> Correlation</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>4</b> Regression: modelling survey data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="to-weight-or-not-to-weight.html"><a href="to-weight-or-not-to-weight.html"><i class="fa fa-check"></i><b>4.1</b> To weight or not to weight?</a></li>
+<li class="chapter" data-level="4.2" data-path="some-inferential-approaches-to-modelling-data.html"><a href="some-inferential-approaches-to-modelling-data.html"><i class="fa fa-check"></i><b>4.2</b> Some inferential approaches to modelling data</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-models.html"><a href="linear-models.html#the-pfeffermann-weighting-approach"><i class="fa fa-check"></i><b>4.3.3</b> The Pfeffermann Weighting Approach</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-models.html"><a href="linear-models.html#model-diagnostics"><i class="fa fa-check"></i><b>4.3.4</b> Model Diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="logistic-models.html"><a href="logistic-models.html"><i class="fa fa-check"></i><b>4.4</b> Logistic models</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="logistic-models.html"><a href="logistic-models.html#logistic-regression-model-for-proportions"><i class="fa fa-check"></i><b>4.4.1</b> Logistic Regression Model for Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a Chapter 9 of UN Household Survey Handbook. </a></li>
@@ -168,7 +185,10 @@ div.csl-indent {
 
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div class="csl-entry">
-Binder, David A. 1983. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
+Binder, David A. 1983a. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51: 279–92.
+</div>
+<div class="csl-entry">
+Binder, David A. 1983b. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
 </div>
 <div class="csl-entry">
 Binder, David A., and Milojica S. Kovacevic. 1995. <span>“Estimating Some Measures of Income Inequality from Survey Data: An Application of the Estimating Equations Approach.”</span> <em>Survey Methodology</em> 21 (2): 137–45.
@@ -183,10 +203,22 @@ Fay, Robert E. 1979. <span>“On Adjusting the Pearson Chi-Square Statistic for 
 Fellegi, Ivan P. 1980. <span>“Approximate Tests of Independence and Goodness of Fit Based on Stratified Multistage Samples.”</span> <em>Journal of the American Statistical Association</em> 75: 261–68.
 </div>
 <div class="csl-entry">
+Fuller, Wayne A. 1975. <span>“Regression Analysis for Sample Survey.”</span> <em>Sankyha, Series C</em> 37: 117–32.
+</div>
+<div class="csl-entry">
+———. 2002. <span>“Regression Estimation for Survey Samples (with Discussion).”</span> <em>Survey Methodology</em> 28 (1): 5–23.
+</div>
+<div class="csl-entry">
+Gelman, Andrew, and Jennifer Hill. 2019. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Third Edition. Cambridge, UK: Cambridge University Press.
+</div>
+<div class="csl-entry">
 Gutiérrez, H. A. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
 </div>
 <div class="csl-entry">
 Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
+</div>
+<div class="csl-entry">
+Kish, Leslie, and Martin R Frankel. 1974. <span>“Inference from Complex Samples.”</span> <em>Journal of the Royal Statistical Society, Series B</em> 36: 1–37.
 </div>
 <div class="csl-entry">
 Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other Methods to Measure Errors in Survey Estimates.”</span> <em>Canadian Journal of Statistics</em> 16 (Suppl.): 25–45.
@@ -195,7 +227,13 @@ Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other 
 Langel, Matti, and Yves Tillé. 2013. <span>“Variance Estimation of the Gini Index: Revisiting a Result Several Times Published: Variance Estimation of the Gini Index.”</span> <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 176 (2): 521–40. <a href="https://doi.org/10.1111/j.1467-985X.2012.01048.x">https://doi.org/10.1111/j.1467-985X.2012.01048.x</a>.
 </div>
 <div class="csl-entry">
+Neter, John, William Wasserman, and Michael H. Kutner. 1996. <em>Applied Linear Statistical Models</em>. McGraw-Hill.
+</div>
+<div class="csl-entry">
 Osier, Guillaume. 2009. <span>“Variance Estimation for Complex Indicators of Poverty and Inequality.”</span> <em>Journal of the European Survey Research Association</em> 3 (3): 167–95. <a href="http://ojs.ub.uni-konstanz.de/srm/article/view/369">http://ojs.ub.uni-konstanz.de/srm/article/view/369</a>.
+</div>
+<div class="csl-entry">
+Pfeffermann, Danny. 2011. <span>“Modelling of Complex Survey Data: Why Model? Why Is It a Problem? How Can We Approach It?”</span> <em>Survey Methodology</em> 37 (2): 115–36.
 </div>
 <div class="csl-entry">
 Rao, J. N. K., and A. J. Scott. 1984a. <span>“On Chi-Squared Test for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12: 46–60.
@@ -207,7 +245,16 @@ Rao, J. N. K., and A. J. Scott. 1984a. <span>“On Chi-Squared Test for Multiway
 Rust, Keith F., Valerie Hsu, and Westat. 2007. <span>“Confidence Intervals for Statistics for Categorical Variables from Complex Samples.”</span> In. <a href="https://api.semanticscholar.org/CorpusID:195852485">https://api.semanticscholar.org/CorpusID:195852485</a>.
 </div>
 <div class="csl-entry">
+Shah, B. V., M. M. Holt, and R. F. Folsom. 1977. <span>“Inference about Regression Models from Sample Survey Data.”</span> <em>Bulletin of the International Statistical Institute</em> 41 (3): 43–57.
+</div>
+<div class="csl-entry">
+Skinner, Chris J, Daniell Holt, and Tom M F Smith. 1989. <em>Analysis of Complex Surveys</em>. New York: John Wiley &amp; Sons.
+</div>
+<div class="csl-entry">
 Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Level and Power for Simple Goodness-of-Fit Statistics Under Cluster Sampling.”</span> <em>Journal of the American Statistical Association</em> 82: 630–36.
+</div>
+<div class="csl-entry">
+Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Statistics for Social and Behavioral Sciences. Springer.
 </div>
 </div>
 </div>
@@ -223,7 +270,7 @@ Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Leve
           </div>
         </div>
       </div>
-<a href="nso-practical-example-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nso-practical-example-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

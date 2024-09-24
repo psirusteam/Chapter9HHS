@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.2 Uncertainty in household surveys | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>4.4 Logistic models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.2 Uncertainty in household surveys | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="4.4 Logistic models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.2 Uncertainty in household surveys | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="4.4 Logistic models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="parameters-and-estimators.html"/>
-<link rel="next" href="ultimate-cluster-method.html"/>
+<link rel="prev" href="linear-models.html"/>
+<link rel="next" href="nso-practical-example-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -180,29 +180,59 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="uncertainty-in-household-surveys" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Uncertainty in household surveys<a href="uncertainty-in-household-surveys.html#uncertainty-in-household-surveys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As the sample is typically a small subset of the population, it is important to obtain not only point estimates for the parameters of interest, but also the corresponding uncertainty measures and/or confidence intervals. In this subsection we present some approaches for variance estimation: approximate formulas from <em>Taylor linearization</em> and/or the <em>ultimate cluster</em> approach for variances under multi-stage cluster sampling. We also introduce replication methods and generalized variance functions, which are essential when PSU or strata are missing from the sample dataset.</p>
-<p>A unifying idea of sampling theory is that of estimating equations - <span class="citation">David A. Binder (<a href="#ref-Binder1983">1983b</a>)</span>. Many population parameters can be written/obtained as solutions for <em>population estimating equations</em>. A generic population estimating equation is given by $_{i U} z_i () = 0 $, where <span class="math inline">\(z_i(\bullet)\)</span> is an <em>estimating function</em> evaluated for unit <span class="math inline">\(i\)</span> and <span class="math inline">\(\theta\)</span> is a population parameter of interest.</p>
-<p>For the case of the population total, take <span class="math inline">\(z_i(\theta) = y_i - \theta / N\)</span>. The corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta / N) = 0\)</span>, and solving for <span class="math inline">\(\theta\)</span> gives the population total <span class="math inline">\(\theta_U = \sum _{i \in U} y_i \ = \ Y\)</span>. Similarly, take <span class="math inline">\(z_i(\theta) = y_i - \theta\)</span> for the population mean. As a final example, consider the ratio of population totals. Taking <span class="math inline">\(z_i(\theta) = y_i - \theta x_i\)</span>, the corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta x_i) = 0\)</span>. Solving for <span class="math inline">\(\theta\)</span> gives the <em>population ratio</em> <span class="math inline">\(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\)</span>.</p>
-<p>The idea of defining population parameters as solutions to population estimating equations allows defining a general method for obtaining corresponding sample estimators. It is a matter of using the <em>sample estimating equations</em> <span class="math inline">\(\sum _{k \in s} d_k \, z_k (\theta) = 0\)</span>. Under <em>probability sampling</em>, full response and with <span class="math inline">\(d_k = 1 / \pi_k\)</span>, the sample sum in the left hand side is unbiased towards the population sum in the corresponding population estimating equation. Solving the sample estimating equation yields consistent estimators for the corresponding population parameters.</p>
-<p>The case of the population mean yields the sample estimating equation <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta) = 0\)</span>, and by solving on <span class="math inline">\(\theta\)</span>, we recover the Hàjek estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k = \overline y_H\)</span>. In the case of the population ratio, solving <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta x_k) = 0\)</span> on <span class="math inline">\(\theta\)</span>, yields the well-known estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k \, x_k = \widehat R\)</span>.</p>
-<p>The variance of estimators obtained as solutions of sample estimating equations can be obtained as:</p>
+<div id="logistic-models" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Logistic models<a href="logistic-models.html#logistic-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To model the probability of discrete variables, we apply the principles of design-based inference.</p>
+<div id="logistic-regression-model-for-proportions" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Logistic Regression Model for Proportions<a href="logistic-models.html#logistic-regression-model-for-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Logistic regression is a regression method that allows the estimation of the probability of success for a binary qualitative variable based on other continuous or discrete covariates. The variable of interest is binary or dichotomous, meaning it takes a value of one (1) if the condition being observed is met and zero (0) otherwise. In this way, the observations are separated into groups according to the value taken by the predictor variable.</p>
+<p>If a categorical variable with two possible levels is coded as ones (1) and zeros (0), it is mathematically possible to fit a linear regression model <span class="math inline">\(\beta_0 + \beta_1 x\)</span> using estimation techniques such as least squares. However, a problem arises with this approach: since the model is a straight line, it can produce estimated values that are less than zero or greater than one, which contradicts the theory requiring probabilities to always fall within the [0,1] range.</p>
+<p>The objective of logistic regression is to model the logarithm of the probability of belonging to each group. As a result, assignment is ultimately made based on the obtained probabilities. Logistic regression is ideal for modeling the probability of an event occurring as a function of various factors. Therefore, the approximate probability of the event is represented by a logistic function of the form:</p>
 <p><span class="math display">\[
-V_p (\widehat \theta) \doteq \left[ J (\theta_U) \right] ^{-1} V_p \left[ \sum _{k \in s} d_k \, z_k (\theta_U) \right] \left[ J (\theta_U) \right] ^{-1}
+\pi(\textbf{x})= Pr(y = 1 | \textbf{x}) = \frac{\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}{1+\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}
 \]</span></p>
-<p>where <span class="math inline">\(J (\theta_U) = \sum _{k \in U} \left[ \partial{z_k (\theta)} / \partial \theta \right]_{\theta = \theta_U}\)</span>, and <span class="math inline">\(\theta_U\)</span> is the solution of the corresponding population estimating equation.</p>
-<p>A consistent estimator of this variance is given by:</p>
+<p>It is important to note that linear regression should not be used when the dependent variable is binary, as it cannot directly estimate the probability of the studied event. Instead, logistic regression is used, where a transformation (logit) is applied to obtain the probability estimates of the studied event. Applying the logit function to both sides yields an expression similar to that of linear regression:</p>
 <p><span class="math display">\[
-\widehat V_p (\widehat \theta) = \left[ \widehat J ( \widehat \theta) \right] ^{-1} \widehat V_p \left[ \sum _{k \in s} d_k \, z_k (\widehat \theta)\right] \left[ \widehat J ( \widehat \theta) \right] ^{-1}
+g(\textbf{x})=logit(\pi(\textbf{x}))=ln \left\{ \frac{\pi(\textbf{x})}{1-\pi(\textbf{x})} \right \}= \textbf{x}&#39;\boldsymbol{\beta}
 \]</span></p>
-<p>where <span class="math inline">\(\widehat J (\widehat \theta) = \sum _{k \in s} d_i \, \left[ \partial{z_k ( \theta)} / \partial \theta \right]_{\theta = \widehat \theta}\)</span>.</p>
-<p>This approach implies that by one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals. Its simplicity and generality have enabled the development of software such as the <code>R survey</code> package, the <code>Stata svy</code> functions and others.</p>
+<p>Thus, a linear relationship is assumed between each of the explanatory variables and the logit of the response variable. There are at least three major differences between logistic regression and linear regression. First, in logistic regression, there is no requirement for a linear relationship between the explanatory variables and the variable of interest; second, the residuals of the model do not need to follow a normal distribution; and third, the residuals do not need to have constant variance (homoscedasticity).</p>
+<p>Using appropriate techniques that include complex sampling designs in inference, the estimated probability that the variable of interest takes a value of one, which is also the expected value of the variable of interest in a logistic regression model, is:</p>
+<p><span class="math display">\[
+\hat{\pi}(\textbf{x})= \frac{\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}}\}}{1+\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}\}}}
+\]</span></p>
+<p>The variance of the estimated parameters is calculated using the following expression:</p>
+<p><span class="math display">\[
+var\left(\boldsymbol{\hat{B}}\right)=\boldsymbol{J}^{-1}var\left(S\left(\hat{\boldsymbol{B}}\right)\right)\boldsymbol{J}^{-1}
+\]</span></p>
+<p>Where:</p>
+<p><span class="math display">\[
+S\left(B\right)=\sum_{h}\sum_{a}\sum_{i}w_{hai}\boldsymbol{D}_{hai}^{t}\left[\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)\left(1-\pi_{hai}\left(\boldsymbol{B}\right)\right)\right]^{-1}\left(y_{hai}-\pi_{hai}\left(\boldsymbol{B}\right)\right)=0
+\]</span></p>
+<p>and,</p>
+<p><span class="math display">\[
+D_{hai} = \frac{\delta\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)}{\delta B_{j}}
+\]</span></p>
+<p>Where <span class="math inline">\(j=0,\dots,p\)</span>. Since the model uses a logarithmic link, confidence intervals are constructed by applying the exponential function to each parameter:</p>
+<p><span class="math display">\[
+\hat{\psi}=\exp\left(\hat{B}_{1}\right)
+\]</span></p>
+<p>Therefore, the confidence interval is given by the following expression:</p>
+<p><span class="math display">\[
+CI\left(\psi\right)=\exp\left(\hat{B}_{j}\pm t_{df,1-\frac{\alpha}{2}}se\left(\hat{B}_{j}\right)\right)
+\]</span></p>
+<p>It is important to note that interpreting logistic regression coefficients can be challenging due to its non-linear nature. To facilitate interpretation, similarities and key differences with classic linear regression are highlighted. One similarity is that the sign of the estimated equation can be interpreted in the same way in both cases. A positive sign accompanying a covariate indicates an increase in the probability of the event occurring, while a negative sign indicates a decrease. As in linear regression, the intercept can only be interpreted assuming zero values for the other predictors.</p>
+<p>However, the interpretation of regression coefficients between logistic and linear models differs significantly. The estimated coefficients in logistic regression correspond to a logarithm of odds, requiring the previously mentioned transformation. According to <span class="citation">Gelman and Hill (<a href="#ref-gelmanhill2019">2019</a>)</span>, the exponentiated logistic regression coefficients can be interpreted as odds ratios. If two outcomes present probabilities of <span class="math inline">\((\pi,1-\pi)\)</span>, then <span class="math inline">\(\pi/(1-\pi)\)</span> is called the odds. For example, an odds ratio of 1 corresponds to a probability of 0.5, indicating equally likely outcomes. Doubling the odds further increases the probability to 8/9, and so on.</p>
+<p>To determine whether a variable is significant in the model, it is common to use the Wald statistic, which is based on the likelihood ratio. In this case, the full model (with all parameters) is compared to the reduced model (with fewer parameters). The test statistic is given by:</p>
+<p><span class="math display">\[
+G=-2\ln\left[\frac{L\left(\hat{\boldsymbol{\beta}}\right)_{reduced}}{L\left(\hat{\boldsymbol{\beta}}\right)_{full}}\right]
+\]</span></p>
+<p>This statistic evaluates the difference in fit between the two models, allowing for the assessment of the significance of the parameters included in the full model.</p>
+</div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-Binder1983" class="csl-entry">
-Binder, David A. 1983b. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
+<div id="ref-gelmanhill2019" class="csl-entry">
+Gelman, Andrew, and Jennifer Hill. 2019. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Third Edition. Cambridge, UK: Cambridge University Press.
 </div>
 </div>
             </section>
@@ -210,8 +240,8 @@ Binder, David A. 1983b. <span>“On the Variances of Asymptotically Normal Estim
           </div>
         </div>
       </div>
-<a href="parameters-and-estimators.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ultimate-cluster-method.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nso-practical-example-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -242,7 +272,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/01SamplingStrategy.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/04Regression.rmd",
 "text": "Edit"
 },
 "history": {
