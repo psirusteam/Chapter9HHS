@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="means-proportions-and-ratios.html"/>
-<link rel="next" href="nso-practical-example.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -121,11 +121,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
 <li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient"><i class="fa fa-check"></i><b>2.3.1</b> Estimation of the Gini Coefficient</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -174,37 +170,16 @@ F(x) = \frac{{ \sum_{i=1}^{N}}I(y_{i}\leq x)}{N}
 \hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}(y_{j})}{\hat{F}_{\omega}(y_{j+1})-\hat{F}_{\omega}(y_{j})}(y_{j+1}-y_{j})
 \]</span></p>
 <p>For the variance estimation and confidence intervals of quantiles, <span class="citation">Kovar, Rao, and Wu (<a href="#ref-kovar1988bootstrap">1988</a>)</span> present results from a simulation study where they recommend using the <em>Balanced Repeated Replication</em> (BRR) technique. The previously mentioned estimators and procedures for estimating percentiles and their variances are implemented in <code>R</code>. Specifically, the median estimation can be done using the function <code>survey_median</code>.</p>
-<div id="estimation-of-the-gini-coefficient" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Estimation of the Gini Coefficient<a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Economic inequality is a common issue worldwide, with particular focus from international institutions. Measuring economic inequality among households is of great interest, and the Gini coefficient (<span class="math inline">\(G\)</span>) is the most commonly used indicator for this purpose. The Gini coefficient ranges from 0 to 1, where <span class="math inline">\(G = 0\)</span> indicates perfect equality in wealth distribution, and higher values reflect increasing inequality.</p>
-<p>Following the estimation equation proposed by <span class="citation">Binder and Kovacevic (<a href="#ref-binder1995estimating">1995</a>)</span>, the estimator for the Gini coefficient is given by:</p>
-<p><span class="math display">\[
-\widehat{G}_{\omega}(y) = \frac{2 \times \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}^{*}\hat{F}_{\omega}^{h\alpha i}y^{h\alpha i}-1}{\hat{\bar{y}}_{\omega}}
-\]</span></p>
-<p>where <span class="math inline">\(\omega_{h\alpha i}^{*}\)</span> is a normalized weight, defined as:</p>
-<p><span class="math display">\[
-\omega_{h\alpha i}^{*} = \frac{\omega_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
-\]</span></p>
-<p>In this formula, <span class="math inline">\(\hat{F}_{h\alpha i}{}_{\omega}\)</span> represents the estimated cumulative distribution function (CDF) for individual <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(\alpha\)</span> of stratum <span class="math inline">\(h\)</span>, and <span class="math inline">\(\hat{\bar{y}}_{\omega}\)</span> is the estimated mean.</p>
-<p><span class="citation">Osier (<a href="#ref-osier2009variance">2009</a>)</span> and <span class="citation">Langel and Tillé (<a href="#ref-Langel_Tille_2013">2013</a>)</span> provide important computational details for estimating the variance of this complex estimator.</p>
+
 </div>
-</div>
+<!-- </div> -->
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-binder1995estimating" class="csl-entry">
-Binder, David A., and Milojica S. Kovacevic. 1995. <span>“Estimating Some Measures of Income Inequality from Survey Data: An Application of the Estimating Equations Approach.”</span> <em>Survey Methodology</em> 21 (2): 137–45.
-</div>
 <div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
 Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>
 <div id="ref-kovar1988bootstrap" class="csl-entry">
 Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other Methods to Measure Errors in Survey Estimates.”</span> <em>Canadian Journal of Statistics</em> 16 (Suppl.): 25–45.
-</div>
-<div id="ref-Langel_Tille_2013" class="csl-entry">
-Langel, Matti, and Yves Tillé. 2013. <span>“Variance Estimation of the Gini Index: Revisiting a Result Several Times Published: Variance Estimation of the Gini Index.”</span> <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 176 (2): 521–40. <a href="https://doi.org/10.1111/j.1467-985X.2012.01048.x">https://doi.org/10.1111/j.1467-985X.2012.01048.x</a>.
-</div>
-<div id="ref-osier2009variance" class="csl-entry">
-Osier, Guillaume. 2009. <span>“Variance Estimation for Complex Indicators of Poverty and Inequality.”</span> <em>Journal of the European Survey Research Association</em> 3 (3): 167–95. <a href="http://ojs.ub.uni-konstanz.de/srm/article/view/369">http://ojs.ub.uni-konstanz.de/srm/article/view/369</a>.
 </div>
 </div>
             </section>
@@ -213,7 +188,7 @@ Osier, Guillaume. 2009. <span>“Variance Estimation for Complex Indicators of P
         </div>
       </div>
 <a href="means-proportions-and-ratios.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nso-practical-example.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

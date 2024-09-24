@@ -14,5 +14,3 @@ proportion-estimation
 relationship-between-variables
 estimation-of-ratios
 percentiles-and-inequality-measures
-estimation-of-the-gini-coefficient
-nso-practical-example
