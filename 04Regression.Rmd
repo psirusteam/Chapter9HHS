@@ -177,3 +177,27 @@ $$
 This estimator adjusts the $R^{2}$ calculation to reflect the characteristics of the sampling design, such as stratification and unequal selection probabilities, ensuring that survey weights are considered when evaluating the goodness-of-fit of the model.
 
 
+
+#### Standardized Residuals
+
+In model diagnostics, analyzing residuals is crucial. These analyses provide, under the assumption that the fitted model is adequate, an estimate of the errors. Therefore, a careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the fitting procedure.
+
+To analyze the residuals, Pearson residuals [@Heeringa_West_Berglund_2017] are defined as follows:
+
+$$
+r_{p_{i}}  =  \left(y_{i}-\mu_{i}\left(\hat{\beta}_{\omega}\right)\right)\sqrt{\frac{\omega_{i}}{V\left(\hat{\mu}_{i}\right)}}
+$$
+
+Where $\mu_{i}$ is the expected value of $y_{i}$, and $\omega_{i}$ is the survey weight for the i-th individual in the complex sample design. Finally, $V(\mu_{i})$ is the variance function of the outcome. These residuals are used to perform normality and constant variance analyses.
+
+If the assumption of constant variance is not met, the estimators remain unbiased and consistent, but they are no longer efficient. That is, they are no longer the best in the sense that they no longer have the smallest variance among all unbiased estimators. One way to analyze the assumption of constant variance in the errors is through graphical analysis. This is done by plotting the model residuals against $\hat{y}$ or the model residuals against $X_{i}$. If these plots reveal any pattern other than a constant cloud of points, it can be concluded that the error variance is not constant.
+
+#### Influential Observations
+
+Another set of techniques used for model analysis involves examining influential observations. An observation is deemed influential if, when removed from the data set, it causes a significant change in the model fit. It is important to note that an influential point may or may not be an outlier. To detect influential observations, it is essential to clarify what type of influence is being sought. For instance, an observation may be influential for parameter estimation but not for error variance estimation. Below are some statistical techniques for detecting influential data points:
+
+1. **Cook's Distance**: This diagnostic measures whether the i-th observation is influential in the model estimation by being far from the data's center of mass. Various authors consider an observation influential when this value exceeds 2 or 3.
+2. **$D_fBeta_{(i)}$ Statistic**: This statistic measures the change in the estimated regression coefficient vector when the observation is removed. The i-th observation is considered influential for $B_j$ if $\mid D_{f}Betas_{\left(i\right)j}\mid \geq \frac{z}{\sqrt{n}}$ with $z = 2$. Alternatively, $t_{0.025,n-p}/\sqrt{n}$ can be used, where $t_{0.025,n-p}$ is the 97.5th percentile.
+3. **$D_{f}Fits_{\left(i\right)}$ Statistic**: This statistic measures the change in the model fit when a particular observation is removed. In this case, the i-th observation is considered influential in the model fit if $\mid DfFits\left(i\right)\mid \geq z\sqrt{\frac{p}{n}}$ with $z = 2$.
+
+
