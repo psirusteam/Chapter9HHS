@@ -98,3 +98,24 @@ $$
 
 
 As can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:
+
+$$
+var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\beta}_{1}^{2}var\left(\hat{t}_{x^{2}}\right)-2\hat{\beta}_{1}cov\left(\hat{t}_{xy},\hat{t}_{x^{2}}\right)}{\left(\hat{t}_{x^{2}}\right)^{2}}
+$$
+
+As a generalization, according to @kish1974inference, the variance estimation of coefficients in a multiple linear regression model requires weighted totals for the squares and cross-products of all combinations of $y$ and $x = \{1, x_{1}, \ldots, x_{p}\}$. Below is the estimation of these variances:
+
+
+
+
+$$
+\text{var}\left(\hat{\beta}\right) = \hat{\Sigma}\left(\hat{\beta}\right) = 
+\begin{bmatrix}
+\text{var}\left(\hat{\beta}_{0}\right) & \text{cov}\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) & \cdots & \text{cov}\left(\hat{\beta}_{0},\hat{\beta}_{p}\right) \\
+\text{cov}\left(\hat{\beta}_{0},\hat{\beta}_{1}\right) & \text{var}\left(\hat{\beta}_{1}\right) & \cdots & \text{cov}\left(\hat{\beta}_{1},\hat{\beta}_{p}\right) \\
+\vdots & \vdots & \ddots & \vdots \\
+\text{cov}\left(\hat{\beta}_{0},\hat{\beta}_{p}\right) & \text{cov}\left(\hat{\beta}_{1},\hat{\beta}_{p}\right) & \cdots & \text{var}\left(\hat{\beta}_{p}\right)
+\end{bmatrix}
+$$
+
+
