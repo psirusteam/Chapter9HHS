@@ -20,7 +20,7 @@ $$
 y_{ij} = \beta_{0j} + \epsilon_{ij}
 $$
 
-Here, \(y_{ij}\) represents the income of individual \(i\) in stratum \(j\); \(\beta_{0j}\) is the intercept in stratum \(j\); \(\epsilon_{ij}\) is the residual for individual \(i\) in stratum \(j\); \(\gamma_{00}\) is the overall intercept, and \(\tau_{0j}\) is the random effect for the intercept. For this model, it is assumed that:
+Here, $y_{ij}$ represents the income of individual $i$ in stratum $j$; $\beta_{0j}$ is the intercept in stratum $j$; $\epsilon_{ij}$ is the residual for individual $i$ in stratum $j$; $\gamma_{00}$ is the overall intercept, and $\tau_{0j}$ is the random effect for the intercept. For this model, it is assumed that:
 
 $$
 \tau_{0j} \sim N(0, \sigma_{\tau}^{2})
