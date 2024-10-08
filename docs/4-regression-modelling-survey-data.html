@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="4 Regression: modelling survey data | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+<meta property="og:type" content="book" />
+
+<meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
+<meta name="github-repo" content="psirusteam/Chapter9HHS" />
+
+<meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
+
+<meta name="date" content="2024-09-24" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="Chapter 9 of UN Household Survey Handbook">
+
+<title>4 Regression: modelling survey data | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#abstract" id="toc-abstract">Abstract</a></li>
+<li><a href="introduction.html#introduction" id="toc-introduction">Introduction</a></li>
+<li class="has-sub"><a href="1-the-golden-pair-sample-design-and-estimator.html#the-golden-pair-sample-design-and-estimator" id="toc-the-golden-pair-sample-design-and-estimator"><span class="toc-section-number">1</span> The golden pair: sample design and estimator</a>
+<ul>
+<li><a href="1.1-parameters-and-estimators.html#parameters-and-estimators" id="toc-parameters-and-estimators"><span class="toc-section-number">1.1</span> Parameters and estimators</a></li>
+<li><a href="1.2-uncertainty-in-household-surveys.html#uncertainty-in-household-surveys" id="toc-uncertainty-in-household-surveys"><span class="toc-section-number">1.2</span> Uncertainty in household surveys</a></li>
+<li><a href="1.3-ultimate-cluster-method.html#ultimate-cluster-method" id="toc-ultimate-cluster-method"><span class="toc-section-number">1.3</span> Ultimate Cluster Method</a></li>
+<li><a href="1.4-using-software-to-generate-valid-inferences.html#using-software-to-generate-valid-inferences" id="toc-using-software-to-generate-valid-inferences"><span class="toc-section-number">1.4</span> Using software to generate valid inferences</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-descriptive-parameters.html#descriptive-parameters" id="toc-descriptive-parameters"><span class="toc-section-number">2</span> Descriptive parameters</a>
+<ul>
+<li class="has-sub"><a href="2.1-frequencies.html#frequencies" id="toc-frequencies"><span class="toc-section-number">2.1</span> Frequencies</a>
+<ul>
+<li><a href="2.1-frequencies.html#point-estimation" id="toc-point-estimation"><span class="toc-section-number">2.1.1</span> Point Estimation</a></li>
+</ul></li>
+<li class="has-sub"><a href="2.2-means-proportions-and-ratios.html#means-proportions-and-ratios" id="toc-means-proportions-and-ratios"><span class="toc-section-number">2.2</span> Means, proportions, and ratios</a>
+<ul>
+<li><a href="2.2-means-proportions-and-ratios.html#total-estimates" id="toc-total-estimates"><span class="toc-section-number">2.2.1</span> Total Estimates</a></li>
+<li><a href="2.2-means-proportions-and-ratios.html#estimation-of-averages" id="toc-estimation-of-averages"><span class="toc-section-number">2.2.2</span> Estimation of Averages</a></li>
+<li><a href="2.2-means-proportions-and-ratios.html#proportion-estimation" id="toc-proportion-estimation"><span class="toc-section-number">2.2.3</span> Proportion Estimation</a></li>
+<li><a href="2.2-means-proportions-and-ratios.html#relationship-between-variables" id="toc-relationship-between-variables"><span class="toc-section-number">2.2.4</span> Relationship Between Variables</a></li>
+</ul></li>
+<li class="has-sub"><a href="2.3-percentiles-and-inequality-measures.html#percentiles-and-inequality-measures" id="toc-percentiles-and-inequality-measures"><span class="toc-section-number">2.3</span> Percentiles and inequality measures</a>
+<ul>
+<li><a href="2.3-percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient" id="toc-estimation-of-the-gini-coefficient"><span class="toc-section-number">2.3.1</span> Estimation of the Gini Coefficient</a></li>
+</ul></li>
+<li><a href="2.4-nso-practical-example.html#nso-practical-example" id="toc-nso-practical-example"><span class="toc-section-number">2.4</span> NSO – Practical example</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-comparisons-and-association.html#comparisons-and-association" id="toc-comparisons-and-association"><span class="toc-section-number">3</span> Comparisons and association</a>
+<ul>
+<li class="has-sub"><a href="3.1-cross-tabulations.html#cross-tabulations" id="toc-cross-tabulations"><span class="toc-section-number">3.1</span> Cross-tabulations</a>
+<ul>
+<li><a href="3.1-cross-tabulations.html#contingency-tables" id="toc-contingency-tables"><span class="toc-section-number">3.1.1</span> Contingency Tables</a></li>
+</ul></li>
+<li class="has-sub"><a href="3.2-tests-for-group-comparisons.html#tests-for-group-comparisons" id="toc-tests-for-group-comparisons"><span class="toc-section-number">3.2</span> Tests for group comparisons</a>
+<ul>
+<li><a href="3.2-tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" id="toc-hypothesis-test-for-the-difference-of-means"><span class="toc-section-number">3.2.1</span> Hypothesis Test for the Difference of Means</a></li>
+<li><a href="3.2-tests-for-group-comparisons.html#contrasts" id="toc-contrasts"><span class="toc-section-number">3.2.2</span> Contrasts</a></li>
+</ul></li>
+<li><a href="3.3-tests-of-independence.html#tests-of-independence" id="toc-tests-of-independence"><span class="toc-section-number">3.3</span> Tests of Independence</a></li>
+<li><a href="3.4-correlation.html#correlation" id="toc-correlation"><span class="toc-section-number">3.4</span> Correlation</a></li>
+<li><a href="3.5-nso-practical-example-1.html#nso-practical-example-1" id="toc-nso-practical-example-1"><span class="toc-section-number">3.5</span> NSO – Practical example</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-regression-modelling-survey-data.html#regression-modelling-survey-data" id="toc-regression-modelling-survey-data"><span class="toc-section-number">4</span> Regression: modelling survey data</a>
+<ul>
+<li><a href="4.1-to-weight-or-not-to-weight.html#to-weight-or-not-to-weight" id="toc-to-weight-or-not-to-weight"><span class="toc-section-number">4.1</span> To weight or not to weight?</a></li>
+<li><a href="4.2-some-inferential-approaches-to-modelling-data.html#some-inferential-approaches-to-modelling-data" id="toc-some-inferential-approaches-to-modelling-data"><span class="toc-section-number">4.2</span> Some inferential approaches to modelling data</a></li>
+<li class="has-sub"><a href="4.3-linear-models.html#linear-models" id="toc-linear-models"><span class="toc-section-number">4.3</span> Linear models</a>
+<ul>
+<li><a href="4.3-linear-models.html#basic-definitions" id="toc-basic-definitions"><span class="toc-section-number">4.3.1</span> Basic Definitions</a></li>
+<li><a href="4.3-linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples" id="toc-estimation-of-parameters-in-a-regression-model-with-complex-samples"><span class="toc-section-number">4.3.2</span> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
+</ul></li>
+</ul></li>
+<li><a href="references.html#references" id="toc-references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="regression-modelling-survey-data" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Regression: modelling survey data</h1>
+<p>Modelling survey data is a common task among researcher; some of them include the features of the sampling design in computing standard error of the estimated regression parameters. In this section we will deal with the problem of weighting in regression models and present a parsimonious solution.</p>
+</div>
+<p style="text-align: center;">
+<a href="3.5-nso-practical-example-1.html"><button class="btn btn-default">Previous</button></a>
+<a href="4.1-to-weight-or-not-to-weight.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

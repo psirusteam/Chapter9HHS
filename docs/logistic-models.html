@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.4 Logistic models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.4 Logistic models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-09-11" />
+<meta name="date" content="2024-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,6 +64,7 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -104,19 +105,39 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>1.1</b> Parameters and estimators</a></li>
 <li class="chapter" data-level="1.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>1.2</b> Uncertainty in household surveys</a></li>
-<li class="chapter" data-level="1.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.3</b> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="1.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>1.3</b> Ultimate Cluster Method</a></li>
+<li class="chapter" data-level="1.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.4</b> Using software to generate valid inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>2</b> Descriptive parameters</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a></li>
-<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a></li>
-<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a></li>
+<li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="frequencies.html"><a href="frequencies.html#point-estimation"><i class="fa fa-check"></i><b>2.1.1</b> Point Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#total-estimates"><i class="fa fa-check"></i><b>2.2.1</b> Total Estimates</a></li>
+<li class="chapter" data-level="2.2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#estimation-of-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimation of Averages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient"><i class="fa fa-check"></i><b>2.3.1</b> Estimation of the Gini Coefficient</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="comparisons-and-association.html"><a href="comparisons-and-association.html"><i class="fa fa-check"></i><b>3</b> Comparisons and association</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a></li>
+<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html#contingency-tables"><i class="fa fa-check"></i><b>3.1.1</b> Contingency Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.2.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.2.2</b> Contrasts</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>3.3</b> Tests of Independence</a></li>
 <li class="chapter" data-level="3.4" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.4</b> Correlation</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
@@ -125,8 +146,17 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="to-weight-or-not-to-weight.html"><a href="to-weight-or-not-to-weight.html"><i class="fa fa-check"></i><b>4.1</b> To weight or not to weight?</a></li>
 <li class="chapter" data-level="4.2" data-path="some-inferential-approaches-to-modelling-data.html"><a href="some-inferential-approaches-to-modelling-data.html"><i class="fa fa-check"></i><b>4.2</b> Some inferential approaches to modelling data</a></li>
-<li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a></li>
-<li class="chapter" data-level="4.4" data-path="logistic-models.html"><a href="logistic-models.html"><i class="fa fa-check"></i><b>4.4</b> Logistic models</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-models.html"><a href="linear-models.html#the-pfeffermann-weighting-approach"><i class="fa fa-check"></i><b>4.3.3</b> The Pfeffermann Weighting Approach</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-models.html"><a href="linear-models.html#model-diagnostics"><i class="fa fa-check"></i><b>4.3.4</b> Model Diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="logistic-models.html"><a href="logistic-models.html"><i class="fa fa-check"></i><b>4.4</b> Logistic models</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="logistic-models.html"><a href="logistic-models.html#logistic-regression-model-for-proportions"><i class="fa fa-check"></i><b>4.4.1</b> Logistic Regression Model for Proportions</a></li>
+</ul></li>
 <li class="chapter" data-level="4.5" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
@@ -140,7 +170,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="multilevel-models.html"><a href="multilevel-models.html"><i class="fa fa-check"></i><b>6.1</b> Multilevel models</a></li>
+<li class="chapter" data-level="6.1" data-path="multilevel-models.html"><a href="multilevel-models.html"><i class="fa fa-check"></i><b>6.1</b> Multilevel models</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="multilevel-models.html"><a href="multilevel-models.html#model-with-random-intercept"><i class="fa fa-check"></i><b>6.1.1</b> Model with Random Intercept</a></li>
+<li class="chapter" data-level="6.1.2" data-path="multilevel-models.html"><a href="multilevel-models.html#model-with-random-slope"><i class="fa fa-check"></i><b>6.1.2</b> Model with Random Slope</a></li>
+<li class="chapter" data-level="6.1.3" data-path="multilevel-models.html"><a href="multilevel-models.html#model-with-random-intercept-and-slope"><i class="fa fa-check"></i><b>6.1.3</b> Model with Random Intercept and Slope</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="survival-models.html"><a href="survival-models.html"><i class="fa fa-check"></i><b>6.2</b> Survival models</a></li>
 <li class="chapter" data-level="6.3" data-path="loglinear-models-for-contingency-tables.html"><a href="loglinear-models-for-contingency-tables.html"><i class="fa fa-check"></i><b>6.3</b> Loglinear models for contingency tables</a></li>
 </ul></li>
@@ -168,6 +203,57 @@ div.csl-indent {
 <div id="logistic-models" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Logistic models<a href="logistic-models.html#logistic-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To model the probability of discrete variables, we apply the principles of design-based inference.</p>
+<div id="logistic-regression-model-for-proportions" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Logistic Regression Model for Proportions<a href="logistic-models.html#logistic-regression-model-for-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Logistic regression is a regression method that allows the estimation of the probability of success for a binary qualitative variable based on other continuous or discrete covariates. The variable of interest is binary or dichotomous, meaning it takes a value of one (1) if the condition being observed is met and zero (0) otherwise. In this way, the observations are separated into groups according to the value taken by the predictor variable.</p>
+<p>If a categorical variable with two possible levels is coded as ones (1) and zeros (0), it is mathematically possible to fit a linear regression model <span class="math inline">\(\beta_0 + \beta_1 x\)</span> using estimation techniques such as least squares. However, a problem arises with this approach: since the model is a straight line, it can produce estimated values that are less than zero or greater than one, which contradicts the theory requiring probabilities to always fall within the [0,1] range.</p>
+<p>The objective of logistic regression is to model the logarithm of the probability of belonging to each group. As a result, assignment is ultimately made based on the obtained probabilities. Logistic regression is ideal for modeling the probability of an event occurring as a function of various factors. Therefore, the approximate probability of the event is represented by a logistic function of the form:</p>
+<p><span class="math display">\[
+\pi(\textbf{x})= Pr(y = 1 | \textbf{x}) = \frac{\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}{1+\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}
+\]</span></p>
+<p>It is important to note that linear regression should not be used when the dependent variable is binary, as it cannot directly estimate the probability of the studied event. Instead, logistic regression is used, where a transformation (logit) is applied to obtain the probability estimates of the studied event. Applying the logit function to both sides yields an expression similar to that of linear regression:</p>
+<p><span class="math display">\[
+g(\textbf{x})=logit(\pi(\textbf{x}))=ln \left\{ \frac{\pi(\textbf{x})}{1-\pi(\textbf{x})} \right \}= \textbf{x}&#39;\boldsymbol{\beta}
+\]</span></p>
+<p>Thus, a linear relationship is assumed between each of the explanatory variables and the logit of the response variable. There are at least three major differences between logistic regression and linear regression. First, in logistic regression, there is no requirement for a linear relationship between the explanatory variables and the variable of interest; second, the residuals of the model do not need to follow a normal distribution; and third, the residuals do not need to have constant variance (homoscedasticity).</p>
+<p>Using appropriate techniques that include complex sampling designs in inference, the estimated probability that the variable of interest takes a value of one, which is also the expected value of the variable of interest in a logistic regression model, is:</p>
+<p><span class="math display">\[
+\hat{\pi}(\textbf{x})= \frac{\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}}\}}{1+\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}\}}}
+\]</span></p>
+<p>The variance of the estimated parameters is calculated using the following expression:</p>
+<p><span class="math display">\[
+var\left(\boldsymbol{\hat{B}}\right)=\boldsymbol{J}^{-1}var\left(S\left(\hat{\boldsymbol{B}}\right)\right)\boldsymbol{J}^{-1}
+\]</span></p>
+<p>Where:</p>
+<p><span class="math display">\[
+S\left(B\right)=\sum_{h}\sum_{a}\sum_{i}w_{hai}\boldsymbol{D}_{hai}^{t}\left[\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)\left(1-\pi_{hai}\left(\boldsymbol{B}\right)\right)\right]^{-1}\left(y_{hai}-\pi_{hai}\left(\boldsymbol{B}\right)\right)=0
+\]</span></p>
+<p>and,</p>
+<p><span class="math display">\[
+D_{hai} = \frac{\delta\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)}{\delta B_{j}}
+\]</span></p>
+<p>Where <span class="math inline">\(j=0,\dots,p\)</span>. Since the model uses a logarithmic link, confidence intervals are constructed by applying the exponential function to each parameter:</p>
+<p><span class="math display">\[
+\hat{\psi}=\exp\left(\hat{B}_{1}\right)
+\]</span></p>
+<p>Therefore, the confidence interval is given by the following expression:</p>
+<p><span class="math display">\[
+CI\left(\psi\right)=\exp\left(\hat{B}_{j}\pm t_{df,1-\frac{\alpha}{2}}se\left(\hat{B}_{j}\right)\right)
+\]</span></p>
+<p>It is important to note that interpreting logistic regression coefficients can be challenging due to its non-linear nature. To facilitate interpretation, similarities and key differences with classic linear regression are highlighted. One similarity is that the sign of the estimated equation can be interpreted in the same way in both cases. A positive sign accompanying a covariate indicates an increase in the probability of the event occurring, while a negative sign indicates a decrease. As in linear regression, the intercept can only be interpreted assuming zero values for the other predictors.</p>
+<p>However, the interpretation of regression coefficients between logistic and linear models differs significantly. The estimated coefficients in logistic regression correspond to a logarithm of odds, requiring the previously mentioned transformation. According to <span class="citation">Gelman and Hill (<a href="#ref-gelmanhill2019">2019</a>)</span>, the exponentiated logistic regression coefficients can be interpreted as odds ratios. If two outcomes present probabilities of <span class="math inline">\((\pi,1-\pi)\)</span>, then <span class="math inline">\(\pi/(1-\pi)\)</span> is called the odds. For example, an odds ratio of 1 corresponds to a probability of 0.5, indicating equally likely outcomes. Doubling the odds further increases the probability to 8/9, and so on.</p>
+<p>To determine whether a variable is significant in the model, it is common to use the Wald statistic, which is based on the likelihood ratio. In this case, the full model (with all parameters) is compared to the reduced model (with fewer parameters). The test statistic is given by:</p>
+<p><span class="math display">\[
+G=-2\ln\left[\frac{L\left(\hat{\boldsymbol{\beta}}\right)_{reduced}}{L\left(\hat{\boldsymbol{\beta}}\right)_{full}}\right]
+\]</span></p>
+<p>This statistic evaluates the difference in fit between the two models, allowing for the assessment of the significance of the parameters included in the full model.</p>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-gelmanhill2019" class="csl-entry">
+Gelman, Andrew, and Jennifer Hill. 2019. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Third Edition. Cambridge, UK: Cambridge University Press.
+</div>
 </div>
             </section>
 
