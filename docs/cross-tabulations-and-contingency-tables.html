@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3.1 Cross-tabulations and contingency tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3.1 Cross-tabulations and contingency tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3.1 Cross-tabulations and contingency tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="parameters-and-estimators.html"/>
+<link rel="prev" href="associations-between-categorical-variables.html"/>
+<link rel="next" href="testing-for-independence.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -199,18 +199,140 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-golden-pair-sample-design-and-estimator" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> The golden pair: sample design and estimator<a href="the-golden-pair-sample-design-and-estimator.html#the-golden-pair-sample-design-and-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Accounting for the sampling design is crucial for analyzing complex survey data. We must ensure that PSU, strata, and weights are available in the survey dataset to enable adequate analysis. Alternatively, when such information is not available, the dataset should at least contain replicate weights, or the analyst should have clear guidance on how to compute both point and variance estimates.</p>
-<p>A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Missing or incorrect design information may lead to biased estimates and misleading conclusions.</p>
+<div id="cross-tabulations-and-contingency-tables" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Cross-tabulations and contingency tables<a href="cross-tabulations-and-contingency-tables.html#cross-tabulations-and-contingency-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cross-tabulations organize population frequency distribution estimates for two or more categorical variables to help explore relationships between them. Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings.</p>
+<p>In the specialized literature, cross-tabulations are also referred to as contingency tables. Here a table is a two-dimensional array with rows indexed by <span class="math inline">\(r=1,\ldots,R\)</span> and columns indexed by <span class="math inline">\(c=1,\ldots,C\)</span>. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts. A contingency table aims to succinctly represent the association between different categorical variables.</p>
+<p>First we consider the case of a two-way contingency table. For most household sample surveys, a typical tabular output comprises the weighted frequencies that estimate the population frequencies, as follows:</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="18%" />
+<col width="18%" />
+<col width="18%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"><span class="math inline">\(y\)</span></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(x\)</span></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(C\)</span></td>
+<td align="center">row marg.</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(\widehat{N}_{11}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}_{1C}\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}_{1+}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}_{rc}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(R\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}_{R1}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}_{RC}\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}_{R+}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">col. marg.</td>
+<td align="center"><span class="math inline">\(\widehat{N}_{+1}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}_{+C}\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{N}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>where the estimated frequency in cell <span class="math inline">\((r,c)\)</span> is obtained as</p>
+<p><span class="math display">\[
+\widehat{N}_{rc} = \sum_{h=1}^H \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik} \ I \left( x_{hik} = r \ ; \ y_{hik} = c \right)
+\]</span></p>
+<p>and <span class="math inline">\(\widehat{N}_{r+} = \sum_c \widehat{N}_{rc}\)</span>, <span class="math inline">\(\widehat{N}_{+c} = \sum_r \widehat{N}_{rc}\)</span> and <span class="math inline">\(\widehat{N}_{++} = \sum_r \sum_c \widehat{N}_{rc}\)</span>.</p>
+<p>The estimated proportions from these weighted sample frequencies are obtained as follows:</p>
+<p><span class="math display">\[
+\widehat{p}_{rc} = \frac{\widehat{N}_{rc}}{\widehat{N}_{++}}
+\]</span></p>
+<p><span class="math inline">\(\widehat{p}_{r+} = \sum_c \widehat{N}_{r+} / \widehat{N}_{++}\)</span>, and <span class="math inline">\(\widehat{p}_{+c} = \sum_r \widehat{N}_{rc} / \widehat{N}_{++}\)</span>.</p>
+<p>Two-way tables can also display the estimates of population relative frequencies, as shown below:</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="18%" />
+<col width="18%" />
+<col width="18%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"><span class="math inline">\(y\)</span></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(x\)</span></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(C\)</span></td>
+<td align="center">row marg.</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(\widehat{p}_{11}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{p}_{1C}\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{p}_{1+}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{p}_{rc}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(R\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{p}_{R1}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{p}_{RC}\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{p}_{R+}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">col. marg.</td>
+<td align="center"><span class="math inline">\(\widehat{p}_{+1}\)</span></td>
+<td align="center"><span class="math inline">\(\ldots\)</span></td>
+<td align="center"><span class="math inline">\(\widehat{p}_{+C}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="parameters-and-estimators.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="associations-between-categorical-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="testing-for-independence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -241,7 +363,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/01SamplingStrategy.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/03Associations.rmd",
 "text": "Edit"
 },
 "history": {

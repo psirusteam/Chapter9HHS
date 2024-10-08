@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-09-24" />
+<meta name="date" content="2024-10-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -106,41 +105,41 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>1.1</b> Parameters and estimators</a></li>
 <li class="chapter" data-level="1.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>1.2</b> Uncertainty in household surveys</a></li>
 <li class="chapter" data-level="1.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>1.3</b> Ultimate Cluster Method</a></li>
-<li class="chapter" data-level="1.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.4</b> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="1.4" data-path="bootstrap-method.html"><a href="bootstrap-method.html"><i class="fa fa-check"></i><b>1.4</b> Bootstrap Method</a></li>
+<li class="chapter" data-level="1.5" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.5</b> Using software to generate valid inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>2</b> Descriptive parameters</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="frequencies.html"><a href="frequencies.html#point-estimation"><i class="fa fa-check"></i><b>2.1.1</b> Point Estimation</a></li>
+<li class="chapter" data-level="2.1.2" data-path="frequencies.html"><a href="frequencies.html#size-estimates"><i class="fa fa-check"></i><b>2.1.2</b> Size Estimates</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a>
+<li class="chapter" data-level="2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Totals, means, proportions, and ratios</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#total-estimates"><i class="fa fa-check"></i><b>2.2.1</b> Total Estimates</a></li>
-<li class="chapter" data-level="2.2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#estimation-of-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimation of Averages</a></li>
-<li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
-<li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
+<li class="chapter" data-level="2.2.1" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-totals"><i class="fa fa-check"></i><b>2.2.1</b> Estimating totals</a></li>
+<li class="chapter" data-level="2.2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimating averages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-proportions"><i class="fa fa-check"></i><b>2.2.3</b> Estimating proportions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-ratios"><i class="fa fa-check"></i><b>2.2.4</b> Estimating ratios</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a>
+<li class="chapter" data-level="2.3" data-path="variances-and-standard-deviations.html"><a href="variances-and-standard-deviations.html"><i class="fa fa-check"></i><b>2.3</b> Variances and standard deviations</a></li>
+<li class="chapter" data-level="2.4" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>2.4</b> Correlations</a></li>
+<li class="chapter" data-level="2.5" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.5</b> Percentiles and inequality measures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient"><i class="fa fa-check"></i><b>2.3.1</b> Estimation of the Gini Coefficient</a></li>
+<li class="chapter" data-level="2.5.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimating-the-gini-coefficient"><i class="fa fa-check"></i><b>2.5.1</b> Estimating the Gini coefficient</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="2.6" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.6</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="comparisons-and-association.html"><a href="comparisons-and-association.html"><i class="fa fa-check"></i><b>3</b> Comparisons and association</a>
+<li class="chapter" data-level="3" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>3</b> Associations between categorical variables</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a>
+<li class="chapter" data-level="3.1" data-path="cross-tabulations-and-contingency-tables.html"><a href="cross-tabulations-and-contingency-tables.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations and contingency tables</a></li>
+<li class="chapter" data-level="3.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>3.2</b> Testing for independence</a></li>
+<li class="chapter" data-level="3.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.3</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html#contingency-tables"><i class="fa fa-check"></i><b>3.1.1</b> Contingency Tables</a></li>
+<li class="chapter" data-level="3.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.3.2</b> Contrasts</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.2.1</b> Hypothesis Test for the Difference of Means</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.2.2</b> Contrasts</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>3.3</b> Tests of Independence</a></li>
-<li class="chapter" data-level="3.4" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.4</b> Correlation</a></li>
-<li class="chapter" data-level="3.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="3.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>4</b> Regression: modelling survey data</a>
 <ul>
@@ -204,7 +203,7 @@ div.csl-indent {
 <h2><span class="header-section-number">4.3</span> Linear models<a href="linear-models.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="basic-definitions" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Basic Definitions<a href="linear-models.html#basic-definitions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As noted by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span>, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>. Later, <span class="citation">Fuller (<a href="#ref-fuller1975regression">1975</a>)</span> developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.</p>
+<p>As noted by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>. Later, <span class="citation">Fuller (<a href="#ref-fuller1975regression">1975</a>)</span> developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.</p>
 <p>As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, <span class="citation">Shah, Holt, and Folsom (<a href="#ref-shah1977inference">1977</a>)</span> discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.</p>
 <p>Similarly, <span class="citation">David A. Binder (<a href="#ref-binder1983variances">1983a</a>)</span> obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. <span class="citation">Skinner, Holt, and Smith (<a href="#ref-skinner1989analysis">1989</a>)</span> studied the properties of variance estimators for regression coefficients under complex sample designs. Later, <span class="citation">Fuller (<a href="#ref-fuller2002regression">2002</a>)</span> provided a summary of estimation methods for regression models containing information related to complex samples. Finally, <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the “<em>q-weighted</em>” method, which is recommended in this document.</p>
 <p>A simple linear regression model is defined as <span class="math inline">\(y=\beta_{0}+\beta_{1}x+\varepsilon\)</span>, where <span class="math inline">\(y\)</span> represents the dependent variable, <span class="math inline">\(x\)</span> is the independent variable, and <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> are the model parameters. The variable <span class="math inline">\(\varepsilon\)</span> is known as the random error of the model and is defined as <span class="math inline">\(\varepsilon=y-\hat{y}=y-\beta_{0}+\beta_{1}x\)</span>.</p>
@@ -219,7 +218,7 @@ y  =  \boldsymbol{x}\boldsymbol{\beta}+\varepsilon
 y_{i}  =  x_{i}\boldsymbol{\beta}+\varepsilon_{i}
 \]</span></p>
 <p>Where, <span class="math inline">\(x_{i}=\left[1\,x_{1i}\,\ldots\,x_{pi}\right]\)</span> and <span class="math inline">\(\boldsymbol{\beta}^{T}=\left[\beta_{0}\,\,\beta_{1}\,\,\ldots\,\,\beta_{p}\right]\)</span>.</p>
-<p>The subscript <span class="math inline">\(i\)</span> refers to the sample element or respondent in the dataset. <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span> present some considerations for regression models, which are described below:</p>
+<p>The subscript <span class="math inline">\(i\)</span> refers to the sample element or respondent in the dataset. <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> present some considerations for regression models, which are described below:</p>
 <ul>
 <li><span class="math inline">\(E\left(\varepsilon_{i}\mid x_{i}\right)=0\)</span>, meaning that the expected value of the residuals conditioned on the covariates is zero.</li>
 <li><span class="math inline">\(Var\left(\varepsilon_{i}\mid x_{i}\right)=\sigma_{y,x}^{2}\)</span> (homogeneity of variance), meaning that the variance of the residuals conditioned on the covariates is constant.</li>
@@ -278,7 +277,7 @@ var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\bet
 </div>
 <div id="the-pfeffermann-weighting-approach" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> The Pfeffermann Weighting Approach<a href="linear-models.html#the-pfeffermann-weighting-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:</p>
+<p><span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:</p>
 <ul>
 <li><strong>The design-based approach</strong>, illustrated in this document, seeks to make inferences about the entire finite population, and the use of expansion factors ensures that regression parameter estimates are unbiased. However, using survey weights does not protect against model misspecification; if the researcher fits a poorly specified model using expansion factors, unbiased estimates of the regression parameters in a model that does not correctly describe the relationships in the finite population are being computed.</li>
 <li><strong>The population-based modeling approach</strong>, which argues that the use of expansion factors in estimation should not be necessary if the model is correctly specified. Under this approach, including survey weights only serves to increase the variance of the estimators, inducing larger-than-necessary standard errors.</li>
@@ -329,7 +328,7 @@ R^{2} =  1-\frac{SSE}{SST}
 <div id="standardized-residuals" class="section level4 hasAnchor" number="4.3.4.2">
 <h4><span class="header-section-number">4.3.4.2</span> Standardized Residuals<a href="linear-models.html#standardized-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In model diagnostics, analyzing residuals is crucial. These analyses provide, under the assumption that the fitted model is adequate, an estimate of the errors. Therefore, a careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the fitting procedure.</p>
-<p>To analyze the residuals, Pearson residuals <span class="citation">(<a href="#ref-Heeringa_West_Berglund_2017">Heeringa, West, and Berglund 2017</a>)</span> are defined as follows:</p>
+<p>To analyze the residuals, Pearson residuals <span class="citation">(<a href="#ref-Heeringa_West_Berglund_2017">Heeringa, West, and Berglund 2017a</a>)</span> are defined as follows:</p>
 <p><span class="math display">\[
 r_{p_{i}}  =  \left(y_{i}-\mu_{i}\left(\hat{\beta}_{\omega}\right)\right)\sqrt{\frac{\omega_{i}}{V\left(\hat{\mu}_{i}\right)}}
 \]</span></p>
@@ -377,7 +376,7 @@ var\left(\hat{E}\left(y_{i}\mid x_{obs,i}\right)\right)
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-binder1983variances" class="csl-entry">
 Binder, David A. 1983a. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51: 279–92.
 </div>
@@ -388,7 +387,7 @@ Fuller, Wayne A. 1975. <span>“Regression Analysis for Sample Survey.”</span>
 ———. 2002. <span>“Regression Estimation for Survey Samples (with Discussion).”</span> <em>Survey Methodology</em> 28 (1): 5–23.
 </div>
 <div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
-Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>
 <div id="ref-kish1974inference" class="csl-entry">
 Kish, Leslie, and Martin R Frankel. 1974. <span>“Inference from Complex Samples.”</span> <em>Journal of the Royal Statistical Society, Series B</em> 36: 1–37.

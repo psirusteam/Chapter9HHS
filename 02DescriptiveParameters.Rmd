@@ -1,6 +1,6 @@
 # Descriptive parameters
 
-When analyzing complex survey data, several descriptive parameters are meaningful and important. For example: poverty and unemployment rates are simple parameters that allow decision-making for governments; also, income distribution can be used to monitor inequality along time. 
+The most frequent analysis of complex household survey data consists in estimating some descriptive population parameters for a range of survey variables. Such *descriptive analysis* generally involve estimating frequencies, proportions, means, and totals. But other target parameters such as selected quantiles of numeric variables, poverty and inequality measures, and a range of indicators such as those required for monitoring the Sustainable Development Goals are becoming part of regular set of estimates needed from household sample surveys. 
 
 ## Frequencies
 
@@ -10,175 +10,154 @@ The accurate estimation of absolute sizes and proportions in household surveys i
 
 The ability to understand the distribution of specific categories, such as poverty status, employment status, education level, among others, provides valuable information to address inequalities and promote equitable development.
 
-#### Size Estimates
+### Size Estimates
 
 In this section, the processes for estimating categorical variables will be carried out. First, one of the most important parameters is the size of a population, which represents the cardinality of that set; in other words, the total number of individuals that comprise it. In terms of notation, the population size is estimated as follows:
 
 $$
-\hat{N}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}
+\widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
 $$
 
-Similarly, the size estimate in a subpopulation, defined by a dichotomous variable $I(y_i = d)$, which takes the value of one if individual $i$ belongs to category $d$ in the discrete variable, is given by the following expression:
+where $s_{hi}$ is the sample of households or individuals in PSU $i$ of stratum $h$; $s_{1h}$ is the sample of PSUs within stratum $h$; and $w_{hik}$ is the weight (expansion factor) of unit $k$ within PSU $i$ in stratum $h$.
+
+Similarly, the size estimate in a subpopulation, defined by a dichotomous variable $I(y_{hik} = d)$, which takes the value one if unit $k$ from PSU $i$ in stratum $h$ belongs to category $d$ in the discrete variable $y$, is given by the following expression:
 
 $$
-\hat{N}^d_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_i = d)
+{\widehat{N}}_d = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ I(y_{hik} = d)
 $$
 
-## Means, proportions, and ratios
+## Totals, means, proportions, and ratios
 
+For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs. 
 
-After conducting the graphical analysis of trends in the continuous survey variables, it is necessary to obtain point estimates of the measured parameters. These estimates can be obtained either generally for the entire population or disaggregated by domains of interest, depending on the research needs. In the context of household surveys, point estimates refer to the estimation of totals, averages, ratios, means, etc. As mentioned by @Heeringa_West_Berglund_2017, the estimation of totals or averages for a variable of interest in the population, along with the estimation of its variance, has played a crucial role in the development of probability sampling theory. These estimates allow for unbiased and accurate results, providing valuable insights into what is happening in the studied households and enabling informed public policy decision-making.
+As mentioned by @Heeringa_West_Berglund_2017, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.
 
-### Total Estimates
+### Estimating totals
 
-Once the sampling design is defined, which was done in the previous section, the estimation processes for the parameters of interest are carried out. For the estimation of totals with complex sampling designs that include stratification $\left(h=1,2,...,H\right)$ and subsampling in PSUs (assumed to be within stratum $h$) indexed by $\alpha=1,2,...,a_{h}$, the estimator for the total can be written as:
-
-$$
-\hat{y}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}
-$$
-
-Where $n_{h\alpha}$ is the sample size of households or individuals in PSU $\alpha$ of stratum $h$; $a_{h}$ is the sample size of PSUs within stratum $h$; $H$ is the total number of strata in the sampling design. Finally, $y_{h\alpha i}$ and $\omega_{h\alpha i}$ correspond respectively to the observation of the variable of interest and the weight (expansion factor) of element $i$ associated with PSU $\alpha$ within stratum $h$. The unbiased variance estimator for this total estimator $\hat{y}_{\omega}$ is:
+Once the sampling design is defined, which was done in the previous section, the estimation process for the parameters of interest is carried out. For the estimation of totals with complex sampling designs that include stratification $\left(h=1,2,...,H\right)$ and subsampling in PSUs (assumed to be within stratum $h$) indexed by $i=1,2,...,m_h$, the estimator for the population total can be written as:
 
 $$
-\widehat{var}\left(\hat{y}_{\omega}\right) = \sum_{h=1}^{H}\frac{a_{h}}{\left(a_{h}-1\right)}\left[\sum_{\alpha=1}^{a_{h}}\left(\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}-\frac{\left({ \sum_{\alpha=1}^{a_{h}}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}}{a_{h}}\right]
+\widehat{Y} = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ y_{hik}
 $$
 
-As can be seen, calculating the total estimate and its estimated variance is complex. However, these calculations can be performed in `R` using the `svytotal` function. The confidence interval is given by the following expression:
+Under full response, the Ultimate Cluster variance estimator for $\widehat{Y}$ was provided in section 9.1. Calculating the total estimate and its estimated variance is complex, but now these calculations can be easily performed using the `svytotal` function from the `survey` package in R. The confidence interval of level $1 - \alpha$ is given by the following expression:
 
 $$
-\hat{y}_{\omega} \pm 1.96 \times \sqrt{\widehat{var}\left(\hat{y}_{\omega}\right)}
+\widehat{Y} \pm z_{1 - \alpha/2} \times \sqrt{\widehat{V}_{UC} \left( \widehat{Y}\right)}
 $$
 
+with $z_{1 - \alpha/2}$ denoting the quantile of the Gaussian distribution leaving an area of ${\alpha/2}$ to its right.
 
-### Estimation of Averages
+### Estimating averages
 
-The estimation of the population mean or average is a very important parameter in household surveys. According to @Gutierrez_2016, an estimator of the population mean can be written as a nonlinear ratio of two estimated finite population totals, as follows:
-
-$$
-\hat{\bar{y}}_{\omega} = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}} = \frac{\hat{y}_{\omega}}{\hat{N}_{\omega}}.
-$$
-
-It should be noted that if $y$ is a binary variable, the weighted mean estimates the population proportion. On the other hand, since $\hat{\bar{y}}_{\omega}$ is not a linear statistic, there is no closed-form formula for the variance of this estimator. For this reason, resampling methods or Taylor series expansions must be used. In this particular case, using Taylor series, the variance of the estimator is as follows:
+The estimation of the population means or averages is a very important task in household surveys. According to @Gutierrez_2016, an estimator of the population mean can be written as the ratio of two estimated finite population totals, as follows:
 
 $$
-var\left(\hat{\bar{y}}_{\omega}\right) \dot{=} \frac{var\left(\hat{y}_{\omega}\right)+\hat{\bar{y}}_{\omega}^{2}\times var\left(\hat{N}_{\omega}\right)-2\times\hat{\bar{y}}_{\omega}\times cov\left(\hat{y}_{\omega},\hat{N}_{\omega}\right)}{\hat{N}_{\omega}^{2}}.
+\widehat{\overline{Y}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}y_{hik}} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}} = \frac{\widehat{Y}}{\widehat{N}}.
 $$
 
-As can be observed, calculating the variance estimation involves complex components to compute analytically, such as the covariance between the estimated total and the estimated population size.
+Since $\widehat{\overline{Y}}$ is a nonlinear statistic, there is no closed-form formula for exact the variance of this estimator. For this reason, either resampling methods or Taylor series approximations must be used. The latter may be achieved remembering that for the survey mean the sampling estimating equation requires defining $\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} (y_{hik} - \theta) = 0$, therefore we can apply the variance estimator given in section 9.1 with $z_{hik} = y_{hik} - \widehat{\overline{Y}}$.
 
-### Proportion Estimation
+### Estimating proportions
 
-The estimation of a proportion for a binary response variable requires a direct extension of the ratio estimator shown in the previous chapter. As mentioned by @Heeringa_West_Berglund_2017, by recoding the original response categories into a single indicator variable $y_{i}$ with possible values of 1 and 0 (e.g., yes = 1, no = 0), the estimator for a proportion is defined as follows:
-
-$$
-\hat{p}_{\omega}^d = \frac{\hat{N}^d_{\omega}}{\hat{N}_{\omega}} 
-= \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\ I(y_i = d)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
-$$
-
-By applying Taylor linearization to the above estimator, its variance is given by the following expression:
+When $y$ is a binary variable, the weighted mean estimates the population proportion. As mentioned by @Heeringa2017, by recoding the original response categories into simple indicator variables $y$ with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:
 
 $$
-var\left(\hat{p}_{\omega}^d\right) \dot{=} \frac{var\left(\hat{N}^{d}_{\omega}\right)+(\hat{p}_{\omega}^d)^{2}var\left(\hat{N}_{\omega}\right)-2\,\hat{p}_{\omega}^d\,cov\left(\hat{N}^{d}_{\omega},\hat{N}_{\omega}\right)}{(\hat{N}_{\omega})^{2}}
+\widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 $$
 
-It is common to observe that many statistical packages opt to generate proportion estimates and standard errors on a percentage scale.
+We can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as $z_{hik} = I(y_{hik} = d) - \widehat{p}_d $.
 
+Many statistical packages provide proportion estimates and standard errors on a percentage scale. As is well known in the specialized literature, when the estimated proportion of interest is close to zero or to one, the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter.
 
-As is well known in the specialized literature, when the estimated proportion of interest is close to zero or one, the limits of the traditional confidence interval, based on the sampling design, may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. For this reason, to address this issue, alternative confidence interval estimates based on the sampling design can be used, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015. Thus, the confidence interval using the $Logit\left(p\right)$ transformation is given by:
-
-$$
-IC\left[logit\left(p^d\right)\right]  =  \left\{ ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl} \times   se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right\} 
-$$
-
-Therefore, the confidence interval for $p^d$ would be:
+To address this issue, alternative confidence interval estimates, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015 are available. One alternative based on using the logit transformation of the estimated proportion is:
 
 $$
-IC\left(p^d\right)  =  \left\{ \frac{exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}{1+exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}\right\} 
+CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2 , \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right) } \right]} {1 + exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2, \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right)}\right]}
 $$
 
-### Relationship Between Variables
+### Estimating ratios
 
-In many household survey analyses, it is not sufficient to examine individual variables in isolation. For instance, analyzing the average income of men and women in a country is informative, but comparing the income difference between men and women is crucial for addressing the gender pay gap. This section provides computational tools for estimating ratios and explores hypothesis testing for differences in means, including more complex contrasts.
-
-#### Estimation of Ratios
-
-A particular case of a non-linear function of totals is the population ratio. This is defined as the quotient of two population totals for continuous characteristics of interest. In household surveys, there are times when estimating such a parameter is necessary. For example, estimating the ratio of expenditures to income, the number of men per woman, or the number of pets per household in a specific country.
+In many household survey analyses, it is not sufficient to examine individual variables in isolation. For example, ODS indicator N.17.6.1 is defined as the ratio of the number of broadband subscriptions per 100 inhabitants in a country or region. Ratio estimators are obtained simply by the ratio of the corresponding estimators of totals (or means) in the numerator and denominator. Another example is estimating the ratio of expenditures to income or the ratio of a particular type of expenditure (say food) over total expenditures in a household budget survey.
 
 Since the ratio is the quotient of two totals, both the numerator and the denominator are unknown quantities and thus need to be estimated. The point estimator for a ratio in complex surveys is the quotient of the estimators for the totals, as defined by:
 
 $$
-\hat{R}_{\omega} = \frac{\hat{y}_{\omega}}{\hat{x}_{\omega}}
-= \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}x_{h\alpha i}}
+\widehat{R} = \frac{\widehat{Y}}{\widehat{X}}
+= \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ y_{hik}}{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ x_{hik}}
 $$
 
-However, because the ratio estimator is a quotient of two estimators (i.e., a quotient of two random variables), calculating the variance of this estimator is not straightforward. To address this, Taylor linearization methods are applied as demonstrated by @Gutierrez_2016.
+For variance estimation, all you need to do is specify the estimating function as $z_{hik} = y_{hik} - \widehat{R} \ x_{hik}$, when $y$ and $x$ are the numerator and denominator variables, respectively.
 
- 
+## Variances and standard deviations
+
+Sometimes the interest lies in estimating the variance or standard deviation of a numeric survey variable $y$. This can be accomplished using the following estimators:
+
+$$
+\widehat{S_y^2} = \frac{1}{\widehat{N}-1}
+{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right)^2}
+$$
+
+and $\widehat{S_y} = \sqrt{\widehat{S_y^2}}$ for the standard deviation.
+
+## Correlations
+
+Pearson correlation coefficients are useful for assessing the relationship between two numeric survey variables, say $x$ and $y$. These can be estimated using
+
+$$
+\widehat{\rho}_{xy} = \frac {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right) \left( x_{hik} - \widehat{\overline{X}} \right)} {\sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right)^2} \sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( x_{hik} - \widehat{\overline{X}} \right)^2}}
+$$
+
 ## Percentiles and inequality measures
 
+Non-central location measures are helpful to determine location and spread of the data distribution beyond central values. Key non-central location measures include the quartiles and other quantiles or percentiles. As an example, the estimation of income percentiles in a given country may help define the onset of public policy. For example, a tax could be imposed on individuals in the top 10% of the income distribution, or transport subsidies could be provided to those in the bottom 15% of the income distribution.
 
-In household surveys, it is always necessary to estimate dispersion measures of the studied variables. For example, to understand how disparate incomes are in a given country, which helps inform public policy decisions. Therefore, studying these parameters is crucial. Below is the estimator for the standard deviation:
-
-$$
-s_{\omega}(y) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}(y_{h\alpha i}-\hat{\bar{y}}_{\omega})^{2}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}-1}
-$$
-
-Non-central location measures (percentiles) are calculated to determine characteristic points of the data distribution beyond central values. Key non-central location measures include the median, quartiles, and percentiles. In most household surveys, not only are totals, means, and proportions estimated; for some indicators, it is necessary to estimate other parameters, such as medians and percentiles.
-
-The median is a measure of central tendency that, unlike the mean, is not easily influenced by outliers, and is thus considered a robust measure. The median is the value that divides the population into two equal parts, implying that half of the population's observations fall above the median and the other half fall below.
-
-On the other hand, the estimation of income percentiles in a given country can define the onset of public policy. For example, a tax could be imposed on individuals in the top 10% of the income distribution, or transport subsidies could be provided to those in the bottom 15% of the income distribution.
-
-Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable $y$ in a finite population of size $N$ is defined as follows:
+Quantile estimation is based on results related to weighted total estimators, by first estimating the population cumulative distribution function (CDF). The CDF for a variable $y$ in a finite population of size $N$ is defined as follows:
 
 $$
-F(x) = \frac{\sum{i=1}^{N}I(y_i \leq x) }{N}
+F(t) = \frac{1}{N}\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  I(y_{hik} \leq t) 
 $$
 
-Where $I(y_i \leq x)$  is an indicator variable that takes the value 1 if $y_i$ is less than or equal to a specific value $x$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
+Where $I(y_k \leq x)$  is an indicator variable that takes the value 1 if $y_{hik}$ is less than or equal to a specific value $t$, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
+
+$$
+\widehat{F}(t) = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} I(y_{hik}\leq t)}{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
+$$
+
+Once the CDF is estimated using the survey design weights, the $q$-th quantile of a variable $y$ is the smallest value of $y$ such that the CDF is greater than or equal to $q$. As is well known, the median is the value where the CDF is greater than or equal to $1/2$. Thus, the estimated median is the smallest value where the estimated CDF is greater than or equal to $1/2$. Following @Heeringa2017, to estimate quantiles, one first considers the order statistics denoted as $y_{(1)}, \ldots, y_{(n)}$ and finds the value of $j$ $(j=1, \ldots, n)$ such that:
 
 
 $$
-\hat{F}_{\omega}(x) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_{i}\leq x)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+\widehat{F}(y_{(j)}) \leq q\leq\widehat{F}(y_{(j+1)})
 $$
 
-Once the CDF is estimated using the survey design weights, the $q$-th quantile of a variable $y$ is the smallest value of $y$ such that the CDF is greater than or equal to $q$. As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of @Heeringa_West_Berglund_2017, to estimate quantiles, one first considers the order statistics denoted as $y_{(1)},\ldots,y_{(n)}$ and finds the value of $j$ $(j=1,\ldots,n)$ such that:
-
-
-$$
-\hat{F}_{\omega}(y_{j})\leq q\leq\hat{F}_{\omega}(y_{j+1})
-$$
-
-Thus, the estimation of the $q$-th quantile $y_{(q)}$ in a complex sampling design is given by:
+Hence, the estimator of the $q$-th quantile $y_{(q)}$ is given by:
 
 $$
-\hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}(y_{j})}{\hat{F}_{\omega}(y_{j+1})-\hat{F}_{\omega}(y_{j})}(y_{j+1}-y_{j})
+\widehat{y}_{(q)} = y_{(j)} + \frac{q - \widehat{F}(y_{(j)})}{\widehat{F}(y_{(j+1)}) - \widehat{F}(y_{(j)})} (y_{(j+1)} - y_{(j)})
 $$
 
 For the variance estimation and confidence intervals of quantiles, @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique.
 
-
-
-### Estimation of the Gini Coefficient
+### Estimating the Gini coefficient
 
 Economic inequality is a common issue worldwide, with particular focus from international institutions. Measuring economic inequality among households is of great interest, and the Gini coefficient ($G$) is the most commonly used indicator for this purpose. The Gini coefficient ranges from 0 to 1, where $G = 0$ indicates perfect equality in wealth distribution, and higher values reflect increasing inequality.
 
 Following the estimation equation proposed by @binder1995estimating, the estimator for the Gini coefficient is given by:
 
 $$
-\widehat{G}_{\omega}\left(y\right) = \frac{2 \times \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}^{*}\hat{F}_{\omega}^{h\alpha i}y^{h\alpha i}-1}{\hat{\bar{y}}_{\omega}}
+\widehat{G} = \frac {2 \times \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}}  w_{hik}^{*} \widehat{F}_{hik} \ y_{hik} - 1} {\widehat{\overline{Y}}}
 $$
 
-where $\omega_{h\alpha i}^{*}$ is a normalized weight, defined as:
+where $w_{hik}^{*}$ is a normalized sampling weight, defined as
 
 $$
-\omega_{h\alpha i}^{*} = \frac{\omega_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+w_{hik}^{*} = \frac{w_{hik}} {\sum_{h=1}^{H} \sum_{i \in s_{1h}}  \sum_{k \in s_{hi}} w_{hik}}
 $$
 
-In this formula, $\hat{F}_{h\alpha i}{}_{\omega}$ represents the estimated cumulative distribution function (CDF) for individual $i$ in cluster $\alpha$ of stratum $h$, and $\hat{\bar{y}}_{\omega}$ is the estimated mean.
+and $\widehat{F}_{hik}$ represents the estimated CDF for individual $k$ in cluster $i$ of stratum $h$.
 
 @osier2009variance and @Langel_Tille_2013 provide important computational details for estimating the variance of this complex estimator.
-
 
 ## NSO – Practical example
 

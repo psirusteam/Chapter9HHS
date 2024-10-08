@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.1 Frequencies | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.1 Frequencies | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-09-24" />
+<meta name="date" content="2024-10-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="descriptive-parameters.html"/>
-<link rel="next" href="means-proportions-and-ratios.html"/>
+<link rel="next" href="totals-means-proportions-and-ratios.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -106,41 +105,41 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>1.1</b> Parameters and estimators</a></li>
 <li class="chapter" data-level="1.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>1.2</b> Uncertainty in household surveys</a></li>
 <li class="chapter" data-level="1.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>1.3</b> Ultimate Cluster Method</a></li>
-<li class="chapter" data-level="1.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.4</b> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="1.4" data-path="bootstrap-method.html"><a href="bootstrap-method.html"><i class="fa fa-check"></i><b>1.4</b> Bootstrap Method</a></li>
+<li class="chapter" data-level="1.5" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.5</b> Using software to generate valid inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>2</b> Descriptive parameters</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="frequencies.html"><a href="frequencies.html#point-estimation"><i class="fa fa-check"></i><b>2.1.1</b> Point Estimation</a></li>
+<li class="chapter" data-level="2.1.2" data-path="frequencies.html"><a href="frequencies.html#size-estimates"><i class="fa fa-check"></i><b>2.1.2</b> Size Estimates</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a>
+<li class="chapter" data-level="2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Totals, means, proportions, and ratios</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#total-estimates"><i class="fa fa-check"></i><b>2.2.1</b> Total Estimates</a></li>
-<li class="chapter" data-level="2.2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#estimation-of-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimation of Averages</a></li>
-<li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
-<li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
+<li class="chapter" data-level="2.2.1" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-totals"><i class="fa fa-check"></i><b>2.2.1</b> Estimating totals</a></li>
+<li class="chapter" data-level="2.2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimating averages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-proportions"><i class="fa fa-check"></i><b>2.2.3</b> Estimating proportions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-ratios"><i class="fa fa-check"></i><b>2.2.4</b> Estimating ratios</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a>
+<li class="chapter" data-level="2.3" data-path="variances-and-standard-deviations.html"><a href="variances-and-standard-deviations.html"><i class="fa fa-check"></i><b>2.3</b> Variances and standard deviations</a></li>
+<li class="chapter" data-level="2.4" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>2.4</b> Correlations</a></li>
+<li class="chapter" data-level="2.5" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.5</b> Percentiles and inequality measures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient"><i class="fa fa-check"></i><b>2.3.1</b> Estimation of the Gini Coefficient</a></li>
+<li class="chapter" data-level="2.5.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimating-the-gini-coefficient"><i class="fa fa-check"></i><b>2.5.1</b> Estimating the Gini coefficient</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="2.6" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.6</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="comparisons-and-association.html"><a href="comparisons-and-association.html"><i class="fa fa-check"></i><b>3</b> Comparisons and association</a>
+<li class="chapter" data-level="3" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>3</b> Associations between categorical variables</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a>
+<li class="chapter" data-level="3.1" data-path="cross-tabulations-and-contingency-tables.html"><a href="cross-tabulations-and-contingency-tables.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations and contingency tables</a></li>
+<li class="chapter" data-level="3.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>3.2</b> Testing for independence</a></li>
+<li class="chapter" data-level="3.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.3</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html#contingency-tables"><i class="fa fa-check"></i><b>3.1.1</b> Contingency Tables</a></li>
+<li class="chapter" data-level="3.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.3.2</b> Contrasts</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.2.1</b> Hypothesis Test for the Difference of Means</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.2.2</b> Contrasts</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>3.3</b> Tests of Independence</a></li>
-<li class="chapter" data-level="3.4" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.4</b> Correlation</a></li>
-<li class="chapter" data-level="3.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="3.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>4</b> Regression: modelling survey data</a>
 <ul>
@@ -206,17 +205,18 @@ div.csl-indent {
 <h3><span class="header-section-number">2.1.1</span> Point Estimation<a href="frequencies.html#point-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The accurate estimation of absolute sizes and proportions in household surveys is essential for obtaining representative data that reflects the demographic and socioeconomic reality of a population. These figures serve as the basis for public policy decision-making, resource allocation, and the design of social programs.</p>
 <p>The ability to understand the distribution of specific categories, such as poverty status, employment status, education level, among others, provides valuable information to address inequalities and promote equitable development.</p>
-<div id="size-estimates" class="section level4 hasAnchor" number="2.1.1.1">
-<h4><span class="header-section-number">2.1.1.1</span> Size Estimates<a href="frequencies.html#size-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="size-estimates" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Size Estimates<a href="frequencies.html#size-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this section, the processes for estimating categorical variables will be carried out. First, one of the most important parameters is the size of a population, which represents the cardinality of that set; in other words, the total number of individuals that comprise it. In terms of notation, the population size is estimated as follows:</p>
 <p><span class="math display">\[
-\hat{N}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}
+\widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
 \]</span></p>
-<p>Similarly, the size estimate in a subpopulation, defined by a dichotomous variable <span class="math inline">\(I(y_i = d)\)</span>, which takes the value of one if individual <span class="math inline">\(i\)</span> belongs to category <span class="math inline">\(d\)</span> in the discrete variable, is given by the following expression:</p>
+<p>where <span class="math inline">\(s_{hi}\)</span> is the sample of households or individuals in PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span>; <span class="math inline">\(s_{1h}\)</span> is the sample of PSUs within stratum <span class="math inline">\(h\)</span>; and <span class="math inline">\(w_{hik}\)</span> is the weight (expansion factor) of unit <span class="math inline">\(k\)</span> within PSU <span class="math inline">\(i\)</span> in stratum <span class="math inline">\(h\)</span>.</p>
+<p>Similarly, the size estimate in a subpopulation, defined by a dichotomous variable <span class="math inline">\(I(y_{hik} = d)\)</span>, which takes the value one if unit <span class="math inline">\(k\)</span> from PSU <span class="math inline">\(i\)</span> in stratum <span class="math inline">\(h\)</span> belongs to category <span class="math inline">\(d\)</span> in the discrete variable <span class="math inline">\(y\)</span>, is given by the following expression:</p>
 <p><span class="math display">\[
-\hat{N}^d_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_i = d)
+{\widehat{N}}_d = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ I(y_{hik} = d)
 \]</span></p>
-</div>
 </div>
 </div>
             </section>
@@ -225,7 +225,7 @@ div.csl-indent {
         </div>
       </div>
 <a href="descriptive-parameters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="means-proportions-and-ratios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="totals-means-proportions-and-ratios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

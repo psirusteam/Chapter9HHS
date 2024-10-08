@@ -36,7 +36,7 @@ While the above formula for variance estimation is general and covers the vast m
 
 As the sample is typically a small subset of the population, it is important to obtain not only point estimates for the parameters of interest, but also the corresponding uncertainty measures and/or confidence intervals. In this subsection we present some approaches for variance estimation: approximate formulas from *Taylor linearization* and/or the *ultimate cluster* approach for variances under multi-stage cluster sampling. We also introduce replication methods and generalized variance functions, which are essential when PSU or strata are missing from the sample dataset.
 
-A unifying idea of sampling theory is that of estimating equations - @Binder1983. Many population parameters can be written/obtained as solutions for *population estimating equations*. A generic population estimating equation is given by $\sum _{i \in U} z_i (\theta) = 0 $, where $z_i(\bullet)$ is an *estimating function* evaluated for unit $i$ and $\theta$ is a population parameter of interest.
+A unifying idea of sampling theory is that of estimating equations - @Binder1983. Many population parameters can be written/obtained as solutions for *population estimating equations*. A generic population estimating equation is given by $\sum_{i \in U} z_i (\theta) = 0 $, where $z_i(\bullet)$ is an *estimating function* evaluated for unit $i$ and $\theta$ is a population parameter of interest.
 
 For the case of the population total, take $z_i(\theta) = y_i - \theta / N$. The corresponding population estimation equation is given by $\sum _{i \in U} (y_i - \theta / N) = 0$, and solving for $\theta$ gives the population total $\theta_U = \sum _{i \in U} y_i \ = \ Y$. Similarly, take $z_i(\theta) = y_i - \theta$ for the population mean. As a final example, consider the ratio of population totals. Taking $z_i(\theta) = y_i - \theta x_i$, the corresponding population estimation equation is given by $\sum _{i \in U} (y_i - \theta x_i) = 0$. Solving for $\theta$ gives the *population ratio* $\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R$.
 
@@ -68,24 +68,44 @@ The central idea of the *Ultimate Cluster* method for variance estimation for es
 
 Although the method was originally proposed for estimation of variances of estimated totals, it can also be applied in combination with Taylor linearization to obtain variance estimates for estimators of other population quantities that can be obtained as solutions to sample estimating equations. 
 
-Consider a multi-stage sampling design, in which $n_{h}$ PSUs are selected in stratum $h,$ $h=1,\ldots ,H$. Let $\pi_{hi}$ be the inclusion probability of PSU $i$ stratum $h$, and by $\widehat{Y}_{hi}$ an unbiased estimator of the total $Y_{hi}$ of the survey variable $y$ for the $i$-th PSU in stratum $h$, $h=1,\ldots ,H$. Hence an unbiased estimator of the population total $Y = \sum_{h=1}^{H} \sum_{i=1}^{N_{h}} Y_{hi}$ is given by $\widehat{Y}_{UC} = \sum_{h=1}^{H} \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}$, and the *ultimate cluster* estimator of the corresponding variance is given by:
+Consider a multi-stage sampling design, in which $m_{h}$ PSUs are selected in stratum $h,$ $h=1,\ldots ,H$. Let $\pi_{hi}$ be the inclusion probability of PSU $i$ stratum $h$, and by $\widehat{Y}_{hi}$ an unbiased estimator of the total $Y_{hi}$ of the survey variable $y$ for the $i$-th PSU in stratum $h$, $h=1,\ldots ,H$. Hence an unbiased estimator of the population total $Y = \sum_{h=1}^{H} \sum_{i \in U_{1h}} Y_{hi}$ is given by $\widehat{Y}_{UC} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} d_{hi} \widehat{Y}_{hi}$, and the *ultimate cluster* estimator of the corresponding variance is given by:
 
 $$
-\widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{n_{h}}
-{n_{h}-1} \sum_{i=1}^{n_{h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{n_{h}} \right) ^{2}
+\widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{m_{h}}
+{m_{h}-1} \sum_{i=1}^{n_{h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{m_{h}} \right) ^{2}
 $$
 
-where $d_{hi} = 1 / \pi_{hi}$, $\widehat{Y}_{h} = \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}$ for $h=1,\ldots ,H$. (See for example, [@Shah1993], p. 4).
+where $U_{1h}$ and $s_{1h}$ are the population and sample sets of PSUs in stratum $h$, $d_{hi} = 1 / \pi_{hi}$, $\widehat{Y}_{h} = \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}$ for $h=1,\ldots ,H$. (See for example, [@Shah1993], p. 4).
 
 Although often the selection of primary units can have Primary Cluster estimator presented here may provide a reasonable approximation of the corresponding variance of randomization. This is because sampling plans without replacement are generally more efficient than plans with replacement of equal size. Such an approximation is widely used by sampling practitioners to estimate variances of usual descriptive quantities such as totals and medium (with due adaptation) due to their simplicity, compared to the much greater complexity involved with the employment of variance estimators that attempt to incorporate all steps of plans sampling in several stages. A discussion about Quality of this approximation and alternatives can be found in [@SSW92], p. 153.
 
-
 In some cases, sample replication methods (*bootstrap*, *jackknife*) can also be used to estimate variances, as we will see later.
+
+## Bootstrap Method
+
+The method was proposed by @Efron1979, but the version we consider here is the so-called Rao-Wu-Yue Rescaling Bootstrap, which is adequate for stratified multi-stage sampling designs commonly used in household surveys - see @Rao1992. This method is now widely used for variance estimation with complex survey data. To implement this method, you need to follow the sequence of steps outlined below.
+
+Step 1. Select a simple random sample with replacement of size $m_h - 1$ of PSUs in each of the $H$ design strata. Each selected PSU takes with it all the subordinate sampling units and their data. 
+
+Step 2. Repeat Step 1 $R$ times, and denote by $m_{hi}(r)$ the number of times the PSU $i$ of stratum $h$ was selected for the sample in replicate $r$.
+
+Step 3. Calculate the *bootstrap* weight of unit $k$ within PSU $i$ of stratum $h$ as $w_{hik} (r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)$.
+
+Step 4. For each replica $r$, calculate an estimate $\widehat \theta_{(r)}$ of the target parameter $theta$ using the *bootstrap* weights $w_{hik} (r)$. 
+
+Step 5. Estimate the variance using:
+
+$$
+\widehat V_{B} \left( \widehat \theta \right) = \frac {1} {R} \sum_{r=1}^R \left( \widehat \theta_{(r)} - \tilde \theta \right)^2
+$$
+
+where $\tilde \theta = \frac 1 R \sum_{r=1}^R \widehat \theta_{(r)}$ is the average of the replica estimates.
+
+Whenever the original sampling weights $w_{hik}$ receive non-response adjustments or are calibrated, the corresponding non-response adjustments and/or calibration of the basic weights must be repeated for each replica, so that the variance estimates adequately reflect the effects of the calibration and non-response adjusments on the uncertainty of the point estimates.
+
+This method is more computationally costly, but provides good estimates of variance, including for quantiles and other parameters of complex nonlinear forms. It also makes it easier for users who do not have access to software capable of calculating complex variance expressions based on Taylor linearization, etc. The survey package allows you to generate *bootstrap* replicas and also estimate variances using this method.
 
 ## Using software to generate valid inferences
 
 In this part, we advocate to using specialized statistical software to generate efficient estimation processes. Those packages support complex survey data analysis by specifying the survey design using appropriate commands or functions.
-
-
-
 

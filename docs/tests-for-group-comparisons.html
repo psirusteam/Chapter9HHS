@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-09-24" />
+<meta name="date" content="2024-10-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cross-tabulations.html"/>
-<link rel="next" href="tests-of-independence.html"/>
+<link rel="prev" href="testing-for-independence.html"/>
+<link rel="next" href="nso-practical-example-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -106,41 +105,41 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>1.1</b> Parameters and estimators</a></li>
 <li class="chapter" data-level="1.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>1.2</b> Uncertainty in household surveys</a></li>
 <li class="chapter" data-level="1.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>1.3</b> Ultimate Cluster Method</a></li>
-<li class="chapter" data-level="1.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.4</b> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="1.4" data-path="bootstrap-method.html"><a href="bootstrap-method.html"><i class="fa fa-check"></i><b>1.4</b> Bootstrap Method</a></li>
+<li class="chapter" data-level="1.5" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.5</b> Using software to generate valid inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>2</b> Descriptive parameters</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="frequencies.html"><a href="frequencies.html#point-estimation"><i class="fa fa-check"></i><b>2.1.1</b> Point Estimation</a></li>
+<li class="chapter" data-level="2.1.2" data-path="frequencies.html"><a href="frequencies.html#size-estimates"><i class="fa fa-check"></i><b>2.1.2</b> Size Estimates</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Means, proportions, and ratios</a>
+<li class="chapter" data-level="2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Totals, means, proportions, and ratios</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#total-estimates"><i class="fa fa-check"></i><b>2.2.1</b> Total Estimates</a></li>
-<li class="chapter" data-level="2.2.2" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#estimation-of-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimation of Averages</a></li>
-<li class="chapter" data-level="2.2.3" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#proportion-estimation"><i class="fa fa-check"></i><b>2.2.3</b> Proportion Estimation</a></li>
-<li class="chapter" data-level="2.2.4" data-path="means-proportions-and-ratios.html"><a href="means-proportions-and-ratios.html#relationship-between-variables"><i class="fa fa-check"></i><b>2.2.4</b> Relationship Between Variables</a></li>
+<li class="chapter" data-level="2.2.1" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-totals"><i class="fa fa-check"></i><b>2.2.1</b> Estimating totals</a></li>
+<li class="chapter" data-level="2.2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimating averages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-proportions"><i class="fa fa-check"></i><b>2.2.3</b> Estimating proportions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-ratios"><i class="fa fa-check"></i><b>2.2.4</b> Estimating ratios</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.3</b> Percentiles and inequality measures</a>
+<li class="chapter" data-level="2.3" data-path="variances-and-standard-deviations.html"><a href="variances-and-standard-deviations.html"><i class="fa fa-check"></i><b>2.3</b> Variances and standard deviations</a></li>
+<li class="chapter" data-level="2.4" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>2.4</b> Correlations</a></li>
+<li class="chapter" data-level="2.5" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.5</b> Percentiles and inequality measures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimation-of-the-gini-coefficient"><i class="fa fa-check"></i><b>2.3.1</b> Estimation of the Gini Coefficient</a></li>
+<li class="chapter" data-level="2.5.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimating-the-gini-coefficient"><i class="fa fa-check"></i><b>2.5.1</b> Estimating the Gini coefficient</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="2.6" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.6</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="comparisons-and-association.html"><a href="comparisons-and-association.html"><i class="fa fa-check"></i><b>3</b> Comparisons and association</a>
+<li class="chapter" data-level="3" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>3</b> Associations between categorical variables</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations</a>
+<li class="chapter" data-level="3.1" data-path="cross-tabulations-and-contingency-tables.html"><a href="cross-tabulations-and-contingency-tables.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations and contingency tables</a></li>
+<li class="chapter" data-level="3.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>3.2</b> Testing for independence</a></li>
+<li class="chapter" data-level="3.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.3</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html#contingency-tables"><i class="fa fa-check"></i><b>3.1.1</b> Contingency Tables</a></li>
+<li class="chapter" data-level="3.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.3.2</b> Contrasts</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.2</b> Tests for group comparisons</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.2.1</b> Hypothesis Test for the Difference of Means</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.2.2</b> Contrasts</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>3.3</b> Tests of Independence</a></li>
-<li class="chapter" data-level="3.4" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.4</b> Correlation</a></li>
-<li class="chapter" data-level="3.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="3.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>4</b> Regression: modelling survey data</a>
 <ul>
@@ -200,12 +199,12 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
-<div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (<span class="math inline">\(H_0\)</span>) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (<span class="math inline">\(H_1\)</span>), which is the statement opposing the null hypothesis. This statement may be based on some belief or past experience and will be tested using the evidence gathered from the sample data. If it is suspected that the parameter <span class="math inline">\(\theta\)</span> is equal to a particular value <span class="math inline">\(\theta_{0}\)</span>, the possible combinations of hypotheses that can be tested are:</p>
+<div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (<span class="math inline">\(H_0\)</span>) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (<span class="math inline">\(H_1\)</span>), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter <span class="math inline">\(\theta\)</span> is equal to a particular value <span class="math inline">\(\theta_{0}\)</span>, the possible combinations of hypotheses that can be tested are:</p>
 <span class="math display">\[\begin{eqnarray*}
 \begin{cases}
 H_{0}: &amp; \theta=\theta_{0}\\
@@ -221,74 +220,75 @@ H_{1}: &amp; \theta&lt;\theta_{0}
 \end{cases}
 \end{eqnarray*}\]</span>
 <p>One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.</p>
-<p>In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of <span class="math inline">\(j\)</span> descriptive statistics, as shown below:</p>
-<span class="math display">\[\begin{eqnarray*}
-f\left(\theta_{1},\theta_{2},...,\theta_{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}\theta_{j}
-\end{eqnarray*}\]</span>
-<p>In this case, <span class="math inline">\(a_{j}\)</span> are known constants. An estimator of this function is given by:</p>
-<span class="math display">\[\begin{eqnarray}
-\hat{f}_{\omega}\left(\hat{\theta}_{1},\hat{\theta}_{2},...,\hat{\theta}_{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}\hat{\theta}_{j}
-\end{eqnarray}\]</span>
+<p>In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of <span class="math inline">\(J\)</span> descriptive statistics, as shown below:</p>
+<p><span class="math display">\[
+f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
+\]</span></p>
+<p>where the <span class="math inline">\(a_{j}\)</span> are known constants. An estimator of this function is given by:</p>
+<p><span class="math display">\[
+\widehat{f} \left( \widehat{\theta}_{1}, \ldots, \widehat{\theta}_{J} \right) = \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j}
+\]</span></p>
 <p>And its variance is calculated as follows:</p>
-<span class="math display">\[\begin{eqnarray}
-var\left(\sum_{j=1}^{J}a_{j}\hat{\theta}_{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}^{2}var\left(\hat{\theta}_{j}\right)+2\times\sum_{j=1}^{J-1}\sum_{k&gt;j}^{J}a_{j}a_{k}\,cov\left(\hat{\theta}_{j},\hat{\theta}_{k}\right)
-\end{eqnarray}\]</span>
-<p>As seen in the variance equation of the estimator, it incorporates the variances of the individual components’ estimates, as well as the covariances of the estimated pairs.</p>
-<p>Of particular interest is analyzing the difference in population means, which can be written as follows:</p>
 <p><span class="math display">\[
-\bar{y}^{1}-\bar{y}^{2}
+Var \left( \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j} \right) = \sum_{j=1}^{J} a_{j}^{2} \ Var\left( \widehat{\theta}_{j} \right) + 2 \times \sum_{j=1}^{J-1} \sum_{k&gt;j}^{J} a_{j} a_{k} \, Cov \left( \widehat{\theta}_{j} , \widehat{\theta}_{k} \right)
 \]</span></p>
-<p>Where <span class="math inline">\(\bar{y}_{1}\)</span> is the mean of the first population, for example, the average household income obtained by fathers, and <span class="math inline">\(\bar{y}_{2}\)</span> is the mean of the second population, which in this example could be the average income of mothers in a household. This parameter can be unbiasedly estimated by:</p>
+<p>As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators.</p>
+<p>Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a <em>superpopulation model</em>. We assume that <span class="math inline">\(y_{hik}\)</span> correspond to observations from identically distributed random variables <span class="math inline">\(Y\)</span> having means <span class="math inline">\(\mu_{y,j}\)</span> if unit <span class="math inline">\(k\)</span> belongs to domain <span class="math inline">\(j\)</span>, with <span class="math inline">\(j = 1, 2\)</span>. Then we can define the difference in population means between domains 1 and 2 as <span class="math inline">\(\mu_{y,1} - \mu_{y,2}\)</span>. As an example, consider that <span class="math inline">\(\mu_{y,1}\)</span> is the average household income for households with male heads of household, and <span class="math inline">\(\mu_{y,2}\)</span> is the average household income for households with female heads.</p>
+<p>This difference in means can be unbiasedly estimated by:</p>
 <p><span class="math display">\[
-\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}
+\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
 \]</span></p>
-<p>Where <span class="math inline">\(\hat{\bar{y}}_{\omega}^{i}\)</span> is the sample estimator of <span class="math inline">\(\bar{y}^{i}\)</span> (<span class="math inline">\(i = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:</p>
+<p>where <span class="math inline">\(\widehat{\overline{Y}}_{j}\)</span> is the sample estimator of <span class="math inline">\(\mu_{y,j}\)</span> (<span class="math inline">\(j = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:</p>
 <span class="math display">\[\begin{eqnarray*}
 \begin{cases}
-H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
-H_{1}:\bar{y}_{1}-\bar{y}_{2}\neq0
+H_{0}:\mu_{y,1} - \mu_{y,2}} = 0\\
+H_{1}:\mu_{y,1} - \mu_{y,2} \neq 0
 \end{cases} &amp; \begin{cases}
-H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
-H_{1}:\bar{y}_{1}-\bar{y}_{2}&gt;0
+H_{0}:\mu_{y,1} - \mu_{y,2} = 0\\
+H_{1}:\mu_{y,1} - \mu_{y,2} &gt; 0
 \end{cases} &amp; \begin{cases}
-H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
-H_{1}:\bar{y}_{1}-\bar{y}_{2}&lt;0
+H_{0}:\mu_{y,1} - \mu_{y,2} = 0\\
+H_{1}:\mu_{y,1} - \mu_{y,2} &lt; 0
 \end{cases}
 \end{eqnarray*}\]</span>
-<p>To test these hypotheses, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</p>
+<p>To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</p>
 <p><span class="math display">\[
-t = \frac{\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}}{se\left(\bar{y}_{1}-\bar{y}_{2}\right)} \sim t_{df}
+t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
 \]</span></p>
 <p>Where:</p>
 <p><span class="math display">\[
-\widehat{se}\left(\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}\right) = \sqrt{\widehat{var}\left(\hat{\bar{y}}_{\omega}^{1}\right) + \widehat{var}\left(\hat{\bar{y}}_{\omega}^{2}\right) - 2 \  \widehat{cov}\left(\hat{\bar{y}}_{\omega}^{1},\hat{\bar{y}}_{\omega}^{2}\right)}
+\widehat{se} \left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right) = \sqrt{\widehat{Var}\left(\widehat{\overline{Y}}_{1}\right) + \widehat{Var}\left(\widehat{\overline{Y}}_{2}\right) - 2 \  \widehat{Cov}\left(\widehat{\overline{Y}}_{1} \ ; \widehat{\overline{Y}}_{2} \right)}
 \]</span></p>
 <p>If a confidence interval for the difference in means is desired, it would be constructed as follows:</p>
 <p><span class="math display">\[
-\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2} \pm t_{df}\ \widehat{se}\left(\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}\right)
+\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
 \]</span></p>
 </div>
-<div id="contrasts" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Contrasts<a href="tests-for-group-comparisons.html#contrasts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In many cases, it is necessary to compare more than two populations at the same time. For example, comparing the average household incomes across three regions to identify which regions experienced a greater impact on households. In such cases, the difference of means we studied in previous chapters is not sufficient, as it only allows for pairwise comparisons of populations. Therefore, using contrasts becomes a good alternative to address these types of problems.</p>
+<div id="contrasts" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Contrasts<a href="tests-for-group-comparisons.html#contrasts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In many cases, it is necessary to compare more than two population means at the same time. For example, comparing the average household incomes across three regions to identify which regions experienced a greater impact of some shock or policy on households. In such cases, the difference of means we studied before is not sufficient, as it only allows for pairwise comparisons of population means. Using contrasts enables one to address these types of problems.</p>
 <p>Based on the definitions discussed in this chapter, a contrast is a linear combination of parameters in the form:</p>
-<span class="math display">\[\begin{eqnarray*}
-f = A * \theta = f\left(\theta^{1},\theta^{2},...,\theta^{j}\right) &amp; = &amp; \sum_{j=1}^{J}a_{j}\theta^{j}
-\end{eqnarray*}\]</span>
-<p>Where <span class="math inline">\(A\)</span> is a matrix or vector of constants, and <span class="math inline">\(\theta\)</span> is a matrix or vector of parameters.</p>
+<p><span class="math display">\[
+f \left( \theta_{1}, \ldots, \theta_{J} \right) = A * {\theta} = \sum_{j=1}^{J} a_{j} \theta_{j}
+\]</span></p>
+<p>Where <span class="math inline">\(A\)</span> is a matrix or vector of known constants, and <span class="math inline">\(\theta\)</span> is a vector of parameters.</p>
+<p>XXX
+The example below is not well chosen, since in the end it simply compares two means again - reconsider the example or remove it altogether.</p>
+<p>Alternatively, present the theory above already in terms of contrasts, and then the two-populations case is a simple yet good example.
+XXX</p>
 <p>Next, we will perform the calculation of a hypothesis contrast. Suppose we have the estimates shown in the table, where the goal is to compare the average income by region. As a first example, we will compare two populations: the North and South regions. Specifically, we are interested in the income difference (<span class="math inline">\(f = \bar{y}^{North} - \bar{y}^{South}\)</span>). Since the population is divided into five regions and the contrast will only be constructed for two of them (North and South), it is defined as follows:</p>
 <p><span class="math display">\[
 f = A * \theta = 1 \times \bar{y}^{North} + (-1) \times \bar{y}^{South} + 0 \times \bar{y}^{Center} + 0 \times \bar{y}^{West} + 0 \times \bar{y}^{East}
 \]</span></p>
 <p>As can be observed, in this case, the contrast vector is <span class="math inline">\(A = \left[1, -1, 0, 0, 0\right]\)</span>. Mathematically, the estimator for this specific contrast is defined as:</p>
 <p><span class="math display">\[
-\hat{f}_{\omega} = A \times \hat{\theta} = \left[1, -1, 0, 0, 0\right] \times \left[
+\widehat{f} = A \times \widehat{\theta} = \left[1, -1, 0, 0, 0\right] \times \left[
 \begin{array}{c}
-\hat{\bar{y}}^{North}_{\omega} \\
-\hat{\bar{y}}^{South}_{\omega} \\
-\hat{\bar{y}}^{Center}_{\omega} \\
-\hat{\bar{y}}^{West}_{\omega} \\
-\hat{\bar{y}}^{East}_{\omega}
+\widehat{\bar{y}}^{North} \\
+\widehat{\bar{y}}^{South} \\
+\widehat{\bar{y}}^{Center} \\
+\widehat{\bar{y}}^{West} \\
+\widehat{\bar{y}}^{East}
 \end{array}
 \right]
 \]</span></p>
@@ -409,11 +409,11 @@ f = A \times \theta = 552.4 - 625.8 = -73.4
 </table>
 <p>Since the sampling is independent in each region, the covariances in the matrix are zero. To calculate the standard error of the difference (contrast), we will use the properties of variance, as follows:</p>
 <p><span class="math display">\[
-se(\hat{f}_{\omega}) = se\left(\hat{\bar{y}}^{North}_{\omega} - \hat{\bar{y}}^{South}_{\omega}\right) = \sqrt{var\left(\hat{\bar{y}}^{North}_{\omega}\right) + var\left(\hat{\bar{y}}^{South}_{\omega}\right) - 2 \, cov\left(\hat{\bar{y}}^{North}_{\omega}, \hat{\bar{y}}^{South}_{\omega}\right)}
+se(\widehat{f}) = se\left(\widehat{\bar{y}}^{North} - \widehat{\bar{y}}^{South}\right) = \sqrt{var\left(\widehat{\bar{y}}^{North}\right) + var\left(\widehat{\bar{y}}^{South}\right) - 2 \, cov\left(\widehat{\bar{y}}^{North}, \widehat{\bar{y}}^{South}\right)}
 \]</span></p>
 <p>Therefore, the estimated standard error for this contrast is:</p>
 <p><span class="math display">\[
-se(\hat{f}_{\omega}) = \sqrt{3064.715 + 3894.476 - 2 \times 0} = \sqrt{6959.191}
+se(\widehat{f}) = \sqrt{3064.715 + 3894.476 - 2 \times 0} = \sqrt{6959.191}
 \]</span></p>
 </div>
 </div>
@@ -422,8 +422,8 @@ se(\hat{f}_{\omega}) = \sqrt{3064.715 + 3894.476 - 2 \times 0} = \sqrt{6959.191}
           </div>
         </div>
       </div>
-<a href="cross-tabulations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tests-of-independence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="testing-for-independence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nso-practical-example-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -454,7 +454,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/03Comparissons.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/04Comparisons.rmd",
 "text": "Edit"
 },
 "history": {

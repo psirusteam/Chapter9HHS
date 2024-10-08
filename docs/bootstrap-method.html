@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>1.4 Bootstrap Method | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="1.4 Bootstrap Method | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="1.4 Bootstrap Method | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="parameters-and-estimators.html"/>
+<link rel="prev" href="ultimate-cluster-method.html"/>
+<link rel="next" href="using-software-to-generate-valid-inferences.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -199,18 +199,37 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-golden-pair-sample-design-and-estimator" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> The golden pair: sample design and estimator<a href="the-golden-pair-sample-design-and-estimator.html#the-golden-pair-sample-design-and-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Accounting for the sampling design is crucial for analyzing complex survey data. We must ensure that PSU, strata, and weights are available in the survey dataset to enable adequate analysis. Alternatively, when such information is not available, the dataset should at least contain replicate weights, or the analyst should have clear guidance on how to compute both point and variance estimates.</p>
-<p>A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Missing or incorrect design information may lead to biased estimates and misleading conclusions.</p>
+<div id="bootstrap-method" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Bootstrap Method<a href="bootstrap-method.html#bootstrap-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The method was proposed by <span class="citation">Efron (<a href="#ref-Efron1979">1979</a>)</span>, but the version we consider here is the so-called Rao-Wu-Yue Rescaling Bootstrap, which is adequate for stratified multi-stage sampling designs commonly used in household surveys - see <span class="citation">Rao (<a href="#ref-Rao1992">1992</a>)</span>. This method is now widely used for variance estimation with complex survey data. To implement this method, you need to follow the sequence of steps outlined below.</p>
+<p>Step 1. Select a simple random sample with replacement of size <span class="math inline">\(m_h - 1\)</span> of PSUs in each of the <span class="math inline">\(H\)</span> design strata. Each selected PSU takes with it all the subordinate sampling units and their data.</p>
+<p>Step 2. Repeat Step 1 <span class="math inline">\(R\)</span> times, and denote by <span class="math inline">\(m_{hi}(r)\)</span> the number of times the PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span> was selected for the sample in replicate <span class="math inline">\(r\)</span>.</p>
+<p>Step 3. Calculate the <em>bootstrap</em> weight of unit <span class="math inline">\(k\)</span> within PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span> as <span class="math inline">\(w_{hik} (r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)\)</span>.</p>
+<p>Step 4. For each replica <span class="math inline">\(r\)</span>, calculate an estimate <span class="math inline">\(\widehat \theta_{(r)}\)</span> of the target parameter <span class="math inline">\(theta\)</span> using the <em>bootstrap</em> weights <span class="math inline">\(w_{hik} (r)\)</span>.</p>
+<p>Step 5. Estimate the variance using:</p>
+<p><span class="math display">\[
+\widehat V_{B} \left( \widehat \theta \right) = \frac {1} {R} \sum_{r=1}^R \left( \widehat \theta_{(r)} - \tilde \theta \right)^2
+\]</span></p>
+<p>where <span class="math inline">\(\tilde \theta = \frac 1 R \sum_{r=1}^R \widehat \theta_{(r)}\)</span> is the average of the replica estimates.</p>
+<p>Whenever the original sampling weights <span class="math inline">\(w_{hik}\)</span> receive non-response adjustments or are calibrated, the corresponding non-response adjustments and/or calibration of the basic weights must be repeated for each replica, so that the variance estimates adequately reflect the effects of the calibration and non-response adjusments on the uncertainty of the point estimates.</p>
+<p>This method is more computationally costly, but provides good estimates of variance, including for quantiles and other parameters of complex nonlinear forms. It also makes it easier for users who do not have access to software capable of calculating complex variance expressions based on Taylor linearization, etc. The survey package allows you to generate <em>bootstrap</em> replicas and also estimate variances using this method.</p>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Efron1979" class="csl-entry">
+Efron, Bradley. 1979. <span>“Bootstrap Methods: Another Look at the Jackknife.”</span> <em>The Annals of Statistics</em> 7 (1): 1–26.
+</div>
+<div id="ref-Rao1992" class="csl-entry">
+Rao, J. N. K. 1992. <span>“Estimating Functions in Survey Sampling Theory and Applications.”</span> <em>Survey Methodology</em> 18: 3–14.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="parameters-and-estimators.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ultimate-cluster-method.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-software-to-generate-valid-inferences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

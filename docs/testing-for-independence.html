@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3.2 Testing for independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3.2 Testing for independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 The golden pair: sample design and estimator | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3.2 Testing for independence | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="parameters-and-estimators.html"/>
+<link rel="prev" href="cross-tabulations-and-contingency-tables.html"/>
+<link rel="next" href="tests-for-group-comparisons.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -199,18 +199,61 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-golden-pair-sample-design-and-estimator" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> The golden pair: sample design and estimator<a href="the-golden-pair-sample-design-and-estimator.html#the-golden-pair-sample-design-and-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Accounting for the sampling design is crucial for analyzing complex survey data. We must ensure that PSU, strata, and weights are available in the survey dataset to enable adequate analysis. Alternatively, when such information is not available, the dataset should at least contain replicate weights, or the analyst should have clear guidance on how to compute both point and variance estimates.</p>
-<p>A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Missing or incorrect design information may lead to biased estimates and misleading conclusions.</p>
+<div id="testing-for-independence" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Testing for independence<a href="testing-for-independence.html#testing-for-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using the estimated contingency tables, it is possible to perform independence tests to verify whether <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are associated. Following <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, the null hypothesis that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are independent is defined as:</p>
+<p><span class="math display">\[
+H_0) \ \ P_{rc}^0 = {P_{r+} \times P_{+c}} \ \ \forall \ r=1, \ldots, R \text{ and } c=1, \ldots, C.
+\]</span></p>
+<p>Hence, to test the independence hypothesis we compare the estimated proportions <span class="math inline">\(\widehat{p}_{rc}\)</span> with the estimated expected population proportions under the null <span class="math inline">\(P_{rc}^0\)</span>. If there is a large difference between them, then the independence hypothesis would not be supported by the data. Therefore, the following Pearson Rao-Scott adjusted test statistic <span class="math inline">\(X_{RS}^2\)</span> <span class="citation">(<a href="#ref-Rao1984"><strong>Rao1984?</strong></a>)</span> is defined:</p>
+<p><span class="math display">\[
+X_{RS}^2 =\ \frac {n_{++}} {GDEFF} \sum_r \sum_c \frac{\left(\widehat{p}_{rc} - \widehat P_{rc}^0 \right)^2}{\widehat P_{rc}^0}
+\]</span></p>
+<p>where <span class="math inline">\(\widehat P_{rc}^0 = \widehat p_{r+} \times \widehat p_{+c}\)</span> estimates the cell frequencies under the null hypothesis and <span class="math inline">\(GDEFF\)</span> is an estimate of the generalized design effect given by</p>
+<p><span class="math display">\[
+GDEFF = \frac{\sum_{r}\sum_{c}\left(1 - \widehat p_{rc}\right) d^{2}\left(\widehat p_{rc}\right) - \sum_{r} \left(1 - \widehat p_{r+} \right) d^{2}\left(\widehat p_{r+}\right) - \sum_{c} \left( 1 - \widehat p_{+c} \right) d^{2} \left( \widehat p_{+c} \right)} {\left(R-1\right)\left(C-1\right)}
+\]</span></p>
+<p>where <span class="math inline">\(d^2 \left({\widehat \theta}\right)\)</span> denotes the estimated design effect for the estimator <span class="math inline">\({\widehat \theta}\)</span>.</p>
+<p>Under the null hypothesis of independence, the large sample distribution of <span class="math inline">\(X_{RS}^2\)</span> is <span class="math inline">\(\chi^2_{[(R-1) (C-1)]}\)</span>.</p>
+<p>As mentioned by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, it was <span class="citation">Fay and Herriot (<a href="#ref-Fay1979">1979</a>)</span>, along with <span class="citation">Fellegi (<a href="#ref-Fellegi1980">1980</a>)</span>, who began proposing corrections to Pearson’s chi-square statistic based on a generalized design effect. <span class="citation">(<a href="#ref-Rao1984"><strong>Rao1984?</strong></a>)</span> later expanded the theory of generalized design effect corrections for these statistical tests, as did <span class="citation">Thomas and Rao (<a href="#ref-thomas1987small_sample">1987</a>)</span>. The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi’s approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.</p>
+<p>The Rao-Scott adjusted Likelihood Ratio statistic is defined as:</p>
+<p><span class="math display">\[
+G_{RS}^{2} = 2 \times \frac {n_{++}} {GDEFF} \times \sum_{r} \sum_{c} \widehat p_{rc} \times \ln \left( \frac{\widehat p_{rc}}{p_{rc}^0} \right)
+\]</span></p>
+<p>Under the null hypothesis of independence, the large sample distribution of this test statistic is also <span class="math inline">\(\chi^2_{[(R-1) (C-1)]}\)</span>.</p>
+<p>When the number of degrees of freedom for the sample is not very large, two adjusted versions of the above test statistics might be preferable, since they enable taking this into account. The F-adjusted test statistic for independence based on Pearson’s <span class="math inline">\(X_{RS}^2\)</span> is calculated as follows:</p>
+<p><span class="math display">\[
+F_{Pearson} = \frac{X^{2}_{R-S}}{(R-1)(C-1)} \sim F_{\left(R-1\right)\left(C-1\right) \ , \ df}
+\]</span></p>
+<p>where <span class="math inline">\(df = \sum_{h} n_h - H\)</span> denotes the degrees of freedom in the design.</p>
+<p>The F-adjusted teststatistic for independence based on the Rao-Scott adjusted Likelihood Ratio statistic <span class="math inline">\(G_{RS}^{2}\)</span> is calculated as:</p>
+<p><span class="math display">\[
+F_{LR} = \frac{G^{2}_{R-S}}{C-1} \sim F_{\left(C-1\right) \ , \ df}
+\]</span></p>
+
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Fay1979" class="csl-entry">
+Fay, Robert E., and Roger A. Herriot. 1979. <span>“Estimates of Income for Small Places: An Application of James-Stein Procedures to Census Data.”</span> <em>Journal of the American Statistical Association</em> 74 (366): 269–77.
+</div>
+<div id="ref-Fellegi1980" class="csl-entry">
+Fellegi, Ivan P. 1980. <span>“Approximate Joint Estimation of the Parameters of Multinomial Distributions in the Analysis of Data from Complex Surveys.”</span> <em>Journal of the American Statistical Association</em> 75 (370): 261–68.
+</div>
+<div id="ref-Heeringa2017" class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Paul Berglund. 2017b. <em>Survey Methodology</em>. Hoboken, NJ: Wiley.
+</div>
+<div id="ref-thomas1987small_sample" class="csl-entry">
+Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Level and Power for Simple Goodness-of-Fit Statistics Under Cluster Sampling.”</span> <em>Journal of the American Statistical Association</em> 82: 630–36.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="parameters-and-estimators.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cross-tabulations-and-contingency-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tests-for-group-comparisons.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -241,7 +284,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/01SamplingStrategy.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/03Associations.rmd",
 "text": "Edit"
 },
 "history": {
