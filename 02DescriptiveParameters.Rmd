@@ -66,7 +66,7 @@ $$
 \widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 $$
 
-We can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as $z_{hik} = I(y_{hik} = d) - \widehat{p}_d $.
+We can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as $z_{hik} = I(y_{hik} = d) - \widehat{p}_d$.
 
 Many statistical packages provide proportion estimates and standard errors on a percentage scale. As is well known in the specialized literature, when the estimated proportion of interest is close to zero or to one, the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter.
 

@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,12 +160,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
-<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
-<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
-<li class="chapter" data-level="5.6" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
+<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
@@ -202,7 +203,7 @@ div.csl-indent {
 <div id="totals-means-proportions-and-ratios" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Totals, means, proportions, and ratios<a href="totals-means-proportions-and-ratios.html#totals-means-proportions-and-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs.</p>
-<p>As mentioned by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.</p>
+<p>As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.</p>
 <div id="estimating-totals" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Estimating totals<a href="totals-means-proportions-and-ratios.html#estimating-totals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once the sampling design is defined, which was done in the previous section, the estimation process for the parameters of interest is carried out. For the estimation of totals with complex sampling designs that include stratification <span class="math inline">\(\left(h=1,2,...,H\right)\)</span> and subsampling in PSUs (assumed to be within stratum <span class="math inline">\(h\)</span>) indexed by <span class="math inline">\(i=1,2,...,m_h\)</span>, the estimator for the population total can be written as:</p>
@@ -225,11 +226,11 @@ div.csl-indent {
 </div>
 <div id="estimating-proportions" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Estimating proportions<a href="totals-means-proportions-and-ratios.html#estimating-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When <span class="math inline">\(y\)</span> is a binary variable, the weighted mean estimates the population proportion. As mentioned by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, by recoding the original response categories into simple indicator variables <span class="math inline">\(y\)</span> with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:</p>
+<p>When <span class="math inline">\(y\)</span> is a binary variable, the weighted mean estimates the population proportion. As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, by recoding the original response categories into simple indicator variables <span class="math inline">\(y\)</span> with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:</p>
 <p><span class="math display">\[
 \widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 \]</span></p>
-<p>We can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as $z_{hik} = I(y_{hik} = d) - _d $.</p>
+<p>We can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as <span class="math inline">\(z_{hik} = I(y_{hik} = d) - \widehat{p}_d\)</span>.</p>
 <p>Many statistical packages provide proportion estimates and standard errors on a percentage scale. As is well known in the specialized literature, when the estimated proportion of interest is close to zero or to one, the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter.</p>
 <p>To address this issue, alternative confidence interval estimates, as proposed by <span class="citation">Rust, Hsu, and Westat (<a href="#ref-Rust2007ConfidenceIF">2007</a>)</span> and <span class="citation">Dean and Pagano (<a href="#ref-DeanPagano2015">2015</a>)</span> are available. One alternative based on using the logit transformation of the estimated proportion is:</p>
 <p><span class="math display">\[
@@ -259,7 +260,7 @@ Gutiérrez, H. A. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Esti
 Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>
 <div id="ref-Heeringa2017" class="csl-entry">
-Heeringa, Steven G., Brady T. West, and Paul Berglund. 2017b. <em>Survey Methodology</em>. Hoboken, NJ: Wiley.
+Heeringa, Steven G, Brady T West, and Patricia A Berglund. 2017b. <em>Applied Survey Data Analysis, Second Edition</em>. <em>Statistics in the Social and Behavioral Sciences</em>. 2nd edition. Chapman; Hall - CRC.
 </div>
 <div id="ref-Rust2007ConfidenceIF" class="csl-entry">
 Rust, Keith F., Valerie Hsu, and Westat. 2007. <span>“Confidence Intervals for Statistics for Categorical Variables from Complex Samples.”</span> In. <a href="https://api.semanticscholar.org/CorpusID:195852485">https://api.semanticscholar.org/CorpusID:195852485</a>.

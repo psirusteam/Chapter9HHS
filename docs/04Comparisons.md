@@ -55,20 +55,26 @@ $$
 
 where $\widehat{\overline{Y}}_{j}$ is the sample estimator of $\mu_{y,j}$ ($j = 1, 2$). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:
 
-```{=tex}
-\begin{eqnarray*}
+$$
 \begin{cases}
-H_{0}:\mu_{y,1} - \mu_{y,2}} = 0\\
-H_{1}:\mu_{y,1} - \mu_{y,2} \neq 0
-\end{cases} & \begin{cases}
-H_{0}:\mu_{y,1} - \mu_{y,2} = 0\\
-H_{1}:\mu_{y,1} - \mu_{y,2} > 0
-\end{cases} & \begin{cases}
-H_{0}:\mu_{y,1} - \mu_{y,2} = 0\\
-H_{1}:\mu_{y,1} - \mu_{y,2} < 0
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} \neq 0
+\end{cases} 
+$$
+
+$$
+\begin{cases}
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} > 0
 \end{cases}
-\end{eqnarray*}
-```
+$$
+
+$$
+\begin{cases}
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} < 0
+\end{cases}
+$$
 
 To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with $df$ degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.
 

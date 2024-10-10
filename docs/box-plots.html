@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.3 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>5.4 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.3 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="5.4 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.3 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="5.4 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="bar-charts.html"/>
+<link rel="prev" href="histograms.html"/>
 <link rel="next" href="scatter-plots.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -160,12 +160,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
-<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
-<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
-<li class="chapter" data-level="5.6" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
+<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
@@ -199,16 +200,17 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="box-plots" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Box Plots<a href="box-plots.html#box-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To show the distribution of continuous variables, including measures of central tendency, variability, and outliers, across different groups or strata.</p>
+<div id="box-plots" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Box Plots<a href="box-plots.html#box-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Box plots are often used to present the distribution of continuous variables. They can summarize large datasets by providing a visual display providing easy visual to identify location, range, variability and outliers. They are great also for enabling comparing distributions across specified grouping variables, such as strata, clusters, etc.</p>
+<p>The key to producing such graphs from complex sample surveys is to account for the sampling weights when estimating the location measures that drive the plot, namely the quartiles. Once these have been estimated using the methods described earlier, the resulting box plots will be good depictions enabling analysis of the underlying population distributions.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="bar-charts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="histograms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="scatter-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

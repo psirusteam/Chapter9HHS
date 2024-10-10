@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,12 +160,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
-<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
-<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
-<li class="chapter" data-level="5.6" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
+<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
@@ -201,11 +202,11 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="testing-for-independence" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Testing for independence<a href="testing-for-independence.html#testing-for-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Using the estimated contingency tables, it is possible to perform independence tests to verify whether <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are associated. Following <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, the null hypothesis that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are independent is defined as:</p>
+<p>Using the estimated contingency tables, it is possible to perform independence tests to verify whether <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are associated. Following <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, the null hypothesis that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are independent is defined as:</p>
 <p><span class="math display">\[
 H_0) \ \ P_{rc}^0 = {P_{r+} \times P_{+c}} \ \ \forall \ r=1, \ldots, R \text{ and } c=1, \ldots, C.
 \]</span></p>
-<p>Hence, to test the independence hypothesis we compare the estimated proportions <span class="math inline">\(\widehat{p}_{rc}\)</span> with the estimated expected population proportions under the null <span class="math inline">\(P_{rc}^0\)</span>. If there is a large difference between them, then the independence hypothesis would not be supported by the data. Therefore, the following Pearson Rao-Scott adjusted test statistic <span class="math inline">\(X_{RS}^2\)</span> <span class="citation">(<a href="#ref-Rao1984"><strong>Rao1984?</strong></a>)</span> is defined:</p>
+<p>Hence, to test the independence hypothesis we compare the estimated proportions <span class="math inline">\(\widehat{p}_{rc}\)</span> with the estimated expected population proportions under the null <span class="math inline">\(P_{rc}^0\)</span>. If there is a large difference between them, then the independence hypothesis would not be supported by the data. Therefore, the following Pearson Rao-Scott adjusted test statistic <span class="math inline">\(X_{RS}^2\)</span> <span class="citation">(<a href="#ref-Rao1984">Rao and Scott 1984</a>)</span> is defined:</p>
 <p><span class="math display">\[
 X_{RS}^2 =\ \frac {n_{++}} {GDEFF} \sum_r \sum_c \frac{\left(\widehat{p}_{rc} - \widehat P_{rc}^0 \right)^2}{\widehat P_{rc}^0}
 \]</span></p>
@@ -215,7 +216,7 @@ GDEFF = \frac{\sum_{r}\sum_{c}\left(1 - \widehat p_{rc}\right) d^{2}\left(\wideh
 \]</span></p>
 <p>where <span class="math inline">\(d^2 \left({\widehat \theta}\right)\)</span> denotes the estimated design effect for the estimator <span class="math inline">\({\widehat \theta}\)</span>.</p>
 <p>Under the null hypothesis of independence, the large sample distribution of <span class="math inline">\(X_{RS}^2\)</span> is <span class="math inline">\(\chi^2_{[(R-1) (C-1)]}\)</span>.</p>
-<p>As mentioned by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, it was <span class="citation">Fay and Herriot (<a href="#ref-Fay1979">1979</a>)</span>, along with <span class="citation">Fellegi (<a href="#ref-Fellegi1980">1980</a>)</span>, who began proposing corrections to Pearson’s chi-square statistic based on a generalized design effect. <span class="citation">(<a href="#ref-Rao1984"><strong>Rao1984?</strong></a>)</span> later expanded the theory of generalized design effect corrections for these statistical tests, as did <span class="citation">Thomas and Rao (<a href="#ref-thomas1987small_sample">1987</a>)</span>. The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi’s approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.</p>
+<p>As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, it was <span class="citation">Fay (<a href="#ref-Fay1979">1979</a>)</span>, along with <span class="citation">Fellegi (<a href="#ref-Fellegi1980">1980</a>)</span>, who began proposing corrections to Pearson’s chi-square statistic based on a generalized design effect. <span class="citation">Rao and Scott (<a href="#ref-Rao1984">1984</a>)</span> later expanded the theory of generalized design effect corrections for these statistical tests, as did <span class="citation">Thomas and Rao (<a href="#ref-thomas1987small_sample">1987</a>)</span>. The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi’s approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.</p>
 <p>The Rao-Scott adjusted Likelihood Ratio statistic is defined as:</p>
 <p><span class="math display">\[
 G_{RS}^{2} = 2 \times \frac {n_{++}} {GDEFF} \times \sum_{r} \sum_{c} \widehat p_{rc} \times \ln \left( \frac{\widehat p_{rc}}{p_{rc}^0} \right)
@@ -235,13 +236,16 @@ F_{LR} = \frac{G^{2}_{R-S}}{C-1} \sim F_{\left(C-1\right) \ , \ df}
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Fay1979" class="csl-entry">
-Fay, Robert E., and Roger A. Herriot. 1979. <span>“Estimates of Income for Small Places: An Application of James-Stein Procedures to Census Data.”</span> <em>Journal of the American Statistical Association</em> 74 (366): 269–77.
+Fay, R. E. 1979. <span>“On Adjusting the Pearson Chi-Square Statistic for Clustered Sampling.”</span> <em>ASA Proceedings of the Social Statistics Section</em>, 402–8.
 </div>
 <div id="ref-Fellegi1980" class="csl-entry">
 Fellegi, Ivan P. 1980. <span>“Approximate Joint Estimation of the Parameters of Multinomial Distributions in the Analysis of Data from Complex Surveys.”</span> <em>Journal of the American Statistical Association</em> 75 (370): 261–68.
 </div>
 <div id="ref-Heeringa2017" class="csl-entry">
-Heeringa, Steven G., Brady T. West, and Paul Berglund. 2017b. <em>Survey Methodology</em>. Hoboken, NJ: Wiley.
+Heeringa, Steven G, Brady T West, and Patricia A Berglund. 2017b. <em>Applied Survey Data Analysis, Second Edition</em>. <em>Statistics in the Social and Behavioral Sciences</em>. 2nd edition. Chapman; Hall - CRC.
+</div>
+<div id="ref-Rao1984" class="csl-entry">
+Rao, J. N. K., and A. J. Scott. 1984. <span>“On Chi-Squared Tests for Multiway Contingency Tables with Cell Proportions Estimated from Survey Data.”</span> <em>The Annals of Statistics</em> 12: 46–60.
 </div>
 <div id="ref-thomas1987small_sample" class="csl-entry">
 Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Level and Power for Simple Goodness-of-Fit Statistics Under Cluster Sampling.”</span> <em>Journal of the American Statistical Association</em> 82: 630–36.

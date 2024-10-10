@@ -42,8 +42,9 @@ logistic-models
 logistic-regression-model-for-proportions
 nso-practical-example-2
 data-visualization
-weighted-histograms
-bar-charts
+graphs-and-sampling-weights
+graphs-for-categorical-data
+histograms
 box-plots
 scatter-plots
 maps

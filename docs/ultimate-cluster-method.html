@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,12 +160,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
-<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
-<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
-<li class="chapter" data-level="5.6" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
+<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
@@ -208,7 +209,7 @@ div.csl-indent {
 \widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{m_{h}}
 {m_{h}-1} \sum_{i=1}^{n_{h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{m_{h}} \right) ^{2}
 \]</span></p>
-<p>where <span class="math inline">\(U_{1h}\)</span> and <span class="math inline">\(s_{1h}\)</span> are the population and sample sets of PSUs in stratum <span class="math inline">\(h\)</span>, <span class="math inline">\(d_{hi} = 1 / \pi_{hi}\)</span>, <span class="math inline">\(\widehat{Y}_{h} = \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}\)</span> for <span class="math inline">\(h=1,\ldots ,H\)</span>. (See for example, <span class="citation">(<a href="#ref-Shah1993"><strong>Shah1993?</strong></a>)</span>, p. 4).</p>
+<p>where <span class="math inline">\(U_{1h}\)</span> and <span class="math inline">\(s_{1h}\)</span> are the population and sample sets of PSUs in stratum <span class="math inline">\(h\)</span>, <span class="math inline">\(d_{hi} = 1 / \pi_{hi}\)</span>, <span class="math inline">\(\widehat{Y}_{h} = \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}\)</span> for <span class="math inline">\(h=1,\ldots ,H\)</span>. (See for example, <span class="citation">(<a href="#ref-Shah1993">Babubhai. V. Shah et al. 1993</a>)</span>, p. 4).</p>
 <p>Although often the selection of primary units can have Primary Cluster estimator presented here may provide a reasonable approximation of the corresponding variance of randomization. This is because sampling plans without replacement are generally more efficient than plans with replacement of equal size. Such an approximation is widely used by sampling practitioners to estimate variances of usual descriptive quantities such as totals and medium (with due adaptation) due to their simplicity, compared to the much greater complexity involved with the employment of variance estimators that attempt to incorporate all steps of plans sampling in several stages. A discussion about Quality of this approximation and alternatives can be found in <span class="citation">(<a href="#ref-SSW92">Särndal, Swensson, and Wretman 1992</a>)</span>, p. 153.</p>
 <p>In some cases, sample replication methods (<em>bootstrap</em>, <em>jackknife</em>) can also be used to estimate variances, as we will see later.</p>
 </div>
@@ -219,6 +220,9 @@ Hansen, Morris H., William N. Hurwitz, and William G. Madow. 1953. <em>Sample Su
 </div>
 <div id="ref-SSW92" class="csl-entry">
 Särndal, Carl-Erik, Bengt Swensson, and Jan Wretman. 1992. <em>Model Assisted Survey Sampling</em>. New York: Springer-Verlag.
+</div>
+<div id="ref-Shah1993" class="csl-entry">
+Shah, Babubhai. V, Ralph E Folsom, Lisa LaVange, Sara C Wheeless, Kerrie E Boyle, and Rick L Williams. 1993. <span>“Statistical Methods and Mathematical Algorithms Used in SUDAAN.”</span> Research Triangle Institute.
 </div>
 </div>
             </section>

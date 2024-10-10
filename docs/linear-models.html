@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,12 +160,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
-<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
-<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
-<li class="chapter" data-level="5.6" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
+<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
@@ -203,8 +204,8 @@ div.csl-indent {
 <h2><span class="header-section-number">4.3</span> Linear models<a href="linear-models.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="basic-definitions" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Basic Definitions<a href="linear-models.html#basic-definitions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As noted by <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>. Later, <span class="citation">Fuller (<a href="#ref-fuller1975regression">1975</a>)</span> developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.</p>
-<p>As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, <span class="citation">Shah, Holt, and Folsom (<a href="#ref-shah1977inference">1977</a>)</span> discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.</p>
+<p>As noted by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>. Later, <span class="citation">Fuller (<a href="#ref-fuller1975regression">1975</a>)</span> developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.</p>
+<p>As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, <span class="citation">B. V. Shah, Holt, and Folsom (<a href="#ref-shah1977inference">1977</a>)</span> discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.</p>
 <p>Similarly, <span class="citation">David A. Binder (<a href="#ref-binder1983variances">1983a</a>)</span> obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. <span class="citation">Skinner, Holt, and Smith (<a href="#ref-skinner1989analysis">1989</a>)</span> studied the properties of variance estimators for regression coefficients under complex sample designs. Later, <span class="citation">Fuller (<a href="#ref-fuller2002regression">2002</a>)</span> provided a summary of estimation methods for regression models containing information related to complex samples. Finally, <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the “<em>q-weighted</em>” method, which is recommended in this document.</p>
 <p>A simple linear regression model is defined as <span class="math inline">\(y=\beta_{0}+\beta_{1}x+\varepsilon\)</span>, where <span class="math inline">\(y\)</span> represents the dependent variable, <span class="math inline">\(x\)</span> is the independent variable, and <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> are the model parameters. The variable <span class="math inline">\(\varepsilon\)</span> is known as the random error of the model and is defined as <span class="math inline">\(\varepsilon=y-\hat{y}=y-\beta_{0}+\beta_{1}x\)</span>.</p>
 <p>Generalizing the previous model, multiple linear regression models are defined by allowing the dependent variable to interact with more than two variables, as presented below:</p>
@@ -218,7 +219,7 @@ y  =  \boldsymbol{x}\boldsymbol{\beta}+\varepsilon
 y_{i}  =  x_{i}\boldsymbol{\beta}+\varepsilon_{i}
 \]</span></p>
 <p>Where, <span class="math inline">\(x_{i}=\left[1\,x_{1i}\,\ldots\,x_{pi}\right]\)</span> and <span class="math inline">\(\boldsymbol{\beta}^{T}=\left[\beta_{0}\,\,\beta_{1}\,\,\ldots\,\,\beta_{p}\right]\)</span>.</p>
-<p>The subscript <span class="math inline">\(i\)</span> refers to the sample element or respondent in the dataset. <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> present some considerations for regression models, which are described below:</p>
+<p>The subscript <span class="math inline">\(i\)</span> refers to the sample element or respondent in the dataset. <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> present some considerations for regression models, which are described below:</p>
 <ul>
 <li><span class="math inline">\(E\left(\varepsilon_{i}\mid x_{i}\right)=0\)</span>, meaning that the expected value of the residuals conditioned on the covariates is zero.</li>
 <li><span class="math inline">\(Var\left(\varepsilon_{i}\mid x_{i}\right)=\sigma_{y,x}^{2}\)</span> (homogeneity of variance), meaning that the variance of the residuals conditioned on the covariates is constant.</li>
@@ -277,7 +278,7 @@ var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\bet
 </div>
 <div id="the-pfeffermann-weighting-approach" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> The Pfeffermann Weighting Approach<a href="linear-models.html#the-pfeffermann-weighting-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:</p>
+<p><span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:</p>
 <ul>
 <li><strong>The design-based approach</strong>, illustrated in this document, seeks to make inferences about the entire finite population, and the use of expansion factors ensures that regression parameter estimates are unbiased. However, using survey weights does not protect against model misspecification; if the researcher fits a poorly specified model using expansion factors, unbiased estimates of the regression parameters in a model that does not correctly describe the relationships in the finite population are being computed.</li>
 <li><strong>The population-based modeling approach</strong>, which argues that the use of expansion factors in estimation should not be necessary if the model is correctly specified. Under this approach, including survey weights only serves to increase the variance of the estimators, inducing larger-than-necessary standard errors.</li>
@@ -328,7 +329,7 @@ R^{2} =  1-\frac{SSE}{SST}
 <div id="standardized-residuals" class="section level4 hasAnchor" number="4.3.4.2">
 <h4><span class="header-section-number">4.3.4.2</span> Standardized Residuals<a href="linear-models.html#standardized-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In model diagnostics, analyzing residuals is crucial. These analyses provide, under the assumption that the fitted model is adequate, an estimate of the errors. Therefore, a careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the fitting procedure.</p>
-<p>To analyze the residuals, Pearson residuals <span class="citation">(<a href="#ref-Heeringa_West_Berglund_2017">Heeringa, West, and Berglund 2017a</a>)</span> are defined as follows:</p>
+<p>To analyze the residuals, Pearson residuals <span class="citation">(<a href="#ref-Heeringa_West_Berglund_2017">Steven G. Heeringa, West, and Berglund 2017a</a>)</span> are defined as follows:</p>
 <p><span class="math display">\[
 r_{p_{i}}  =  \left(y_{i}-\mu_{i}\left(\hat{\beta}_{\omega}\right)\right)\sqrt{\frac{\omega_{i}}{V\left(\hat{\mu}_{i}\right)}}
 \]</span></p>

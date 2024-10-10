@@ -72,7 +72,7 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
-\usepackage{bookmark}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
@@ -87,7 +87,7 @@
 
 \title{CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA}
 \author{Andrés Gutiérrez\footnote{Comisión Económica para América Latina y el Caribe (CEPAL) - \href{mailto:andres.gutierrez@cepal.org}{\nolinkurl{andres.gutierrez@cepal.org}}}, Pedro Luis do Nascimento Silva\footnote{SCIENCE, \href{mailto:pedronsilva@gmail.com}{\nolinkurl{pedronsilva@gmail.com}}}}
-\date{2024-09-24}
+\date{2024-10-08}
 
 \begin{document}
 \maketitle
@@ -99,7 +99,8 @@
 }
 \listoffigures
 \listoftables
-\chapter*{Abstract}\label{abstract}
+\hypertarget{abstract}{%
+\chapter*{Abstract}\label{abstract}}
 \addcontentsline{toc}{chapter}{Abstract}
 
 Analyzing complex household survey data requires knowing and properly applying the foundations of the design-based inference. The researcher will be faced to a small database that contains specific information that will allow her to make conclusions over the whole population.
@@ -108,7 +109,8 @@ The purpose of any analysis on this kind of datasets is not referred to make con
 
 The chapter covers three main topics of analysis: descriptive statistics; comparisons and association; and modeling of survey data. On the one hand, we introduce simple descriptive statistics, such as totals, frequencies, means and proportions, quantiles and some graphics; on the other, we delve deeper on complex relationships between the variables of the survey. All these analyses rely on the representativity principle of the design-based inference. This way, the reader will find a strong focus, not only on point estimates, but also on uncertainty measures. The chapter also presents a short discussion on the different approaches that can be used to estimate variances; the best way to visualize the estimates; and NSO practical experiences.
 
-\chapter*{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\chapter*{Introduction}\label{introduction}}
 \addcontentsline{toc}{chapter}{Introduction}
 
 A key concern of every agency that produces statistical information is with the \emph{correct} use of the data that it produces. This is even reflected in the United Nations \emph{Fundamental Principles of Official Statistics}, namely:
@@ -138,13 +140,15 @@ The purpose of this chapter is defining and explaining basic concepts of the des
 
 Most of the sections in the chapter present national experiences that will guide the reader on how currently NSOs are dealing with the different stages of the analysis of household survey data.
 
-\chapter{The golden pair: sample design and estimator}\label{the-golden-pair-sample-design-and-estimator}
+\hypertarget{the-golden-pair-sample-design-and-estimator}{%
+\chapter{The golden pair: sample design and estimator}\label{the-golden-pair-sample-design-and-estimator}}
 
 Accounting for the sampling design is crucial for analyzing complex survey data. We must ensure that PSU, strata, and weights are available in the survey dataset to enable adequate analysis. Alternatively, when such information is not available, the dataset should at least contain replicate weights, or the analyst should have clear guidance on how to compute both point and variance estimates.
 
 A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Missing or incorrect design information may lead to biased estimates and misleading conclusions.
 
-\section{Parameters and estimators}\label{parameters-and-estimators}
+\hypertarget{parameters-and-estimators}{%
+\section{Parameters and estimators}\label{parameters-and-estimators}}
 
 Under a design-based approach this section presents the basic principles of inductive inference and how, using the \emph{sampling weights} (from chapter VIII), one can get consistent estimators for population parameters of interest. We adopt the notation introduced in chapter VIII for presenting the expressions required here.
 
@@ -168,11 +172,12 @@ Under full response, this variance can be estimated unbiasedly by
 
 While the above formula for variance estimation is general and covers the vast majority of sample designs used in the practice of household sample surveys, it is not used in practice because the second order inclusion probabilities \(\pi_{kj}\) (and corresponding pairwise weights \(d_{kj}\)) are generally unknown to survey data analysts. In fact, even data producers do not compute such pairwise weights, since there are more efficient methods for variance estimation that do not require having such weights.
 
-\section{Uncertainty in household surveys}\label{uncertainty-in-household-surveys}
+\hypertarget{uncertainty-in-household-surveys}{%
+\section{Uncertainty in household surveys}\label{uncertainty-in-household-surveys}}
 
 As the sample is typically a small subset of the population, it is important to obtain not only point estimates for the parameters of interest, but also the corresponding uncertainty measures and/or confidence intervals. In this subsection we present some approaches for variance estimation: approximate formulas from \emph{Taylor linearization} and/or the \emph{ultimate cluster} approach for variances under multi-stage cluster sampling. We also introduce replication methods and generalized variance functions, which are essential when PSU or strata are missing from the sample dataset.
 
-A unifying idea of sampling theory is that of estimating equations - \citet{Binder1983}. Many population parameters can be written/obtained as solutions for \emph{population estimating equations}. A generic population estimating equation is given by \$\sum \_\{i \in U\} z\_i (\theta) = 0 \$, where \(z_i(\bullet)\) is an \emph{estimating function} evaluated for unit \(i\) and \(\theta\) is a population parameter of interest.
+A unifying idea of sampling theory is that of estimating equations - \citet{Binder1983}. Many population parameters can be written/obtained as solutions for \emph{population estimating equations}. A generic population estimating equation is given by \$\sum\_\{i \in U\} z\_i (\theta) = 0 \$, where \(z_i(\bullet)\) is an \emph{estimating function} evaluated for unit \(i\) and \(\theta\) is a population parameter of interest.
 
 For the case of the population total, take \(z_i(\theta) = y_i - \theta / N\). The corresponding population estimation equation is given by \(\sum _{i \in U} (y_i - \theta / N) = 0\), and solving for \(\theta\) gives the population total \(\theta_U = \sum _{i \in U} y_i \ = \ Y\). Similarly, take \(z_i(\theta) = y_i - \theta\) for the population mean. As a final example, consider the ratio of population totals. Taking \(z_i(\theta) = y_i - \theta x_i\), the corresponding population estimation equation is given by \(\sum _{i \in U} (y_i - \theta x_i) = 0\). Solving for \(\theta\) gives the \emph{population ratio} \(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\).
 
@@ -198,308 +203,392 @@ where \(\widehat J (\widehat \theta) = \sum _{k \in s} d_i \, \left[ \partial{z_
 
 This approach implies that by one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals. Its simplicity and generality have enabled the development of software such as the \texttt{R\ survey} package, the \texttt{Stata\ svy} functions and others.
 
-\section{Ultimate Cluster Method}\label{ultimate-cluster-method}
+\hypertarget{ultimate-cluster-method}{%
+\section{Ultimate Cluster Method}\label{ultimate-cluster-method}}
 
 The central idea of the \emph{Ultimate Cluster} method for variance estimation for estimators of totals in multi-stage cluster sampling designs, proposed by \citep{Hansen1953}, is to consider only the variation between information available in the level of PSUs, and assume that these would have been selected with replacement from the PSU population. This idea is simple, but quite powerful, because it allows to accommodate a variety of sampling designs, involving stratification and selection with unequal probabilities (with or without replacement) of both PSUs as well as lower level sampling units. The requirements for the application of this method are that one has unbiased estimators of totals for the variable of interest for each sampled PSU, and that data are available for at least two sampled PSUs in each stratum (if the sample is stratified in the first stage).
 
 Although the method was originally proposed for estimation of variances of estimated totals, it can also be applied in combination with Taylor linearization to obtain variance estimates for estimators of other population quantities that can be obtained as solutions to sample estimating equations.
 
-Consider a multi-stage sampling design, in which \(n_{h}\) PSUs are selected in stratum \(h,\) \(h=1,\ldots ,H\). Let \(\pi_{hi}\) be the inclusion probability of PSU \(i\) stratum \(h\), and by \(\widehat{Y}_{hi}\) an unbiased estimator of the total \(Y_{hi}\) of the survey variable \(y\) for the \(i\)-th PSU in stratum \(h\), \(h=1,\ldots ,H\). Hence an unbiased estimator of the population total \(Y = \sum_{h=1}^{H} \sum_{i=1}^{N_{h}} Y_{hi}\) is given by \(\widehat{Y}_{UC} = \sum_{h=1}^{H} \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}\), and the \emph{ultimate cluster} estimator of the corresponding variance is given by:
+Consider a multi-stage sampling design, in which \(m_{h}\) PSUs are selected in stratum \(h,\) \(h=1,\ldots ,H\). Let \(\pi_{hi}\) be the inclusion probability of PSU \(i\) stratum \(h\), and by \(\widehat{Y}_{hi}\) an unbiased estimator of the total \(Y_{hi}\) of the survey variable \(y\) for the \(i\)-th PSU in stratum \(h\), \(h=1,\ldots ,H\). Hence an unbiased estimator of the population total \(Y = \sum_{h=1}^{H} \sum_{i \in U_{1h}} Y_{hi}\) is given by \(\widehat{Y}_{UC} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} d_{hi} \widehat{Y}_{hi}\), and the \emph{ultimate cluster} estimator of the corresponding variance is given by:
 
 \[
-\widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{n_{h}}
-{n_{h}-1} \sum_{i=1}^{n_{h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{n_{h}} \right) ^{2}
+\widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{m_{h}}
+{m_{h}-1} \sum_{i=1}^{n_{h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{m_{h}} \right) ^{2}
 \]
 
-where \(d_{hi} = 1 / \pi_{hi}\), \(\widehat{Y}_{h} = \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}\) for \(h=1,\ldots ,H\). (See for example, \citep{Shah1993}, p.~4).
+where \(U_{1h}\) and \(s_{1h}\) are the population and sample sets of PSUs in stratum \(h\), \(d_{hi} = 1 / \pi_{hi}\), \(\widehat{Y}_{h} = \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}\) for \(h=1,\ldots ,H\). (See for example, \citep{Shah1993}, p.~4).
 
 Although often the selection of primary units can have Primary Cluster estimator presented here may provide a reasonable approximation of the corresponding variance of randomization. This is because sampling plans without replacement are generally more efficient than plans with replacement of equal size. Such an approximation is widely used by sampling practitioners to estimate variances of usual descriptive quantities such as totals and medium (with due adaptation) due to their simplicity, compared to the much greater complexity involved with the employment of variance estimators that attempt to incorporate all steps of plans sampling in several stages. A discussion about Quality of this approximation and alternatives can be found in \citep{SSW92}, p.~153.
 
 In some cases, sample replication methods (\emph{bootstrap}, \emph{jackknife}) can also be used to estimate variances, as we will see later.
 
-\section{Using software to generate valid inferences}\label{using-software-to-generate-valid-inferences}
+\hypertarget{bootstrap-method}{%
+\section{Bootstrap Method}\label{bootstrap-method}}
+
+The method was proposed by \citet{Efron1979}, but the version we consider here is the so-called Rao-Wu-Yue Rescaling Bootstrap, which is adequate for stratified multi-stage sampling designs commonly used in household surveys - see \citet{Rao1992}. This method is now widely used for variance estimation with complex survey data. To implement this method, you need to follow the sequence of steps outlined below.
+
+Step 1. Select a simple random sample with replacement of size \(m_h - 1\) of PSUs in each of the \(H\) design strata. Each selected PSU takes with it all the subordinate sampling units and their data.
+
+Step 2. Repeat Step 1 \(R\) times, and denote by \(m_{hi}(r)\) the number of times the PSU \(i\) of stratum \(h\) was selected for the sample in replicate \(r\).
+
+Step 3. Calculate the \emph{bootstrap} weight of unit \(k\) within PSU \(i\) of stratum \(h\) as \(w_{hik} (r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)\).
+
+Step 4. For each replica \(r\), calculate an estimate \(\widehat \theta_{(r)}\) of the target parameter \(theta\) using the \emph{bootstrap} weights \(w_{hik} (r)\).
+
+Step 5. Estimate the variance using:
+
+\[
+\widehat V_{B} \left( \widehat \theta \right) = \frac {1} {R} \sum_{r=1}^R \left( \widehat \theta_{(r)} - \tilde \theta \right)^2
+\]
+
+where \(\tilde \theta = \frac 1 R \sum_{r=1}^R \widehat \theta_{(r)}\) is the average of the replica estimates.
+
+Whenever the original sampling weights \(w_{hik}\) receive non-response adjustments or are calibrated, the corresponding non-response adjustments and/or calibration of the basic weights must be repeated for each replica, so that the variance estimates adequately reflect the effects of the calibration and non-response adjusments on the uncertainty of the point estimates.
+
+This method is more computationally costly, but provides good estimates of variance, including for quantiles and other parameters of complex nonlinear forms. It also makes it easier for users who do not have access to software capable of calculating complex variance expressions based on Taylor linearization, etc. The survey package allows you to generate \emph{bootstrap} replicas and also estimate variances using this method.
+
+\hypertarget{using-software-to-generate-valid-inferences}{%
+\section{Using software to generate valid inferences}\label{using-software-to-generate-valid-inferences}}
 
 In this part, we advocate to using specialized statistical software to generate efficient estimation processes. Those packages support complex survey data analysis by specifying the survey design using appropriate commands or functions.
 
-\chapter{Descriptive parameters}\label{descriptive-parameters}
+\hypertarget{descriptive-parameters}{%
+\chapter{Descriptive parameters}\label{descriptive-parameters}}
 
-When analyzing complex survey data, several descriptive parameters are meaningful and important. For example: poverty and unemployment rates are simple parameters that allow decision-making for governments; also, income distribution can be used to monitor inequality along time.
+The most frequent analysis of complex household survey data consists in estimating some descriptive population parameters for a range of survey variables. Such \emph{descriptive analysis} generally involve estimating frequencies, proportions, means, and totals. But other target parameters such as selected quantiles of numeric variables, poverty and inequality measures, and a range of indicators such as those required for monitoring the Sustainable Development Goals are becoming part of regular set of estimates needed from household sample surveys.
 
-\section{Frequencies}\label{frequencies}
+\hypertarget{frequencies}{%
+\section{Frequencies}\label{frequencies}}
 
-\subsection{Point Estimation}\label{point-estimation}
+\hypertarget{point-estimation}{%
+\subsection{Point Estimation}\label{point-estimation}}
 
 The accurate estimation of absolute sizes and proportions in household surveys is essential for obtaining representative data that reflects the demographic and socioeconomic reality of a population. These figures serve as the basis for public policy decision-making, resource allocation, and the design of social programs.
 
 The ability to understand the distribution of specific categories, such as poverty status, employment status, education level, among others, provides valuable information to address inequalities and promote equitable development.
 
-\subsubsection{Size Estimates}\label{size-estimates}
+\hypertarget{size-estimates}{%
+\subsection{Size Estimates}\label{size-estimates}}
 
 In this section, the processes for estimating categorical variables will be carried out. First, one of the most important parameters is the size of a population, which represents the cardinality of that set; in other words, the total number of individuals that comprise it. In terms of notation, the population size is estimated as follows:
 
 \[
-\hat{N}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}
+\widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
 \]
 
-Similarly, the size estimate in a subpopulation, defined by a dichotomous variable \(I(y_i = d)\), which takes the value of one if individual \(i\) belongs to category \(d\) in the discrete variable, is given by the following expression:
+where \(s_{hi}\) is the sample of households or individuals in PSU \(i\) of stratum \(h\); \(s_{1h}\) is the sample of PSUs within stratum \(h\); and \(w_{hik}\) is the weight (expansion factor) of unit \(k\) within PSU \(i\) in stratum \(h\).
+
+Similarly, the size estimate in a subpopulation, defined by a dichotomous variable \(I(y_{hik} = d)\), which takes the value one if unit \(k\) from PSU \(i\) in stratum \(h\) belongs to category \(d\) in the discrete variable \(y\), is given by the following expression:
 
 \[
-\hat{N}^d_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_i = d)
+{\widehat{N}}_d = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ I(y_{hik} = d)
 \]
 
-\section{Means, proportions, and ratios}\label{means-proportions-and-ratios}
+\hypertarget{totals-means-proportions-and-ratios}{%
+\section{Totals, means, proportions, and ratios}\label{totals-means-proportions-and-ratios}}
 
-After conducting the graphical analysis of trends in the continuous survey variables, it is necessary to obtain point estimates of the measured parameters. These estimates can be obtained either generally for the entire population or disaggregated by domains of interest, depending on the research needs. In the context of household surveys, point estimates refer to the estimation of totals, averages, ratios, means, etc. As mentioned by \citet{Heeringa_West_Berglund_2017}, the estimation of totals or averages for a variable of interest in the population, along with the estimation of its variance, has played a crucial role in the development of probability sampling theory. These estimates allow for unbiased and accurate results, providing valuable insights into what is happening in the studied households and enabling informed public policy decision-making.
+For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs.
 
-\subsection{Total Estimates}\label{total-estimates}
+As mentioned by \citet{Heeringa_West_Berglund_2017}, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.
 
-Once the sampling design is defined, which was done in the previous section, the estimation processes for the parameters of interest are carried out. For the estimation of totals with complex sampling designs that include stratification \(\left(h=1,2,...,H\right)\) and subsampling in PSUs (assumed to be within stratum \(h\)) indexed by \(\alpha=1,2,...,a_{h}\), the estimator for the total can be written as:
+\hypertarget{estimating-totals}{%
+\subsection{Estimating totals}\label{estimating-totals}}
+
+Once the sampling design is defined, which was done in the previous section, the estimation process for the parameters of interest is carried out. For the estimation of totals with complex sampling designs that include stratification \(\left(h=1,2,...,H\right)\) and subsampling in PSUs (assumed to be within stratum \(h\)) indexed by \(i=1,2,...,m_h\), the estimator for the population total can be written as:
 
 \[
-\hat{y}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}
+\widehat{Y} = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ y_{hik}
 \]
 
-Where \(n_{h\alpha}\) is the sample size of households or individuals in PSU \(\alpha\) of stratum \(h\); \(a_{h}\) is the sample size of PSUs within stratum \(h\); \(H\) is the total number of strata in the sampling design. Finally, \(y_{h\alpha i}\) and \(\omega_{h\alpha i}\) correspond respectively to the observation of the variable of interest and the weight (expansion factor) of element \(i\) associated with PSU \(\alpha\) within stratum \(h\). The unbiased variance estimator for this total estimator \(\hat{y}_{\omega}\) is:
+Under full response, the Ultimate Cluster variance estimator for \(\widehat{Y}\) was provided in section 9.1. Calculating the total estimate and its estimated variance is complex, but now these calculations can be easily performed using the \texttt{svytotal} function from the \texttt{survey} package in R. The confidence interval of level \(1 - \alpha\) is given by the following expression:
 
 \[
-\widehat{var}\left(\hat{y}_{\omega}\right) = \sum_{h=1}^{H}\frac{a_{h}}{\left(a_{h}-1\right)}\left[\sum_{\alpha=1}^{a_{h}}\left(\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}-\frac{\left({ \sum_{\alpha=1}^{a_{h}}}\omega_{h\alpha i}y_{h\alpha i}\right)^{2}}{a_{h}}\right]
+\widehat{Y} \pm z_{1 - \alpha/2} \times \sqrt{\widehat{V}_{UC} \left( \widehat{Y}\right)}
 \]
 
-As can be seen, calculating the total estimate and its estimated variance is complex. However, these calculations can be performed in \texttt{R} using the \texttt{svytotal} function. The confidence interval is given by the following expression:
+with \(z_{1 - \alpha/2}\) denoting the quantile of the Gaussian distribution leaving an area of \({\alpha/2}\) to its right.
+
+\hypertarget{estimating-averages}{%
+\subsection{Estimating averages}\label{estimating-averages}}
+
+The estimation of the population means or averages is a very important task in household surveys. According to \citet{Gutierrez_2016}, an estimator of the population mean can be written as the ratio of two estimated finite population totals, as follows:
 
 \[
-\hat{y}_{\omega} \pm 1.96 \times \sqrt{\widehat{var}\left(\hat{y}_{\omega}\right)}
+\widehat{\overline{Y}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}y_{hik}} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}} = \frac{\widehat{Y}}{\widehat{N}}.
 \]
 
-\subsection{Estimation of Averages}\label{estimation-of-averages}
+Since \(\widehat{\overline{Y}}\) is a nonlinear statistic, there is no closed-form formula for exact the variance of this estimator. For this reason, either resampling methods or Taylor series approximations must be used. The latter may be achieved remembering that for the survey mean the sampling estimating equation requires defining \(\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} (y_{hik} - \theta) = 0\), therefore we can apply the variance estimator given in section 9.1 with \(z_{hik} = y_{hik} - \widehat{\overline{Y}}\).
 
-The estimation of the population mean or average is a very important parameter in household surveys. According to \citet{Gutierrez_2016}, an estimator of the population mean can be written as a nonlinear ratio of two estimated finite population totals, as follows:
+\hypertarget{estimating-proportions}{%
+\subsection{Estimating proportions}\label{estimating-proportions}}
+
+When \(y\) is a binary variable, the weighted mean estimates the population proportion. As mentioned by \citet{Heeringa2017}, by recoding the original response categories into simple indicator variables \(y\) with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:
 
 \[
-\hat{\bar{y}}_{\omega} = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}} = \frac{\hat{y}_{\omega}}{\hat{N}_{\omega}}.
+\widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 \]
 
-It should be noted that if \(y\) is a binary variable, the weighted mean estimates the population proportion. On the other hand, since \(\hat{\bar{y}}_{\omega}\) is not a linear statistic, there is no closed-form formula for the variance of this estimator. For this reason, resampling methods or Taylor series expansions must be used. In this particular case, using Taylor series, the variance of the estimator is as follows:
+We can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as \(z_{hik} = I(y_{hik} = d) - \widehat{p}_d\).
+
+Many statistical packages provide proportion estimates and standard errors on a percentage scale. As is well known in the specialized literature, when the estimated proportion of interest is close to zero or to one, the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter.
+
+To address this issue, alternative confidence interval estimates, as proposed by \citet{Rust2007ConfidenceIF} and \citet{DeanPagano2015} are available. One alternative based on using the logit transformation of the estimated proportion is:
 
 \[
-var\left(\hat{\bar{y}}_{\omega}\right) \dot{=} \frac{var\left(\hat{y}_{\omega}\right)+\hat{\bar{y}}_{\omega}^{2}\times var\left(\hat{N}_{\omega}\right)-2\times\hat{\bar{y}}_{\omega}\times cov\left(\hat{y}_{\omega},\hat{N}_{\omega}\right)}{\hat{N}_{\omega}^{2}}.
+CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2 , \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right) } \right]} {1 + exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2, \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right)}\right]}
 \]
 
-As can be observed, calculating the variance estimation involves complex components to compute analytically, such as the covariance between the estimated total and the estimated population size.
+\hypertarget{estimating-ratios}{%
+\subsection{Estimating ratios}\label{estimating-ratios}}
 
-\subsection{Proportion Estimation}\label{proportion-estimation}
-
-The estimation of a proportion for a binary response variable requires a direct extension of the ratio estimator shown in the previous chapter. As mentioned by \citet{Heeringa_West_Berglund_2017}, by recoding the original response categories into a single indicator variable \(y_{i}\) with possible values of 1 and 0 (e.g., yes = 1, no = 0), the estimator for a proportion is defined as follows:
-
-\[
-\hat{p}_{\omega}^d = \frac{\hat{N}^d_{\omega}}{\hat{N}_{\omega}} 
-= \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\ I(y_i = d)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
-\]
-
-By applying Taylor linearization to the above estimator, its variance is given by the following expression:
-
-\[
-var\left(\hat{p}_{\omega}^d\right) \dot{=} \frac{var\left(\hat{N}^{d}_{\omega}\right)+(\hat{p}_{\omega}^d)^{2}var\left(\hat{N}_{\omega}\right)-2\,\hat{p}_{\omega}^d\,cov\left(\hat{N}^{d}_{\omega},\hat{N}_{\omega}\right)}{(\hat{N}_{\omega})^{2}}
-\]
-
-It is common to observe that many statistical packages opt to generate proportion estimates and standard errors on a percentage scale.
-
-As is well known in the specialized literature, when the estimated proportion of interest is close to zero or one, the limits of the traditional confidence interval, based on the sampling design, may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. For this reason, to address this issue, alternative confidence interval estimates based on the sampling design can be used, as proposed by \citet{Rust2007ConfidenceIF} and \citet{DeanPagano2015}. Thus, the confidence interval using the \(Logit\left(p\right)\) transformation is given by:
-
-\[
-IC\left[logit\left(p^d\right)\right]  =  \left\{ ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl} \times   se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right\} 
-\]
-
-Therefore, the confidence interval for \(p^d\) would be:
-
-\[
-IC\left(p^d\right)  =  \left\{ \frac{exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}{1+exp\left[ln\left(\frac{\hat{p}_{\omega}^d}{1-\hat{p}_{\omega}^d}\right)\pm\frac{t_{1-\alpha/2,\,gl}\times se\left(\hat{p}_{\omega}^d\right)}{\hat{p}_{\omega}^d\left(1-\hat{p}_{\omega}^d\right)}\right]}\right\} 
-\]
-
-\subsection{Relationship Between Variables}\label{relationship-between-variables}
-
-In many household survey analyses, it is not sufficient to examine individual variables in isolation. For instance, analyzing the average income of men and women in a country is informative, but comparing the income difference between men and women is crucial for addressing the gender pay gap. This section provides computational tools for estimating ratios and explores hypothesis testing for differences in means, including more complex contrasts.
-
-\subsubsection{Estimation of Ratios}\label{estimation-of-ratios}
-
-A particular case of a non-linear function of totals is the population ratio. This is defined as the quotient of two population totals for continuous characteristics of interest. In household surveys, there are times when estimating such a parameter is necessary. For example, estimating the ratio of expenditures to income, the number of men per woman, or the number of pets per household in a specific country.
+In many household survey analyses, it is not sufficient to examine individual variables in isolation. For example, ODS indicator N.17.6.1 is defined as the ratio of the number of broadband subscriptions per 100 inhabitants in a country or region. Ratio estimators are obtained simply by the ratio of the corresponding estimators of totals (or means) in the numerator and denominator. Another example is estimating the ratio of expenditures to income or the ratio of a particular type of expenditure (say food) over total expenditures in a household budget survey.
 
 Since the ratio is the quotient of two totals, both the numerator and the denominator are unknown quantities and thus need to be estimated. The point estimator for a ratio in complex surveys is the quotient of the estimators for the totals, as defined by:
 
 \[
-\hat{R}_{\omega} = \frac{\hat{y}_{\omega}}{\hat{x}_{\omega}}
-= \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}y_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}x_{h\alpha i}}
+\widehat{R} = \frac{\widehat{Y}}{\widehat{X}}
+= \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ y_{hik}}{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ x_{hik}}
 \]
 
-However, because the ratio estimator is a quotient of two estimators (i.e., a quotient of two random variables), calculating the variance of this estimator is not straightforward. To address this, Taylor linearization methods are applied as demonstrated by \citet{Gutierrez_2016}.
+For variance estimation, all you need to do is specify the estimating function as \(z_{hik} = y_{hik} - \widehat{R} \ x_{hik}\), when \(y\) and \(x\) are the numerator and denominator variables, respectively.
 
-\section{Percentiles and inequality measures}\label{percentiles-and-inequality-measures}
+\hypertarget{variances-and-standard-deviations}{%
+\section{Variances and standard deviations}\label{variances-and-standard-deviations}}
 
-In household surveys, it is always necessary to estimate dispersion measures of the studied variables. For example, to understand how disparate incomes are in a given country, which helps inform public policy decisions. Therefore, studying these parameters is crucial. Below is the estimator for the standard deviation:
+Sometimes the interest lies in estimating the variance or standard deviation of a numeric survey variable \(y\). This can be accomplished using the following estimators:
 
 \[
-s_{\omega}(y) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}(y_{h\alpha i}-\hat{\bar{y}}_{\omega})^{2}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}-1}
+\widehat{S_y^2} = \frac{1}{\widehat{N}-1}
+{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right)^2}
 \]
 
-Non-central location measures (percentiles) are calculated to determine characteristic points of the data distribution beyond central values. Key non-central location measures include the median, quartiles, and percentiles. In most household surveys, not only are totals, means, and proportions estimated; for some indicators, it is necessary to estimate other parameters, such as medians and percentiles.
+and \(\widehat{S_y} = \sqrt{\widehat{S_y^2}}\) for the standard deviation.
 
-The median is a measure of central tendency that, unlike the mean, is not easily influenced by outliers, and is thus considered a robust measure. The median is the value that divides the population into two equal parts, implying that half of the population's observations fall above the median and the other half fall below.
+\hypertarget{correlations}{%
+\section{Correlations}\label{correlations}}
 
-On the other hand, the estimation of income percentiles in a given country can define the onset of public policy. For example, a tax could be imposed on individuals in the top 10\% of the income distribution, or transport subsidies could be provided to those in the bottom 15\% of the income distribution.
-
-Quantile estimation is based on results related to weighted total estimators, using an estimation of the cumulative distribution function (CDF) of the population. Specifically, the CDF for a variable \(y\) in a finite population of size \(N\) is defined as follows:
+Pearson correlation coefficients are useful for assessing the relationship between two numeric survey variables, say \(x\) and \(y\). These can be estimated using
 
 \[
-F(x) = \frac{\sum{i=1}^{N}I(y_i \leq x) }{N}
+\widehat{\rho}_{xy} = \frac {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right) \left( x_{hik} - \widehat{\overline{X}} \right)} {\sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right)^2} \sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( x_{hik} - \widehat{\overline{X}} \right)^2}}
 \]
 
-Where \(I(y_i \leq x)\) is an indicator variable that takes the value 1 if \(y_i\) is less than or equal to a specific value \(x\), and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
+\hypertarget{percentiles-and-inequality-measures}{%
+\section{Percentiles and inequality measures}\label{percentiles-and-inequality-measures}}
+
+Non-central location measures are helpful to determine location and spread of the data distribution beyond central values. Key non-central location measures include the quartiles and other quantiles or percentiles. As an example, the estimation of income percentiles in a given country may help define the onset of public policy. For example, a tax could be imposed on individuals in the top 10\% of the income distribution, or transport subsidies could be provided to those in the bottom 15\% of the income distribution.
+
+Quantile estimation is based on results related to weighted total estimators, by first estimating the population cumulative distribution function (CDF). The CDF for a variable \(y\) in a finite population of size \(N\) is defined as follows:
 
 \[
-\hat{F}_{\omega}(x) = \frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}I(y_{i}\leq x)}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+F(t) = \frac{1}{N}\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  I(y_{hik} \leq t) 
 \]
 
-Once the CDF is estimated using the survey design weights, the \(q\)-th quantile of a variable \(y\) is the smallest value of \(y\) such that the CDF is greater than or equal to \(q\). As is well known, the median is the value where the CDF is greater than or equal to 0.5. Thus, the estimated median is the value where the estimated CDF is greater than or equal to 0.5. Following the recommendations of \citet{Heeringa_West_Berglund_2017}, to estimate quantiles, one first considers the order statistics denoted as \(y_{(1)},\ldots,y_{(n)}\) and finds the value of \(j\) \((j=1,\ldots,n)\) such that:
+Where \(I(y_k \leq x)\) is an indicator variable that takes the value 1 if \(y_{hik}\) is less than or equal to a specific value \(t\), and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:
 
 \[
-\hat{F}_{\omega}(y_{j})\leq q\leq\hat{F}_{\omega}(y_{j+1})
+\widehat{F}(t) = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} I(y_{hik}\leq t)}{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 \]
 
-Thus, the estimation of the \(q\)-th quantile \(y_{(q)}\) in a complex sampling design is given by:
+Once the CDF is estimated using the survey design weights, the \(q\)-th quantile of a variable \(y\) is the smallest value of \(y\) such that the CDF is greater than or equal to \(q\). As is well known, the median is the value where the CDF is greater than or equal to \(1/2\). Thus, the estimated median is the smallest value where the estimated CDF is greater than or equal to \(1/2\). Following \citet{Heeringa2017}, to estimate quantiles, one first considers the order statistics denoted as \(y_{(1)}, \ldots, y_{(n)}\) and finds the value of \(j\) \((j=1, \ldots, n)\) such that:
 
 \[
-\hat{y}_{(q)} = y_{j}+\frac{q-\hat{F}_{\omega}(y_{j})}{\hat{F}_{\omega}(y_{j+1})-\hat{F}_{\omega}(y_{j})}(y_{j+1}-y_{j})
+\widehat{F}(y_{(j)}) \leq q\leq\widehat{F}(y_{(j+1)})
+\]
+
+Hence, the estimator of the \(q\)-th quantile \(y_{(q)}\) is given by:
+
+\[
+\widehat{y}_{(q)} = y_{(j)} + \frac{q - \widehat{F}(y_{(j)})}{\widehat{F}(y_{(j+1)}) - \widehat{F}(y_{(j)})} (y_{(j+1)} - y_{(j)})
 \]
 
 For the variance estimation and confidence intervals of quantiles, \citet{kovar1988bootstrap} present results from a simulation study where they recommend using the \emph{Balanced Repeated Replication} (BRR) technique.
 
-\subsection{Estimation of the Gini Coefficient}\label{estimation-of-the-gini-coefficient}
+\hypertarget{estimating-the-gini-coefficient}{%
+\subsection{Estimating the Gini coefficient}\label{estimating-the-gini-coefficient}}
 
 Economic inequality is a common issue worldwide, with particular focus from international institutions. Measuring economic inequality among households is of great interest, and the Gini coefficient (\(G\)) is the most commonly used indicator for this purpose. The Gini coefficient ranges from 0 to 1, where \(G = 0\) indicates perfect equality in wealth distribution, and higher values reflect increasing inequality.
 
 Following the estimation equation proposed by \citet{binder1995estimating}, the estimator for the Gini coefficient is given by:
 
 \[
-\widehat{G}_{\omega}\left(y\right) = \frac{2 \times \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}^{*}\hat{F}_{\omega}^{h\alpha i}y^{h\alpha i}-1}{\hat{\bar{y}}_{\omega}}
+\widehat{G} = \frac {2 \times \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}}  w_{hik}^{*} \widehat{F}_{hik} \ y_{hik} - 1} {\widehat{\overline{Y}}}
 \]
 
-where \(\omega_{h\alpha i}^{*}\) is a normalized weight, defined as:
+where \(w_{hik}^{*}\) is a normalized sampling weight, defined as
 
 \[
-\omega_{h\alpha i}^{*} = \frac{\omega_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+w_{hik}^{*} = \frac{w_{hik}} {\sum_{h=1}^{H} \sum_{i \in s_{1h}}  \sum_{k \in s_{hi}} w_{hik}}
 \]
 
-In this formula, \(\hat{F}_{h\alpha i}{}_{\omega}\) represents the estimated cumulative distribution function (CDF) for individual \(i\) in cluster \(\alpha\) of stratum \(h\), and \(\hat{\bar{y}}_{\omega}\) is the estimated mean.
+and \(\widehat{F}_{hik}\) represents the estimated CDF for individual \(k\) in cluster \(i\) of stratum \(h\).
 
 \citet{osier2009variance} and \citet{Langel_Tille_2013} provide important computational details for estimating the variance of this complex estimator.
 
-\section{NSO -- Practical example}\label{nso-practical-example}
+\hypertarget{nso-practical-example}{%
+\section{NSO -- Practical example}\label{nso-practical-example}}
 
 In this subsection a NSO will share how they do disseminate its results on basic descriptive statistics, how they publish the resulting tables and how do they deal with the suppression of estimates that do not reach expected quality.
 
-\chapter{Comparisons and association}\label{comparisons-and-association}
+\hypertarget{associations-between-categorical-variables}{%
+\chapter{Associations between categorical variables}\label{associations-between-categorical-variables}}
 
-Elaborate analyses of household survey data must be adjusted for the complex survey design to account for clustering, stratification, and weighting. This section will introduce the reader on the main methods currently used to compare subgroups and make conclusions based on a valid inferential context.
+Household sample surveys often collect data on categorical variables, and assessing whether pairs of these variables are associated becomes of interest. This section will introduce the reader on the main methods currently used to describe and infer associations for pairs of categorical variables.
 
-\section{Cross-tabulations}\label{cross-tabulations}
+We start by defining some notation. Let \(x\) and \(y\) denote two categorical variables, having \(R\) and \(C\) classes respectively. In order to formulate hypothesis tests for the independence between \(x\) and \(y\), we need to consider a \emph{superpopulation model}. We assume that the pairs \((x_{hik} , y_{hik})\) correspond to observations from identically distributed random vectors \((X ; Y)\), that have joint distribution specified by
 
-Contingency tables and tests of independence are essential tools in household survey analysis, as they help explore relationships between categorical variables. These tables organize population estimates based on two or more characteristics, revealing patterns and associations. Independence tests evaluate whether the variables are related or independent. This analysis is crucial in research and decision-making, as it provides insights into the dependence between factors, influencing strategies based on accurate estimates.
+\[
+P_{rc} = Pr \left( X = r \ ; \ Y = c \right) \quad \text{for } r=1,...,R \text{ and } c=1,...,C
+\]
 
-\subsection{Contingency Tables}\label{contingency-tables}
+with \(\sum_r \sum_c P_{rc} = 1\).
 
-In specialized literature, contingency tables are also referred to as cross-tabulations. Generally, a table is assumed to be a two-dimensional array with \(r=1,\ldots,R\) rows and \(c=1,\ldots,C\) columns. These tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts. A contingency table aims to succinctly represent the association between different categorical variables.
+If a census could be carried out to collect data on \(x\) and \(y\) from every unit in the population, we could calculate the population counts of units having classes \((r,c)\) for \((x,y)\) given by:
 
-For an unexpanded sample, these tables are defined using unweighted frequencies as shown below:
+\[
+N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} = r \ ; \ y_{hik} = c \right)
+\]
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule\noalign{}
-\textbf{Variable 2} & \textbf{Variable 1} & & \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-& 0 & 1 & \textbf{Row Marginal} \\
-0 & \(n^{00}\) & \(n^{01}\) & \(n^{0+}\) \\
-1 & \(n^{10}\) & \(n^{11}\) & \(n^{1+}\) \\
-\textbf{Column Marginal} & \(n^{+0}\) & \(n^{+1}\) & \(n^{++}\) \\
-\end{longtable}
+and the corresponding population proportions as \(p_{rc} = N_{rc} / N_{++}\), where \(N_{++} = \sum_r \sum_c N_{rc}\) denotes the total number of units in the population.
 
-For weighted analyses based on an expanded sample, the two-way table presents the population estimate of the frequencies as follows:
+Under the superpopulation model, the population proportions \(p_{rc}\) could be used to estimate (or approximate) the unknown probabilities \(P_{rc}\). Since in most instances we will have samples, not censuses, the population proportions \(p_{rc}\) must be estimated using weighted estimators provided in the previous sections.
+
+\hypertarget{cross-tabulations-and-contingency-tables}{%
+\section{Cross-tabulations and contingency tables}\label{cross-tabulations-and-contingency-tables}}
+
+Cross-tabulations organize population frequency distribution estimates for two or more categorical variables to help explore relationships between them. Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings.
+
+In the specialized literature, cross-tabulations are also referred to as contingency tables. Here a table is a two-dimensional array with rows indexed by \(r=1,\ldots,R\) and columns indexed by \(c=1,\ldots,C\). Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts. A contingency table aims to succinctly represent the association between different categorical variables.
+
+First we consider the case of a two-way contingency table. For most household sample surveys, a typical tabular output comprises the weighted frequencies that estimate the population frequencies, as follows:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2603}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}@{}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2407}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1852}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1852}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1852}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2037}}@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Variable 2}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Variable 1}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(y\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-& 0 & 1 & \textbf{Row Marginal} \\
-0 & \(\hat{N}^{00}_{\omega}\) & \(\hat{N}^{01}_{\omega}\) & \(\hat{N}^{0+}_{\omega}\) \\
-1 & \(\hat{N}^{10}_{\omega}\) & \(\hat{N}^{11}_{\omega}\) & \(\hat{N}^{1+}_{\omega}\) \\
-\textbf{Column Marginal} & \(\hat{N}^{+0}_{\omega}\) & \(\hat{N}^{+1}_{\omega}\) & \(\hat{N}_{\omega}\) \\
+\(x\) & 1 & \(\ldots\) & \(C\) & row marg. \\
+1 & \(\widehat{N}_{11}\) & \(\ldots\) & \(\widehat{N}_{1C}\) & \(\widehat{N}_{1+}\) \\
+\(\ldots\) & \(\ldots\) & \(\widehat{N}_{rc}\) & \(\ldots\) & \(\ldots\) \\
+\(R\) & \(\widehat{N}_{R1}\) & \(\ldots\) & \(\widehat{N}_{RC}\) & \(\widehat{N}_{R+}\) \\
+col.~marg. & \(\widehat{N}_{+1}\) & \(\ldots\) & \(\widehat{N}_{+C}\) & \(\widehat{N}\) \\
 \end{longtable}
 
-Thus, considering the subscript \(i\in\left(r,c\right)\) represents the individuals classified in cell (\(r, c\)), the estimator for the frequency in this cell is given by the following expression:
+where the estimated frequency in cell \((r,c)\) is obtained as
 
 \[
-\hat{N}^{rc}_{\omega} = \sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i\in\left(r,c\right)}^{n_{h\alpha}}\omega_{h\alpha i}
+\widehat{N}_{rc} = \sum_{h=1}^H \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik} \ I \left( x_{hik} = r \ ; \ y_{hik} = c \right)
 \]
 
-The estimators for the other frequencies in the table, including row and column marginals, are defined similarly. The estimated proportions from these weighted sample frequencies are obtained as follows:
+and \(\widehat{N}_{r+} = \sum_c \widehat{N}_{rc}\), \(\widehat{N}_{+c} = \sum_r \widehat{N}_{rc}\) and \(\widehat{N}_{++} = \sum_r \sum_c \widehat{N}_{rc}\).
+
+The estimated proportions from these weighted sample frequencies are obtained as follows:
 
 \[
-\hat{p}_{\omega}^{rc} = \frac{\hat{N}^{rc}_{\omega}}{\hat{N}_{\omega}}
+\widehat{p}_{rc} = \frac{\widehat{N}_{rc}}{\widehat{N}_{++}}
 \]
 
-On the other hand, it is also possible to create tables that report estimates of relative frequencies, or percentages, in the population. This analysis is, of course, conducted using weighted data based on the expanded sample. The two-way table with the population estimate of proportions is presented below:
+\(\widehat{p}_{r+} = \sum_c \widehat{N}_{r+} / \widehat{N}_{++}\), and \(\widehat{p}_{+c} = \sum_r \widehat{N}_{rc} / \widehat{N}_{++}\).
+
+Two-way tables can also display the estimates of population relative frequencies, as shown below:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2603}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}@{}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2407}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1852}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1852}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1852}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2037}}@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Variable 2}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Variable 1}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(y\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-& 0 & 1 & \textbf{Row Marginal} \\
-0 & \(\hat{p}^{00}_{\omega}\) & \(\hat{p}^{01}_{\omega}\) & \(\hat{p}^{0+}_{\omega}\) \\
-1 & \(\hat{p}^{10}_{\omega}\) & \(\hat{p}^{11}_{\omega}\) & \(\hat{p}^{1+}_{\omega}\) \\
-\textbf{Column Marginal} & \(\hat{p}^{+0}_{\omega}\) & \(\hat{p}^{+1}_{\omega}\) & \(\hat{p}_{\omega}\) \\
+\(x\) & 1 & \(\ldots\) & \(C\) & row marg. \\
+1 & \(\widehat{p}_{11}\) & \(\ldots\) & \(\widehat{p}_{1C}\) & \(\widehat{p}_{1+}\) \\
+\(\ldots\) & \(\ldots\) & \(\widehat{p}_{rc}\) & \(\ldots\) & \(\ldots\) \\
+\(R\) & \(\widehat{p}_{R1}\) & \(\ldots\) & \(\widehat{p}_{RC}\) & \(\widehat{p}_{R+}\) \\
+col.~marg. & \(\widehat{p}_{+1}\) & \(\ldots\) & \(\widehat{p}_{+C}\) & \(1\) \\
 \end{longtable}
 
-In the same way as for absolute frequencies, considering that the subscript \(i\in\left(r,c\right)\) represents the individuals classified in cell (\(r, c\)), the estimator for the proportion associated with this cell is given by the following expression:
+\hypertarget{testing-for-independence}{%
+\section{Testing for independence}\label{testing-for-independence}}
+
+Using the estimated contingency tables, it is possible to perform independence tests to verify whether \(x\) and \(y\) are associated. Following \citet{Heeringa2017}, the null hypothesis that \(x\) and \(y\) are independent is defined as:
 
 \[
-\hat{p}^{rc}_{\omega}=\frac{\hat{N}^{rc}_{\omega}}{\hat{N}_{\omega}}=
-\frac{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i\in\left(r,c\right)}^{n_{h\alpha}}\omega_{h\alpha i}}{\sum_{h=1}^{H}\sum_{\alpha=1}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}}
+H_0) \ \ P_{rc}^0 = {P_{r+} \times P_{+c}} \ \ \forall \ r=1, \ldots, R \text{ and } c=1, \ldots, C.
 \]
 
-\section{Tests for group comparisons}\label{tests-for-group-comparisons}
+Hence, to test the independence hypothesis we compare the estimated proportions \(\widehat{p}_{rc}\) with the estimated expected population proportions under the null \(P_{rc}^0\). If there is a large difference between them, then the independence hypothesis would not be supported by the data. Therefore, the following Pearson Rao-Scott adjusted test statistic \(X_{RS}^2\) \citep{Rao1984} is defined:
+
+\[
+X_{RS}^2 =\ \frac {n_{++}} {GDEFF} \sum_r \sum_c \frac{\left(\widehat{p}_{rc} - \widehat P_{rc}^0 \right)^2}{\widehat P_{rc}^0}
+\]
+
+where \(\widehat P_{rc}^0 = \widehat p_{r+} \times \widehat p_{+c}\) estimates the cell frequencies under the null hypothesis and \(GDEFF\) is an estimate of the generalized design effect given by
+
+\[
+GDEFF = \frac{\sum_{r}\sum_{c}\left(1 - \widehat p_{rc}\right) d^{2}\left(\widehat p_{rc}\right) - \sum_{r} \left(1 - \widehat p_{r+} \right) d^{2}\left(\widehat p_{r+}\right) - \sum_{c} \left( 1 - \widehat p_{+c} \right) d^{2} \left( \widehat p_{+c} \right)} {\left(R-1\right)\left(C-1\right)}
+\]
+
+where \(d^2 \left({\widehat \theta}\right)\) denotes the estimated design effect for the estimator \({\widehat \theta}\).
+
+Under the null hypothesis of independence, the large sample distribution of \(X_{RS}^2\) is \(\chi^2_{[(R-1) (C-1)]}\).
+
+As mentioned by \citet{Heeringa2017}, it was \citet{Fay1979}, along with \citet{Fellegi1980}, who began proposing corrections to Pearson's chi-square statistic based on a generalized design effect. \citet{Rao1984} later expanded the theory of generalized design effect corrections for these statistical tests, as did \citet{thomas1987small_sample}. The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi's approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.
+
+The Rao-Scott adjusted Likelihood Ratio statistic is defined as:
+
+\[
+G_{RS}^{2} = 2 \times \frac {n_{++}} {GDEFF} \times \sum_{r} \sum_{c} \widehat p_{rc} \times \ln \left( \frac{\widehat p_{rc}}{p_{rc}^0} \right)
+\]
+
+Under the null hypothesis of independence, the large sample distribution of this test statistic is also \(\chi^2_{[(R-1) (C-1)]}\).
+
+When the number of degrees of freedom for the sample is not very large, two adjusted versions of the above test statistics might be preferable, since they enable taking this into account. The F-adjusted test statistic for independence based on Pearson's \(X_{RS}^2\) is calculated as follows:
+
+\[
+F_{Pearson} = \frac{X^{2}_{R-S}}{(R-1)(C-1)} \sim F_{\left(R-1\right)\left(C-1\right) \ , \ df}
+\]
+
+where \(df = \sum_{h} n_h - H\) denotes the degrees of freedom in the design.
+
+The F-adjusted teststatistic for independence based on the Rao-Scott adjusted Likelihood Ratio statistic \(G_{RS}^{2}\) is calculated as:
+
+\[
+F_{LR} = \frac{G^{2}_{R-S}}{C-1} \sim F_{\left(C-1\right) \ , \ df}
+\]
+
+\hypertarget{tests-for-group-comparisons}{%
+\section{Tests for group comparisons}\label{tests-for-group-comparisons}}
 
 To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.
 
-\subsection{Hypothesis Test for the Difference of Means}\label{hypothesis-test-for-the-difference-of-means}
+\hypertarget{hypothesis-test-for-the-difference-of-means}{%
+\subsection{Hypothesis Test for the Difference of Means}\label{hypothesis-test-for-the-difference-of-means}}
 
-A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (\(H_0\)) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (\(H_1\)), which is the statement opposing the null hypothesis. This statement may be based on some belief or past experience and will be tested using the evidence gathered from the sample data. If it is suspected that the parameter \(\theta\) is equal to a particular value \(\theta_{0}\), the possible combinations of hypotheses that can be tested are:
+A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (\(H_0\)) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (\(H_1\)), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter \(\theta\) is equal to a particular value \(\theta_{0}\), the possible combinations of hypotheses that can be tested are:
 
 \begin{eqnarray*}
 \begin{cases}
@@ -518,82 +607,93 @@ H_{1}: & \theta<\theta_{0}
 
 One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.
 
-In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of \(j\) descriptive statistics, as shown below:
+In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of \(J\) descriptive statistics, as shown below:
 
-\begin{eqnarray*}
-f\left(\theta_{1},\theta_{2},...,\theta_{j}\right) & = & \sum_{j=1}^{J}a_{j}\theta_{j}
-\end{eqnarray*}
+\[
+f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
+\]
 
-In this case, \(a_{j}\) are known constants. An estimator of this function is given by:
+where the \(a_{j}\) are known constants. An estimator of this function is given by:
 
-\begin{eqnarray}
-\hat{f}_{\omega}\left(\hat{\theta}_{1},\hat{\theta}_{2},...,\hat{\theta}_{j}\right) & = & \sum_{j=1}^{J}a_{j}\hat{\theta}_{j}
-\end{eqnarray}
+\[
+\widehat{f} \left( \widehat{\theta}_{1}, \ldots, \widehat{\theta}_{J} \right) = \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j}
+\]
 
 And its variance is calculated as follows:
 
-\begin{eqnarray}
-var\left(\sum_{j=1}^{J}a_{j}\hat{\theta}_{j}\right) & = & \sum_{j=1}^{J}a_{j}^{2}var\left(\hat{\theta}_{j}\right)+2\times\sum_{j=1}^{J-1}\sum_{k>j}^{J}a_{j}a_{k}\,cov\left(\hat{\theta}_{j},\hat{\theta}_{k}\right)
-\end{eqnarray}
-
-As seen in the variance equation of the estimator, it incorporates the variances of the individual components' estimates, as well as the covariances of the estimated pairs.
-
-Of particular interest is analyzing the difference in population means, which can be written as follows:
-
 \[
-\bar{y}^{1}-\bar{y}^{2}
+Var \left( \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j} \right) = \sum_{j=1}^{J} a_{j}^{2} \ Var\left( \widehat{\theta}_{j} \right) + 2 \times \sum_{j=1}^{J-1} \sum_{k>j}^{J} a_{j} a_{k} \, Cov \left( \widehat{\theta}_{j} , \widehat{\theta}_{k} \right)
 \]
 
-Where \(\bar{y}_{1}\) is the mean of the first population, for example, the average household income obtained by fathers, and \(\bar{y}_{2}\) is the mean of the second population, which in this example could be the average income of mothers in a household. This parameter can be unbiasedly estimated by:
+As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators.
+
+Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a \emph{superpopulation model}. We assume that \(y_{hik}\) correspond to observations from identically distributed random variables \(Y\) having means \(\mu_{y,j}\) if unit \(k\) belongs to domain \(j\), with \(j = 1, 2\). Then we can define the difference in population means between domains 1 and 2 as \(\mu_{y,1} - \mu_{y,2}\). As an example, consider that \(\mu_{y,1}\) is the average household income for households with male heads of household, and \(\mu_{y,2}\) is the average household income for households with female heads.
+
+This difference in means can be unbiasedly estimated by:
 
 \[
-\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}
+\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
 \]
 
-Where \(\hat{\bar{y}}_{\omega}^{i}\) is the sample estimator of \(\bar{y}^{i}\) (\(i = 1, 2\)). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:
+where \(\widehat{\overline{Y}}_{j}\) is the sample estimator of \(\mu_{y,j}\) (\(j = 1, 2\)). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:
 
-\begin{eqnarray*}
+\[
 \begin{cases}
-H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
-H_{1}:\bar{y}_{1}-\bar{y}_{2}\neq0
-\end{cases} & \begin{cases}
-H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
-H_{1}:\bar{y}_{1}-\bar{y}_{2}>0
-\end{cases} & \begin{cases}
-H_{0}:\bar{y}_{1}-\bar{y}_{2}=0\\
-H_{1}:\bar{y}_{1}-\bar{y}_{2}<0
-\end{cases}
-\end{eqnarray*}
-
-To test these hypotheses, the following test statistic is used, which follows a t-student distribution with \(df\) degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} \neq 0
+\end{cases} 
+\]
 
 \[
-t = \frac{\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}}{se\left(\bar{y}_{1}-\bar{y}_{2}\right)} \sim t_{df}
+\begin{cases}
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} > 0
+\end{cases}
+\]
+
+\[
+\begin{cases}
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} < 0
+\end{cases}
+\]
+
+To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with \(df\) degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.
+
+\[
+t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
 \]
 
 Where:
 
 \[
-\widehat{se}\left(\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}\right) = \sqrt{\widehat{var}\left(\hat{\bar{y}}_{\omega}^{1}\right) + \widehat{var}\left(\hat{\bar{y}}_{\omega}^{2}\right) - 2 \  \widehat{cov}\left(\hat{\bar{y}}_{\omega}^{1},\hat{\bar{y}}_{\omega}^{2}\right)}
+\widehat{se} \left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right) = \sqrt{\widehat{Var}\left(\widehat{\overline{Y}}_{1}\right) + \widehat{Var}\left(\widehat{\overline{Y}}_{2}\right) - 2 \  \widehat{Cov}\left(\widehat{\overline{Y}}_{1} \ ; \widehat{\overline{Y}}_{2} \right)}
 \]
 
 If a confidence interval for the difference in means is desired, it would be constructed as follows:
 
 \[
-\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2} \pm t_{df}\ \widehat{se}\left(\hat{\bar{y}}_{\omega}^{1}-\hat{\bar{y}}_{\omega}^{2}\right)
+\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
 \]
 
-\subsection{Contrasts}\label{contrasts}
+\hypertarget{contrasts}{%
+\subsection{Contrasts}\label{contrasts}}
 
-In many cases, it is necessary to compare more than two populations at the same time. For example, comparing the average household incomes across three regions to identify which regions experienced a greater impact on households. In such cases, the difference of means we studied in previous chapters is not sufficient, as it only allows for pairwise comparisons of populations. Therefore, using contrasts becomes a good alternative to address these types of problems.
+In many cases, it is necessary to compare more than two population means at the same time. For example, comparing the average household incomes across three regions to identify which regions experienced a greater impact of some shock or policy on households. In such cases, the difference of means we studied before is not sufficient, as it only allows for pairwise comparisons of population means. Using contrasts enables one to address these types of problems.
 
 Based on the definitions discussed in this chapter, a contrast is a linear combination of parameters in the form:
 
-\begin{eqnarray*}
-f = A * \theta = f\left(\theta^{1},\theta^{2},...,\theta^{j}\right) & = & \sum_{j=1}^{J}a_{j}\theta^{j}
-\end{eqnarray*}
+\[
+f \left( \theta_{1}, \ldots, \theta_{J} \right) = A * {\theta} = \sum_{j=1}^{J} a_{j} \theta_{j}
+\]
 
-Where \(A\) is a matrix or vector of constants, and \(\theta\) is a matrix or vector of parameters.
+Where \(A\) is a matrix or vector of known constants, and \(\theta\) is a vector of parameters.
+
+XXX
+The example below is not well chosen, since in the end it simply compares two means again - reconsider the example or remove it altogether.
+
+Alternatively, present the theory above already in terms of contrasts, and then the two-populations case is a simple yet good example.
+XXX
 
 Next, we will perform the calculation of a hypothesis contrast. Suppose we have the estimates shown in the table, where the goal is to compare the average income by region. As a first example, we will compare two populations: the North and South regions. Specifically, we are interested in the income difference (\(f = \bar{y}^{North} - \bar{y}^{South}\)). Since the population is divided into five regions and the contrast will only be constructed for two of them (North and South), it is defined as follows:
 
@@ -604,13 +704,13 @@ f = A * \theta = 1 \times \bar{y}^{North} + (-1) \times \bar{y}^{South} + 0 \tim
 As can be observed, in this case, the contrast vector is \(A = \left[1, -1, 0, 0, 0\right]\). Mathematically, the estimator for this specific contrast is defined as:
 
 \[
-\hat{f}_{\omega} = A \times \hat{\theta} = \left[1, -1, 0, 0, 0\right] \times \left[
+\widehat{f} = A \times \widehat{\theta} = \left[1, -1, 0, 0, 0\right] \times \left[
 \begin{array}{c}
-\hat{\bar{y}}^{North}_{\omega} \\
-\hat{\bar{y}}^{South}_{\omega} \\
-\hat{\bar{y}}^{Center}_{\omega} \\
-\hat{\bar{y}}^{West}_{\omega} \\
-\hat{\bar{y}}^{East}_{\omega}
+\widehat{\bar{y}}^{North} \\
+\widehat{\bar{y}}^{South} \\
+\widehat{\bar{y}}^{Center} \\
+\widehat{\bar{y}}^{West} \\
+\widehat{\bar{y}}^{East}
 \end{array}
 \right]
 \]
@@ -684,92 +784,40 @@ East & 0.000 & 0.000 & 0.000 & 0.000 & 5135.854 \\
 Since the sampling is independent in each region, the covariances in the matrix are zero. To calculate the standard error of the difference (contrast), we will use the properties of variance, as follows:
 
 \[
-se(\hat{f}_{\omega}) = se\left(\hat{\bar{y}}^{North}_{\omega} - \hat{\bar{y}}^{South}_{\omega}\right) = \sqrt{var\left(\hat{\bar{y}}^{North}_{\omega}\right) + var\left(\hat{\bar{y}}^{South}_{\omega}\right) - 2 \, cov\left(\hat{\bar{y}}^{North}_{\omega}, \hat{\bar{y}}^{South}_{\omega}\right)}
+se(\widehat{f}) = se\left(\widehat{\bar{y}}^{North} - \widehat{\bar{y}}^{South}\right) = \sqrt{var\left(\widehat{\bar{y}}^{North}\right) + var\left(\widehat{\bar{y}}^{South}\right) - 2 \, cov\left(\widehat{\bar{y}}^{North}, \widehat{\bar{y}}^{South}\right)}
 \]
 
 Therefore, the estimated standard error for this contrast is:
 
 \[
-se(\hat{f}_{\omega}) = \sqrt{3064.715 + 3894.476 - 2 \times 0} = \sqrt{6959.191}
+se(\widehat{f}) = \sqrt{3064.715 + 3894.476 - 2 \times 0} = \sqrt{6959.191}
 \]
 
-\section{Tests of Independence}\label{tests-of-independence}
-
-Based on the estimated tables, it is possible to perform independence tests to verify whether there is an association between two categorical variables. Two variables are independent if the structural behavior of one variable does not depend on the other, and vice versa. \citet{Heeringa_West_Berglund_2017} state that, under simple random sampling, two categorical variables are independent if the expected proportion in row \(r\) and column \(c\), denoted as \(\pi^{rc}\), follows the relationship:
-
-\[
-\pi^{rc} = \frac{n^{r+} \times n^{+c}}{(n^{++})^2}
-\]
-
-Thus, one way to verify if there is independence between the variables of interest is to directly compare the estimated proportions \(\hat{p}^{rc}_{\omega}\) with the expected proportions \(\pi^{rc}\). If there is a large difference between them, then the independence hypothesis would not be supported by the collected data. Therefore, the following Rao-Scott \(\chi^{2}_{RS}\) statistic \citep{rao1984adjusted}, which follows a chi-square distribution with \((R-1) \times (C-1)\) degrees of freedom, is defined:
-
-\begin{eqnarray}
-\chi^{2}_{RS}  =  \frac{\chi^{2}_{Pearson}}{GDEFF}
-\end{eqnarray}
-
-Where:
-
-\[
-\chi^{2}_{Pearson} = n^{++} \left( \sum_r \sum_c \frac{(\hat{p}^{rc}_{\omega} - \pi^{rc})^2}{\pi^{rc}} \right)
-\]
-
-Additionally, \(GDEFF\) is an estimate of the generalized design effect by Rao--Scott, defined as:
-
-\[
-GDEFF = \frac{\sum_{r}\sum_{c}\left(1-p_{rc}\right)d^{2}\left(p_{rc}\right)-\sum_{r}\left(1-p_{r+}\right)d^{2}\left(p_{r+}\right)-\sum_{c}\left(1-p_{+c}\right)d^{2}\left(p_{+c}\right)}{\left(R-1\right)\left(C-1\right)}
-\]
-
-As mentioned by \citet{Heeringa_West_Berglund_2017}, it was \citet{fay1979adjusting}, along with \citet{fellegi1980approximate}, who began proposing corrections to Pearson's chi-square statistic based on a generalized design effect. \citet{rao1984chi_squared} later expanded the theory of generalized design effect corrections for these statistical tests, as did \citet{thomas1987small_sample}. The Rao-Scott method requires the calculation of generalized design effects, which are analytically more complex than Fellegi's approach. Rao-Scott corrections are now the standard for analyzing categorical survey data in software systems such as Stata and SAS.
-
-Additionally, Fisher's F-test for independence allows the analysis of whether two dichotomous variables are associated when the observed sample is too small, and the conditions for applying Pearson's \(\chi^{2}\) test are not met. To use this technique, consider the expressions for the estimated probability and Pearson's \(\chi^{2}\) statistic. Based on these, the likelihood ratio statistic is defined as:
-
-\[
-G^{2} = 2 \times n_{++} \times \sum_{r} \sum_{c} p_{rc} \times \ln \left( \frac{p_{rc}}{\hat{\pi}_{rc}} \right)
-\]
-
-where \(r\) is the number of rows, and \(c\) represents the number of columns, and the test has \((R-1) \times (C-1)\) degrees of freedom. Applying a correction for the generalized design effect, the likelihood ratio statistic is calculated as:
-
-\[
-G^2_{(R-S)} = \frac{G^2}{GDEFF}
-\]
-
-Thus, the F-statistic for independence based on Pearson's chi-square test is calculated as follows:
-
-\[
-F_{R-S,Pearson} = \frac{\chi^{2}_{R-S}}{\left[(R-1)(C-1)\right]} \sim F_{\left(R-1\right)\left(C-1\right),df}
-\]
-
-And, the F-statistic for independence based on the likelihood ratio is calculated as:
-
-\[
-F_{R-S,LRT} = \frac{G^{2}_{R-S}}{(C-1)} \sim F_{\left(C-1\right),df}
-\]
-
-where \(C\) is the number of columns in the cross-tabulation.
-
-\section{Correlation}\label{correlation}
-
-To conclude on the degree of association between variables, we show the proper approach to include sampling weights and complex sampling design.
-
-\section{NSO -- Practical example}\label{nso-practical-example-1}
+\hypertarget{nso-practical-example-1}{%
+\section{NSO -- Practical example}\label{nso-practical-example-1}}
 
 In this part an NSO will share its experiences on dealing with statistical comparisons among groups and how do they present the results in tables.
 
-\chapter{Regression: modelling survey data}\label{regression-modelling-survey-data}
+\hypertarget{regression-modelling-survey-data}{%
+\chapter{Regression: modelling survey data}\label{regression-modelling-survey-data}}
 
 Modelling survey data is a common task among researcher; some of them include the features of the sampling design in computing standard error of the estimated regression parameters. In this section we will deal with the problem of weighting in regression models and present a parsimonious solution.
 
-\section{To weight or not to weight?}\label{to-weight-or-not-to-weight}
+\hypertarget{to-weight-or-not-to-weight}{%
+\section{To weight or not to weight?}\label{to-weight-or-not-to-weight}}
 
 We present the pros and cons of including the complex design features in the estimation of regression parameters and their associated standard errors. We present some adjustment to the sampling weights to fit these kind of models (senate sampling weights, normalized sampling weights, Pfeffermann model weights).
 
-\section{Some inferential approaches to modelling data}\label{some-inferential-approaches-to-modelling-data}
+\hypertarget{some-inferential-approaches-to-modelling-data}{%
+\section{Some inferential approaches to modelling data}\label{some-inferential-approaches-to-modelling-data}}
 
 When modelling survey data, one should deal with two sources of variability: the one devoted to the complex sampling design and the one that comes from the very model. Combining these sources into a valid set up requires of some advanced methods. We will mention some of them: pseudo likelihood, combined inference.
 
-\section{Linear models}\label{linear-models}
+\hypertarget{linear-models}{%
+\section{Linear models}\label{linear-models}}
 
-\subsection{Basic Definitions}\label{basic-definitions}
+\hypertarget{basic-definitions}{%
+\subsection{Basic Definitions}\label{basic-definitions}}
 
 As noted by \citet{Heeringa_West_Berglund_2017}, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were \citet{kish1974inference}. Later, \citet{fuller1975regression} developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.
 
@@ -840,7 +888,8 @@ Thus, the response variable has the following distribution:
 y_{i}  \sim  N\left(x_{i}\boldsymbol{\beta},\sigma_{y,x}^{2}\right)
 \]
 
-\subsection{Estimation of Parameters in a Regression Model with Complex Samples}\label{estimation-of-parameters-in-a-regression-model-with-complex-samples}
+\hypertarget{estimation-of-parameters-in-a-regression-model-with-complex-samples}{%
+\subsection{Estimation of Parameters in a Regression Model with Complex Samples}\label{estimation-of-parameters-in-a-regression-model-with-complex-samples}}
 
 Once the assumptions of the model and the distributional characteristics of the errors are established, the next step is the process of parameter estimation. As an illustrative and introductory example, if instead of observing a sample of size \(n\) from the \(N\) elements of the population, a complete census had been conducted, the finite population regression parameter \(\beta_{1}\) could be calculated as follows:
 
@@ -876,7 +925,8 @@ As a generalization, according to \citet{kish1974inference}, the variance estima
 \end{bmatrix}
 \]
 
-\subsection{The Pfeffermann Weighting Approach}\label{the-pfeffermann-weighting-approach}
+\hypertarget{the-pfeffermann-weighting-approach}{%
+\subsection{The Pfeffermann Weighting Approach}\label{the-pfeffermann-weighting-approach}}
 
 \citet{Heeringa_West_Berglund_2017} addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:
 
@@ -907,7 +957,8 @@ An intermediate solution between these two approaches is given by \citet{pfeffer
 
 This method adjusts the survey weights based on the fitted model, balancing between design-based and model-based approaches to reduce variance while accounting for complex survey design.
 
-\subsection{Model Diagnostics}\label{model-diagnostics}
+\hypertarget{model-diagnostics}{%
+\subsection{Model Diagnostics}\label{model-diagnostics}}
 
 When fitting statistical models to household survey data, it is essential to perform quality checks to ensure the validity of the conclusions drawn. Most academic texts provide a detailed overview of the assumptions and considerations necessary for a properly defined model. Below are some of the key aspects to consider:
 
@@ -927,7 +978,8 @@ When fitting statistical models to household survey data, it is essential to per
   \textbf{Outliers}: Detect points that do not follow the general trend of the data, known as outliers.
 \end{itemize}
 
-\subsubsection{Coefficient of Determination}\label{coefficient-of-determination}
+\hypertarget{coefficient-of-determination}{%
+\subsubsection{Coefficient of Determination}\label{coefficient-of-determination}}
 
 The coefficient of determination, also known as the multiple correlation coefficient (\(R^{2}\)), is a common measure of goodness-of-fit in a regression model. This coefficient estimates the proportion of variance in the dependent variable explained by the model and ranges between 0 and 1. A value close to 1 indicates that the model explains a large proportion of the variability, while a value near 0 suggests the opposite.
 
@@ -961,7 +1013,8 @@ Where \(\widehat{SSE}_{\omega}\) is the weighted sum of squared errors, defined 
 
 This estimator adjusts the \(R^{2}\) calculation to reflect the characteristics of the sampling design, such as stratification and unequal selection probabilities, ensuring that survey weights are considered when evaluating the goodness-of-fit of the model.
 
-\subsubsection{Standardized Residuals}\label{standardized-residuals}
+\hypertarget{standardized-residuals}{%
+\subsubsection{Standardized Residuals}\label{standardized-residuals}}
 
 In model diagnostics, analyzing residuals is crucial. These analyses provide, under the assumption that the fitted model is adequate, an estimate of the errors. Therefore, a careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the fitting procedure.
 
@@ -975,7 +1028,8 @@ Where \(\mu_{i}\) is the expected value of \(y_{i}\), and \(\omega_{i}\) is the 
 
 If the assumption of constant variance is not met, the estimators remain unbiased and consistent, but they are no longer efficient. That is, they are no longer the best in the sense that they no longer have the smallest variance among all unbiased estimators. One way to analyze the assumption of constant variance in the errors is through graphical analysis. This is done by plotting the model residuals against \(\hat{y}\) or the model residuals against \(X_{i}\). If these plots reveal any pattern other than a constant cloud of points, it can be concluded that the error variance is not constant.
 
-\subsubsection{Influential Observations}\label{influential-observations}
+\hypertarget{influential-observations}{%
+\subsubsection{Influential Observations}\label{influential-observations}}
 
 Another set of techniques used for model analysis involves examining influential observations. An observation is deemed influential if, when removed from the data set, it causes a significant change in the model fit. It is important to note that an influential point may or may not be an outlier. To detect influential observations, it is essential to clarify what type of influence is being sought. For instance, an observation may be influential for parameter estimation but not for error variance estimation. Below are some statistical techniques for detecting influential data points:
 
@@ -990,7 +1044,8 @@ Another set of techniques used for model analysis involves examining influential
   \textbf{\(D_{f}Fits_{\left(i\right)}\) Statistic}: This statistic measures the change in the model fit when a particular observation is removed. In this case, the i-th observation is considered influential in the model fit if \(\mid DfFits\left(i\right)\mid \geq z\sqrt{\frac{p}{n}}\) with \(z = 2\).
 \end{enumerate}
 
-\subsubsection{Inference on Model Parameters}\label{inference-on-model-parameters}
+\hypertarget{inference-on-model-parameters}{%
+\subsubsection{Inference on Model Parameters}\label{inference-on-model-parameters}}
 
 Once the proper fit of the model has been evaluated using the methodologies discussed above, and the distributional properties of the errors---and consequently the response variable \(y\)---have been verified, the next step is to assess whether the estimated parameters are significant. This involves determining whether the covariates used to fit the model add value in explaining and/or predicting the study variable and the phenomenon of interest.
 
@@ -1008,7 +1063,8 @@ Where \(p\) is the number of model parameters and \(n\) is the sample size of th
 
 Where the degrees of freedom (\(df\)) for the interval in a household survey (complex samples) is given by the number of final stage clusters minus the number of primary stage strata \(\left(df=\sum_{h}a_{h}-H\right)\).
 
-\subsubsection{Estimation and Prediction}\label{estimation-and-prediction}
+\hypertarget{estimation-and-prediction}{%
+\subsubsection{Estimation and Prediction}\label{estimation-and-prediction}}
 
 According to \citet{neter1996applied}, linear regression models are essentially used for two purposes. One is to explain the variable of interest in terms of covariates that may be found in surveys, administrative records, censuses, etc. Additionally, they are also used to predict values of the variable under study, either within the range of values collected in the sample or outside of it. The first purpose has been addressed throughout this chapter, and the second is achieved as follows:
 
@@ -1029,11 +1085,13 @@ var\left(\hat{E}\left(y_{i}\mid x_{obs,i}\right)\right)
 =  x'_{obs,i}cov\left(\hat{\beta}\right)x{}_{obs,i}
 \]
 
-\section{Logistic models}\label{logistic-models}
+\hypertarget{logistic-models}{%
+\section{Logistic models}\label{logistic-models}}
 
 To model the probability of discrete variables, we apply the principles of design-based inference.
 
-\subsection{Logistic Regression Model for Proportions}\label{logistic-regression-model-for-proportions}
+\hypertarget{logistic-regression-model-for-proportions}{%
+\subsection{Logistic Regression Model for Proportions}\label{logistic-regression-model-for-proportions}}
 
 Logistic regression is a regression method that allows the estimation of the probability of success for a binary qualitative variable based on other continuous or discrete covariates. The variable of interest is binary or dichotomous, meaning it takes a value of one (1) if the condition being observed is met and zero (0) otherwise. In this way, the observations are separated into groups according to the value taken by the predictor variable.
 
@@ -1101,43 +1159,53 @@ G=-2\ln\left[\frac{L\left(\hat{\boldsymbol{\beta}}\right)_{reduced}}{L\left(\hat
 
 This statistic evaluates the difference in fit between the two models, allowing for the assessment of the significance of the parameters included in the full model.
 
-\section{NSO -- Practical example}\label{nso-practical-example-2}
+\hypertarget{nso-practical-example-2}{%
+\section{NSO -- Practical example}\label{nso-practical-example-2}}
 
 In this subsection, we will share the experience of an NSO in applying models to household survey data, and the results they present in terms of significance of models and relations among variables.
 
-\chapter{Data visualization}\label{data-visualization}
+\hypertarget{data-visualization}{%
+\chapter{Data visualization}\label{data-visualization}}
 
 In this section we delve deeper on how to present the results of the analysis of household surveys using graphics. This part is important because household surveys estimates are subject to error and the researcher should face this challenge on presenting not only point estimates, but also standard errors.
 
-\section{Weighted Histograms}\label{weighted-histograms}
+\hypertarget{weighted-histograms}{%
+\section{Weighted Histograms}\label{weighted-histograms}}
 
 To visualize the distribution of continuous variables, adjusted for survey weights.
 
-\section{Bar Charts}\label{bar-charts}
+\hypertarget{bar-charts}{%
+\section{Bar Charts}\label{bar-charts}}
 
 To display the distribution of categorical variables with standard errors.
 
-\section{Box Plots}\label{box-plots}
+\hypertarget{box-plots}{%
+\section{Box Plots}\label{box-plots}}
 
 To show the distribution of continuous variables, including measures of central tendency, variability, and outliers, across different groups or strata.
 
-\section{Scatter Plots}\label{scatter-plots}
+\hypertarget{scatter-plots}{%
+\section{Scatter Plots}\label{scatter-plots}}
 
 To explore the relationship between two continuous variables, potentially revealing patterns or trends in survey data.
 
-\section{Maps}\label{maps}
+\hypertarget{maps}{%
+\section{Maps}\label{maps}}
 
 To display the behavior of the interest variable across geographical domains.
 
-\section{NSO -- Practical example}\label{nso-practical-example-3}
+\hypertarget{nso-practical-example-3}{%
+\section{NSO -- Practical example}\label{nso-practical-example-3}}
 
 In this subsection we will include the experience of a NSO on displaying information through graphics.
 
-\chapter{Other modeling scenarios}\label{other-modeling-scenarios}
+\hypertarget{other-modeling-scenarios}{%
+\chapter{Other modeling scenarios}\label{other-modeling-scenarios}}
 
 In this section we indicate the literature and software supporting the fitting of some other models to complex household survey data, including:
 
-\section{Multilevel models}\label{multilevel-models}
+\hypertarget{multilevel-models}{%
+\section{Multilevel models}\label{multilevel-models}}
 
 Multilevel models, also known as mixed effects models or hierarchical models, are a statistical technique used in the analysis of household survey data to incorporate a hierarchical or multilevel structure. In these surveys, data are collected at the individual level (e.g., information about the age, gender, and education of each household member) and at the household level (e.g., household income, home ownership, and geographic location). Additionally, these models allow for the analysis of how household-level and individual-level factors influence responses to survey questions. For example, a multilevel model could be used to investigate how household income and the ages of household members influence the consumption of healthy foods.
 
@@ -1145,7 +1213,8 @@ In multilevel models, two types of effects are considered: fixed effects and ran
 
 Relevant references on the use of multilevel models in household surveys include \citet{goldstein2011}, a classic reference for multilevel data analysis that discusses the use of hierarchical models in various contexts, including household surveys; \citet{gelmanhill2019}, which offers an accessible introduction to the theory and practice of hierarchical models; \citet{rabe2012multilevel}, a practical guide for analyzing multilevel and longitudinal data using statistical software such as Stata; and \citet{browne2006comparison}, which compares Bayesian and frequentist approaches based on likelihood.
 
-\subsection{Model with Random Intercept}\label{model-with-random-intercept}
+\hypertarget{model-with-random-intercept}{%
+\subsection{Model with Random Intercept}\label{model-with-random-intercept}}
 
 In the analysis of multilevel models, two types of estimates are relevant. The first is associated with the regression coefficients, generally referred to as the fixed parameters of the model; the second pertains to the variance estimates, usually called the random parameters of the model. Any multilevel regression analysis should always begin with estimating the variance at both levels for the dependent variable.
 
@@ -1177,7 +1246,8 @@ An important concept in this type of analysis is the intra-class correlation (IC
 
 A high ICC indicates that a large proportion of the total variation in the variable is due to differences between groups, suggesting that the groups are distinct from one another and that the group effects should be considered in the model. Conversely, a low ICC indicates that most of the variation in the variable occurs within groups, implying that the group effects are not as significant in explaining variability in the variable.
 
-\subsection{Model with Random Slope}\label{model-with-random-slope}
+\hypertarget{model-with-random-slope}{%
+\subsection{Model with Random Slope}\label{model-with-random-slope}}
 
 This type of model allows the relationship between the independent variable and the dependent variable to change according to some other explanatory variable. In other words, it permits the slope of the relationship between the variables to differ as groups or subsets of data are considered. In a simple linear regression model, the relationship is modeled as a straight line with a fixed slope. However, in a model with a random slope, the slope can vary according to another explanatory variable.
 
@@ -1195,7 +1265,8 @@ where \(\beta_{1j}\) is given as
 
 In this particular case, the slope varies according to the sampling strata, while the intercept remains fixed. This allows for a more accurate capture of how the relationship between spending and income may differ across different groups, providing a better understanding of the patterns in the data.
 
-\subsection{Model with Random Intercept and Slope}\label{model-with-random-intercept-and-slope}
+\hypertarget{model-with-random-intercept-and-slope}{%
+\subsection{Model with Random Intercept and Slope}\label{model-with-random-intercept-and-slope}}
 
 Models with random intercepts and slopes are a type of statistical model that allows for modeling the relationship between a response variable and one or more predictor variables, considering both fixed and random effects. In these models, the regression coefficients (i.e., the slope and intercept) are treated as random rather than fixed, meaning these coefficients can vary across units of analysis, which may be individuals, groups, geographical regions, etc. These variations are modeled as random effects incorporated into the regression equation.
 
@@ -1219,9 +1290,11 @@ and
 
 In this model, \(\beta_{0j}\) and \(\beta_{1j}\) depend on the stratum variable, allowing both the intercept and slope to change according to the group of interest. This provides greater flexibility and better captures the heterogeneity in the data, reflecting how relationships between the variables may differ across subgroups.
 
-\section{Survival models}\label{survival-models}
+\hypertarget{survival-models}{%
+\section{Survival models}\label{survival-models}}
 
-\section{Loglinear models for contingency tables}\label{loglinear-models-for-contingency-tables}
+\hypertarget{loglinear-models-for-contingency-tables}{%
+\section{Loglinear models for contingency tables}\label{loglinear-models-for-contingency-tables}}
 
 When analyzing the relationships between variables that generate estimated totals in a contingency table (a rectangular arrangement that organizes data based on two or more categorical variables, showing the frequency or proportion of cases falling into each combination of categories), it is possible to use a log-linear model. This type of model is used to study the association between categorical variables while controlling for or considering potential effects of other covariates. Additionally, it allows for adjusting the observed associations in the contingency table and assessing whether these associations are statistically significant.
 
@@ -1265,7 +1338,8 @@ The F transformation of the Wald statistic is:
 F_{wald} = Q_{wald} \times \frac{df - (R-1)(C-1) + 1}{(R-1)(C-1) df} \sim F_{(R-1)(C-1), df - (R-1)(C-1) + 1}
 \]
 
-\chapter*{References}\label{references}
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
 \addcontentsline{toc}{chapter}{References}
 
   \bibliography{chapterbib.bib}

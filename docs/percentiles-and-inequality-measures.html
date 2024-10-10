@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,12 +160,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
-<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
-<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
-<li class="chapter" data-level="5.6" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
+<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
@@ -210,7 +211,7 @@ F(t) = \frac{1}{N}\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  I(y_{h
 <p><span class="math display">\[
 \widehat{F}(t) = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} I(y_{hik}\leq t)}{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 \]</span></p>
-<p>Once the CDF is estimated using the survey design weights, the <span class="math inline">\(q\)</span>-th quantile of a variable <span class="math inline">\(y\)</span> is the smallest value of <span class="math inline">\(y\)</span> such that the CDF is greater than or equal to <span class="math inline">\(q\)</span>. As is well known, the median is the value where the CDF is greater than or equal to <span class="math inline">\(1/2\)</span>. Thus, the estimated median is the smallest value where the estimated CDF is greater than or equal to <span class="math inline">\(1/2\)</span>. Following <span class="citation">Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, to estimate quantiles, one first considers the order statistics denoted as <span class="math inline">\(y_{(1)}, \ldots, y_{(n)}\)</span> and finds the value of <span class="math inline">\(j\)</span> <span class="math inline">\((j=1, \ldots, n)\)</span> such that:</p>
+<p>Once the CDF is estimated using the survey design weights, the <span class="math inline">\(q\)</span>-th quantile of a variable <span class="math inline">\(y\)</span> is the smallest value of <span class="math inline">\(y\)</span> such that the CDF is greater than or equal to <span class="math inline">\(q\)</span>. As is well known, the median is the value where the CDF is greater than or equal to <span class="math inline">\(1/2\)</span>. Thus, the estimated median is the smallest value where the estimated CDF is greater than or equal to <span class="math inline">\(1/2\)</span>. Following <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, to estimate quantiles, one first considers the order statistics denoted as <span class="math inline">\(y_{(1)}, \ldots, y_{(n)}\)</span> and finds the value of <span class="math inline">\(j\)</span> <span class="math inline">\((j=1, \ldots, n)\)</span> such that:</p>
 <p><span class="math display">\[
 \widehat{F}(y_{(j)}) \leq q\leq\widehat{F}(y_{(j+1)})
 \]</span></p>
@@ -240,7 +241,7 @@ w_{hik}^{*} = \frac{w_{hik}} {\sum_{h=1}^{H} \sum_{i \in s_{1h}}  \sum_{k \in s_
 Binder, David A., and Milojica S. Kovacevic. 1995. <span>“Estimating Some Measures of Income Inequality from Survey Data: An Application of the Estimating Equations Approach.”</span> <em>Survey Methodology</em> 21 (2): 137–45.
 </div>
 <div id="ref-Heeringa2017" class="csl-entry">
-Heeringa, Steven G., Brady T. West, and Paul Berglund. 2017b. <em>Survey Methodology</em>. Hoboken, NJ: Wiley.
+Heeringa, Steven G, Brady T West, and Patricia A Berglund. 2017b. <em>Applied Survey Data Analysis, Second Edition</em>. <em>Statistics in the Social and Behavioral Sciences</em>. 2nd edition. Chapman; Hall - CRC.
 </div>
 <div id="ref-kovar1988bootstrap" class="csl-entry">
 Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other Methods to Measure Errors in Survey Estimates.”</span> <em>Canadian Journal of Statistics</em> 16 (Suppl.): 25–45.

@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,12 +160,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="weighted-histograms.html"><a href="weighted-histograms.html"><i class="fa fa-check"></i><b>5.1</b> Weighted Histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>5.2</b> Bar Charts</a></li>
-<li class="chapter" data-level="5.3" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.3</b> Box Plots</a></li>
-<li class="chapter" data-level="5.4" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.4</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.5</b> Maps</a></li>
-<li class="chapter" data-level="5.6" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.6</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
+<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
+<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
+<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
+<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="other-modeling-scenarios.html"><a href="other-modeling-scenarios.html"><i class="fa fa-check"></i><b>6</b> Other modeling scenarios</a>
 <ul>
@@ -201,7 +202,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="bootstrap-method" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Bootstrap Method<a href="bootstrap-method.html#bootstrap-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The method was proposed by <span class="citation">Efron (<a href="#ref-Efron1979">1979</a>)</span>, but the version we consider here is the so-called Rao-Wu-Yue Rescaling Bootstrap, which is adequate for stratified multi-stage sampling designs commonly used in household surveys - see <span class="citation">Rao (<a href="#ref-Rao1992">1992</a>)</span>. This method is now widely used for variance estimation with complex survey data. To implement this method, you need to follow the sequence of steps outlined below.</p>
+<p>The method was proposed by <span class="citation">Efron (<a href="#ref-Efron1979">1979</a>)</span>, but the version we consider here is the so-called Rao-Wu-Yue Rescaling Bootstrap, which is adequate for stratified multi-stage sampling designs commonly used in household surveys - see <span class="citation">Rao, Wu, and Yue (<a href="#ref-Rao1992">1992</a>)</span>. This method is now widely used for variance estimation with complex survey data. To implement this method, you need to follow the sequence of steps outlined below.</p>
 <p>Step 1. Select a simple random sample with replacement of size <span class="math inline">\(m_h - 1\)</span> of PSUs in each of the <span class="math inline">\(H\)</span> design strata. Each selected PSU takes with it all the subordinate sampling units and their data.</p>
 <p>Step 2. Repeat Step 1 <span class="math inline">\(R\)</span> times, and denote by <span class="math inline">\(m_{hi}(r)\)</span> the number of times the PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span> was selected for the sample in replicate <span class="math inline">\(r\)</span>.</p>
 <p>Step 3. Calculate the <em>bootstrap</em> weight of unit <span class="math inline">\(k\)</span> within PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span> as <span class="math inline">\(w_{hik} (r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)\)</span>.</p>
@@ -220,7 +221,7 @@ div.csl-indent {
 Efron, Bradley. 1979. <span>“Bootstrap Methods: Another Look at the Jackknife.”</span> <em>The Annals of Statistics</em> 7 (1): 1–26.
 </div>
 <div id="ref-Rao1992" class="csl-entry">
-Rao, J. N. K. 1992. <span>“Estimating Functions in Survey Sampling Theory and Applications.”</span> <em>Survey Methodology</em> 18: 3–14.
+Rao, J. N. K., C F J Wu, and K. Yue. 1992. <span>“Some Recent Work on Resampling Methods for Complex Surveys.”</span> <em>Survey Methodology</em> 18: 209–17.
 </div>
 </div>
             </section>
