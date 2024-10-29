@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.2 Graphs for categorical data | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.2 Graphs for categorical data | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-10" />
+<meta name="date" content="2024-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,7 +162,10 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
 <li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
-<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="histograms.html"><a href="histograms.html#graphical-analysis-with-survey-tools"><i class="fa fa-check"></i><b>5.3.1</b> Graphical Analysis with Survey Tools</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
 <li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
 <li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
@@ -203,6 +206,50 @@ div.csl-indent {
 <div id="graphs-for-categorical-data" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Graphs for categorical data<a href="graphs-for-categorical-data.html#graphs-for-categorical-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When the data of interest are categorical, their descriptive analysis will be done using contingency tables. Then simple graphs like bar charts can be done using as input contingency tables produced with weighted counts. Ideally one should also aim to display error lines overlaying bars to indicate their respective confidence interval widths, thus conveying the uncertainty of the corresponding point estimates. Obtaining the weighted counts or proportions and their confidence intervals can be easily done using tools from several software packages, e.g. the <code>survey</code> package in R.</p>
+<p>As an example, the bar chart presents a comparison of the number of individuals (<code>Nd</code>) between rural and urban zones, with error lines indicating the confidence intervals for each estimate. According to the values in the table, the urban zone shows a slightly higher <code>Nd</code> value than the rural zone, with 78,164 individuals in the urban area compared to 72,102 in the rural area. This difference suggests a higher concentration of people in the urban zone.</p>
+<p>The confidence intervals allow us to assess the precision of these estimates. In the rural zone, the confidence interval ranges from 66,039 to 78,165 individuals, while in the urban zone, the confidence range goes from 72,526 to 83,802 individuals. This overlap between the intervals indicates that, although the urban zone has a higher number of individuals, the difference is not pronounced enough to be statistically significant.</p>
+<p>Furthermore, the standard deviation of <code>Nd</code> is 3,062 for the rural zone and 2,847 for the urban zone, reflecting similar variability in both zones. This suggests that the estimates are consistent in terms of relative uncertainty, without major differences in data dispersion between the zones.</p>
+<div class="figure"><span style="display:block;" id="fig:barIncome"></span>
+<img src="www/05_graficas/03_bar_pers.png" alt="Distribution of Population Income" width="1200" />
+<p class="caption">
+Figure 5.1: Distribution of Population Income
+</p>
+</div>
+<table style="width:100%;">
+<caption>Population distribution by area</caption>
+<colgroup>
+<col width="19%" />
+<col width="22%" />
+<col width="19%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Zone</th>
+<th>Number of Individuals (Nd)</th>
+<th>Standard Error (Nd_se)</th>
+<th>Lower Limit (Nd_low)</th>
+<th>Upper Limit (Nd_upp)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rural</td>
+<td>72,102</td>
+<td>3,062</td>
+<td>66,039</td>
+<td>78,165</td>
+</tr>
+<tr class="even">
+<td>Urban</td>
+<td>78,164</td>
+<td>2,847</td>
+<td>72,526</td>
+<td>83,802</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 

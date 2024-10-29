@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-10" />
+<meta name="date" content="2024-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,7 +162,10 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
 <li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
-<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a></li>
+<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="histograms.html"><a href="histograms.html#graphical-analysis-with-survey-tools"><i class="fa fa-check"></i><b>5.3.1</b> Graphical Analysis with Survey Tools</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
 <li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
 <li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
@@ -204,6 +207,29 @@ div.csl-indent {
 <h2><span class="header-section-number">5.3</span> Histograms<a href="histograms.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Histograms serve to present the distribution of a single numeric (continuous) survey variable or response. If one had a census, then the histogram is a powerful tool to describe the underlying distribution, even for very large datasets. When displaying sample data, however, the sampling weights must be taken into account when estimating frequencies or relative frequencies of population units having values in the specified histogram bins. Modern survey analysis tools can easily provide weighted histograms where the sampling weights are incorporated.</p>
 <p>Histograms are the precursors to density function estimates, and the later can be thought of as histograms with very large number of bins. The <code>survey</code> package in R provides functions that can plot smoothed density estimates obtained accounting for the sampling weights.</p>
+<div id="graphical-analysis-with-survey-tools" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Graphical Analysis with Survey Tools<a href="histograms.html#graphical-analysis-with-survey-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once the database containing the sample is available and the sampling design has been defined, initial visual analyses can be conducted. It is recommended to begin with graphical analyses that, thanks to the principle of representativeness, reflect the behavior of continuous variables not only in the obtained sample but also in the study population, using sampling weights for sample expansion.</p>
+<p>A common example of visualization in this type of analysis is the use of histograms to represent the distribution of variables such as income. These charts allow us to observe the distribution of the variable of interest in the expanded population and to understand its shape, dispersion, and general trends.</p>
+<p>It is also common to perform graphical analyses broken down by subgroups, such as geographic areas (urban and rural) or thematic characteristics like gender (male and female). This approach helps identify key differences among specific population subgroups, for instance, by examining income distribution in men and women over the age of 18. Such breakdowns help visualize and communicate potential gaps between subgroups of interest.</p>
+<p>In this way, charts help to communicate results in an accessible manner, offering a clear and straightforward visual representation for audiences who may not be familiar with the technical details of estimation methods.</p>
+<p>In <a href="histograms.html#fig:histIncome">5.2</a> the horizontal axis (x) represents income levels, spanning from 0 to over 4000 monetary units, while the vertical axis (y) indicates frequency, meaning the number of individuals within each income range.</p>
+<p>The distribution shows that most of the population is concentrated at lower income levels, with a particularly high frequency near 0. As income levels rise, frequency declines sharply, indicating a right-skewed (positively skewed) distribution with a smaller proportion of people at higher income levels. The light gray bars visually emphasize this concentration at lower incomes, highlighting a significant disparity in the population’s income distribution.</p>
+<div class="figure"><span style="display:block;" id="fig:histIncome"></span>
+<img src="www/05_graficas/01_hist_ingreso.png" alt="Distribution of Population Income" width="512" />
+<p class="caption">
+Figure 5.2: Distribution of Population Income
+</p>
+</div>
+<p>As an example, Figure <a href="histograms.html#fig:HistIncomeExpenditureSex">5.3</a> presents two histograms illustrating the distribution of income and expenditure by sex. In the histogram on the left, titled “Income Histograms by Sex,” we observe the income distribution, where blue bars represent men and pink bars represent women. The majority of the population, both male and female, is concentrated in the lower income levels, showing a right-skewed distribution. In the lower income levels, there are more men than women, while at higher income levels, the difference is less pronounced.</p>
+<p>In the histogram on the right, titled “Expenditure Histograms by Sex,” the distribution of expenditure is shown, also broken down by sex. Similar to income, most of the population of both sexes is concentrated in the lower expenditure levels, with a right-skewed trend. There is also a higher proportion of men in the lower expenditure levels, while at higher levels, the representation between sexes is more balanced. These histograms exemplify the similarity in the income and expenditure distributions between men and women, although men appear to be slightly more represented in the lower levels of both variables.</p>
+<div class="figure"><span style="display:block;" id="fig:HistIncomeExpenditureSex"></span>
+<img src="www/05_graficas/02_Hist_sex.png" alt="Histograms of Income and Expenditure by Sex" width="1200" />
+<p class="caption">
+Figure 5.3: Histograms of Income and Expenditure by Sex
+</p>
+</div>
+</div>
 </div>
             </section>
 

@@ -1,3 +1,7 @@
+fig:barIncome
+fig:histIncome
+fig:HistIncomeExpenditureSex
+fig:ScatterIncome
 the-golden-pair-sample-design-and-estimator
 parameters-and-estimators
 uncertainty-in-household-surveys
@@ -45,6 +49,7 @@ data-visualization
 graphs-and-sampling-weights
 graphs-for-categorical-data
 histograms
+graphical-analysis-with-survey-tools
 box-plots
 scatter-plots
 maps
