@@ -1,4 +1,4 @@
-# Associations between categorical variables
+# Associations between variables
 
 Household sample surveys often collect data on categorical variables, and assessing whether pairs of these variables are associated becomes of interest. This section will introduce the reader on the main methods currently used to describe and infer associations for pairs of categorical variables.
 
@@ -109,3 +109,104 @@ The F-adjusted teststatistic for independence based on the Rao-Scott adjusted Li
 $$
 F_{LR} = \frac{G^{2}_{R-S}}{C-1} \sim F_{\left(C-1\right) \ , \ df}
 $$
+
+## Tests for group comparisons
+
+To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.
+
+### Hypothesis Test for the Difference of Means
+
+A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis ($H_0$) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis ($H_1$), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter $\theta$ is equal to a particular value $\theta_{0}$, the possible combinations of hypotheses that can be tested are:
+
+```{=tex}
+\begin{eqnarray*}
+\begin{cases}
+H_{0}: & \theta=\theta_{0}\\
+H_{1}: & \theta\neq\theta_{0}
+\end{cases}\,\,\,\,\,\,\,\,\,   
+\begin{cases}
+H_{0}: & \theta=\theta_{0}\\
+H_{1}: & \theta>\theta_{0}
+\end{cases}\,\,\,\,\,\,\,\,\,   
+\begin{cases}
+H_{0}: & \theta=\theta_{0}\\
+H_{1}: & \theta<\theta_{0}
+\end{cases}
+\end{eqnarray*}
+```
+
+One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.
+
+In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of $J$ descriptive statistics, as shown below:
+
+$$
+f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
+$$
+
+where the $a_{j}$ are known constants. An estimator of this function is given by:
+
+$$
+\widehat{f} \left( \widehat{\theta}_{1}, \ldots, \widehat{\theta}_{J} \right) = \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j}
+$$
+
+And its variance is calculated as follows:
+
+$$
+Var \left( \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j} \right) = \sum_{j=1}^{J} a_{j}^{2} \ Var\left( \widehat{\theta}_{j} \right) + 2 \times \sum_{j=1}^{J-1} \sum_{k>j}^{J} a_{j} a_{k} \, Cov \left( \widehat{\theta}_{j} , \widehat{\theta}_{k} \right)
+$$
+
+As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators. 
+
+Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a *superpopulation model*. We assume that $y_{hik}$ correspond to observations from identically distributed random variables $Y$ having means $\mu_{y,j}$ if unit $k$ belongs to domain $j$, with $j = 1, 2$. Then we can define the difference in population means between domains 1 and 2 as $\mu_{y,1} - \mu_{y,2}$. As an example, consider that $\mu_{y,1}$ is the average household income for households with male heads of household, and $\mu_{y,2}$ is the average household income for households with female heads.
+
+This difference in means can be unbiasedly estimated by:
+
+$$
+\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
+$$
+
+where $\widehat{\overline{Y}}_{j}$ is the sample estimator of $\mu_{y,j}$ ($j = 1, 2$). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:
+
+$$
+\begin{cases}
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} \neq 0
+\end{cases} 
+$$
+
+$$
+\begin{cases}
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} > 0
+\end{cases}
+$$
+
+$$
+\begin{cases}
+H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
+H_1: \mu_{y,1} - \mu_{y,2} < 0
+\end{cases}
+$$
+
+To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with $df$ degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.
+
+$$
+t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
+$$
+
+Where:
+
+$$
+\widehat{se} \left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right) = \sqrt{\widehat{Var}\left(\widehat{\overline{Y}}_{1}\right) + \widehat{Var}\left(\widehat{\overline{Y}}_{2}\right) - 2 \  \widehat{Cov}\left(\widehat{\overline{Y}}_{1} \ ; \widehat{\overline{Y}}_{2} \right)}
+$$
+
+If a confidence interval for the difference in means is desired, it would be constructed as follows:
+
+$$
+\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
+$$
+
+## NSO -- Practical example
+
+In this part an NSO will share its experiences on dealing with statistical comparisons among groups and how do they present the results in tables.
+
