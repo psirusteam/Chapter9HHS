@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3 Associations between variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3 Associations between variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3 Associations between variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="nso-practical-example-3.html"/>
-<link rel="next" href="presentation-tables.html"/>
+<link rel="prev" href="nso-practical-example.html"/>
+<link rel="next" href="cross-tabulations-and-contingency-tables.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -197,28 +197,28 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tables" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Tables<a href="tables.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>Tables</em> form a key component regarding how agencies disseminate statistics from household survey data. Using tables efficiently helps minimize the amount of numeric values presented within the text, and to organise the survey results for presentation to the users and wider audiences. It is therefore important to discuss some core principles and ideas to the preparation and production of tables with survey results.</p>
-<p>Before we enter detailed discussions, it is important to distinguish three main types of tables that can be used for presenting the results of a survey:</p>
-<ul>
-<li><p>presentation tables;</p></li>
-<li><p>reference tables;</p></li>
-<li><p>long / database like tables.</p></li>
-</ul>
-<p>The guidelines for each of these kinds of tables will be somewhat different, though all three types should follow some key principles, as suggested by Miller (2004), namely:</p>
-<ul>
-<li><p><strong>Principle 1.</strong> Make it easy for your reader to find and understand the numbers presented in your tables;</p></li>
-<li><p><strong>Principle 2.</strong> Draw the layout and labels of the table in a simple and direct way, helping to focus attention on the results you want to show.</p></li>
-</ul>
+<div id="associations-between-variables" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Associations between variables<a href="associations-between-variables.html#associations-between-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Household sample surveys often collect data on categorical variables, and assessing whether pairs of these variables are associated becomes of interest. This section will introduce the reader on the main methods currently used to describe and infer associations for pairs of categorical variables.</p>
+<p>We start by defining some notation. Let <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> denote two categorical variables, having <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span> classes respectively. In order to formulate hypothesis tests for the independence between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we need to consider a <em>superpopulation model</em>. We assume that the pairs <span class="math inline">\((x_{hik} , y_{hik})\)</span> correspond to observations from identically distributed random vectors <span class="math inline">\((X ; Y)\)</span>, that have joint distribution specified by</p>
+<p><span class="math display">\[
+P_{rc} = Pr \left( X = r \ ; \ Y = c \right) \quad \text{for } r=1,...,R \text{ and } c=1,...,C
+\]</span></p>
+<p>with <span class="math inline">\(\sum_r \sum_c P_{rc} = 1\)</span>.</p>
+<p>If a census could be carried out to collect data on <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> from every unit in the population, we could calculate the population counts of units having classes <span class="math inline">\((r,c)\)</span> for <span class="math inline">\((x,y)\)</span> given by:</p>
+<p><span class="math display">\[
+N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} = r \ ; \ y_{hik} = c \right)
+\]</span></p>
+<p>and the corresponding population proportions as <span class="math inline">\(p_{rc} = N_{rc} / N_{++}\)</span>, where <span class="math inline">\(N_{++} = \sum_r \sum_c N_{rc}\)</span> denotes the total number of units in the population.</p>
+<p>Under the superpopulation model, the population proportions <span class="math inline">\(p_{rc}\)</span> could be used to estimate (or approximate) the unknown probabilities <span class="math inline">\(P_{rc}\)</span>. Since in most instances we will have samples, not censuses, the population proportions <span class="math inline">\(p_{rc}\)</span> must be estimated using weighted estimators provided in the previous sections.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="nso-practical-example-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="presentation-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="nso-practical-example.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cross-tabulations-and-contingency-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -249,7 +249,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/06Tables.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/03Associations.rmd",
 "text": "Edit"
 },
 "history": {

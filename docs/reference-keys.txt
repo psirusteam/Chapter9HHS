@@ -22,12 +22,11 @@ correlations
 percentiles-and-inequality-measures
 estimating-the-gini-coefficient
 nso-practical-example
-associations-between-categorical-variables
+associations-between-variables
 cross-tabulations-and-contingency-tables
 testing-for-independence
 tests-for-group-comparisons
 hypothesis-test-for-the-difference-of-means
-contrasts
 nso-practical-example-1
 regression-modelling-survey-data
 to-weight-or-not-to-weight
