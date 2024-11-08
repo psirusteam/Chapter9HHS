@@ -18,9 +18,10 @@ The confidence intervals allow us to assess the precision of these estimates. In
 
 Furthermore, the standard deviation of `Nd` is 3,062 for the rural zone and 2,847 for the urban zone, reflecting similar variability in both zones. This suggests that the estimates are consistent in terms of relative uncertainty, without major differences in data dispersion between the zones.
 
-\begin{figure}
-\includegraphics[width=33.33in]{www/05_graficas/03_bar_pers} \caption{Distribution of Population Income}(\#fig:barIncome)
-\end{figure}
+<div class="figure">
+<img src="www/05_graficas/03_bar_pers.png" alt="Distribution of Population Income" width="1200" />
+<p class="caption">(\#fig:barIncome)Distribution of Population Income</p>
+</div>
 
 | Zone  | Number of Individuals (Nd) | Standard Error (Nd_se) | Lower Limit (Nd_low) | Upper Limit (Nd_upp) |
 |--------------|----------------|--------------|--------------|--------------|
@@ -49,17 +50,19 @@ In \@ref(fig:histIncome) the horizontal axis (x) represents income levels, spann
 
 The distribution shows that most of the population is concentrated at lower income levels, with a particularly high frequency near 0. As income levels rise, frequency declines sharply, indicating a right-skewed (positively skewed) distribution with a smaller proportion of people at higher income levels. The light gray bars visually emphasize this concentration at lower incomes, highlighting a significant disparity in the population's income distribution.
 
-\begin{figure}
-\includegraphics[width=14.22in]{www/05_graficas/01_hist_ingreso} \caption{Distribution of Population Income}(\#fig:histIncome)
-\end{figure}
+<div class="figure">
+<img src="www/05_graficas/01_hist_ingreso.png" alt="Distribution of Population Income" width="512" />
+<p class="caption">(\#fig:histIncome)Distribution of Population Income</p>
+</div>
 
 As an example, Figure \@ref(fig:HistIncomeExpenditureSex) presents two histograms illustrating the distribution of income and expenditure by sex. In the histogram on the left, titled "Income Histograms by Sex," we observe the income distribution, where blue bars represent men and pink bars represent women. The majority of the population, both male and female, is concentrated in the lower income levels, showing a right-skewed distribution. In the lower income levels, there are more men than women, while at higher income levels, the difference is less pronounced.
 
 In the histogram on the right, titled "Expenditure Histograms by Sex," the distribution of expenditure is shown, also broken down by sex. Similar to income, most of the population of both sexes is concentrated in the lower expenditure levels, with a right-skewed trend. There is also a higher proportion of men in the lower expenditure levels, while at higher levels, the representation between sexes is more balanced. These histograms exemplify the similarity in the income and expenditure distributions between men and women, although men appear to be slightly more represented in the lower levels of both variables.
 
-\begin{figure}
-\includegraphics[width=33.33in]{www/05_graficas/02_Hist_sex} \caption{Histograms of Income and Expenditure by Sex}(\#fig:HistIncomeExpenditureSex)
-\end{figure}
+<div class="figure">
+<img src="www/05_graficas/02_Hist_sex.png" alt="Histograms of Income and Expenditure by Sex" width="1200" />
+<p class="caption">(\#fig:HistIncomeExpenditureSex)Histograms of Income and Expenditure by Sex</p>
+</div>
 
 ## Box Plots
 
@@ -79,9 +82,10 @@ The third alternative is to avoid the display of the individual data points alto
 
 As an example in \@ref(fig:ScatterIncome), the following scatterplot is presented, showing the weighted relationship between income and expenditure in a population. In this plot, the size of the points represents the weight assigned to each observation. A high concentration of points is observed at lower income and expenditure levels, suggesting that most of the population has low income and low expenditure. Although there is an upward trend, indicating that income and expenditure tend to increase together, the dispersion of points reveals that higher expenditure is not always associated with proportionally higher income. Some larger points, corresponding to observations with greater weight, are distributed across different levels of income and expenditure without concentrating in a single area. Additionally, a few isolated points at high expenditure levels may represent outliers with considerably higher-than-average expenditure. Overall, this plot suggests a positive relationship between income and expenditure, accompanied by significant variability and some exceptional cases.
 
-\begin{figure}
-\includegraphics[width=33.33in]{www/05_graficas/02_scatterplot_ingreso_gasto} \caption{Weighted scatterplot between income and expenditure}(\#fig:ScatterIncome)
-\end{figure}
+<div class="figure">
+<img src="www/05_graficas/02_scatterplot_ingreso_gasto.png" alt="Weighted scatterplot between income and expenditure" width="1200" />
+<p class="caption">(\#fig:ScatterIncome)Weighted scatterplot between income and expenditure</p>
+</div>
 
 ## Maps
 
