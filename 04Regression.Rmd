@@ -97,7 +97,7 @@ $$
 $$
 
 
-As can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:
+As it can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:
 
 $$
 var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\beta}_{1}^{2}var\left(\hat{t}_{x^{2}}\right)-2\hat{\beta}_{1}cov\left(\hat{t}_{xy},\hat{t}_{x^{2}}\right)}{\left(\hat{t}_{x^{2}}\right)^{2}}

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>6.6 Reference tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="6.6 Reference tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="6.6 Reference tables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphs-for-categorical-data.html"/>
-<link rel="next" href="box-plots.html"/>
+<link rel="prev" href="example-of-presentation-table-and-corresponding-text---include-in-a-box..html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -209,41 +209,48 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="histograms" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Histograms<a href="histograms.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Histograms serve to present the distribution of a single numeric (continuous) survey variable or response. If one had a census, then the histogram is a powerful tool to describe the underlying distribution, even for very large datasets. When displaying sample data, however, the sampling weights must be taken into account when estimating frequencies or relative frequencies of population units having values in the specified histogram bins. Modern survey analysis tools can easily provide weighted histograms where the sampling weights are incorporated.</p>
-<p>Histograms are the precursors to density function estimates, and the later can be thought of as histograms with very large number of bins. The <code>survey</code> package in R provides functions that can plot smoothed density estimates obtained accounting for the sampling weights.</p>
-<div id="graphical-analysis-with-survey-tools" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Graphical Analysis with Survey Tools<a href="histograms.html#graphical-analysis-with-survey-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once the database containing the sample is available and the sampling design has been defined, initial visual analyses can be conducted. It is recommended to begin with graphical analyses that, thanks to the principle of representativeness, reflect the behavior of continuous variables not only in the obtained sample but also in the study population, using sampling weights for sample expansion.</p>
-<p>A common example of visualization in this type of analysis is the use of histograms to represent the distribution of variables such as income. These charts allow us to observe the distribution of the variable of interest in the expanded population and to understand its shape, dispersion, and general trends.</p>
-<p>It is also common to perform graphical analyses broken down by subgroups, such as geographic areas (urban and rural) or thematic characteristics like gender (male and female). This approach helps identify key differences among specific population subgroups, for instance, by examining income distribution in men and women over the age of 18. Such breakdowns help visualize and communicate potential gaps between subgroups of interest.</p>
-<p>In this way, charts help to communicate results in an accessible manner, offering a clear and straightforward visual representation for audiences who may not be familiar with the technical details of estimation methods.</p>
-<p>In <a href="histograms.html#fig:histIncome">5.2</a> the horizontal axis (x) represents income levels, spanning from 0 to over 4000 monetary units, while the vertical axis (y) indicates frequency, meaning the number of individuals within each income range.</p>
-<p>The distribution shows that most of the population is concentrated at lower income levels, with a particularly high frequency near 0. As income levels rise, frequency declines sharply, indicating a right-skewed (positively skewed) distribution with a smaller proportion of people at higher income levels. The light gray bars visually emphasize this concentration at lower incomes, highlighting a significant disparity in the population’s income distribution.</p>
-<div class="figure"><span style="display:block;" id="fig:histIncome"></span>
-<img src="www/05_graficas/01_hist_ingreso.png" alt="Distribution of Population Income" width="512" />
-<p class="caption">
-Figure 5.2: Distribution of Population Income
-</p>
+<div id="reference-tables" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Reference tables<a href="reference-tables.html#reference-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>These are longer tables, generally used to present more complete sets of results from statistical studies. They should be limited in size to something that could be contained in a few pages of a printed report, say, with a number of rows no larger than 200, and no more than say 12 columns. Anything bigger than that should be considered for dissemination as a <em>database like table</em>, probably available only for download from a website or readable from some digital media.</p>
+<p>Reference tableswill typically take core classification, domain definition or <em>explanatory</em> variables to define the rows, and have the <em>outcome</em> classification or output variables define the columns. In both directions, sorting should typically be such that it is easier for the readers to locate the data that they are most interested in, either using alphabetic or well known classifications.</p>
+<p>Reference tables have in many cases been replaced by access to interactive databases that allow the interested user to obtain the tables they want from a website.</p>
+<p>Tables (of all types) should be <em>self-sustaining</em>. The idea is that each table should have the necessary metadata, so that if copied from one location to another it still makes sense. If you can get your tables to be <em>self-sustaining</em>, they will be easier to understand correctly, either in or out of the original context.</p>
+<p>Anatomy of a table. Figure XX presents the essential components of a table.</p>
+<p><img src="Table%20contents.png" style="width:140.0%" fig-align="center" /></p>
+<p>The title (and optional subtitle) of a table must provide a clear and precise indication of the data that will be presented in the table. These elements, combined, must answer the questions about what, where and when regarding the data to be presented inside the table. Be concise and avoid using verbs.</p>
+<p>Column header elements should identify the data that is displayed in each column of the table. They must also provide much of the relevant metadata: unit of measurement, time period, geographical area, etc.</p>
+<p>Stub elements, provided as the first column in the table, should identify the data that is displayed in each row of the table.</p>
+<p>The source of the data must always be provided at the bottom of the table, and must indicate the organization responsible and the name of the survey or study that produced the results contained in the table. The omission of the citation of the source prevents the reader from seeking more information about the data presented, and should be avoided.</p>
+<p>The Notes are optional, but they can be used to provide additional details about the data as needed to understand and use it correctly. Avoid using long texts, which if needed, would be better placed in a document that is then cited in the Notes section. If there is more than one Note, number sequentially, and use the numbers to indicate the corresponding calls inside the table. Make sure that the calls to Notes are sufficiently distinct from the actual figures / numbers inside te table to avoid confusion.</p>
+<p>The Data is the most important piece of information that the user expects to get from the table. Therefore, it is essential to present them in a way that is easy to extract the relevant information. For some tables, depending on the message you want to convey, it may be easier to search for information by rows or columns. This should be the most important consideration when deciding whether to present the table in portrait or landscape orientation. Dividing lines, dotted lines, shading, and even spacing can be helpful in guiding the reader to read the table in the ‘right’ direction.</p>
+<p>Some basic rules for presenting the data include:</p>
+<ul>
+<li>Use similar spacing for columns whenever possible;</li>
+<li>Avoid any unnecessary text;</li>
+<li>The width of the table should be only the width necessary to present the data, and not the entire width of the available space;</li>
+<li>Time series data should be presented in chronological order – for reference tables, in ascending order; for presentation tables, this order can be reverse or descending to display the most recent data first;</li>
+<li>Data on categorical variables should be presented using standard classifications; in reference tables, categories should be ordered according to the standard classification; in presentation tables, they can be presented in (descending) order of frequency to highlight the most frequent categories first;</li>
+<li>Use as few decimal places as possible;</li>
+<li>Use thousands separators; space is a better separator because it does not vary with the decimal separator according to language;</li>
+<li>Always align the numbers to the right, ensuring that the decimal separator (comma or period, depending on the language) are aligned;</li>
+<li>Never center the values unless they all have the same number of digits;</li>
+<li>Do not leave blank cells on the table; missing values or ‘not applicable’ situations must be identified with an appropriate symbol;</li>
+<li>Round the data to units that make sense in each case; aim for providing 3 or 4 significant digits in presentation tables;</li>
+<li>Rounding is also useful when the data is not very accurate, but be careful not to lose precision.</li>
+</ul>
+<p>The recommendations provided here to reference tables should also apply to longer tables provided as databases, but these can have additional resources if they are embedded on websites. For example, there may be support for users to sort tables using the values in each column, which would be useful for large tables where the user may be looking for the higher (or lower) values in a given column.</p>
+<p>Miller, J. E. (2004). The Chicago Guide to Writing About Numbers. Chicago: University of Chicago Press.</p>
+<p>UNECE (2009). Making Data Meaningful: part 2 - a guide to presenting statistics. Geneva, United Nations Economic Commission for Europe: 52.</p>
+
 </div>
-<p>As an example, Figure <a href="histograms.html#fig:HistIncomeExpenditureSex">5.3</a> presents two histograms illustrating the distribution of income and expenditure by sex. In the histogram on the left, titled “Income Histograms by Sex,” we observe the income distribution, where blue bars represent men and pink bars represent women. The majority of the population, both male and female, is concentrated in the lower income levels, showing a right-skewed distribution. In the lower income levels, there are more men than women, while at higher income levels, the difference is less pronounced.</p>
-<p>In the histogram on the right, titled “Expenditure Histograms by Sex,” the distribution of expenditure is shown, also broken down by sex. Similar to income, most of the population of both sexes is concentrated in the lower expenditure levels, with a right-skewed trend. There is also a higher proportion of men in the lower expenditure levels, while at higher levels, the representation between sexes is more balanced. These histograms exemplify the similarity in the income and expenditure distributions between men and women, although men appear to be slightly more represented in the lower levels of both variables.</p>
-<div class="figure"><span style="display:block;" id="fig:HistIncomeExpenditureSex"></span>
-<img src="www/05_graficas/02_Hist_sex.png" alt="Histograms of Income and Expenditure by Sex" width="1200" />
-<p class="caption">
-Figure 5.3: Histograms of Income and Expenditure by Sex
-</p>
-</div>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphs-for-categorical-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="box-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="example-of-presentation-table-and-corresponding-text---include-in-a-box..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -274,7 +281,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/05DataVisualization.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/08Tables.rmd",
 "text": "Edit"
 },
 "history": {

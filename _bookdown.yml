@@ -12,6 +12,6 @@ rmd_files: [
   "04Comparisons.rmd",
    "04Regression.rmd",
    "05DataVisualization.rmd",
-   "06OtherModels.rmd", 
+   "08Tables.rmd",
    "07References.rmd" 
 ]

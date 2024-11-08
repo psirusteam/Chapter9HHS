@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-10-29" />
+<meta name="date" content="2024-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,6 +182,12 @@ div.csl-indent {
 <li class="chapter" data-level="6.2" data-path="survival-models.html"><a href="survival-models.html"><i class="fa fa-check"></i><b>6.2</b> Survival models</a></li>
 <li class="chapter" data-level="6.3" data-path="loglinear-models-for-contingency-tables.html"><a href="loglinear-models-for-contingency-tables.html"><i class="fa fa-check"></i><b>6.3</b> Loglinear models for contingency tables</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i>Tables</a>
+<ul>
+<li class="chapter" data-level="6.4" data-path="presentation-tables.html"><a href="presentation-tables.html"><i class="fa fa-check"></i><b>6.4</b> Presentation tables</a></li>
+<li class="chapter" data-level="6.5" data-path="example-of-presentation-table-and-corresponding-text---include-in-a-box..html"><a href="example-of-presentation-table-and-corresponding-text---include-in-a-box..html"><i class="fa fa-check"></i><b>6.5</b> Example of presentation table and corresponding text - include in a box.</a></li>
+<li class="chapter" data-level="6.6" data-path="reference-tables.html"><a href="reference-tables.html"><i class="fa fa-check"></i><b>6.6</b> Reference tables</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a Chapter 9 of UN Household Survey Handbook. </a></li>
@@ -264,7 +270,7 @@ y_{i}  \sim  N\left(x_{i}\boldsymbol{\beta},\sigma_{y,x}^{2}\right)
 <p><span class="math display">\[
 \hat{\beta_{1}} = \frac{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-\hat{\bar{y}}_{\omega}\right)\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)}{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)^{2}}
 \]</span></p>
-<p>As can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:</p>
+<p>As it can be seen in the above equation, the parameter estimator is a ratio of totals; therefore, its variance is given by:</p>
 <p><span class="math display">\[
 var\left(\hat{\beta_{1}}\right)  =  \frac{var\left(\hat{t}_{xy}\right)+\hat{\beta}_{1}^{2}var\left(\hat{t}_{x^{2}}\right)-2\hat{\beta}_{1}cov\left(\hat{t}_{xy},\hat{t}_{x^{2}}\right)}{\left(\hat{t}_{x^{2}}\right)^{2}}
 \]</span></p>
