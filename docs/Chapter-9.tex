@@ -87,7 +87,7 @@
 
 \title{CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA}
 \author{Andrés Gutiérrez\footnote{Comisión Económica para América Latina y el Caribe (CEPAL) - \href{mailto:andres.gutierrez@cepal.org}{\nolinkurl{andres.gutierrez@cepal.org}}}, Pedro Luis do Nascimento Silva\footnote{SCIENCE, \href{mailto:pedronsilva@gmail.com}{\nolinkurl{pedronsilva@gmail.com}}}}
-\date{2024-11-08}
+\date{2024-11-12}
 
 \begin{document}
 \maketitle
@@ -139,6 +139,60 @@ Most of the sections in the chapter present national experiences that will guide
 The purpose of this chapter is defining and explaining basic concepts of the design-based paradigm in household surveys to analyze complex household survey data. In section 9.1, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from this kind of surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.2, we begin the journey with simple descriptive statistics: means, ratios, proportions and other parameters are part of this discussion. Section 9.3 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables. This section also deals with the problem of correlation and association. Section 9.4 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.5 presents a summary on survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.
 
 Most of the sections in the chapter present national experiences that will guide the reader on how currently NSOs are dealing with the different stages of the analysis of household survey data.
+
+\hypertarget{planning-analysis}{%
+\section{Planning Analysis}\label{planning-analysis}}
+
+Planning for the analysis stage of the survey is an important part of the survey planning process. Following the GSBPM model (\url{https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51}), the subprocess where this plan is devised is 2.1 - Design outputs. Here wew need to distinguish two groups of analysts: primary data producers, and secondary data users.
+
+\emph{Primary data producers} are those who are planning and will run the survey to obtain the intended data. For these, planning the analysis typically involves preparing a \emph{tabular plan}, which will be used to disseminate the core set of survey results.
+
+\emph{Secondary data users} are all those who will access and analyse the data after the survey is completed. For these, the main task is to define what are the questions that they are trying to answer by analysing the survey data. Often, these users have access only to limited data which are made public by the primary data producers, and corresponding documentation. Therefore, a key step will be the location and understanding of the survey metadata, which must include the description of the sample design and estimation methods used, both for descriptive parameters and for the corresponding measures of precision.
+
+The survey \emph{tabular plan} is the document describing which tables are to be produced once the data are available. This must align well with the needs specified for the survey (see chapter 2). Preparing this plan generally requires defining three sets of specifications:
+
+\begin{itemize}
+\item
+  Filter conditions;
+\item
+  Classification or domain variables;
+\item
+  Response or survey variables.
+\end{itemize}
+
+\emph{Filter conditions} may be used to define subgroups of the population for which specific tables will be produced. For example, in a survey where questions regarding occupation are asked only from individuals aged 15 or older, a filter condition might be `if age \textgreater{} 14'. Such a condition would then mean that only those in the relevant age group would be included in tables for the occupation related variables (status, type, income, etc.).
+
+\emph{Classification or domain variables} are those that will be used to subdivide the population units in groups relevant for the analysis of the \emph{response or survey variables}. Typically these variables are used to define the rows of tables to be produced. As an example, geography is a typical domain defining variable, say when a national survey must produce estimates by state or province. Other common examples are sex and age groups.
+
+An important consideration when defining domains has to do with sample design, namely when defining strata and sample sizes. For most national household sample surveys, providing breakdown by province or state is required, and therefore stratification by provinces will be essential. Also, if precision requirements must be satisfied at the province level, then sample sizes that meet such requirements must be computed by province and then summed to obtain the country level sample size.
+
+For domains defined by characteristics that are unavailable from the sampling frame, say age groups, for the case of household surveys that use area sampling, sample size calculations must take into account what the required sample size must be such that estimates for the rarest group meet precision specifications. As an example, suppose that estimates are required by age groups such as young adults (18 to 29), adults (30 to 49), ageing adults (50 to 59 anos) and elderly (60 and over). Assuming that the population distribution by these age groups is such that the ageing adults is the rarest group with 12.5\% of the total population, and if a minimum sample size of 500 individuals in this group is required, then the total sample must be 500 / 0.125 = 4,000. That is, in order for the full sample to provided an expected sample of about 500 ageing adults we must sample 4,000 individuals for the survey.
+
+A typical list of domain defining variables would include: geographic levels (provinces, etc.); type of region (urban x rural); sex; age groups; education; race / etchnicity; etc.
+
+\emph{Survey variables} are all others that we do not use as classification variables and that we wish to find out how they vary by the domains defined by the classification variables. Typically they will be the ones used to define the columns in the tables that we aim to publish with survey results. If they are categorical, they will generate a column for each category where the corresponding cross-classified frequencies will appear, with one row for each of the classes of the domain defining variables. If they are numeric (say income), each column may be used to provide a numerical summary highlighting the mean, median, standard deviation or some other quantile of interest.
+
+\emph{Secondary data users} approaching a survey data set for analysis must try to describe in as much detail as possible what are their key research questions. As an example, consider the question of assessing whether or not rural households face digital exclusion in a country, when compared to urban households. The null hypothesis behind this question is that \(H_0) P_{Rural} = P_{Urban}\), which we wish to test against the alternative \(H_A) P_{Rural} < P_{Urban}\), where \(P\) denotes the proportion of households having internet access in the domain identified. A related but different set of hypothesis could be \(H_0) C_{Rural} = C_{Urban}\) versus \(H_A) C_{Rural} < C_{Urban}\) where \(C\) denotes the average cost of connection for internet access in the specified domain.
+
+Listing the research questions in this way would enable the subsequent analysis to progress more directly towards the estimation of the relevant parameters from the survey data, and corresponding precision measures, both of which are required to compute test statistics that would provide the evidence required to answer them.
+
+But in order for such estimation to take place, the secondary data user will first have to find out details about how the sampling and estimation were done for the particular survey at hand. As we will discuss in subsequent sections of this chapter, it is essential to account for the survey weights when computing point estimates of both descriptive or model parameters, and to account for structural components of the sampling design and estimation process (stratification, clustering, unequal inclusion probabilities, non-response adjustment and calibration of survey weights, if any) when estimating variances or other measures of precision of the point estimates.
+
+Users that disregard such aspects of the sampling design do so at their peril, and may end up producing biased estimates that will lead to incorrect inferences and decisions. The recommended practice is for data producers to provide sufficient detail about such sampling aspects as part of the metadata released with survey microdata, in order to enable secondary data users to consider these aspects when conducting their analyses of interest.
+
+A standard quality control step for secondary data analysts consists of the following steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Load the survey microdata and attach the relevant metadata describing the structural aspects of the sampling design and estimation processes;
+\item
+  Replicate some of the estimates published by the survey data producer, including measures of precision, to ascertain that you have correctly described the data and the sampling design to the system being used to process the data.
+\item
+  Only then proceed towards the required new analysis for which no previous results are available. Repeat this analysis under two scenarions: ignoring and accounting for the sampling design. Compare the results and assess whether they match expectations regarding the likely impact of incorporating the sample design.
+\item
+  If the previous step provides results as expected, proceed with the interpretation of the final analysis by keeping only the outcomes obtained from the analysis incorporating the design effects.
+\end{enumerate}
 
 \hypertarget{the-golden-pair-sample-design-and-estimator}{%
 \chapter{The golden pair: sample design and estimator}\label{the-golden-pair-sample-design-and-estimator}}
@@ -431,8 +485,8 @@ and \(\widehat{F}_{hik}\) represents the estimated CDF for individual \(k\) in c
 
 In this subsection a NSO will share how they do disseminate its results on basic descriptive statistics, how they publish the resulting tables and how do they deal with the suppression of estimates that do not reach expected quality.
 
-\hypertarget{associations-between-categorical-variables}{%
-\chapter{Associations between categorical variables}\label{associations-between-categorical-variables}}
+\hypertarget{associations-between-variables}{%
+\chapter{Associations between variables}\label{associations-between-variables}}
 
 Household sample surveys often collect data on categorical variables, and assessing whether pairs of these variables are associated becomes of interest. This section will introduce the reader on the main methods currently used to describe and infer associations for pairs of categorical variables.
 
@@ -674,123 +728,6 @@ If a confidence interval for the difference in means is desired, it would be con
 
 \[
 \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
-\]
-
-\hypertarget{contrasts}{%
-\subsection{Contrasts}\label{contrasts}}
-
-In many cases, it is necessary to compare more than two population means at the same time. For example, comparing the average household incomes across three regions to identify which regions experienced a greater impact of some shock or policy on households. In such cases, the difference of means we studied before is not sufficient, as it only allows for pairwise comparisons of population means. Using contrasts enables one to address these types of problems.
-
-Based on the definitions discussed in this chapter, a contrast is a linear combination of parameters in the form:
-
-\[
-f \left( \theta_{1}, \ldots, \theta_{J} \right) = A * {\theta} = \sum_{j=1}^{J} a_{j} \theta_{j}
-\]
-
-Where \(A\) is a matrix or vector of known constants, and \(\theta\) is a vector of parameters.
-
-XXX
-The example below is not well chosen, since in the end it simply compares two means again - reconsider the example or remove it altogether.
-
-Alternatively, present the theory above already in terms of contrasts, and then the two-populations case is a simple yet good example.
-XXX
-
-Next, we will perform the calculation of a hypothesis contrast. Suppose we have the estimates shown in the table, where the goal is to compare the average income by region. As a first example, we will compare two populations: the North and South regions. Specifically, we are interested in the income difference (\(f = \bar{y}^{North} - \bar{y}^{South}\)). Since the population is divided into five regions and the contrast will only be constructed for two of them (North and South), it is defined as follows:
-
-\[
-f = A * \theta = 1 \times \bar{y}^{North} + (-1) \times \bar{y}^{South} + 0 \times \bar{y}^{Center} + 0 \times \bar{y}^{West} + 0 \times \bar{y}^{East}
-\]
-
-As can be observed, in this case, the contrast vector is \(A = \left[1, -1, 0, 0, 0\right]\). Mathematically, the estimator for this specific contrast is defined as:
-
-\[
-\widehat{f} = A \times \widehat{\theta} = \left[1, -1, 0, 0, 0\right] \times \left[
-\begin{array}{c}
-\widehat{\bar{y}}^{North} \\
-\widehat{\bar{y}}^{South} \\
-\widehat{\bar{y}}^{Center} \\
-\widehat{\bar{y}}^{West} \\
-\widehat{\bar{y}}^{East}
-\end{array}
-\right]
-\]
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
-\caption{Estimation table for regions.}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Region
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Income
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Standard error (se)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Lower bound (ci\_l)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Upper bound (ci\_u)
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Region
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Income
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Standard error (se)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Lower bound (ci\_l)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Upper bound (ci\_u)
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-North & 552.3637 & 55.35987 & 443.8603 & 660.8670 \\
-South & 625.7740 & 62.40574 & 503.4610 & 748.0870 \\
-Center & 650.7820 & 61.46886 & 530.3053 & 771.2588 \\
-West & 517.0071 & 46.22077 & 426.4161 & 607.5982 \\
-East & 541.7543 & 71.66487 & 401.2938 & 682.2149 \\
-\end{longtable}
-
-To continue with the example, we take the estimated mean incomes for the North and South regions and calculate the difference:
-
-\[
-f = A \times \theta = 552.4 - 625.8 = -73.4
-\]
-
-The next step is to calculate the variance-covariance matrix and extract the variances for the North and South regions:
-
-\begin{longtable}[]{@{}llllll@{}}
-\toprule\noalign{}
-& North & South & Center & West & East \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-North & 3064.715 & 0.000 & 0.000 & 0.000 & 0.000 \\
-South & 0.000 & 3894.476 & 0.000 & 0.000 & 0.000 \\
-Center & 0.000 & 0.000 & 3778.420 & 0.000 & 0.000 \\
-West & 0.000 & 0.000 & 0.000 & 2136.359 & 0.000 \\
-East & 0.000 & 0.000 & 0.000 & 0.000 & 5135.854 \\
-\end{longtable}
-
-Since the sampling is independent in each region, the covariances in the matrix are zero. To calculate the standard error of the difference (contrast), we will use the properties of variance, as follows:
-
-\[
-se(\widehat{f}) = se\left(\widehat{\bar{y}}^{North} - \widehat{\bar{y}}^{South}\right) = \sqrt{var\left(\widehat{\bar{y}}^{North}\right) + var\left(\widehat{\bar{y}}^{South}\right) - 2 \, cov\left(\widehat{\bar{y}}^{North}, \widehat{\bar{y}}^{South}\right)}
-\]
-
-Therefore, the estimated standard error for this contrast is:
-
-\[
-se(\widehat{f}) = \sqrt{3064.715 + 3894.476 - 2 \times 0} = \sqrt{6959.191}
 \]
 
 \hypertarget{nso-practical-example-1}{%
@@ -1305,145 +1242,6 @@ One area which still needs further research is that of providing appropriate mea
 \section{NSO -- Practical example}\label{nso-practical-example-3}}
 
 In this subsection we will include the experience of a NSO on displaying information through graphics.
-
-\hypertarget{other-modeling-scenarios}{%
-\chapter{Other modeling scenarios}\label{other-modeling-scenarios}}
-
-In this section we indicate the literature and software supporting the fitting of some other models to complex household survey data, including:
-
-\hypertarget{multilevel-models}{%
-\section{Multilevel models}\label{multilevel-models}}
-
-Multilevel models, also known as mixed effects models or hierarchical models, are a statistical technique used in the analysis of household survey data to incorporate a hierarchical or multilevel structure. In these surveys, data are collected at the individual level (e.g., information about the age, gender, and education of each household member) and at the household level (e.g., household income, home ownership, and geographic location). Additionally, these models allow for the analysis of how household-level and individual-level factors influence responses to survey questions. For example, a multilevel model could be used to investigate how household income and the ages of household members influence the consumption of healthy foods.
-
-In multilevel models, two types of effects are considered: fixed effects and random effects. Fixed effects represent the average relationships between variables, while random effects model the variation in these relationships across households. Thus, multilevel models account for heterogeneity in the population and provide more accurate estimates of the variables of interest. Therefore, multilevel models are a valuable tool in analyzing household survey data, as they allow for the examination of how both household-level and individual-level factors influence survey responses, while accounting for the hierarchical structure of the data.
-
-Relevant references on the use of multilevel models in household surveys include \citet{goldstein2011}, a classic reference for multilevel data analysis that discusses the use of hierarchical models in various contexts, including household surveys; \citet{gelmanhill2019}, which offers an accessible introduction to the theory and practice of hierarchical models; \citet{rabe2012multilevel}, a practical guide for analyzing multilevel and longitudinal data using statistical software such as Stata; and \citet{browne2006comparison}, which compares Bayesian and frequentist approaches based on likelihood.
-
-\hypertarget{model-with-random-intercept}{%
-\subsection{Model with Random Intercept}\label{model-with-random-intercept}}
-
-In the analysis of multilevel models, two types of estimates are relevant. The first is associated with the regression coefficients, generally referred to as the fixed parameters of the model; the second pertains to the variance estimates, usually called the random parameters of the model. Any multilevel regression analysis should always begin with estimating the variance at both levels for the dependent variable.
-
-The recommended first step in multilevel regression analysis involves decomposing the variance of the dependent variable across the different levels. For example, assuming that the variable of interest is individual income and that there is a hierarchical relationship between individuals and strata, the variance of income can be decomposed into two parts: the variance within strata and the variance between strata. These two components of variance can be obtained from a simple multilevel regression with a null model represented by the following expression:
-
-\[
-y_{ij} = \beta_{0j} + \epsilon_{ij}
-\]
-
-Here, \(y_{ij}\) represents the income of individual \(i\) in stratum \(j\); \(\beta_{0j}\) is the intercept in stratum \(j\); \(\epsilon_{ij}\) is the residual for individual \(i\) in stratum \(j\); \(\gamma_{00}\) is the overall intercept, and \(\tau_{0j}\) is the random effect for the intercept. For this model, it is assumed that:
-
-\[
-\tau_{0j} \sim N(0, \sigma_{\tau}^{2})
-\]
-
-Additionally,
-
-\[
-\epsilon_{ij} \sim N(0, \sigma_{\epsilon}^{2}).
-\]
-
-According to \citet{cai2013investigation}, there is sufficient evidence that sampling weights should be used in multilevel modeling to obtain unbiased estimates. Currently, different authors recommend various approaches on how to use sampling weights in hierarchical models. For instance, \citet{pfeffermann1998weighting} and \citet{asparouhov2006general} advise employing a pseudolikelihood approach to calculate estimates within and between different levels to achieve unbiased estimates.
-
-An important concept in this type of analysis is the intra-class correlation (ICC), which refers to the proportion of the total variance of a variable that is explained by differences between groups or levels (strata) in the model. In other words, the ICC measures the similarity or correlation between observations within the same group or level compared to observations from different groups. This quantity is calculated as follows:
-
-\[
-\rho = \frac{\sigma_{\tau}^{2}}{\sigma_{\tau}^{2} + \sigma_{\epsilon}^{2}}
-\]
-
-A high ICC indicates that a large proportion of the total variation in the variable is due to differences between groups, suggesting that the groups are distinct from one another and that the group effects should be considered in the model. Conversely, a low ICC indicates that most of the variation in the variable occurs within groups, implying that the group effects are not as significant in explaining variability in the variable.
-
-\hypertarget{model-with-random-slope}{%
-\subsection{Model with Random Slope}\label{model-with-random-slope}}
-
-This type of model allows the relationship between the independent variable and the dependent variable to change according to some other explanatory variable. In other words, it permits the slope of the relationship between the variables to differ as groups or subsets of data are considered. In a simple linear regression model, the relationship is modeled as a straight line with a fixed slope. However, in a model with a random slope, the slope can vary according to another explanatory variable.
-
-In these types of models, the relationship between the variables can imply a curve with different slopes for different subgroups. Random slope models are useful in situations where it is expected that the relationship between the variables changes in a nonlinear way or when differences in slope among subgroups need to be modeled. Consider the following model:
-
-\[
-Income_{ij} = \beta_{0} + \beta_{1j} Spending_{ij} + \epsilon_{ij}
-\]
-
-where \(\beta_{1j}\) is given as
-
-\[
-\beta_{1j} = \gamma_{10} + \gamma_{11} Stratum_{j} + \tau_{1j}
-\]
-
-In this particular case, the slope varies according to the sampling strata, while the intercept remains fixed. This allows for a more accurate capture of how the relationship between spending and income may differ across different groups, providing a better understanding of the patterns in the data.
-
-\hypertarget{model-with-random-intercept-and-slope}{%
-\subsection{Model with Random Intercept and Slope}\label{model-with-random-intercept-and-slope}}
-
-Models with random intercepts and slopes are a type of statistical model that allows for modeling the relationship between a response variable and one or more predictor variables, considering both fixed and random effects. In these models, the regression coefficients (i.e., the slope and intercept) are treated as random rather than fixed, meaning these coefficients can vary across units of analysis, which may be individuals, groups, geographical regions, etc. These variations are modeled as random effects incorporated into the regression equation.
-
-Continuing with the context of a household survey, consider the following model:
-
-\[
-Income_{ij} = \beta_{0j} + \beta_{1j} Spending_{ij} + \epsilon_{ij}
-\]
-
-where the intercept and slope are modeled as:
-
-\[
-\beta_{0j} = \gamma_{00} + \gamma_{01} Stratum_{j} + \tau_{0j}
-\]
-
-and
-
-\[
-\beta_{1j} = \gamma_{10} + \gamma_{11} Stratum_{j} + \tau_{1j}
-\]
-
-In this model, \(\beta_{0j}\) and \(\beta_{1j}\) depend on the stratum variable, allowing both the intercept and slope to change according to the group of interest. This provides greater flexibility and better captures the heterogeneity in the data, reflecting how relationships between the variables may differ across subgroups.
-
-\hypertarget{survival-models}{%
-\section{Survival models}\label{survival-models}}
-
-\hypertarget{loglinear-models-for-contingency-tables}{%
-\section{Loglinear models for contingency tables}\label{loglinear-models-for-contingency-tables}}
-
-When analyzing the relationships between variables that generate estimated totals in a contingency table (a rectangular arrangement that organizes data based on two or more categorical variables, showing the frequency or proportion of cases falling into each combination of categories), it is possible to use a log-linear model. This type of model is used to study the association between categorical variables while controlling for or considering potential effects of other covariates. Additionally, it allows for adjusting the observed associations in the contingency table and assessing whether these associations are statistically significant.
-
-Log-linear models in contingency tables can be used to determine whether there is a significant association between categorical variables; adjust the association between variables of interest by accounting for other variables that may influence the relationship; evaluate how the probability of a category in one categorical variable changes given a change in another categorical variable; and estimate the probability of a case falling into a specific category of a categorical variable given the information from other variables.
-
-The term log-linear essentially describes the role of the link function used in generalized linear models. In the simplest case, with two categorical variables inducing data from counts or proportions in contingency tables, the following statistical model can be formulated:
-
-\[
-\ln(\pi_{ijk}) = \mu + \lambda_i^X + \lambda_j^Y + \lambda_{ij}^{XY},   
-\]
-
-where \(\pi_{ijk}\) is the conditional probability of occurrence for the combination of categories \(i\) and \(j\) in the categorical variables \(X\) and \(Y\), respectively; \(\mu\) is the intercept representing the logarithm of the reference probability; \(\lambda_i^X\) and \(\lambda_j^Y\) are the main effects associated with categories \(i\) and \(j\) in the variables \(X\) and \(Y\), respectively; and finally, \(\lambda_{ij}^{XY}\) is the interaction effect between categories \(i\) and \(j\) in the categorical variables. The natural logarithm function is commonly used in these models to transform conditional probabilities and allow for interpretation in terms of log-odds. In summary, the model describes how the conditional probabilities of categorical events are related to each other and how these relationships can be influenced by main and interaction effects in the categorical variables \(X\) and \(Y\).
-
-This statistic is applied after a statistical model has been chosen (such as simple linear regression, logistic regression, among others). The Wald chi-squared test statistic for the null hypothesis of independence between rows and columns in a contingency table is defined as follows:
-
-\[
-Q_{wald} = \hat{\boldsymbol{Y}}^{t} \left(\boldsymbol{H} \hat{\boldsymbol{V}} \left(\hat{\boldsymbol{N}}\right) \boldsymbol{H}^{t}\right)^{-1} \hat{\boldsymbol{Y}}
-\]
-
-where
-
-\[
-\hat{\boldsymbol{Y}} = \left(\hat{N} - E\right)
-\]
-
-is a vector of \(R \times C\) differences between observed and expected cell counts, that is, \(\hat{N}_{rc} - E_{rc}\). The matrix \(\boldsymbol{H} \hat{\boldsymbol{V}} \left(\hat{\boldsymbol{N}}\right) \boldsymbol{H}^{t}\) represents the estimated variance-covariance matrix for the difference vector. In the case of a complex survey design, the variance-covariance matrix of the weighted frequency counts, \(\hat{V} \left(\hat{N}\right)\), is estimated using resampling methods or Taylor approximation. The matrix \(\boldsymbol{H}\) is the inverse of the matrix \(\boldsymbol{J}\) given by:
-
-\[
-\boldsymbol{J} = -\left[\frac{\delta^{2} \ln PL\left(\boldsymbol{B}\right)}{\delta^{2} \boldsymbol{B}}\right] \bigg|_{\boldsymbol{B} = \hat{\boldsymbol{B}}}
-\]
-
-Under the null hypothesis of independence, the Wald statistic follows a chi-squared distribution with \((R-1) \times (C-1)\) degrees of freedom:
-
-\[
-Q_{wald} \sim \chi^{2}_{(R-1)(C-1)}
-\]
-
-The F transformation of the Wald statistic is:
-
-\[
-F_{wald} = Q_{wald} \times \frac{df - (R-1)(C-1) + 1}{(R-1)(C-1) df} \sim F_{(R-1)(C-1), df - (R-1)(C-1) + 1}
-\]
 
 \hypertarget{tables}{%
 \chapter{Tables}\label{tables}}

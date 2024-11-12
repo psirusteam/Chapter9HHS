@@ -23,3 +23,50 @@ Most of the sections in the chapter present national experiences that will guide
 The purpose of this chapter is defining and explaining basic concepts of the design-based paradigm in household surveys to analyze complex household survey data. In section 9.1, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from this kind of surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.2, we begin the journey with simple descriptive statistics: means, ratios, proportions and other parameters are part of this discussion. Section 9.3 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables. This section also deals with the problem of correlation and association. Section 9.4 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.5 presents a summary on survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important. 
 
 Most of the sections in the chapter present national experiences that will guide the reader on how currently NSOs are dealing with the different stages of the analysis of household survey data.
+
+## Planning Analysis
+
+Planning for the analysis stage of the survey is an important part of the survey planning process. Following the GSBPM model (<https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51>), the subprocess where this plan is devised is 2.1 - Design outputs. Here wew need to distinguish two groups of analysts: primary data producers, and secondary data users.
+
+*Primary data producers* are those who are planning and will run the survey to obtain the intended data. For these, planning the analysis typically involves preparing a *tabular plan*, which will be used to disseminate the core set of survey results.
+
+*Secondary data users* are all those who will access and analyse the data after the survey is completed. For these, the main task is to define what are the questions that they are trying to answer by analysing the survey data. Often, these users have access only to limited data which are made public by the primary data producers, and corresponding documentation. Therefore, a key step will be the location and understanding of the survey metadata, which must include the description of the sample design and estimation methods used, both for descriptive parameters and for the corresponding measures of precision.
+
+The survey *tabular plan* is the document describing which tables are to be produced once the data are available. This must align well with the needs specified for the survey (see chapter 2). Preparing this plan generally requires defining three sets of specifications:
+
+-   Filter conditions;
+
+-   Classification or domain variables;
+
+-   Response or survey variables.
+
+*Filter conditions* may be used to define subgroups of the population for which specific tables will be produced. For example, in a survey where questions regarding occupation are asked only from individuals aged 15 or older, a filter condition might be 'if age \> 14'. Such a condition would then mean that only those in the relevant age group would be included in tables for the occupation related variables (status, type, income, etc.).
+
+*Classification or domain variables* are those that will be used to subdivide the population units in groups relevant for the analysis of the *response or survey variables*. Typically these variables are used to define the rows of tables to be produced. As an example, geography is a typical domain defining variable, say when a national survey must produce estimates by state or province. Other common examples are sex and age groups.
+
+An important consideration when defining domains has to do with sample design, namely when defining strata and sample sizes. For most national household sample surveys, providing breakdown by province or state is required, and therefore stratification by provinces will be essential. Also, if precision requirements must be satisfied at the province level, then sample sizes that meet such requirements must be computed by province and then summed to obtain the country level sample size.
+
+For domains defined by characteristics that are unavailable from the sampling frame, say age groups, for the case of household surveys that use area sampling, sample size calculations must take into account what the required sample size must be such that estimates for the rarest group meet precision specifications. As an example, suppose that estimates are required by age groups such as young adults (18 to 29), adults (30 to 49), ageing adults (50 to 59 anos) and elderly (60 and over). Assuming that the population distribution by these age groups is such that the ageing adults is the rarest group with 12.5% of the total population, and if a minimum sample size of 500 individuals in this group is required, then the total sample must be 500 / 0.125 = 4,000. That is, in order for the full sample to provided an expected sample of about 500 ageing adults we must sample 4,000 individuals for the survey.
+
+A typical list of domain defining variables would include: geographic levels (provinces, etc.); type of region (urban x rural); sex; age groups; education; race / etchnicity; etc.
+
+*Survey variables* are all others that we do not use as classification variables and that we wish to find out how they vary by the domains defined by the classification variables. Typically they will be the ones used to define the columns in the tables that we aim to publish with survey results. If they are categorical, they will generate a column for each category where the corresponding cross-classified frequencies will appear, with one row for each of the classes of the domain defining variables. If they are numeric (say income), each column may be used to provide a numerical summary highlighting the mean, median, standard deviation or some other quantile of interest.
+
+*Secondary data users* approaching a survey data set for analysis must try to describe in as much detail as possible what are their key research questions. As an example, consider the question of assessing whether or not rural households face digital exclusion in a country, when compared to urban households. The null hypothesis behind this question is that $H_0) P_{Rural} = P_{Urban}$, which we wish to test against the alternative $H_A) P_{Rural} < P_{Urban}$, where $P$ denotes the proportion of households having internet access in the domain identified. A related but different set of hypothesis could be $H_0) C_{Rural} = C_{Urban}$ versus $H_A) C_{Rural} < C_{Urban}$ where $C$ denotes the average cost of connection for internet access in the specified domain.
+
+Listing the research questions in this way would enable the subsequent analysis to progress more directly towards the estimation of the relevant parameters from the survey data, and corresponding precision measures, both of which are required to compute test statistics that would provide the evidence required to answer them.
+
+But in order for such estimation to take place, the secondary data user will first have to find out details about how the sampling and estimation were done for the particular survey at hand. As we will discuss in subsequent sections of this chapter, it is essential to account for the survey weights when computing point estimates of both descriptive or model parameters, and to account for structural components of the sampling design and estimation process (stratification, clustering, unequal inclusion probabilities, non-response adjustment and calibration of survey weights, if any) when estimating variances or other measures of precision of the point estimates.
+
+Users that disregard such aspects of the sampling design do so at their peril, and may end up producing biased estimates that will lead to incorrect inferences and decisions. The recommended practice is for data producers to provide sufficient detail about such sampling aspects as part of the metadata released with survey microdata, in order to enable secondary data users to consider these aspects when conducting their analyses of interest.
+
+A standard quality control step for secondary data analysts consists of the following steps:
+
+1.  Load the survey microdata and attach the relevant metadata describing the structural aspects of the sampling design and estimation processes;
+
+2.  Replicate some of the estimates published by the survey data producer, including measures of precision, to ascertain that you have correctly described the data and the sampling design to the system being used to process the data.
+
+3.  Only then proceed towards the required new analysis for which no previous results are available. Repeat this analysis under two scenarions: ignoring and accounting for the sampling design. Compare the results and assess whether they match expectations regarding the likely impact of incorporating the sample design.
+
+4.  If the previous step provides results as expected, proceed with the interpretation of the final analysis by keeping only the outcomes obtained from the analysis incorporating the design effects.
+
