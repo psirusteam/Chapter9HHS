@@ -72,7 +72,7 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
@@ -87,7 +87,7 @@
 
 \title{CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA}
 \author{Andrés Gutiérrez\footnote{Comisión Económica para América Latina y el Caribe (CEPAL) - \href{mailto:andres.gutierrez@cepal.org}{\nolinkurl{andres.gutierrez@cepal.org}}}, Pedro Luis do Nascimento Silva\footnote{SCIENCE, \href{mailto:pedronsilva@gmail.com}{\nolinkurl{pedronsilva@gmail.com}}}}
-\date{2024-11-12}
+\date{2024-11-15}
 
 \begin{document}
 \maketitle
@@ -99,8 +99,7 @@
 }
 \listoffigures
 \listoftables
-\hypertarget{abstract}{%
-\chapter*{Abstract}\label{abstract}}
+\chapter*{Abstract}\label{abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
 Analyzing complex household survey data requires knowing and properly applying the foundations of the design-based inference. The researcher will be faced to a small database that contains specific information that will allow her to make conclusions over the whole population.
@@ -109,8 +108,7 @@ The purpose of any analysis on this kind of datasets is not referred to make con
 
 The chapter covers three main topics of analysis: descriptive statistics; comparisons and association; and modeling of survey data. On the one hand, we introduce simple descriptive statistics, such as totals, frequencies, means and proportions, quantiles and some graphics; on the other, we delve deeper on complex relationships between the variables of the survey. All these analyses rely on the representativity principle of the design-based inference. This way, the reader will find a strong focus, not only on point estimates, but also on uncertainty measures. The chapter also presents a short discussion on the different approaches that can be used to estimate variances; the best way to visualize the estimates; and NSO practical experiences.
 
-\hypertarget{introduction}{%
-\chapter*{Introduction}\label{introduction}}
+\chapter*{Introduction}\label{introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
 A key concern of every agency that produces statistical information is with the \emph{correct} use of the data that it produces. This is even reflected in the United Nations \emph{Fundamental Principles of Official Statistics}, namely:
@@ -140,8 +138,7 @@ The purpose of this chapter is defining and explaining basic concepts of the des
 
 Most of the sections in the chapter present national experiences that will guide the reader on how currently NSOs are dealing with the different stages of the analysis of household survey data.
 
-\hypertarget{planning-analysis}{%
-\section{Planning Analysis}\label{planning-analysis}}
+\section{Planning Analysis}\label{planning-analysis}
 
 Planning for the analysis stage of the survey is an important part of the survey planning process. Following the GSBPM model (\url{https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51}), the subprocess where this plan is devised is 2.1 - Design outputs. Here wew need to distinguish two groups of analysts: primary data producers, and secondary data users.
 
@@ -194,15 +191,66 @@ A standard quality control step for secondary data analysts consists of the foll
   If the previous step provides results as expected, proceed with the interpretation of the final analysis by keeping only the outcomes obtained from the analysis incorporating the design effects.
 \end{enumerate}
 
-\hypertarget{the-golden-pair-sample-design-and-estimator}{%
-\chapter{The golden pair: sample design and estimator}\label{the-golden-pair-sample-design-and-estimator}}
+\chapter{Planning Analysis}\label{planning-analysis-1}
+
+Planning for the analysis stage of the survey is an important part of the survey planning process. Following the GSBPM model (\url{https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51}), the subprocess where this plan is devised is 2.1 - Design outputs. Here wew need to distinguish two groups of analysts: primary data producers, and secondary data users.
+
+\emph{Primary data producers} are those who are planning and will run the survey to obtain the intended data. For these, planning the analysis typically involves preparing a \emph{tabular plan}, which will be used to disseminate the core set of survey results.
+
+\emph{Secondary data users} are all those who will access and analyse the data after the survey is completed. For these, the main task is to define what are the questions that they are trying to answer by analysing the survey data. Often, these users have access only to limited data which are made public by the primary data producers, and corresponding documentation. Therefore, a key step will be the location and understanding of the survey metadata, which must include the description of the sample design and estimation methods used, both for descriptive parameters and for the corresponding measures of precision.
+
+The survey \emph{tabular plan} is the document describing which tables are to be produced once the data are available. This must align well with the needs specified for the survey (see chapter 2). Preparing this plan generally requires defining three sets of specifications:
+
+\begin{itemize}
+\item
+  Filter conditions;
+\item
+  Classification or domain variables;
+\item
+  Response or survey variables.
+\end{itemize}
+
+\emph{Filter conditions} may be used to define subgroups of the population for which specific tables will be produced. For example, in a survey where questions regarding occupation are asked only from individuals aged 15 or older, a filter condition might be `if age \textgreater{} 14'. Such a condition would then mean that only those in the relevant age group would be included in tables for the occupation related variables (status, type, income, etc.).
+
+\emph{Classification or domain variables} are those that will be used to subdivide the population units in groups relevant for the analysis of the \emph{response or survey variables}. Typically these variables are used to define the rows of tables to be produced. As an example, geography is a typical domain defining variable, say when a national survey must produce estimates by state or province. Other common examples are sex and age groups.
+
+An important consideration when defining domains has to do with sample design, namely when defining strata and sample sizes. For most national household sample surveys, providing breakdown by province or state is required, and therefore stratification by provinces will be essential. Also, if precision requirements must be satisfied at the province level, then sample sizes that meet such requirements must be computed by province and then summed to obtain the country level sample size.
+
+For domains defined by characteristics that are unavailable from the sampling frame, say age groups, for the case of household surveys that use area sampling, sample size calculations must take into account what the required sample size must be such that estimates for the rarest group meet precision specifications. As an example, suppose that estimates are required by age groups such as young adults (18 to 29), adults (30 to 49), ageing adults (50 to 59 anos) and elderly (60 and over). Assuming that the population distribution by these age groups is such that the ageing adults is the rarest group with 12.5\% of the total population, and if a minimum sample size of 500 individuals in this group is required, then the total sample must be 500 / 0.125 = 4,000. That is, in order for the full sample to provided an expected sample of about 500 ageing adults we must sample 4,000 individuals for the survey.
+
+A typical list of domain defining variables would include: geographic levels (provinces, etc.); type of region (urban x rural); sex; age groups; education; race / etchnicity; etc.
+
+\emph{Survey variables} are all others that we do not use as classification variables and that we wish to find out how they vary by the domains defined by the classification variables. Typically they will be the ones used to define the columns in the tables that we aim to publish with survey results. If they are categorical, they will generate a column for each category where the corresponding cross-classified frequencies will appear, with one row for each of the classes of the domain defining variables. If they are numeric (say income), each column may be used to provide a numerical summary highlighting the mean, median, standard deviation or some other quantile of interest.
+
+\emph{Secondary data users} approaching a survey data set for analysis must try to describe in as much detail as possible what are their key research questions. As an example, consider the question of assessing whether or not rural households face digital exclusion in a country, when compared to urban households. The null hypothesis behind this question is that \(H_0) P_{Rural} = P_{Urban}\), which we wish to test against the alternative \(H_A) P_{Rural} < P_{Urban}\), where \(P\) denotes the proportion of households having internet access in the domain identified. A related but different set of hypothesis could be \(H_0) C_{Rural} = C_{Urban}\) versus \(H_A) C_{Rural} < C_{Urban}\) where \(C\) denotes the average cost of connection for internet access in the specified domain.
+
+Listing the research questions in this way would enable the subsequent analysis to progress more directly towards the estimation of the relevant parameters from the survey data, and corresponding precision measures, both of which are required to compute test statistics that would provide the evidence required to answer them.
+
+But in order for such estimation to take place, the secondary data user will first have to find out details about how the sampling and estimation were done for the particular survey at hand. As we will discuss in subsequent sections of this chapter, it is essential to account for the survey weights when computing point estimates of both descriptive or model parameters, and to account for structural components of the sampling design and estimation process (stratification, clustering, unequal inclusion probabilities, non-response adjustment and calibration of survey weights, if any) when estimating variances or other measures of precision of the point estimates.
+
+Users that disregard such aspects of the sampling design do so at their peril, and may end up producing biased estimates that will lead to incorrect inferences and decisions. The recommended practice is for data producers to provide sufficient detail about such sampling aspects as part of the metadata released with survey microdata, in order to enable secondary data users to consider these aspects when conducting their analyses of interest.
+
+A standard quality control step for secondary data analysts consists of the following steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Load the survey microdata and attach the relevant metadata describing the structural aspects of the sampling design and estimation processes;
+\item
+  Replicate some of the estimates published by the survey data producer, including measures of precision, to ascertain that you have correctly described the data and the sampling design to the system being used to process the data.
+\item
+  Only then proceed towards the required new analysis for which no previous results are available. Repeat this analysis under two scenarions: ignoring and accounting for the sampling design. Compare the results and assess whether they match expectations regarding the likely impact of incorporating the sample design.
+\item
+  If the previous step provides results as expected, proceed with the interpretation of the final analysis by keeping only the outcomes obtained from the analysis incorporating the design effects.
+\end{enumerate}
+
+\chapter{The golden pair: sample design and estimator}\label{the-golden-pair-sample-design-and-estimator}
 
 Accounting for the sampling design is crucial for analyzing complex survey data. We must ensure that PSU, strata, and weights are available in the survey dataset to enable adequate analysis. Alternatively, when such information is not available, the dataset should at least contain replicate weights, or the analyst should have clear guidance on how to compute both point and variance estimates.
 
 A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Missing or incorrect design information may lead to biased estimates and misleading conclusions.
 
-\hypertarget{parameters-and-estimators}{%
-\section{Parameters and estimators}\label{parameters-and-estimators}}
+\section{Parameters and estimators}\label{parameters-and-estimators}
 
 Under a design-based approach this section presents the basic principles of inductive inference and how, using the \emph{sampling weights} (from chapter VIII), one can get consistent estimators for population parameters of interest. We adopt the notation introduced in chapter VIII for presenting the expressions required here.
 
@@ -226,8 +274,7 @@ Under full response, this variance can be estimated unbiasedly by
 
 While the above formula for variance estimation is general and covers the vast majority of sample designs used in the practice of household sample surveys, it is not used in practice because the second order inclusion probabilities \(\pi_{kj}\) (and corresponding pairwise weights \(d_{kj}\)) are generally unknown to survey data analysts. In fact, even data producers do not compute such pairwise weights, since there are more efficient methods for variance estimation that do not require having such weights.
 
-\hypertarget{uncertainty-in-household-surveys}{%
-\section{Uncertainty in household surveys}\label{uncertainty-in-household-surveys}}
+\section{Uncertainty in household surveys}\label{uncertainty-in-household-surveys}
 
 As the sample is typically a small subset of the population, it is important to obtain not only point estimates for the parameters of interest, but also the corresponding uncertainty measures and/or confidence intervals. In this subsection we present some approaches for variance estimation: approximate formulas from \emph{Taylor linearization} and/or the \emph{ultimate cluster} approach for variances under multi-stage cluster sampling. We also introduce replication methods and generalized variance functions, which are essential when PSU or strata are missing from the sample dataset.
 
@@ -257,8 +304,7 @@ where \(\widehat J (\widehat \theta) = \sum _{k \in s} d_i \, \left[ \partial{z_
 
 This approach implies that by one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals. Its simplicity and generality have enabled the development of software such as the \texttt{R\ survey} package, the \texttt{Stata\ svy} functions and others.
 
-\hypertarget{ultimate-cluster-method}{%
-\section{Ultimate Cluster Method}\label{ultimate-cluster-method}}
+\section{Ultimate Cluster Method}\label{ultimate-cluster-method}
 
 The central idea of the \emph{Ultimate Cluster} method for variance estimation for estimators of totals in multi-stage cluster sampling designs, proposed by \citep{Hansen1953}, is to consider only the variation between information available in the level of PSUs, and assume that these would have been selected with replacement from the PSU population. This idea is simple, but quite powerful, because it allows to accommodate a variety of sampling designs, involving stratification and selection with unequal probabilities (with or without replacement) of both PSUs as well as lower level sampling units. The requirements for the application of this method are that one has unbiased estimators of totals for the variable of interest for each sampled PSU, and that data are available for at least two sampled PSUs in each stratum (if the sample is stratified in the first stage).
 
@@ -277,8 +323,7 @@ Although often the selection of primary units can have Primary Cluster estimator
 
 In some cases, sample replication methods (\emph{bootstrap}, \emph{jackknife}) can also be used to estimate variances, as we will see later.
 
-\hypertarget{bootstrap-method}{%
-\section{Bootstrap Method}\label{bootstrap-method}}
+\section{Bootstrap Method}\label{bootstrap-method}
 
 The method was proposed by \citet{Efron1979}, but the version we consider here is the so-called Rao-Wu-Yue Rescaling Bootstrap, which is adequate for stratified multi-stage sampling designs commonly used in household surveys - see \citet{Rao1992}. This method is now widely used for variance estimation with complex survey data. To implement this method, you need to follow the sequence of steps outlined below.
 
@@ -302,28 +347,23 @@ Whenever the original sampling weights \(w_{hik}\) receive non-response adjustme
 
 This method is more computationally costly, but provides good estimates of variance, including for quantiles and other parameters of complex nonlinear forms. It also makes it easier for users who do not have access to software capable of calculating complex variance expressions based on Taylor linearization, etc. The survey package allows you to generate \emph{bootstrap} replicas and also estimate variances using this method.
 
-\hypertarget{using-software-to-generate-valid-inferences}{%
-\section{Using software to generate valid inferences}\label{using-software-to-generate-valid-inferences}}
+\section{Using software to generate valid inferences}\label{using-software-to-generate-valid-inferences}
 
 In this part, we advocate to using specialized statistical software to generate efficient estimation processes. Those packages support complex survey data analysis by specifying the survey design using appropriate commands or functions.
 
-\hypertarget{descriptive-parameters}{%
-\chapter{Descriptive parameters}\label{descriptive-parameters}}
+\chapter{Descriptive parameters}\label{descriptive-parameters}
 
 The most frequent analysis of complex household survey data consists in estimating some descriptive population parameters for a range of survey variables. Such \emph{descriptive analysis} generally involve estimating frequencies, proportions, means, and totals. But other target parameters such as selected quantiles of numeric variables, poverty and inequality measures, and a range of indicators such as those required for monitoring the Sustainable Development Goals are becoming part of regular set of estimates needed from household sample surveys.
 
-\hypertarget{frequencies}{%
-\section{Frequencies}\label{frequencies}}
+\section{Frequencies}\label{frequencies}
 
-\hypertarget{point-estimation}{%
-\subsection{Point Estimation}\label{point-estimation}}
+\subsection{Point Estimation}\label{point-estimation}
 
 The accurate estimation of absolute sizes and proportions in household surveys is essential for obtaining representative data that reflects the demographic and socioeconomic reality of a population. These figures serve as the basis for public policy decision-making, resource allocation, and the design of social programs.
 
 The ability to understand the distribution of specific categories, such as poverty status, employment status, education level, among others, provides valuable information to address inequalities and promote equitable development.
 
-\hypertarget{size-estimates}{%
-\subsection{Size Estimates}\label{size-estimates}}
+\subsection{Size Estimates}\label{size-estimates}
 
 In this section, the processes for estimating categorical variables will be carried out. First, one of the most important parameters is the size of a population, which represents the cardinality of that set; in other words, the total number of individuals that comprise it. In terms of notation, the population size is estimated as follows:
 
@@ -339,15 +379,13 @@ Similarly, the size estimate in a subpopulation, defined by a dichotomous variab
 {\widehat{N}}_d = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ I(y_{hik} = d)
 \]
 
-\hypertarget{totals-means-proportions-and-ratios}{%
-\section{Totals, means, proportions, and ratios}\label{totals-means-proportions-and-ratios}}
+\section{Totals, means, proportions, and ratios}\label{totals-means-proportions-and-ratios}
 
 For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs.
 
 As mentioned by \citet{Heeringa_West_Berglund_2017}, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.
 
-\hypertarget{estimating-totals}{%
-\subsection{Estimating totals}\label{estimating-totals}}
+\subsection{Estimating totals}\label{estimating-totals}
 
 Once the sampling design is defined, which was done in the previous section, the estimation process for the parameters of interest is carried out. For the estimation of totals with complex sampling designs that include stratification \(\left(h=1,2,...,H\right)\) and subsampling in PSUs (assumed to be within stratum \(h\)) indexed by \(i=1,2,...,m_h\), the estimator for the population total can be written as:
 
@@ -363,8 +401,7 @@ Under full response, the Ultimate Cluster variance estimator for \(\widehat{Y}\)
 
 with \(z_{1 - \alpha/2}\) denoting the quantile of the Gaussian distribution leaving an area of \({\alpha/2}\) to its right.
 
-\hypertarget{estimating-averages}{%
-\subsection{Estimating averages}\label{estimating-averages}}
+\subsection{Estimating averages}\label{estimating-averages}
 
 The estimation of the population means or averages is a very important task in household surveys. According to \citet{Gutierrez_2016}, an estimator of the population mean can be written as the ratio of two estimated finite population totals, as follows:
 
@@ -374,8 +411,7 @@ The estimation of the population means or averages is a very important task in h
 
 Since \(\widehat{\overline{Y}}\) is a nonlinear statistic, there is no closed-form formula for exact the variance of this estimator. For this reason, either resampling methods or Taylor series approximations must be used. The latter may be achieved remembering that for the survey mean the sampling estimating equation requires defining \(\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} (y_{hik} - \theta) = 0\), therefore we can apply the variance estimator given in section 9.1 with \(z_{hik} = y_{hik} - \widehat{\overline{Y}}\).
 
-\hypertarget{estimating-proportions}{%
-\subsection{Estimating proportions}\label{estimating-proportions}}
+\subsection{Estimating proportions}\label{estimating-proportions}
 
 When \(y\) is a binary variable, the weighted mean estimates the population proportion. As mentioned by \citet{Heeringa2017}, by recoding the original response categories into simple indicator variables \(y\) with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:
 
@@ -393,8 +429,7 @@ To address this issue, alternative confidence interval estimates, as proposed by
 CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2 , \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right) } \right]} {1 + exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2, \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right)}\right]}
 \]
 
-\hypertarget{estimating-ratios}{%
-\subsection{Estimating ratios}\label{estimating-ratios}}
+\subsection{Estimating ratios}\label{estimating-ratios}
 
 In many household survey analyses, it is not sufficient to examine individual variables in isolation. For example, ODS indicator N.17.6.1 is defined as the ratio of the number of broadband subscriptions per 100 inhabitants in a country or region. Ratio estimators are obtained simply by the ratio of the corresponding estimators of totals (or means) in the numerator and denominator. Another example is estimating the ratio of expenditures to income or the ratio of a particular type of expenditure (say food) over total expenditures in a household budget survey.
 
@@ -407,8 +442,7 @@ Since the ratio is the quotient of two totals, both the numerator and the denomi
 
 For variance estimation, all you need to do is specify the estimating function as \(z_{hik} = y_{hik} - \widehat{R} \ x_{hik}\), when \(y\) and \(x\) are the numerator and denominator variables, respectively.
 
-\hypertarget{variances-and-standard-deviations}{%
-\section{Variances and standard deviations}\label{variances-and-standard-deviations}}
+\section{Variances and standard deviations}\label{variances-and-standard-deviations}
 
 Sometimes the interest lies in estimating the variance or standard deviation of a numeric survey variable \(y\). This can be accomplished using the following estimators:
 
@@ -419,8 +453,7 @@ Sometimes the interest lies in estimating the variance or standard deviation of 
 
 and \(\widehat{S_y} = \sqrt{\widehat{S_y^2}}\) for the standard deviation.
 
-\hypertarget{correlations}{%
-\section{Correlations}\label{correlations}}
+\section{Correlations}\label{correlations}
 
 Pearson correlation coefficients are useful for assessing the relationship between two numeric survey variables, say \(x\) and \(y\). These can be estimated using
 
@@ -428,8 +461,7 @@ Pearson correlation coefficients are useful for assessing the relationship betwe
 \widehat{\rho}_{xy} = \frac {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right) \left( x_{hik} - \widehat{\overline{X}} \right)} {\sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right)^2} \sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( x_{hik} - \widehat{\overline{X}} \right)^2}}
 \]
 
-\hypertarget{percentiles-and-inequality-measures}{%
-\section{Percentiles and inequality measures}\label{percentiles-and-inequality-measures}}
+\section{Percentiles and inequality measures}\label{percentiles-and-inequality-measures}
 
 Non-central location measures are helpful to determine location and spread of the data distribution beyond central values. Key non-central location measures include the quartiles and other quantiles or percentiles. As an example, the estimation of income percentiles in a given country may help define the onset of public policy. For example, a tax could be imposed on individuals in the top 10\% of the income distribution, or transport subsidies could be provided to those in the bottom 15\% of the income distribution.
 
@@ -459,8 +491,7 @@ Hence, the estimator of the \(q\)-th quantile \(y_{(q)}\) is given by:
 
 For the variance estimation and confidence intervals of quantiles, \citet{kovar1988bootstrap} present results from a simulation study where they recommend using the \emph{Balanced Repeated Replication} (BRR) technique.
 
-\hypertarget{estimating-the-gini-coefficient}{%
-\subsection{Estimating the Gini coefficient}\label{estimating-the-gini-coefficient}}
+\subsection{Estimating the Gini coefficient}\label{estimating-the-gini-coefficient}
 
 Economic inequality is a common issue worldwide, with particular focus from international institutions. Measuring economic inequality among households is of great interest, and the Gini coefficient (\(G\)) is the most commonly used indicator for this purpose. The Gini coefficient ranges from 0 to 1, where \(G = 0\) indicates perfect equality in wealth distribution, and higher values reflect increasing inequality.
 
@@ -480,13 +511,11 @@ and \(\widehat{F}_{hik}\) represents the estimated CDF for individual \(k\) in c
 
 \citet{osier2009variance} and \citet{Langel_Tille_2013} provide important computational details for estimating the variance of this complex estimator.
 
-\hypertarget{nso-practical-example}{%
-\section{NSO -- Practical example}\label{nso-practical-example}}
+\section{NSO -- Practical example}\label{nso-practical-example}
 
 In this subsection a NSO will share how they do disseminate its results on basic descriptive statistics, how they publish the resulting tables and how do they deal with the suppression of estimates that do not reach expected quality.
 
-\hypertarget{associations-between-variables}{%
-\chapter{Associations between variables}\label{associations-between-variables}}
+\chapter{Associations between variables}\label{associations-between-variables}
 
 Household sample surveys often collect data on categorical variables, and assessing whether pairs of these variables are associated becomes of interest. This section will introduce the reader on the main methods currently used to describe and infer associations for pairs of categorical variables.
 
@@ -508,8 +537,7 @@ and the corresponding population proportions as \(p_{rc} = N_{rc} / N_{++}\), wh
 
 Under the superpopulation model, the population proportions \(p_{rc}\) could be used to estimate (or approximate) the unknown probabilities \(P_{rc}\). Since in most instances we will have samples, not censuses, the population proportions \(p_{rc}\) must be estimated using weighted estimators provided in the previous sections.
 
-\hypertarget{cross-tabulations-and-contingency-tables}{%
-\section{Cross-tabulations and contingency tables}\label{cross-tabulations-and-contingency-tables}}
+\section{Cross-tabulations and contingency tables}\label{cross-tabulations-and-contingency-tables}
 
 Cross-tabulations organize population frequency distribution estimates for two or more categorical variables to help explore relationships between them. Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings.
 
@@ -585,8 +613,7 @@ Two-way tables can also display the estimates of population relative frequencies
 col.~marg. & \(\widehat{p}_{+1}\) & \(\ldots\) & \(\widehat{p}_{+C}\) & \(1\) \\
 \end{longtable}
 
-\hypertarget{testing-for-independence}{%
-\section{Testing for independence}\label{testing-for-independence}}
+\section{Testing for independence}\label{testing-for-independence}
 
 Using the estimated contingency tables, it is possible to perform independence tests to verify whether \(x\) and \(y\) are associated. Following \citet{Heeringa2017}, the null hypothesis that \(x\) and \(y\) are independent is defined as:
 
@@ -634,13 +661,11 @@ The F-adjusted teststatistic for independence based on the Rao-Scott adjusted Li
 F_{LR} = \frac{G^{2}_{R-S}}{C-1} \sim F_{\left(C-1\right) \ , \ df}
 \]
 
-\hypertarget{tests-for-group-comparisons}{%
-\section{Tests for group comparisons}\label{tests-for-group-comparisons}}
+\section{Tests for group comparisons}\label{tests-for-group-comparisons}
 
 To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.
 
-\hypertarget{hypothesis-test-for-the-difference-of-means}{%
-\subsection{Hypothesis Test for the Difference of Means}\label{hypothesis-test-for-the-difference-of-means}}
+\subsection{Hypothesis Test for the Difference of Means}\label{hypothesis-test-for-the-difference-of-means}
 
 A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (\(H_0\)) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (\(H_1\)), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter \(\theta\) is equal to a particular value \(\theta_{0}\), the possible combinations of hypotheses that can be tested are:
 
@@ -730,31 +755,25 @@ If a confidence interval for the difference in means is desired, it would be con
 \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
 \]
 
-\hypertarget{nso-practical-example-1}{%
-\section{NSO -- Practical example}\label{nso-practical-example-1}}
+\section{NSO -- Practical example}\label{nso-practical-example-1}
 
 In this part an NSO will share its experiences on dealing with statistical comparisons among groups and how do they present the results in tables.
 
-\hypertarget{regression-modelling-survey-data}{%
-\chapter{Regression: modelling survey data}\label{regression-modelling-survey-data}}
+\chapter{Regression: modelling survey data}\label{regression-modelling-survey-data}
 
 Modelling survey data is a common task among researcher; some of them include the features of the sampling design in computing standard error of the estimated regression parameters. In this section we will deal with the problem of weighting in regression models and present a parsimonious solution.
 
-\hypertarget{to-weight-or-not-to-weight}{%
-\section{To weight or not to weight?}\label{to-weight-or-not-to-weight}}
+\section{To weight or not to weight?}\label{to-weight-or-not-to-weight}
 
 We present the pros and cons of including the complex design features in the estimation of regression parameters and their associated standard errors. We present some adjustment to the sampling weights to fit these kind of models (senate sampling weights, normalized sampling weights, Pfeffermann model weights).
 
-\hypertarget{some-inferential-approaches-to-modelling-data}{%
-\section{Some inferential approaches to modelling data}\label{some-inferential-approaches-to-modelling-data}}
+\section{Some inferential approaches to modelling data}\label{some-inferential-approaches-to-modelling-data}
 
 When modelling survey data, one should deal with two sources of variability: the one devoted to the complex sampling design and the one that comes from the very model. Combining these sources into a valid set up requires of some advanced methods. We will mention some of them: pseudo likelihood, combined inference.
 
-\hypertarget{linear-models}{%
-\section{Linear models}\label{linear-models}}
+\section{Linear models}\label{linear-models}
 
-\hypertarget{basic-definitions}{%
-\subsection{Basic Definitions}\label{basic-definitions}}
+\subsection{Basic Definitions}\label{basic-definitions}
 
 As noted by \citet{Heeringa_West_Berglund_2017}, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were \citet{kish1974inference}. Later, \citet{fuller1975regression} developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.
 
@@ -825,8 +844,7 @@ Thus, the response variable has the following distribution:
 y_{i}  \sim  N\left(x_{i}\boldsymbol{\beta},\sigma_{y,x}^{2}\right)
 \]
 
-\hypertarget{estimation-of-parameters-in-a-regression-model-with-complex-samples}{%
-\subsection{Estimation of Parameters in a Regression Model with Complex Samples}\label{estimation-of-parameters-in-a-regression-model-with-complex-samples}}
+\subsection{Estimation of Parameters in a Regression Model with Complex Samples}\label{estimation-of-parameters-in-a-regression-model-with-complex-samples}
 
 Once the assumptions of the model and the distributional characteristics of the errors are established, the next step is the process of parameter estimation. As an illustrative and introductory example, if instead of observing a sample of size \(n\) from the \(N\) elements of the population, a complete census had been conducted, the finite population regression parameter \(\beta_{1}\) could be calculated as follows:
 
@@ -862,8 +880,7 @@ As a generalization, according to \citet{kish1974inference}, the variance estima
 \end{bmatrix}
 \]
 
-\hypertarget{the-pfeffermann-weighting-approach}{%
-\subsection{The Pfeffermann Weighting Approach}\label{the-pfeffermann-weighting-approach}}
+\subsection{The Pfeffermann Weighting Approach}\label{the-pfeffermann-weighting-approach}
 
 \citet{Heeringa_West_Berglund_2017} addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, it is essential to know that two primary paradigms exist in the specialized literature:
 
@@ -894,8 +911,7 @@ An intermediate solution between these two approaches is given by \citet{pfeffer
 
 This method adjusts the survey weights based on the fitted model, balancing between design-based and model-based approaches to reduce variance while accounting for complex survey design.
 
-\hypertarget{model-diagnostics}{%
-\subsection{Model Diagnostics}\label{model-diagnostics}}
+\subsection{Model Diagnostics}\label{model-diagnostics}
 
 When fitting statistical models to household survey data, it is essential to perform quality checks to ensure the validity of the conclusions drawn. Most academic texts provide a detailed overview of the assumptions and considerations necessary for a properly defined model. Below are some of the key aspects to consider:
 
@@ -915,8 +931,7 @@ When fitting statistical models to household survey data, it is essential to per
   \textbf{Outliers}: Detect points that do not follow the general trend of the data, known as outliers.
 \end{itemize}
 
-\hypertarget{coefficient-of-determination}{%
-\subsubsection{Coefficient of Determination}\label{coefficient-of-determination}}
+\subsubsection{Coefficient of Determination}\label{coefficient-of-determination}
 
 The coefficient of determination, also known as the multiple correlation coefficient (\(R^{2}\)), is a common measure of goodness-of-fit in a regression model. This coefficient estimates the proportion of variance in the dependent variable explained by the model and ranges between 0 and 1. A value close to 1 indicates that the model explains a large proportion of the variability, while a value near 0 suggests the opposite.
 
@@ -950,8 +965,7 @@ Where \(\widehat{SSE}_{\omega}\) is the weighted sum of squared errors, defined 
 
 This estimator adjusts the \(R^{2}\) calculation to reflect the characteristics of the sampling design, such as stratification and unequal selection probabilities, ensuring that survey weights are considered when evaluating the goodness-of-fit of the model.
 
-\hypertarget{standardized-residuals}{%
-\subsubsection{Standardized Residuals}\label{standardized-residuals}}
+\subsubsection{Standardized Residuals}\label{standardized-residuals}
 
 In model diagnostics, analyzing residuals is crucial. These analyses provide, under the assumption that the fitted model is adequate, an estimate of the errors. Therefore, a careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the fitting procedure.
 
@@ -965,8 +979,7 @@ Where \(\mu_{i}\) is the expected value of \(y_{i}\), and \(\omega_{i}\) is the 
 
 If the assumption of constant variance is not met, the estimators remain unbiased and consistent, but they are no longer efficient. That is, they are no longer the best in the sense that they no longer have the smallest variance among all unbiased estimators. One way to analyze the assumption of constant variance in the errors is through graphical analysis. This is done by plotting the model residuals against \(\hat{y}\) or the model residuals against \(X_{i}\). If these plots reveal any pattern other than a constant cloud of points, it can be concluded that the error variance is not constant.
 
-\hypertarget{influential-observations}{%
-\subsubsection{Influential Observations}\label{influential-observations}}
+\subsubsection{Influential Observations}\label{influential-observations}
 
 Another set of techniques used for model analysis involves examining influential observations. An observation is deemed influential if, when removed from the data set, it causes a significant change in the model fit. It is important to note that an influential point may or may not be an outlier. To detect influential observations, it is essential to clarify what type of influence is being sought. For instance, an observation may be influential for parameter estimation but not for error variance estimation. Below are some statistical techniques for detecting influential data points:
 
@@ -981,8 +994,7 @@ Another set of techniques used for model analysis involves examining influential
   \textbf{\(D_{f}Fits_{\left(i\right)}\) Statistic}: This statistic measures the change in the model fit when a particular observation is removed. In this case, the i-th observation is considered influential in the model fit if \(\mid DfFits\left(i\right)\mid \geq z\sqrt{\frac{p}{n}}\) with \(z = 2\).
 \end{enumerate}
 
-\hypertarget{inference-on-model-parameters}{%
-\subsubsection{Inference on Model Parameters}\label{inference-on-model-parameters}}
+\subsubsection{Inference on Model Parameters}\label{inference-on-model-parameters}
 
 Once the proper fit of the model has been evaluated using the methodologies discussed above, and the distributional properties of the errors---and consequently the response variable \(y\)---have been verified, the next step is to assess whether the estimated parameters are significant. This involves determining whether the covariates used to fit the model add value in explaining and/or predicting the study variable and the phenomenon of interest.
 
@@ -1000,8 +1012,7 @@ Where \(p\) is the number of model parameters and \(n\) is the sample size of th
 
 Where the degrees of freedom (\(df\)) for the interval in a household survey (complex samples) is given by the number of final stage clusters minus the number of primary stage strata \(\left(df=\sum_{h}a_{h}-H\right)\).
 
-\hypertarget{estimation-and-prediction}{%
-\subsubsection{Estimation and Prediction}\label{estimation-and-prediction}}
+\subsubsection{Estimation and Prediction}\label{estimation-and-prediction}
 
 According to \citet{neter1996applied}, linear regression models are essentially used for two purposes. One is to explain the variable of interest in terms of covariates that may be found in surveys, administrative records, censuses, etc. Additionally, they are also used to predict values of the variable under study, either within the range of values collected in the sample or outside of it. The first purpose has been addressed throughout this chapter, and the second is achieved as follows:
 
@@ -1022,13 +1033,11 @@ var\left(\hat{E}\left(y_{i}\mid x_{obs,i}\right)\right)
 =  x'_{obs,i}cov\left(\hat{\beta}\right)x{}_{obs,i}
 \]
 
-\hypertarget{logistic-models}{%
-\section{Logistic models}\label{logistic-models}}
+\section{Logistic models}\label{logistic-models}
 
 To model the probability of discrete variables, we apply the principles of design-based inference.
 
-\hypertarget{logistic-regression-model-for-proportions}{%
-\subsection{Logistic Regression Model for Proportions}\label{logistic-regression-model-for-proportions}}
+\subsection{Logistic Regression Model for Proportions}\label{logistic-regression-model-for-proportions}
 
 Logistic regression is a regression method that allows the estimation of the probability of success for a binary qualitative variable based on other continuous or discrete covariates. The variable of interest is binary or dichotomous, meaning it takes a value of one (1) if the condition being observed is met and zero (0) otherwise. In this way, the observations are separated into groups according to the value taken by the predictor variable.
 
@@ -1096,155 +1105,11 @@ G=-2\ln\left[\frac{L\left(\hat{\boldsymbol{\beta}}\right)_{reduced}}{L\left(\hat
 
 This statistic evaluates the difference in fit between the two models, allowing for the assessment of the significance of the parameters included in the full model.
 
-\hypertarget{nso-practical-example-2}{%
-\section{NSO -- Practical example}\label{nso-practical-example-2}}
+\section{NSO -- Practical example}\label{nso-practical-example-2}
 
 In this subsection, we will share the experience of an NSO in applying models to household survey data, and the results they present in terms of significance of models and relations among variables.
 
-\hypertarget{data-visualization}{%
-\chapter{Data visualization}\label{data-visualization}}
-
-In this section we discuss how to present data and estimates resulting from household surveys using graphics. While standard plots can still be used to show distributions and associations from the raw (unweighted) sample data, these can be misleading for the corresponding population distributions and associations. Therefore it is recommended that modified plots that account for survey weights be used instead. In addition, regarding the display of survey estimates, which are subject to sampling error, it is important to convey this message by presenting not only point estimates, but also standard errors or confidence intervals.
-
-Graphs are important for the exploratory analysis of the survey data, for the diagnostics of fitted models and for the presentation of results. However, often the sample data sets are very large. In addition, sampling units typically have different weights. These two difficulties may cause standard graphs to fail in facilitating the analysis or presentation.
-
-\hypertarget{graphs-and-sampling-weights}{%
-\section{Graphs and sampling weights}\label{graphs-and-sampling-weights}}
-
-When the survey units have different sampling weights, these should be taken into account when preparing graphs with their data. The main reason is that weights can be interpreted as the number of population units that each sample unit represents. Hence, it is evident that unequal weights need to be considered in the elaboration of graphs based on such sample data.
-
-\hypertarget{graphs-for-categorical-data}{%
-\section{Graphs for categorical data}\label{graphs-for-categorical-data}}
-
-When the data of interest are categorical, their descriptive analysis will be done using contingency tables. Then simple graphs like bar charts can be done using as input contingency tables produced with weighted counts. Ideally one should also aim to display error lines overlaying bars to indicate their respective confidence interval widths, thus conveying the uncertainty of the corresponding point estimates. Obtaining the weighted counts or proportions and their confidence intervals can be easily done using tools from several software packages, e.g.~the \texttt{survey} package in R.
-
-As an example, the bar chart presents a comparison of the number of individuals (\texttt{Nd}) between rural and urban zones, with error lines indicating the confidence intervals for each estimate. According to the values in the table, the urban zone shows a slightly higher \texttt{Nd} value than the rural zone, with 78,164 individuals in the urban area compared to 72,102 in the rural area. This difference suggests a higher concentration of people in the urban zone.
-
-The confidence intervals allow us to assess the precision of these estimates. In the rural zone, the confidence interval ranges from 66,039 to 78,165 individuals, while in the urban zone, the confidence range goes from 72,526 to 83,802 individuals. This overlap between the intervals indicates that, although the urban zone has a higher number of individuals, the difference is not pronounced enough to be statistically significant.
-
-Furthermore, the standard deviation of \texttt{Nd} is 3,062 for the rural zone and 2,847 for the urban zone, reflecting similar variability in both zones. This suggests that the estimates are consistent in terms of relative uncertainty, without major differences in data dispersion between the zones.
-
-\begin{figure}
-\includegraphics[width=33.33in]{www/05_graficas/03_bar_pers} \caption{Distribution of Population Income}\label{fig:barIncome}
-\end{figure}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2222}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}@{}}
-\caption{Population distribution by area}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Zone
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Number of Individuals (Nd)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Standard Error (Nd\_se)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Lower Limit (Nd\_low)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Upper Limit (Nd\_upp)
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Zone
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Number of Individuals (Nd)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Standard Error (Nd\_se)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Lower Limit (Nd\_low)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Upper Limit (Nd\_upp)
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Rural & 72,102 & 3,062 & 66,039 & 78,165 \\
-Urban & 78,164 & 2,847 & 72,526 & 83,802 \\
-\end{longtable}
-
-\hypertarget{histograms}{%
-\section{Histograms}\label{histograms}}
-
-Histograms serve to present the distribution of a single numeric (continuous) survey variable or response. If one had a census, then the histogram is a powerful tool to describe the underlying distribution, even for very large datasets. When displaying sample data, however, the sampling weights must be taken into account when estimating frequencies or relative frequencies of population units having values in the specified histogram bins. Modern survey analysis tools can easily provide weighted histograms where the sampling weights are incorporated.
-
-Histograms are the precursors to density function estimates, and the later can be thought of as histograms with very large number of bins. The \texttt{survey} package in R provides functions that can plot smoothed density estimates obtained accounting for the sampling weights.
-
-\hypertarget{graphical-analysis-with-survey-tools}{%
-\subsection{Graphical Analysis with Survey Tools}\label{graphical-analysis-with-survey-tools}}
-
-Once the database containing the sample is available and the sampling design has been defined, initial visual analyses can be conducted. It is recommended to begin with graphical analyses that, thanks to the principle of representativeness, reflect the behavior of continuous variables not only in the obtained sample but also in the study population, using sampling weights for sample expansion.
-
-A common example of visualization in this type of analysis is the use of histograms to represent the distribution of variables such as income. These charts allow us to observe the distribution of the variable of interest in the expanded population and to understand its shape, dispersion, and general trends.
-
-It is also common to perform graphical analyses broken down by subgroups, such as geographic areas (urban and rural) or thematic characteristics like gender (male and female). This approach helps identify key differences among specific population subgroups, for instance, by examining income distribution in men and women over the age of 18. Such breakdowns help visualize and communicate potential gaps between subgroups of interest.
-
-In this way, charts help to communicate results in an accessible manner, offering a clear and straightforward visual representation for audiences who may not be familiar with the technical details of estimation methods.
-
-In \ref{fig:histIncome} the horizontal axis (x) represents income levels, spanning from 0 to over 4000 monetary units, while the vertical axis (y) indicates frequency, meaning the number of individuals within each income range.
-
-The distribution shows that most of the population is concentrated at lower income levels, with a particularly high frequency near 0. As income levels rise, frequency declines sharply, indicating a right-skewed (positively skewed) distribution with a smaller proportion of people at higher income levels. The light gray bars visually emphasize this concentration at lower incomes, highlighting a significant disparity in the population's income distribution.
-
-\begin{figure}
-\includegraphics[width=14.22in]{www/05_graficas/01_hist_ingreso} \caption{Distribution of Population Income}\label{fig:histIncome}
-\end{figure}
-
-As an example, Figure \ref{fig:HistIncomeExpenditureSex} presents two histograms illustrating the distribution of income and expenditure by sex. In the histogram on the left, titled ``Income Histograms by Sex,'' we observe the income distribution, where blue bars represent men and pink bars represent women. The majority of the population, both male and female, is concentrated in the lower income levels, showing a right-skewed distribution. In the lower income levels, there are more men than women, while at higher income levels, the difference is less pronounced.
-
-In the histogram on the right, titled ``Expenditure Histograms by Sex,'' the distribution of expenditure is shown, also broken down by sex. Similar to income, most of the population of both sexes is concentrated in the lower expenditure levels, with a right-skewed trend. There is also a higher proportion of men in the lower expenditure levels, while at higher levels, the representation between sexes is more balanced. These histograms exemplify the similarity in the income and expenditure distributions between men and women, although men appear to be slightly more represented in the lower levels of both variables.
-
-\begin{figure}
-\includegraphics[width=33.33in]{www/05_graficas/02_Hist_sex} \caption{Histograms of Income and Expenditure by Sex}\label{fig:HistIncomeExpenditureSex}
-\end{figure}
-
-\hypertarget{box-plots}{%
-\section{Box Plots}\label{box-plots}}
-
-Box plots are often used to present the distribution of continuous variables. They can summarize large datasets by providing a visual display providing easy visual to identify location, range, variability and outliers. They are great also for enabling comparing distributions across specified grouping variables, such as strata, clusters, etc.
-
-The key to producing such graphs from complex sample surveys is to account for the sampling weights when estimating the location measures that drive the plot, namely the quartiles. Once these have been estimated using the methods described earlier, the resulting box plots will be good depictions enabling analysis of the underlying population distributions.
-
-\hypertarget{scatter-plots}{%
-\section{Scatter Plots}\label{scatter-plots}}
-
-Scatter plots are the tool of choice to explore relationships between two continuous variables, potentially revealing patterns or trends in the data. These plots face the two challenges discussed above. First one needs to try and convey in the plot that the different sample observations carry different weights. For small to moderate sample sizes this can be done by plotting circles or dots of varying sizes where the symbol size represents the corresponding observation sampling weight. Plots like these can be obtained using standard bubble plot tools or the scatter plot available in the \texttt{survey} package in R.
-
-The second challenge, present when there is a large dataset to be displayed, has motivated creation of some alternatives. Two ideas are worth noting. The first one is subsampling. One may choose to select a small to moderate subsample from the full dataset to display. Such a sample should be selected with replacement and with probabilities proportional to the observations sampling weights. Then the resulting smaller dataset can be used to produce a standard scatter plot. The subsample obtained in this way behaves approximately as a simple random sample from the survey population - see \citet{Lumley2010} page 69.
-
-The other alternative is to produce so-called \emph{hexagonal binned scatter plots}. This involves dividing the plot surface into a grid of hexagons and combining all the points that fall into a grid cell into a single plotted hexagon whose shading or size indicates the number of points in the bin. With complex household survey data, the number of points in a hexagonal bin should be replaced by the sum of the weights for points in the bin - see \citet{Lumley2010} page 70.
-
-The third alternative is to avoid the display of the individual data points altogether, but instead produce \emph{smoothed scatter plots}. One idea that can be useful would be to estimate specified quantiles (say the quartiles) of the y-axis (response) variable conditional on the values of the x-axis (predictor) variable, and smooth these across the range of the x-axis. Such plots can easily signal whether the y-variable has any relationship with the x-variable, and suggest the kind of curves that might be useful in summarising or modelling such a relationship - see \citet{Lumley2010} page 71.
-
-As an example in \ref{fig:ScatterIncome}, the following scatterplot is presented, showing the weighted relationship between income and expenditure in a population. In this plot, the size of the points represents the weight assigned to each observation. A high concentration of points is observed at lower income and expenditure levels, suggesting that most of the population has low income and low expenditure. Although there is an upward trend, indicating that income and expenditure tend to increase together, the dispersion of points reveals that higher expenditure is not always associated with proportionally higher income. Some larger points, corresponding to observations with greater weight, are distributed across different levels of income and expenditure without concentrating in a single area. Additionally, a few isolated points at high expenditure levels may represent outliers with considerably higher-than-average expenditure. Overall, this plot suggests a positive relationship between income and expenditure, accompanied by significant variability and some exceptional cases.
-
-\begin{figure}
-\includegraphics[width=33.33in]{www/05_graficas/02_scatterplot_ingreso_gasto} \caption{Weighted scatterplot between income and expenditure}\label{fig:ScatterIncome}
-\end{figure}
-
-\hypertarget{maps}{%
-\section{Maps}\label{maps}}
-
-Maps are the display of choice to present the behavior of the interest variable across geographical domains. Maps that aim to present how a single response variable behaves can be easily obtained by plotting a summary of the response across the domains. Such a summary (say mean or median) should be an estimate for the corresponding population parameter btained accounting for the sample design and weights.
-
-Secondary survey analysts will may find that the limits of what mapping they can do is the level of geographic detail provided with the survey microdata. Many household sample surveys are design to provide precise estimates at some broad geographic level, say the country or its first level geographic subdivisions, such as states or departments. Lower level geographies are seldom disseminated with the survey microdata due to confidentiality protection constraints imposed.
-
-It is therefore important that statistical agencies conducting the household sample surveys and preparing the dissemination of the corresponding microdata consider carefully which level of geographic detail may be included with public use datasets.
-
-One area which still needs further research is that of providing appropriate means to convey the uncertainty of underlying point estimates when mapping these.
-
-\hypertarget{nso-practical-example-3}{%
-\section{NSO -- Practical example}\label{nso-practical-example-3}}
-
-In this subsection we will include the experience of a NSO on displaying information through graphics.
-
-\hypertarget{tables}{%
-\chapter{Tables}\label{tables}}
+\chapter{Tables}\label{tables}
 
 \emph{Tables} form a key component regarding how agencies disseminate statistics from household survey data. Using tables efficiently helps minimize the amount of numeric values presented within the text, and to organise the survey results for presentation to the users and wider audiences. It is therefore important to discuss some core principles and ideas to the preparation and production of tables with survey results.
 
@@ -1268,8 +1133,7 @@ The guidelines for each of these kinds of tables will be somewhat different, tho
   \textbf{Principle 2.} Draw the layout and labels of the table in a simple and direct way, helping to focus attention on the results you want to show.
 \end{itemize}
 
-\hypertarget{presentation-tables}{%
-\section{Presentation tables}\label{presentation-tables}}
+\section{Presentation tables}\label{presentation-tables}
 
 These are generally small tables, used to highlight certain key results obtained from the survey, to be presented in press releases, executive summaries, scientific articles or reports, or on landing web pages which contain the survey output. They are not expected to provide all results on a topic, but rather to highlight key results that should draw the attention of a reader to some of the main stories the data have produced.
 
@@ -1279,8 +1143,7 @@ Short, well-designed and formatted tables can provide a lot of information that 
 
 Presentation tables should have rows (and possibly columns) sorted in a way that helps the reader perceive patterns, such as high or low figures. Such tables will often sacrifice detail in exchange for readability and understanding. Numbers should be presented with no more than 3 or 4 digits altoghether. If they area population counts, use thousands. If the figures are percentages, use no more than a single decimal digit, or even present only percentages rounded to the nearest integer, if the precision of the estimates do not warrant providing decimals (e.g.~margins of error larger than 1\%).
 
-\hypertarget{example-of-presentation-table-and-corresponding-text---include-in-a-box.}{%
-\section{Example of presentation table and corresponding text - include in a box.}\label{example-of-presentation-table-and-corresponding-text---include-in-a-box.}}
+\section{Example of presentation table and corresponding text - include in a box.}\label{example-of-presentation-table-and-corresponding-text---include-in-a-box.}
 
 Among middle and senior managers, women are outnumbered at all ages. The underrepresentation of women was observed in all age groups. Relative to their share among non-managers, women were outnumbered among middle and senior managers. In all age groups, women accounted for about 4 in 10 middle managers and 3 in 10 senior managers.
 
@@ -1300,8 +1163,7 @@ Age group & Non-managers & Middle managers & Senior managers \\
 
 Note: The category ``women'' includes women, as well as some non-binary people. Source: Statistics Canada, Census of Population, 2021. \url{https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024010/article/00005-eng.htm}
 
-\hypertarget{reference-tables}{%
-\section{Reference tables}\label{reference-tables}}
+\section{Reference tables}\label{reference-tables}
 
 These are longer tables, generally used to present more complete sets of results from statistical studies. They should be limited in size to something that could be contained in a few pages of a printed report, say, with a number of rows no larger than 200, and no more than say 12 columns. Anything bigger than that should be considered for dissemination as a \emph{database like table}, probably available only for download from a website or readable from some digital media.
 
@@ -1359,8 +1221,140 @@ Some basic rules for presenting the data include:
 
 The recommendations provided here to reference tables should also apply to longer tables provided as databases, but these can have additional resources if they are embedded on websites. For example, there may be support for users to sort tables using the values in each column, which would be useful for large tables where the user may be looking for the higher (or lower) values in a given column.
 
-\hypertarget{references}{%
-\chapter*{References}\label{references}}
+\chapter{Data visualization}\label{data-visualization}
+
+In this section we discuss how to present data and estimates resulting from household surveys using graphics. While standard plots can still be used to show distributions and associations from the raw (unweighted) sample data, these can be misleading for the corresponding population distributions and associations. Therefore it is recommended that modified plots that account for survey weights be used instead. In addition, regarding the display of survey estimates, which are subject to sampling error, it is important to convey this message by presenting not only point estimates, but also standard errors or confidence intervals.
+
+Graphs are important for the exploratory analysis of the survey data, for the diagnostics of fitted models and for the presentation of results. However, often the sample data sets are very large. In addition, sampling units typically have different weights. These two difficulties may cause standard graphs to fail in facilitating the analysis or presentation.
+
+\section{Graphs and sampling weights}\label{graphs-and-sampling-weights}
+
+When the survey units have different sampling weights, these should be taken into account when preparing graphs with their data. The main reason is that weights can be interpreted as the number of population units that each sample unit represents. Hence, it is evident that unequal weights need to be considered in the elaboration of graphs based on such sample data.
+
+\section{Graphs for categorical data}\label{graphs-for-categorical-data}
+
+When the data of interest are categorical, their descriptive analysis will be done using contingency tables. Then simple graphs like bar charts can be done using as input contingency tables produced with weighted counts. Ideally one should also aim to display error lines overlaying bars to indicate their respective confidence interval widths, thus conveying the uncertainty of the corresponding point estimates. Obtaining the weighted counts or proportions and their confidence intervals can be easily done using tools from several software packages, e.g.~the \texttt{survey} package in R.
+
+As an example, the bar chart presents a comparison of the number of individuals (\texttt{Nd}) between rural and urban zones, with error lines indicating the confidence intervals for each estimate. According to the values in the table, the urban zone shows a slightly higher \texttt{Nd} value than the rural zone, with 78,164 individuals in the urban area compared to 72,102 in the rural area. This difference suggests a higher concentration of people in the urban zone.
+
+The confidence intervals allow us to assess the precision of these estimates. In the rural zone, the confidence interval ranges from 66,039 to 78,165 individuals, while in the urban zone, the confidence range goes from 72,526 to 83,802 individuals. This overlap between the intervals indicates that, although the urban zone has a higher number of individuals, the difference is not pronounced enough to be statistically significant.
+
+Furthermore, the standard deviation of \texttt{Nd} is 3,062 for the rural zone and 2,847 for the urban zone, reflecting similar variability in both zones. This suggests that the estimates are consistent in terms of relative uncertainty, without major differences in data dispersion between the zones.
+
+\begin{figure}
+\includegraphics[width=33.33in]{www/05_graficas/03_bar_pers} \caption{Distribution of Population Income}\label{fig:barIncome}
+\end{figure}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1944}}@{}}
+\caption{Population distribution by area}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Zone
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Number of Individuals (Nd)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Standard Error (Nd\_se)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lower Limit (Nd\_low)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Upper Limit (Nd\_upp)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Zone
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Number of Individuals (Nd)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Standard Error (Nd\_se)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lower Limit (Nd\_low)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Upper Limit (Nd\_upp)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Rural & 72,102 & 3,062 & 66,039 & 78,165 \\
+Urban & 78,164 & 2,847 & 72,526 & 83,802 \\
+\end{longtable}
+
+\section{Histograms}\label{histograms}
+
+Histograms serve to present the distribution of a single numeric (continuous) survey variable or response. If one had a census, then the histogram is a powerful tool to describe the underlying distribution, even for very large datasets. When displaying sample data, however, the sampling weights must be taken into account when estimating frequencies or relative frequencies of population units having values in the specified histogram bins. Modern survey analysis tools can easily provide weighted histograms where the sampling weights are incorporated.
+
+Histograms are the precursors to density function estimates, and the later can be thought of as histograms with very large number of bins. The \texttt{survey} package in R provides functions that can plot smoothed density estimates obtained accounting for the sampling weights.
+
+\subsection{Graphical Analysis with Survey Tools}\label{graphical-analysis-with-survey-tools}
+
+Once the database containing the sample is available and the sampling design has been defined, initial visual analyses can be conducted. It is recommended to begin with graphical analyses that, thanks to the principle of representativeness, reflect the behavior of continuous variables not only in the obtained sample but also in the study population, using sampling weights for sample expansion.
+
+A common example of visualization in this type of analysis is the use of histograms to represent the distribution of variables such as income. These charts allow us to observe the distribution of the variable of interest in the expanded population and to understand its shape, dispersion, and general trends.
+
+It is also common to perform graphical analyses broken down by subgroups, such as geographic areas (urban and rural) or thematic characteristics like gender (male and female). This approach helps identify key differences among specific population subgroups, for instance, by examining income distribution in men and women over the age of 18. Such breakdowns help visualize and communicate potential gaps between subgroups of interest.
+
+In this way, charts help to communicate results in an accessible manner, offering a clear and straightforward visual representation for audiences who may not be familiar with the technical details of estimation methods.
+
+In \ref{fig:histIncome} the horizontal axis (x) represents income levels, spanning from 0 to over 4000 monetary units, while the vertical axis (y) indicates frequency, meaning the number of individuals within each income range.
+
+The distribution shows that most of the population is concentrated at lower income levels, with a particularly high frequency near 0. As income levels rise, frequency declines sharply, indicating a right-skewed (positively skewed) distribution with a smaller proportion of people at higher income levels. The light gray bars visually emphasize this concentration at lower incomes, highlighting a significant disparity in the population's income distribution.
+
+\begin{figure}
+\includegraphics[width=14.22in]{www/05_graficas/01_hist_ingreso} \caption{Distribution of Population Income}\label{fig:histIncome}
+\end{figure}
+
+As an example, Figure \ref{fig:HistIncomeExpenditureSex} presents two histograms illustrating the distribution of income and expenditure by sex. In the histogram on the left, titled ``Income Histograms by Sex,'' we observe the income distribution, where blue bars represent men and pink bars represent women. The majority of the population, both male and female, is concentrated in the lower income levels, showing a right-skewed distribution. In the lower income levels, there are more men than women, while at higher income levels, the difference is less pronounced.
+
+In the histogram on the right, titled ``Expenditure Histograms by Sex,'' the distribution of expenditure is shown, also broken down by sex. Similar to income, most of the population of both sexes is concentrated in the lower expenditure levels, with a right-skewed trend. There is also a higher proportion of men in the lower expenditure levels, while at higher levels, the representation between sexes is more balanced. These histograms exemplify the similarity in the income and expenditure distributions between men and women, although men appear to be slightly more represented in the lower levels of both variables.
+
+\begin{figure}
+\includegraphics[width=33.33in]{www/05_graficas/02_Hist_sex} \caption{Histograms of Income and Expenditure by Sex}\label{fig:HistIncomeExpenditureSex}
+\end{figure}
+
+\section{Box Plots}\label{box-plots}
+
+Box plots are often used to present the distribution of continuous variables. They can summarize large datasets by providing a visual display providing easy visual to identify location, range, variability and outliers. They are great also for enabling comparing distributions across specified grouping variables, such as strata, clusters, etc.
+
+The key to producing such graphs from complex sample surveys is to account for the sampling weights when estimating the location measures that drive the plot, namely the quartiles. Once these have been estimated using the methods described earlier, the resulting box plots will be good depictions enabling analysis of the underlying population distributions.
+
+\section{Scatter Plots}\label{scatter-plots}
+
+Scatter plots are the tool of choice to explore relationships between two continuous variables, potentially revealing patterns or trends in the data. These plots face the two challenges discussed above. First one needs to try and convey in the plot that the different sample observations carry different weights. For small to moderate sample sizes this can be done by plotting circles or dots of varying sizes where the symbol size represents the corresponding observation sampling weight. Plots like these can be obtained using standard bubble plot tools or the scatter plot available in the \texttt{survey} package in R.
+
+The second challenge, present when there is a large dataset to be displayed, has motivated creation of some alternatives. Two ideas are worth noting. The first one is subsampling. One may choose to select a small to moderate subsample from the full dataset to display. Such a sample should be selected with replacement and with probabilities proportional to the observations sampling weights. Then the resulting smaller dataset can be used to produce a standard scatter plot. The subsample obtained in this way behaves approximately as a simple random sample from the survey population - see \citet{Lumley2010} page 69.
+
+The other alternative is to produce so-called \emph{hexagonal binned scatter plots}. This involves dividing the plot surface into a grid of hexagons and combining all the points that fall into a grid cell into a single plotted hexagon whose shading or size indicates the number of points in the bin. With complex household survey data, the number of points in a hexagonal bin should be replaced by the sum of the weights for points in the bin - see \citet{Lumley2010} page 70.
+
+The third alternative is to avoid the display of the individual data points altogether, but instead produce \emph{smoothed scatter plots}. One idea that can be useful would be to estimate specified quantiles (say the quartiles) of the y-axis (response) variable conditional on the values of the x-axis (predictor) variable, and smooth these across the range of the x-axis. Such plots can easily signal whether the y-variable has any relationship with the x-variable, and suggest the kind of curves that might be useful in summarising or modelling such a relationship - see \citet{Lumley2010} page 71.
+
+As an example in \ref{fig:ScatterIncome}, the following scatterplot is presented, showing the weighted relationship between income and expenditure in a population. In this plot, the size of the points represents the weight assigned to each observation. A high concentration of points is observed at lower income and expenditure levels, suggesting that most of the population has low income and low expenditure. Although there is an upward trend, indicating that income and expenditure tend to increase together, the dispersion of points reveals that higher expenditure is not always associated with proportionally higher income. Some larger points, corresponding to observations with greater weight, are distributed across different levels of income and expenditure without concentrating in a single area. Additionally, a few isolated points at high expenditure levels may represent outliers with considerably higher-than-average expenditure. Overall, this plot suggests a positive relationship between income and expenditure, accompanied by significant variability and some exceptional cases.
+
+\begin{figure}
+\includegraphics[width=33.33in]{www/05_graficas/02_scatterplot_ingreso_gasto} \caption{Weighted scatterplot between income and expenditure}\label{fig:ScatterIncome}
+\end{figure}
+
+\section{Maps}\label{maps}
+
+Maps are the display of choice to present the behavior of the interest variable across geographical domains. Maps that aim to present how a single response variable behaves can be easily obtained by plotting a summary of the response across the domains. Such a summary (say mean or median) should be an estimate for the corresponding population parameter btained accounting for the sample design and weights.
+
+Secondary survey analysts will may find that the limits of what mapping they can do is the level of geographic detail provided with the survey microdata. Many household sample surveys are design to provide precise estimates at some broad geographic level, say the country or its first level geographic subdivisions, such as states or departments. Lower level geographies are seldom disseminated with the survey microdata due to confidentiality protection constraints imposed.
+
+It is therefore important that statistical agencies conducting the household sample surveys and preparing the dissemination of the corresponding microdata consider carefully which level of geographic detail may be included with public use datasets.
+
+One area which still needs further research is that of providing appropriate means to convey the uncertainty of underlying point estimates when mapping these.
+
+\section{NSO -- Practical example}\label{nso-practical-example-3}
+
+In this subsection we will include the experience of a NSO on displaying information through graphics.
+
+\chapter*{References}\label{references}
 \addcontentsline{toc}{chapter}{References}
 
   \bibliography{chapterbib.bib}

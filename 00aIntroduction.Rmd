@@ -1,0 +1,36 @@
+# Introduction {-}
+
+A key concern for every agency that produces statistical information is ensuring the *correct* use of the data it provides. This concern is enshrined in the United Nations *Fundamental Principles of Official Statistics*, particularly in the following principles:
+
+- **Principle 3:** To facilitate a correct interpretation of the data, statistical agencies must present information according to scientific standards, including details on the sources, methods, and procedures used.
+- **Principle 4:** Statistical agencies are entitled to comment on erroneous interpretation and misuse of statistics.
+
+This chapter emphasizes empowering users to analyze household survey data accurately. The advent of the computer revolution, coupled with greater access to computational tools, has led to increased use of statistical data, including household survey data. These data are sometimes used descriptively, but increasingly, they are analyzed for hypothesis testing and model construction to draw conclusions applicable to broader populations beyond the sampled data. However, when using standard statistical software for such analyses, results can be biased or misleading if the complex survey design is not properly accounted for.
+
+The primary focus of this chapter is to present relevant models, methods, and software that enable users to incorporate complex survey designs into their analyses effectively. Household survey data present unique challenges for analytical purposes because they are collected through complex sampling methods that often involve:
+
+- **Stratification**: Dividing the population into distinct subgroups before sampling.
+- **Clustering**: Grouping units of analysis to simplify data collection.
+- **Unequal probabilities of selection**: Giving some units a higher chance of being selected than others.
+- **Weighting adjustments**: Correcting for non-response or improving precision.
+
+Standard data analysis methods and software often ignore these features, leading to biased estimates of key parameters and their associated variances. This chapter explores the impact of these simplifications and presents the adjustments necessary to appropriately incorporate complex survey design features into analysis.
+
+*Chapter Overview*
+
+In **Section 9.1**, we provide an introduction to the principles of design-based inference, emphasizing the importance of reporting point estimates alongside margins of error or other related measures. 
+
+**Section 9.2** discusses simple descriptive statistics such as means, ratios, proportions, and other common parameters. 
+
+**Section 9.3** moves to more complex parameters, focusing on comparing phenomena across subgroups for both continuous and discrete variables. This section covers standard tests for comparing means, assessing correlations, and measuring associations between variables.
+
+In **Section 9.4**, we delve into modeling survey outcomes. The discussion begins with the role of weighting in estimating regression coefficients, followed by approaches for estimating parameters in linear and logistic regression models.
+
+Finally, **Section 9.5** focuses on survey data visualization, presenting best practices for creating graphics and maps. These visualizations emphasize the importance of incorporating measures of uncertainty to provide a comprehensive view of the data.
+
+
+The primary purpose of this chapter is to define and explain the fundamental concepts of the design-based paradigm in household surveys and demonstrate how to analyze complex household survey data. Throughout the chapter, national experiences are highlighted to illustrate how National Statistics Offices (NSOs) manage different stages of household survey data analysis. These practical examples provide a useful guide for applying the concepts and methods discussed in real-world contexts.
+
+By the end of the chapter, readers will be equipped with the knowledge and tools needed to analyze household survey data effectively while accounting for the complexities of survey design.
+
+

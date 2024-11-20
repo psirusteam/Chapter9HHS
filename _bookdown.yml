@@ -6,11 +6,12 @@ new_session: yes
 rmd_files: [
   "index.rmd", 
   "00Introduction.rmd",
-  "01SamplingStrategy.rmd",
-  "02DescriptiveParameters.rmd",
-  "03Associations.rmd",
-   "04Regression.rmd",
-   "05DataVisualization.rmd",
+  "01AnalysisPlan.rmd",
+  "02SamplingStrategy.rmd",
+  "03DescriptiveParameters.rmd",
+  "04Associations.rmd",
+   "05Regression.rmd",
    "06Tables.rmd",
-   "07References.rmd" 
+   "07DataVisualization.rmd",
+   "08References.rmd" 
 ]

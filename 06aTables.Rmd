@@ -1,0 +1,199 @@
+# Tables
+
+Tables are a fundamental tool for disseminating statistics from household survey data. They serve to organize and present numerical results efficiently, minimizing the need for lengthy text descriptions. When well-designed, tables enhance clarity and make it easier for users and wider audiences to interpret survey results.
+
+*Types of Tables*
+
+Before diving into specific guidelines, it is important to recognize three main types of tables commonly used to present survey results:
+
+1. **Presentation Tables**: 
+   - These tables are designed to highlight key findings and are often included in reports or presentations. They are concise and focus on results that support specific messages or conclusions.
+   
+2. **Reference Tables**:
+   - These tables provide comprehensive details and are aimed at users who need in-depth information. They are typically larger, covering a wide range of variables and subgroups.
+   
+3. **Long / Database-like Tables**:
+   - These tables are structured for use in databases or data systems. They contain raw or minimally processed data, organized for further analysis or integration with other datasets.
+
+*Key Principles for Table Design*
+
+Regardless of the type of table, certain principles should guide their design to ensure they are effective and user-friendly. According to Miller (2004), two fundamental principles should always be considered:
+
+- **Principle 1**: Make it easy for your reader to find and understand the numbers presented in your tables.
+  - Use clear and concise labels for rows and columns.
+  - Highlight key results using formatting techniques like bold text or shading.
+  - Avoid excessive detail that might overwhelm the reader.
+
+- **Principle 2**: Draw the layout and labels of the table in a simple and direct way, helping to focus attention on the results you want to show.
+  - Use logical and intuitive ordering of rows and columns.
+  - Group related variables or categories together.
+  - Minimize clutter by avoiding unnecessary lines, colors, or decorations.
+
+*Applying These Principles*
+
+*Presentation Tables*
+
+- Focus on the most important results, avoiding extraneous details.
+- Use summary statistics, such as means or percentages, to convey the main message.
+- Include footnotes to explain any nuances or methodological considerations.
+
+*Reference Tables*
+- Provide a comprehensive view, ensuring that all relevant data points are included.
+- Organize the data systematically, often by demographic or geographic subgroups.
+- Ensure that users can easily find specific variables or categories of interest.
+
+*Long Tables*
+- Structure the data in a consistent and machine-readable format.
+- Include metadata, such as variable names and descriptions, to guide users in their analyses.
+- Avoid combining multiple data types or variables in a single column, ensuring compatibility with analysis software.
+
+*Conclusion*
+
+Tables are a versatile and essential tool for presenting survey data. By following the principles of clarity, simplicity, and focus, agencies can ensure their tables effectively communicate the results to diverse audiences. Whether designing presentation, reference, or database-like tables, attention to layout and labeling will enhance the user experience and the impact of the survey findings.
+
+## Presentation Tables
+
+Presentation tables are concise tables designed to highlight key results from survey data. They are often used in press releases, executive summaries, scientific articles, reports, or on landing web pages that showcase survey outputs. These tables are not meant to provide exhaustive details but rather to focus the reader's attention on the most important findings.
+
+### Purpose of Presentation Tables
+
+The primary goal of presentation tables is to communicate key results clearly and effectively. They are designed to support the accompanying text by organizing data in a way that emphasizes significant patterns, trends, or stories revealed by the survey. These tables should help readers quickly grasp the main findings without being overwhelmed by excessive detail.
+
+### Design Principles for Presentation Tables
+
+1. **Conciseness**: 
+   - Include only the most important results relevant to the topic.
+   - Avoid unnecessary details that may distract from the key message.
+
+2. **Clarity**: 
+   - Organize the data in a logical and intuitive way, ensuring that the layout guides the reader's understanding.
+   - Use clear labels for rows and columns to make the table easy to interpret.
+
+3. **Formatting for Readability**: 
+   - Use appropriate formatting, such as bold text or shading, to draw attention to key figures.
+   - Sort rows (and columns, if applicable) to highlight patterns, such as high or low values.
+
+4. **Simplified Numbers**: 
+   - For population counts, round to the nearest thousand.
+   - For percentages, use a single decimal digit or round to the nearest integer if the precision of the estimates does not justify decimals (e.g., when margins of error exceed 1%).
+
+### Example
+
+Below is an example of a well-designed presentation table. It highlights key results while maintaining readability and simplicity.
+
+| Region      | Population (000s) | Percentage with Internet Access (%) |
+|-------------|--------------------|-------------------------------------|
+| Urban       | 15,200             | 82                                 |
+| Rural       | 5,600              | 45                                 |
+| National    | 20,800             | 71                                 |
+
+**Table: Internet Access by Region**
+
+- The table focuses on a single topic: internet access by region.
+- Numbers are rounded to thousands for population counts and to the nearest integer for percentages, ensuring readability.
+- Rows are sorted by region, providing a clear comparison between urban, rural, and national figures.
+
+### Applications
+
+Presentation tables are versatile and can be used in various contexts:
+
+- **Reports and Articles**: To summarize key findings and support textual analysis.
+- **Press Releases**: To provide journalists and readers with clear and impactful data highlights.
+- **Web Pages**: To engage online audiences with easily digestible insights.
+
+### Conclusion
+
+Presentation tables are a powerful tool for summarizing and communicating survey results. By focusing on clarity, simplicity, and relevance, these tables enable readers to quickly understand the most important findings. Properly designed presentation tables enhance the accessibility and impact of survey data, making them an essential component of effective communication.
+
+
+## Example of Presentation Table and Corresponding Text
+
+Below is an example of a presentation table designed to highlight key findings on gender representation among different managerial levels and age groups. The accompanying text contextualizes the data, emphasizing the underrepresentation of women in managerial roles across all ages.
+
+### Key Findings
+
+> **Among middle and senior managers, women are outnumbered at all ages.** The underrepresentation of women is evident in all age groups. Relative to their share among non-managers, women are consistently outnumbered among middle and senior managers. In all age groups, women account for about 4 in 10 middle managers and 3 in 10 senior managers.
+
+### Table: Share of Women (%) by Age Group and Occupation
+
+|   Age Group    | Non-managers | Middle Managers | Senior Managers |
+|:--------------:|:------------:|:---------------:|:---------------:|
+| 25 to 34 years |     44.6     |      40.3       |      28.4       |
+| 35 to 44 years |     45.7     |      38.7       |      31.3       |
+| 45 to 54 years |     48.3     |      40.5       |      31.7       |
+
+**Note**: The category "women" includes women and some non-binary individuals.  
+**Source**: Statistics Canada, Census of Population, 2021.  
+<https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024010/article/00005-eng.htm>
+
+
+This table concisely presents the percentage of women in different occupational categories (non-managers, middle managers, and senior managers) across three age groups. 
+
+- **Non-Managers**: Women make up between 44.6% and 48.3%, showing slight increases with age. 
+- **Middle Managers**: Representation drops to approximately 4 in 10, with little variation across age groups.
+- **Senior Managers**: Women account for about 3 in 10, indicating their significant underrepresentation at higher managerial levels.
+
+
+This example highlights how a well-designed presentation table can summarize key findings and complement textual analysis. By organizing data clearly and emphasizing critical patterns, such tables enhance the readability and impact of survey results.
+
+## Reference Tables
+
+Reference tables are longer tables designed to present more comprehensive sets of results from statistical studies. These tables are typically included in reports to provide detailed information, but they should remain manageable in size. A good rule of thumb is to limit them to a maximum of 200 rows and 12 columns. Larger tables should be considered for dissemination as database-like tables, accessible via downloads or interactive websites.
+
+### Structure and Organization
+
+Reference tables typically define rows using core classification, domain, or explanatory variables, while columns represent outcome or output variables. Both rows and columns should be sorted intuitively, such as alphabetically or according to standard classifications, to make it easier for readers to locate the data they are most interested in.
+
+### Self-Sustaining Tables
+
+All tables, especially reference tables, should be **self-sustaining**. This means they must include sufficient metadata to make sense even when removed from their original context. Self-sustaining tables ensure that users can understand the data without needing additional references.
+
+### Anatomy of a Table
+
+The following are the essential components of a well-designed table:
+
+1. **Title and Subtitle**:
+   - Provide a concise, clear indication of the data presented.
+   - Answer the questions of what, where, and when about the data.
+   - Avoid using verbs.
+
+2. **Column Headers**:
+   - Identify the data in each column.
+   - Include metadata such as units of measurement, time periods, or geographic areas.
+
+3. **Stub (Row Headers)**:
+   - The first column should identify the data in each row.
+
+4. **Data**:
+   - Present numbers clearly, using consistent formatting.
+   - Ensure the layout makes it easy to extract relevant information.
+
+5. **Source**:
+   - Always include the organization responsible and the survey or study name.
+
+6. **Notes** (Optional):
+   - Add details to clarify the data if necessary.
+   - Use short text and number multiple notes sequentially.
+
+### Design and Formatting Guidelines
+
+To ensure readability and usability:
+
+- Use consistent spacing for columns.
+- Avoid unnecessary text or excessive width.
+- Present time series data in chronological order (ascending for reference tables).
+- Categorize data using standard classifications.
+- Use a clear, logical ordering of rows and columns.
+- Limit decimal places to what is necessary.
+- Align numbers to the right, ensuring decimal points are aligned.
+- Avoid blank cells; use symbols for missing or "not applicable" values.
+- Use rounding to simplify data, aiming for 3-4 significant digits.
+
+
+### Database-Like Tables
+
+When tables exceed the size limits of traditional reference tables, they may be published as database-like tables on websites. These interactive tables often provide features such as column sorting, which helps users navigate large datasets and identify relevant values quickly.
+
+### Conclusion
+
+Reference tables serve as a vital resource for presenting detailed results from statistical studies. By adhering to clear guidelines for layout, formatting, and metadata, these tables can effectively communicate complex data while remaining accessible to users. When larger tables are needed, digital formats with interactive features provide a flexible alternative for dissemination.

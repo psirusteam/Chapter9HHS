@@ -1,0 +1,41 @@
+# Planning Analysis
+
+Planning the analysis stage of a survey is an essential part of the overall survey planning process. Following the **Generic Statistical Business Process Model (GSBPM)** (<https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51>), this step corresponds to the subprocess labeled as *2.1 - Design Outputs*. At this stage, it is important to distinguish between two groups of analysts: primary data producers and secondary data users.
+
+## Primary Data Producers
+
+Primary data producers are responsible for planning and executing the survey to collect the intended data. For them, planning the analysis typically involves preparing a *tabular plan*—a document specifying the core set of tables to be produced once the survey data becomes available. This plan ensures that the survey results align with the stated objectives of the survey, as discussed in earlier chapters.
+
+To prepare a tabular plan, three key elements must be defined:
+
+1. **Filter Conditions**: These define subgroups of the population for specific analyses. For example, if occupation-related questions are only asked of individuals aged 15 and older, a filter condition such as "age > 14" ensures that only relevant respondents are included in occupation-related tables.
+   
+2. **Classification or Domain Variables**: These are variables used to subdivide the population into meaningful groups for analysis. For example, geographic areas (e.g., states or provinces), age groups, or sex might define rows in a table. These variables are often chosen to meet reporting requirements, such as providing estimates by province in national household surveys.
+   
+3. **Response or Survey Variables**: These are the variables being analyzed to understand how they vary across the defined domains. For instance, survey variables like income or employment status might be used to create columns in a table, summarizing means, medians, or other statistics.
+
+## Secondary Data Users
+
+Secondary data users analyze the survey data after it has been released, typically with access to only the public datasets and documentation provided by the data producers. Their primary task is to define clear research questions and locate relevant survey metadata. Metadata must describe the sampling design and estimation methods, including details about stratification, clustering, and survey weights.
+
+A well-defined research question, such as "Do rural households face digital exclusion compared to urban households?" directs the analysis towards estimating relevant parameters and precision measures. For example, the question might involve testing whether the proportion of rural households with internet access is significantly lower than that of urban households. This clarity allows for more direct and accurate analyses.
+
+## Considerations for Sampling Design
+
+The sampling design significantly impacts analysis planning. For example, if analysis is required for specific domains (e.g., provinces or age groups), sample sizes must ensure precision for these subgroups. In cases where domain characteristics are unavailable from the sampling frame (e.g., age groups), sample sizes must be calculated to meet the precision requirements of the rarest subgroup. For instance, if a minimum of 500 respondents is needed for a rare age group comprising 12.5% of the population, the total sample size should be 4,000 to ensure sufficient representation.
+
+## Quality Control for Secondary Analysts
+
+Secondary analysts must take care to account for the survey design. Ignoring structural aspects of the survey design (e.g., stratification, clustering, and weighting) can lead to biased estimates and incorrect inferences. A recommended quality control workflow includes:
+
+1. **Load the Data and Metadata**: Ensure that the survey microdata is properly linked to metadata describing the sampling design and estimation processes.
+   
+2. **Replicate Published Estimates**: Recreate some of the estimates provided by the survey producers, including measures of precision, to confirm that the data and design have been correctly interpreted.
+
+3. **Compare Scenarios**: Perform the required analysis both with and without accounting for the sampling design. Assess how the results differ and whether these differences match expectations based on the survey design.
+
+4. **Finalize the Analysis**: Use only the results that account for the sampling design in the final interpretation, ensuring that the design effects are appropriately incorporated.
+
+## Conclusion
+
+Proper planning and understanding of the survey design are crucial for both primary data producers and secondary data users. For primary data producers, creating a comprehensive tabular plan ensures alignment with survey objectives. For secondary users, clear research questions and attention to survey metadata enable accurate and meaningful analyses. By following best practices, both groups can contribute to the reliable and effective use of household survey data.
