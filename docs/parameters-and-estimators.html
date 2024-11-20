@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-15" />
+<meta name="date" content="2024-11-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="the-golden-pair-sample-design-and-estimator.html"/>
-<link rel="next" href="uncertainty-in-household-surveys.html"/>
+<link rel="next" href="approaches-to-variance-estimation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -112,7 +112,7 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="the-golden-pair-sample-design-and-estimator.html"><a href="the-golden-pair-sample-design-and-estimator.html"><i class="fa fa-check"></i><b>2</b> The golden pair: sample design and estimator</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>2.1</b> Parameters and estimators</a></li>
-<li class="chapter" data-level="2.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>2.2</b> Uncertainty in household surveys</a></li>
+<li class="chapter" data-level="2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html"><i class="fa fa-check"></i><b>2.2</b> Approaches to Variance Estimation</a></li>
 <li class="chapter" data-level="2.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>2.3</b> Ultimate Cluster Method</a></li>
 <li class="chapter" data-level="2.4" data-path="bootstrap-method.html"><a href="bootstrap-method.html"><i class="fa fa-check"></i><b>2.4</b> Bootstrap Method</a></li>
 <li class="chapter" data-level="2.5" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.5</b> Using software to generate valid inferences</a></li>
@@ -208,19 +208,17 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="parameters-and-estimators" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Parameters and estimators<a href="parameters-and-estimators.html#parameters-and-estimators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Under a design-based approach this section presents the basic principles of inductive inference and how, using the <em>sampling weights</em> (from chapter VIII), one can get consistent estimators for population parameters of interest. We adopt the notation introduced in chapter VIII for presenting the expressions required here.</p>
+<p>Two common goals when analyzing survey data are to estimate the total value of a characteristic for the population, such as total income, and to calculate the average value of that characteristic, such as the average income per person. These are referred to as the population total and the population mean, respectively. The design-based approach accounts for the inclusion of the probability sampling design in the inferential process. That is, it is assumed that every unit in the population has a known chance of being included in the sample. These probabilities are used to calculate the sampling weights. When the design is properly implemented, the estimates for the population totals and means are unbiased. This means that, on average, the estimates will equal the true population values if the survey were to be repeated many times under the same conditions.</p>
+<p>Under this approach, the estimators used to make inferences about the parameters of the population use the sampling weights to create weighted sums of the survey data, which serve as estimates for these population values. If the weights are appropriately applied, the resulting estimates are consistent with the true values in the population.</p>
+<p>As stated in the previous chapter, in some situations, the original sampling weights need adjustments to improve their accuracy. Adjustment may accoutn for survey non-response, where weights are corrected to account for individuals who were selected for the survey but did not participate. These adjusted weights help to minimize biases in the estimates and make the results more reliable. If calibration was performed, the weights are modified to ensure that the weighted sums aligns more closely with known characteristics of the population, such as age or gender distributions.</p>
 <p>The <em>population total</em> <span class="math inline">\(Y = \sum _{U} y_k\)</span> and <em>mean</em> <span class="math inline">\(\overline Y = \frac Y N\)</span> of a survey variable <span class="math inline">\(y\)</span> can be estimated by weighted estimators given by <span class="math inline">\(\widehat Y _{HT} = \sum _{s} d_k \ y_k\)</span> and <span class="math inline">\(\overline y_{H} = \frac {\widehat Y_{HT}} {\widehat N_{HT}} = \frac {\sum_{s} d_k \ y_k} {\sum_{s} d_k}\)</span>, respectively. When the survey weights are calibrated and/or non-response adjusted, the above expressions may still be used, but with the calibrated or non-response adjusted weights, <span class="math inline">\(w_k\)</span> say, replacing the design weights <span class="math inline">\(d_k\)</span>, for all <span class="math inline">\(k \in s\)</span>.</p>
 <p>Here <span class="math inline">\(s = \left\{ k_1, \ldots, k_n \right\} \subset U\)</span> denotes the set of units in a sample selected from the population <span class="math inline">\(U\)</span> using a <em>probability sampling design</em> <span class="math inline">\(p(s)\)</span>, that ensures strictly positive first order inclusion probabilities <span class="math inline">\(\pi_k = Pr(k \in s), \, \forall \, k \in U\)</span>. These inclusion probabilities are assumed known <span class="math inline">\(\forall \, k \in s\)</span>, at least to the data producers.</p>
-<p>Under the design-based framework and assuming full response, <span class="math inline">\(\widehat Y _{HT}\)</span> is unbiased for <span class="math inline">\(Y\)</span> and its sampling variance is given by</p>
-<p><span class="math display">\[
-V_p \left( \widehat{Y}_{HT} \right) = \sum_{k \in U} \sum_{j \in U} \left( \frac {d_k d_j} {d_{kj}} - 1 \right) y_k y_j
-\]</span></p>
-<p>where <span class="math inline">\(d_{kj} = 1 / \pi_{kj}\)</span> and <span class="math inline">\(\pi_{kj} = Pr(k,j \in s), \, \forall \, k,j \in U\)</span>. This result assumes that the sampling design <span class="math inline">\(p(s)\)</span> is such that <span class="math inline">\(\pi_{kj} &gt; 0 \,\, \forall \, k,j \in U\)</span>.</p>
-<p>Under full response, this variance can be estimated unbiasedly by</p>
+<p>An important part of survey analysis is understanding the level of uncertainty in the estimates. Since we are working with a sample and not the entire population, there will always be some variability in the results. This variability is measured using the sampling variance, which indicates how much the estimate might differ from the true population value in repeated samples. While there are theoretical formulas to calculate this variance, these can be complex and rely on information that is not always available to analysts. Under the design-based framework and assuming full response, <span class="math inline">\(\widehat Y _{HT}\)</span> is unbiased for <span class="math inline">\(Y\)</span> and its sampling variance can be estimated unbiasedly by</p>
 <p><span class="math display">\[
 \widehat {V_p} \left( \widehat{Y}_{HT} \right) = \sum_{k \in s} \sum_{j \in s} \left( d_k d_j - d_{kj} \right) y_k y_j
 \]</span></p>
-<p>While the above formula for variance estimation is general and covers the vast majority of sample designs used in the practice of household sample surveys, it is not used in practice because the second order inclusion probabilities <span class="math inline">\(\pi_{kj}\)</span> (and corresponding pairwise weights <span class="math inline">\(d_{kj}\)</span>) are generally unknown to survey data analysts. In fact, even data producers do not compute such pairwise weights, since there are more efficient methods for variance estimation that do not require having such weights.</p>
+<p>Where <span class="math inline">\(d_{kj} = 1 / \pi_{kj}\)</span> and <span class="math inline">\(\pi_{kj} = Pr(k,j \in s), \, \forall \, k,j \in U\)</span>. This result assumes that the sampling design <span class="math inline">\(p(s)\)</span> is such that <span class="math inline">\(\pi_{kj} &gt; 0 \,\, \forall \, k,j \in U\)</span>. While the above formula for variance estimation is general and covers the vast majority of sample designs used in the practice of household sample surveys, it is not used in practice because the second order inclusion probabilities <span class="math inline">\(\pi_{kj}\)</span> (and corresponding pairwise weights <span class="math inline">\(d_{kj}\)</span>) are generally unknown to survey data analysts. In fact, even data producers do not compute such pairwise weights, since there are more efficient methods for variance estimation that do not require having such weights.</p>
+<p>For this reason, simpler and more efficient methods are often used in practice, allowing analysts to quantify the uncertainty without requiring overly detailed information about the sampling design.</p>
 </div>
             </section>
 
@@ -228,7 +226,7 @@ V_p \left( \widehat{Y}_{HT} \right) = \sum_{k \in U} \sum_{j \in U} \left( \frac
         </div>
       </div>
 <a href="the-golden-pair-sample-design-and-estimator.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="uncertainty-in-household-surveys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="approaches-to-variance-estimation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

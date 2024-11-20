@@ -8,7 +8,7 @@ secondary-data-users
 quality-control-for-secondary-analysts
 the-golden-pair-sample-design-and-estimator
 parameters-and-estimators
-uncertainty-in-household-surveys
+approaches-to-variance-estimation
 ultimate-cluster-method
 bootstrap-method
 using-software-to-generate-valid-inferences

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Data visualization | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>2.2 Approaches to Variance Estimation | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Data visualization | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="2.2 Approaches to Variance Estimation | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Data visualization | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="2.2 Approaches to Variance Estimation | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="reference-tables.html"/>
-<link rel="next" href="graphs-and-sampling-weights.html"/>
+<link rel="prev" href="parameters-and-estimators.html"/>
+<link rel="next" href="ultimate-cluster-method.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -206,18 +206,36 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-visualization" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">7</span> Data visualization<a href="data-visualization.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In this section we discuss how to present data and estimates resulting from household surveys using graphics. While standard plots can still be used to show distributions and associations from the raw (unweighted) sample data, these can be misleading for the corresponding population distributions and associations. Therefore it is recommended that modified plots that account for survey weights be used instead. In addition, regarding the display of survey estimates, which are subject to sampling error, it is important to convey this message by presenting not only point estimates, but also standard errors or confidence intervals.</p>
-<p>Graphs are important for the exploratory analysis of the survey data, for the diagnostics of fitted models and for the presentation of results. However, often the sample data sets are very large. In addition, sampling units typically have different weights. These two difficulties may cause standard graphs to fail in facilitating the analysis or presentation.</p>
+<div id="approaches-to-variance-estimation" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Approaches to Variance Estimation<a href="approaches-to-variance-estimation.html#approaches-to-variance-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When working with household surveys, the sample is usually only a small subset of the entire population. Because of this, it is important to measure not only the main estimates of interest, such as totals or averages, but also the level of uncertainty in these estimates. This uncertainty is often expressed as measures of variance or confidence intervals, which help us understand how much the estimates might differ if the survey were repeated.</p>
+<p>There are several methods to estimate the uncertainty in survey results. One common approach is based on approximate formulas like Taylor linearization, which simplifies complex relationships between variables into linear ones. Another approach known as the ultimate cluster method, is used in surveys that collect data through multi-stage sampling, where groups of people (clusters) are selected at different stages, exactly as household survey data is collected.</p>
+<p>Another helpful tool is the use of generalized variance functions <span class="citation">(<a href="#ref-Binder1983">David A. Binder 1983b</a>)</span>, which comprises a unifying idea of sampling theory. Many population parameters can be written/obtained as solutions for <em>population estimating equations</em>. Variance estimation for these sample-based methods follows a consistent framework. Although the details can be technical, the key idea is that the same principles used to estimate totals can be applied to calculate variances. This generality makes the method simple and versatile, allowing it to be implemented in widely used software like the <code>R survey</code> package and the <code>Stata svy</code> functions. These tools automate much of the process, making it accessible for analysts to estimate both population parameters and their associated uncertainties.</p>
+<p>A generic population estimating equation is given by $_{i U} z_i () = 0 $, where <span class="math inline">\(z_i(\bullet)\)</span> is an <em>estimating function</em> evaluated for unit <span class="math inline">\(i\)</span> and <span class="math inline">\(\theta\)</span> is a population parameter of interest. These equations provide a general way to describe and calculate many population parameters, such as totals, means, and ratios. The concept is straightforward: population parameters can be defined as solutions to specific equations that involve all the units in the population. This approach is flexible and can be adapted to calculate many different types of parameters.</p>
+<p>For the case of the population total, take <span class="math inline">\(z_i(\theta) = y_i - \theta / N\)</span>. The corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta / N) = 0\)</span>, and solving for <span class="math inline">\(\theta\)</span> gives the population total <span class="math inline">\(\theta_U = \sum _{i \in U} y_i \ = \ Y\)</span>.</p>
+<p>Similarly, means and ratios can be derived by modifying these equations to account for averaging or proportional relationships. For instance, take <span class="math inline">\(z_i(\theta) = y_i - \theta\)</span> for the population mean. As a final example, consider the ratio of population totals. Taking <span class="math inline">\(z_i(\theta) = y_i - \theta x_i\)</span>, the corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta x_i) = 0\)</span>. Solving for <span class="math inline">\(\theta\)</span> gives the <em>population ratio</em> <span class="math inline">\(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\)</span>.</p>
+<p>The idea of defining population parameters as solutions to population estimating equations allows defining a general method for obtaining corresponding sample estimators. It is a matter of using the <em>sample estimating equations</em> <span class="math inline">\(\sum _{k \in s} d_k \, z_k (\theta) = 0\)</span>. Under <em>probability sampling</em>, full response and with <span class="math inline">\(d_k = 1 / \pi_k\)</span>, the sample sum in the left hand side is unbiased towards the population sum in the corresponding population estimating equation. Solving the sample estimating equation yields consistent estimators for the corresponding population parameters.</p>
+<p>The case of the population mean yields the sample estimating equation <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta) = 0\)</span>, and by solving on <span class="math inline">\(\theta\)</span>, we recover the Hàjek estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k = \overline y_H\)</span>. In the case of the population ratio, solving <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta x_k) = 0\)</span> on <span class="math inline">\(\theta\)</span>, yields the well-known estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k \, x_k = \widehat R\)</span>.</p>
+<p>A consistent estimator for the variance of estimators obtained as solutions of sample estimating equations can be obtained as:</p>
+<p><span class="math display">\[
+\widehat V_p (\widehat \theta) = \left[ \widehat J ( \widehat \theta) \right] ^{-1} \widehat V_p \left[ \sum _{k \in s} d_k \, z_k (\widehat \theta)\right] \left[ \widehat J ( \widehat \theta) \right] ^{-1}
+\]</span></p>
+<p>Where <span class="math inline">\(\widehat J (\widehat \theta) = \sum _{k \in s} d_i \, \left[ \partial{z_k ( \theta)} / \partial \theta \right]_{\theta = \widehat \theta}\)</span>.</p>
+<p>This approach implies that by one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals. Its simplicity and generality have enabled the development of software such as the <code>R survey</code> package, the <code>Stata svy</code> functions and others.</p>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Binder1983" class="csl-entry">
+Binder, David A. 1983b. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="reference-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphs-and-sampling-weights.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="parameters-and-estimators.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ultimate-cluster-method.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -248,7 +266,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/07DataVisualization.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/02SamplingStrategy.rmd",
 "text": "Edit"
 },
 "history": {
