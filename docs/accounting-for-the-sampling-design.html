@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.4 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>2 Accounting for the sampling design | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.4 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="2 Accounting for the sampling design | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.4 Box Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="2 Accounting for the sampling design | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="histograms.html"/>
-<link rel="next" href="scatter-plots.html"/>
+<link rel="prev" href="secondary-data-users.html"/>
+<link rel="next" href="parameters-and-estimators.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -209,18 +209,36 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="box-plots" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Box Plots<a href="box-plots.html#box-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Box plots are often used to present the distribution of continuous variables. They can summarize large datasets by providing a visual display providing easy visual to identify location, range, variability and outliers. They are great also for enabling comparing distributions across specified grouping variables, such as strata, clusters, etc.</p>
-<p>The key to producing such graphs from complex sample surveys is to account for the sampling weights when estimating the location measures that drive the plot, namely the quartiles. Once these have been estimated using the methods described earlier, the resulting box plots will be good depictions enabling analysis of the underlying population distributions.</p>
+<div id="accounting-for-the-sampling-design" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Accounting for the sampling design<a href="accounting-for-the-sampling-design.html#accounting-for-the-sampling-design" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>When analysis household survey data, ignoring the sampling design undermines the representativeness, accuracy, and credibility of survey-based findings, which can lead to incorrect decisions. This is why accounting for the sampling design is essential when analyzing household survey data to ensure valid and unbiased estimates. As seen in the previous chapters, regular household surveys has two major characteristics:</p>
+<ul>
+<li>They use complex sampling designs (e.g., stratification, clustering, and unequal probabilities of selection) to represent the population efficiently. Ignoring the design can lead to biased population-level inferences.</li>
+<li>They define sampling weights for each sampling unit (primary, and remaining ones) to properly represent the population.</li>
+</ul>
+<p>To illustrate this fact, we provide a simple example. Suppose a country has two regions: Region A with 100 people, and Region B with 900 people. Wealthy people lives in Region A, with an average income of $10,000, less wealthy people lives in Region B, with average income of $2,000. The true population mean income is $2,800, because:</p>
+<p><span class="math display">\[
+\theta = \frac{(100 \times 10,000) + (900 \times 2,000)}{100 + 900} = 2,800.
+\]</span></p>
+<p>Suppose a survey is conducted where 50 people are sampled from each Region. After the collection of data, it was found that the sample mean for Region A was $10,000, while the sample mean for Region B was $2,000. If the sampling design is ignored, all units in the sample will receive equal weights, regardless of their population sizes. This way, the mean income is biasedly estimated by:</p>
+<p><span class="math display">\[
+\hat \theta = \frac{(50 \times 10,000) + (50 \times 2,000)}{100} = 6,000.
+\]</span></p>
+<p>When the sampling design is considered, weights are applied proportional to the population sizes of each neighborhood. This way, units in Region A will receive a weight of <span class="math inline">\(\frac{100}{50} = 2\)</span>, while units in Region B will receive a weight of <span class="math inline">\(\frac{900}{50} = 18\)</span>. In this escnario, the mean income is unbiasedly estimated by:</p>
+<p><span class="math display">\[
+\hat \theta = \frac{(2 \times 50 \times 10,000) + (18 \times 50 \times 2,000)}{(2 \times 50) + (18 \times 50)} = 2,800.
+\]</span></p>
+<p>Ignoring the sampling design causes that Region A (smaller but wealthier) dominates the estimate, even though it represents only 10% of the country. This creates a bias, making the income seem higher than it actually is for the whole population. By considering the sampling design and using weights, and strata, the estimate correctly reflects the true contribution of each Region, avoiding bias.</p>
+<p>In real applications, to account for the sampling design, we must ensure that primary sampling units (PSU), strata, and weights are available in the survey dataset to enable adequate analysis. Alternatively, when such information is not available, the dataset should at least contain replicate weights, or the analyst should have clear guidance on how to compute both point and variance estimates.
+This section discusses how survey data from a sample can be used to draw conclusions about an entire population using a design-based approach. This method assumes that the sample is selected through a well-defined probability sampling process, which ensures that every unit in the population has a known, non-zero chance of being included. Sampling weights, which reflect how much each sampled unit represents in the population, are essential tools in this approach. These weights allow analysts to make estimates that account for the sampling process and produce results that are representative of the population. A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Not accounting for it may lead to biased estimates and misleading conclusions.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="histograms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="scatter-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="secondary-data-users.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parameters-and-estimators.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -251,7 +269,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/07DataVisualization.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/02SamplingStrategy.rmd",
 "text": "Edit"
 },
 "history": {

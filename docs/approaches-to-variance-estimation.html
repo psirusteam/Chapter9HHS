@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-20" />
+<meta name="date" content="2024-11-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="parameters-and-estimators.html"/>
-<link rel="next" href="ultimate-cluster-method.html"/>
+<link rel="next" href="using-software-to-generate-valid-inferences.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -109,13 +109,16 @@ div.csl-indent {
 <li class="chapter" data-level="1.2.1" data-path="secondary-data-users.html"><a href="secondary-data-users.html#quality-control-for-secondary-analysts"><i class="fa fa-check"></i><b>1.2.1</b> Quality Control for Secondary Analysts</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="the-golden-pair-sample-design-and-estimator.html"><a href="the-golden-pair-sample-design-and-estimator.html"><i class="fa fa-check"></i><b>2</b> The golden pair: sample design and estimator</a>
+<li class="chapter" data-level="2" data-path="accounting-for-the-sampling-design.html"><a href="accounting-for-the-sampling-design.html"><i class="fa fa-check"></i><b>2</b> Accounting for the sampling design</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>2.1</b> Parameters and estimators</a></li>
-<li class="chapter" data-level="2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html"><i class="fa fa-check"></i><b>2.2</b> Approaches to Variance Estimation</a></li>
-<li class="chapter" data-level="2.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>2.3</b> Ultimate Cluster Method</a></li>
-<li class="chapter" data-level="2.4" data-path="bootstrap-method.html"><a href="bootstrap-method.html"><i class="fa fa-check"></i><b>2.4</b> Bootstrap Method</a></li>
-<li class="chapter" data-level="2.5" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.5</b> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html"><i class="fa fa-check"></i><b>2.2</b> Approaches to Variance Estimation</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#estimating-equations"><i class="fa fa-check"></i><b>2.2.1</b> Estimating equations</a></li>
+<li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster-method"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster Method</a></li>
+<li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap-method"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap Method</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using software to generate valid inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -209,13 +212,23 @@ div.csl-indent {
 <div id="approaches-to-variance-estimation" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Approaches to Variance Estimation<a href="approaches-to-variance-estimation.html#approaches-to-variance-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When working with household surveys, the sample is usually only a small subset of the entire population. Because of this, it is important to measure not only the main estimates of interest, such as totals or averages, but also the level of uncertainty in these estimates. This uncertainty is often expressed as measures of variance or confidence intervals, which help us understand how much the estimates might differ if the survey were repeated.</p>
-<p>There are several methods to estimate the uncertainty in survey results. One common approach is based on approximate formulas like Taylor linearization, which simplifies complex relationships between variables into linear ones. Another approach known as the ultimate cluster method, is used in surveys that collect data through multi-stage sampling, where groups of people (clusters) are selected at different stages, exactly as household survey data is collected.</p>
-<p>Another helpful tool is the use of generalized variance functions <span class="citation">(<a href="#ref-Binder1983">David A. Binder 1983b</a>)</span>, which comprises a unifying idea of sampling theory. Many population parameters can be written/obtained as solutions for <em>population estimating equations</em>. Variance estimation for these sample-based methods follows a consistent framework. Although the details can be technical, the key idea is that the same principles used to estimate totals can be applied to calculate variances. This generality makes the method simple and versatile, allowing it to be implemented in widely used software like the <code>R survey</code> package and the <code>Stata svy</code> functions. These tools automate much of the process, making it accessible for analysts to estimate both population parameters and their associated uncertainties.</p>
+<p>Understanding and estimating uncertainty is a critical part of analyzing household survey data; by using proper methods, analysts can measure the reliability of their estimates. There are several methods to estimate the uncertainty in survey results:</p>
+<ul>
+<li>One common approach is based on approximate formulas like Taylor linearization, which simplifies complex relationships between variables into linear ones.</li>
+<li>The ultimate cluster method, is used in surveys that collect data through multi-stage sampling, where groups of people (clusters) are selected at different stages, exactly as household survey data is collected.</li>
+<li>Generalized variance functions <span class="citation">(<a href="#ref-Binder1983">David A. Binder 1983b</a>)</span>, which comprises a unifying idea of sampling theory.</li>
+<li>Estimating equations provides a flexible framework for calculating totals, means, ratios, and other parameters from both the population and the sample.</li>
+</ul>
+<div id="estimating-equations" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Estimating equations<a href="approaches-to-variance-estimation.html#estimating-equations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With the help of modern software, these methods can be implemented efficiently, ensuring accurate and meaningful analysis of survey data. Many population parameters can be written/obtained as solutions for <em>population estimating equations</em>. Variance estimation for these sample-based methods follows a consistent framework. Although the details can be technical, the key idea is that the same principles used to estimate totals can be applied to calculate variances. This generality makes the method simple and versatile, allowing it to be implemented in widely used software like the <code>R survey</code> package and the <code>Stata svy</code> functions. These tools automate much of the process, making it accessible for analysts to estimate both population parameters and their associated uncertainties.</p>
 <p>A generic population estimating equation is given by $_{i U} z_i () = 0 $, where <span class="math inline">\(z_i(\bullet)\)</span> is an <em>estimating function</em> evaluated for unit <span class="math inline">\(i\)</span> and <span class="math inline">\(\theta\)</span> is a population parameter of interest. These equations provide a general way to describe and calculate many population parameters, such as totals, means, and ratios. The concept is straightforward: population parameters can be defined as solutions to specific equations that involve all the units in the population. This approach is flexible and can be adapted to calculate many different types of parameters.</p>
-<p>For the case of the population total, take <span class="math inline">\(z_i(\theta) = y_i - \theta / N\)</span>. The corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta / N) = 0\)</span>, and solving for <span class="math inline">\(\theta\)</span> gives the population total <span class="math inline">\(\theta_U = \sum _{i \in U} y_i \ = \ Y\)</span>.</p>
-<p>Similarly, means and ratios can be derived by modifying these equations to account for averaging or proportional relationships. For instance, take <span class="math inline">\(z_i(\theta) = y_i - \theta\)</span> for the population mean. As a final example, consider the ratio of population totals. Taking <span class="math inline">\(z_i(\theta) = y_i - \theta x_i\)</span>, the corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta x_i) = 0\)</span>. Solving for <span class="math inline">\(\theta\)</span> gives the <em>population ratio</em> <span class="math inline">\(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\)</span>.</p>
+<ul>
+<li>For the case of the population total, take <span class="math inline">\(z_i(\theta) = y_i - \theta / N\)</span>. The corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta / N) = 0\)</span>, and solving for <span class="math inline">\(\theta\)</span> gives the population total <span class="math inline">\(\theta_U = \sum _{i \in U} y_i \ = \ Y\)</span>.</li>
+<li>For ratios of population totals, taking <span class="math inline">\(z_i(\theta) = y_i - \theta x_i\)</span>, the corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta x_i) = 0\)</span>. Solving for <span class="math inline">\(\theta\)</span> gives the <em>population ratio</em> <span class="math inline">\(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\)</span>.</li>
+<li>Similarly, for means, take <span class="math inline">\(z_i(\theta) = y_i - \theta\)</span>.</li>
+</ul>
 <p>The idea of defining population parameters as solutions to population estimating equations allows defining a general method for obtaining corresponding sample estimators. It is a matter of using the <em>sample estimating equations</em> <span class="math inline">\(\sum _{k \in s} d_k \, z_k (\theta) = 0\)</span>. Under <em>probability sampling</em>, full response and with <span class="math inline">\(d_k = 1 / \pi_k\)</span>, the sample sum in the left hand side is unbiased towards the population sum in the corresponding population estimating equation. Solving the sample estimating equation yields consistent estimators for the corresponding population parameters.</p>
-<p>The case of the population mean yields the sample estimating equation <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta) = 0\)</span>, and by solving on <span class="math inline">\(\theta\)</span>, we recover the Hàjek estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k = \overline y_H\)</span>. In the case of the population ratio, solving <span class="math inline">\(\sum _{k \in s} d_k (y_k - \theta x_k) = 0\)</span> on <span class="math inline">\(\theta\)</span>, yields the well-known estimator <span class="math inline">\(\widehat \theta = \sum _{k \in s} d_k \, y_k \, / \sum _{k \in s} d_k \, x_k = \widehat R\)</span>.</p>
 <p>A consistent estimator for the variance of estimators obtained as solutions of sample estimating equations can be obtained as:</p>
 <p><span class="math display">\[
 \widehat V_p (\widehat \theta) = \left[ \widehat J ( \widehat \theta) \right] ^{-1} \widehat V_p \left[ \sum _{k \in s} d_k \, z_k (\widehat \theta)\right] \left[ \widehat J ( \widehat \theta) \right] ^{-1}
@@ -223,10 +236,62 @@ div.csl-indent {
 <p>Where <span class="math inline">\(\widehat J (\widehat \theta) = \sum _{k \in s} d_i \, \left[ \partial{z_k ( \theta)} / \partial \theta \right]_{\theta = \widehat \theta}\)</span>.</p>
 <p>This approach implies that by one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals. Its simplicity and generality have enabled the development of software such as the <code>R survey</code> package, the <code>Stata svy</code> functions and others.</p>
 </div>
+<div id="ultimate-cluster-method" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Ultimate Cluster Method<a href="approaches-to-variance-estimation.html#ultimate-cluster-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <em>Ultimate Cluster</em> method is a straightforward and powerful approach for estimating the uncertainty (variance) of totals in surveys that use multi-stage cluster sampling designs. This method, proposed by <span class="citation">Hansen, Hurwitz, and Madow (<a href="#ref-Hansen1953">1953</a>)</span>, and simplifies the complex nature of multi-stage designs by focusing only on the variation between the largest groups, known as Primary Sampling Units (PSUs). It assumes that the PSUs were selected randomly and independently, even if they were not actually chosen this way in the sampling process. This assumption allows for a simpler analysis while still providing reliable variance estimates.</p>
+<p>The method considers only the variation between information available in the level of PSUs, and assumes that these would have been selected with replacement from the PSU population. This idea is simple, but quite powerful, because it allows to accommodate a variety of sampling designs, involving stratification and selection with unequal probabilities (with or without replacement) of both PSUs as well as lower level sampling units (households and individuals). The requirements for the application of this method are:</p>
+<ul>
+<li>One has unbiased estimators of totals for the variable of interest for each sampled PSU.</li>
+<li>Data are available for at least two sampled PSUs in each stratum (if the sample is stratified in the first stage).</li>
+<li>The survey database contains all the information regarding PSUs, strata and weights.</li>
+</ul>
+<p>Consider a multi-stage sampling design, in which <span class="math inline">\(m_{h}\)</span> PSUs are selected in stratum <span class="math inline">\(h,\)</span> <span class="math inline">\(h=1,\ldots ,H\)</span>. Let <span class="math inline">\(\pi_{hi}\)</span> be the inclusion probability of PSU <span class="math inline">\(i\)</span> stratum <span class="math inline">\(h\)</span>, and by <span class="math inline">\(\widehat{Y}_{hi}\)</span> an unbiased estimator of the total <span class="math inline">\(Y_{hi}\)</span> of the survey variable <span class="math inline">\(y\)</span> for the <span class="math inline">\(i\)</span>-th PSU in stratum <span class="math inline">\(h\)</span>, <span class="math inline">\(h=1,\ldots ,H\)</span>. Hence an unbiased estimator of the population total <span class="math inline">\(Y = \sum_{h=1}^{H} \sum_{i \in U_{1h}} Y_{hi}\)</span> is given by <span class="math inline">\(\widehat{Y}_{UC} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} d_{hi} \widehat{Y}_{hi}\)</span>, and the <em>ultimate cluster</em> estimator of the corresponding variance is given by:</p>
+<p><span class="math display">\[
+\widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{m_{h}}
+{m_{h}-1} \sum_{i=1}^{n_{h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{m_{h}} \right) ^{2}
+\]</span></p>
+<p>where <span class="math inline">\(U_{1h}\)</span> and <span class="math inline">\(s_{1h}\)</span> are the population and sample sets of PSUs in stratum <span class="math inline">\(h\)</span>, <span class="math inline">\(d_{hi} = 1 / \pi_{hi}\)</span>, <span class="math inline">\(\widehat{Y}_{h} = \sum_{i=1}^{n_{h}} d_{hi} \widehat{Y}_{hi}\)</span> for <span class="math inline">\(h=1,\ldots ,H\)</span>. (See for example, <span class="citation">(<a href="#ref-Shah1993">Babubhai. V. Shah et al. 1993</a>)</span>, p. 4).</p>
+<p>Although the method was originally proposed for estimation of variances of estimated totals, it can also be applied in combination with estimating equations to obtain variance estimates for estimators of other population quantities that can be obtained as solutions to sample estimating equations. This makes the method versatile and useful for a wide range of applications in survey analysis. One key assumption of the method is that the PSUs were selected independently and with replacement. In reality, many surveys select PSUs without replacement, which is a more efficient design. However, the variance estimates produced by the <em>Ultimate Cluster</em> method are generally close enough to be useful, even under these conditions. This practical simplicity is why the method is widely used in survey analysis.</p>
+<p>The <em>Ultimate Cluster</em> method is particularly attractive because of its simplicity. Survey practitioners often prefer it over more complex approaches that account for all stages of the sampling design. Although these detailed methods may provide slightly more accurate variance estimates, they are significantly harder to implement and require more detailed information about the sampling process. In contrast, this method offers a reasonable approximation that works well for most practical purposes, especially for estimating totals or averages. A discussion about Quality of this approximation and alternatives can be found in <span class="citation">(<a href="#ref-SSW92">Särndal, Swensson, and Wretman 1992</a>)</span>, p. 153.</p>
+</div>
+<div id="bootstrap-method" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Bootstrap Method<a href="approaches-to-variance-estimation.html#bootstrap-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the user does not have access to information of PSUs or strata in the database, the <em>Ultimate Cluster</em> method cannot be used, and some other methods should be considered. Among them, we have replication-based methods; in particular, the <em>bootstrap</em> method, which comprises a powerful and flexible approach for estimating variances in surveys, particularly when dealing with complex survey designs that involve multiple stages or stratification. Originally proposed by <span class="citation">Efron (<a href="#ref-Efron1979">1979</a>)</span>, the version commonly used for household surveys is called the Rao-Wu-Yue Rescaling Bootstrap <span class="citation">(<a href="#ref-Rao1992">Rao, Wu, and Yue 1992</a>)</span> (XXXX reference). This method is well-suited for stratified multi-stage sampling designs and has become a widely used tool for analyzing complex survey data.</p>
+<p>The <em>bootstrap</em> method relies on creating many new “replicated” datasets, which are slightly different versions of the original sample. These replicated datasets mimic the process of repeatedly drawing samples from the population. By analyzing the variation in results across these datasets, we can estimate how much uncertainty there is in our estimates from the original sample.</p>
+<ol style="list-style-type: decimal">
+<li><p>First, we create a new sample for each stratum by randomly selecting primary sampling units (PSUs) from the original sample, allowing PSUs to be selected more than once (with replacement). Each selected PSU is included in the new dataset along with all its associated data. The size of this random sample with replacement is of <span class="math inline">\(m_h - 1\)</span> PSUs in each of the <span class="math inline">\(H\)</span> design strata.</p></li>
+<li><p>This process of creating new samples is repeated many times, usually hundreds or thousands, to produce multiple “replicated” datasets. That is, repeat Step 1 <span class="math inline">\(R\)</span> times, and denote by <span class="math inline">\(m_{hi}(r)\)</span> the number of times the PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span> was selected for the sample in replicate <span class="math inline">\(r\)</span>.</p></li>
+<li><p>For each replicate, <em>bootstrap</em> weights are calculated for each unit. These weights account for how often each PSU appears in the replicate and ensure that the replicated datasets remain representative of the population. The <em>bootstrap</em> weight of unit <span class="math inline">\(k\)</span> within PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span> is <span class="math inline">\(w_{hik} (r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)\)</span>.</p></li>
+<li><p>The parameter of interest, such as a total or mean, is estimated for each replicated dataset using the <em>bootstrap</em> weights. That is, for each replica <span class="math inline">\(r\)</span>, calculate an estimate <span class="math inline">\(\widehat \theta_{(r)}\)</span> of the target parameter <span class="math inline">\(theta\)</span> using the <em>bootstrap</em> weights <span class="math inline">\(w_{hik} (r)\)</span>.</p></li>
+<li><p>Finally, the variability of the results across all replicated datasets is used to estimate the variance. The idea is that the variation in these replicate estimates reflects the uncertainty in the original estimate. This estimate of the variance takes the following form:
+<span class="math display">\[
+\widehat V_{B} \left( \widehat \theta \right) = \frac {1} {R} \sum_{r=1}^R \left( \widehat \theta_{(r)} - \tilde \theta \right)^2
+\]</span></p></li>
+</ol>
+<p>where <span class="math inline">\(\tilde \theta = \frac 1 R \sum_{r=1}^R \widehat \theta_{(r)}\)</span> is the average of the replica estimates.</p>
+<p>Whenever the original sampling weights <span class="math inline">\(w_{hik}\)</span> receive non-response adjustments or are calibrated, the corresponding non-response adjustments and/or calibration of the basic weights must be repeated for each replica, so that the variance estimates adequately reflect the effects of the calibration and non-response adjusments on the uncertainty of the point estimates. This ensures that the variance estimates accurately reflect the additional uncertainty introduced by these adjustments.</p>
+<p>The bootstrap method has several advantages. It works well for complex survey designs and can handle a wide range of parameters, including those that are difficult to estimate using traditional methods, such as medians or other nonlinear statistics. It also provides a way to estimate variances when other methods are not available or practical to use. The method is particularly helpful for survey analysts who may not have access to specialized software for calculating variances. Many modern statistical software tools, including the <code>survey</code> package in R, support bootstrap replication and variance estimation, making it accessible to a wide range of users. While the bootstrap method is computationally intensive, requiring many replicated datasets to be created and analyzed, it is highly effective. It provides robust variance estimates even for complex parameters and remains one of the most flexible tools for analyzing survey data.</p>
+</div>
+</div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-Binder1983" class="csl-entry">
 Binder, David A. 1983b. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51 (3): 279–92. <a href="https://doi.org/10.2307/1402588">https://doi.org/10.2307/1402588</a>.
+</div>
+<div id="ref-Efron1979" class="csl-entry">
+Efron, Bradley. 1979. <span>“Bootstrap Methods: Another Look at the Jackknife.”</span> <em>The Annals of Statistics</em> 7 (1): 1–26.
+</div>
+<div id="ref-Hansen1953" class="csl-entry">
+Hansen, Morris H., William N. Hurwitz, and William G. Madow. 1953. <em>Sample Survey Methods and Theory</em>. Vol. 1 and 2. New York: John Wiley; Sons.
+</div>
+<div id="ref-Rao1992" class="csl-entry">
+Rao, J. N. K., C F J Wu, and K. Yue. 1992. <span>“Some Recent Work on Resampling Methods for Complex Surveys.”</span> <em>Survey Methodology</em> 18: 209–17.
+</div>
+<div id="ref-SSW92" class="csl-entry">
+Särndal, Carl-Erik, Bengt Swensson, and Jan Wretman. 1992. <em>Model Assisted Survey Sampling</em>. New York: Springer-Verlag.
+</div>
+<div id="ref-Shah1993" class="csl-entry">
+Shah, Babubhai. V, Ralph E Folsom, Lisa LaVange, Sara C Wheeless, Kerrie E Boyle, and Rick L Williams. 1993. <span>“Statistical Methods and Mathematical Algorithms Used in SUDAAN.”</span> Research Triangle Institute.
 </div>
 </div>
             </section>
@@ -235,7 +300,7 @@ Binder, David A. 1983b. <span>“On the Variances of Asymptotically Normal Estim
         </div>
       </div>
 <a href="parameters-and-estimators.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ultimate-cluster-method.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-software-to-generate-valid-inferences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

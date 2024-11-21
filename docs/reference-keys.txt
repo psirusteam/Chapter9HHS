@@ -6,9 +6,10 @@ planning-analysis
 primary-data-producers
 secondary-data-users
 quality-control-for-secondary-analysts
-the-golden-pair-sample-design-and-estimator
+accounting-for-the-sampling-design
 parameters-and-estimators
 approaches-to-variance-estimation
+estimating-equations
 ultimate-cluster-method
 bootstrap-method
 using-software-to-generate-valid-inferences
