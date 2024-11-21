@@ -135,5 +135,37 @@ The bootstrap method has several advantages. It works well for complex survey de
 
 ## Using software to generate valid inferences
 
-In this part, we advocate to using specialized statistical software to generate efficient estimation processes. Those packages support complex survey data analysis by specifying the survey design using appropriate commands or functions.
+The design and analysis of information from household surveys must include extensive use of existing computational tools. This section reviews in detail the computational approaches of the statistical software used for each of the statistical processes required to publish official figures with high levels of accuracy and reliability. Specifically, for the following processes:
+
+* Sample selection according to the defined sampling design.
+* Generation of sampling weights for each individual and household.
+* Modeling of nonresponse and statistical imputation.
+* Calibration of sampling weights and adjustments for nonresponse.
+* Estimation of sampling errors for each indicator of interest in the statistical production tables.
+* Analysis of multivariate relationships between survey variables.
+
+@United_Nations_2005[Section 7.8] highlights the importance of including the structure of complex survey designs in the inference process for estimating official statistics from household surveys. It warns, with an empirical example, that failing to do so may result in biased estimates and underestimated sampling errors. Below are some key features that statistical software packages incorporate when managing data from complex survey designs, such as those found in household surveys. A more detailed review, including syntax and computational code, can be found in @Heeringa_West_Berglund_2017[Appendix A].
+
+In general, these computational tools are designed to enhance the efficiency of variance approximation methods for complex samples, as well as replication techniques to estimate design-based variances [@Westat_2007]. Some of these software packages are free to use, although most are licensed products requiring paid licenses. These products, in addition to providing descriptive statistics (such as means, totals, proportions, percentiles, and ratios), allow for fitting linear and logistic regression models. All resulting statistics are based on the survey design.
+
+*R*
+
+R is a free software increasingly used in social research, as it is likely to host the latest scientific findings implemented in this software [@R_2024]. Being open-source, researchers can upload their own collections of computational functions to the official repository (`CRAN`) and make them available to the community. The `samplesize4surveys` package [@ss4s] determines the sample size for individuals and households in repeated, panel, and rotational household surveys. The `sampling` [@Yves] and `TeachingSampling` [@TS] packages enable the selection of probabilistic samples from sampling frames under a wide variety of designs and algorithms. The `survey` package [@TL], once the survey design is predefined using the `svydesign()` function, allows for analyzing household survey data and obtaining appropriate standard error estimates.
+
+*STATA*
+
+The `svy` environment provides tools for appropriate inference of official statistics from household surveys [@STATA_2017]. The `svyset` command specifies variables identifying survey design features, such as sampling weights, clusters, and strata. The `svydescribe` command produces tables describing strata and sampling units at a given survey stage. Once survey design definitions are loaded, any model can be estimated, and the resulting statistics will be survey-design-based. The `svy` environment also supports predictive commands.
+
+*SPSS*
+
+The `complex samples` module in `SPSS` [@IBM_2017] supports the selection of complex samples through user-defined sampling schemes. Next, an analysis plan must be created by assigning design variables, estimation methods, and sample unit sizes. Once the sampling plan is defined, the module enables the estimation of counts, descriptive statistics, and crosstabulations. It is also possible to estimate ratios and regression coefficients in linear models, along with corresponding hypothesis test statistics. Finally, the module allows for estimating nonlinear models, such as logistic regressions, ordinal regressions, or Cox regressions.
+
+*SAS*
+
+This statistical software includes a procedure for selecting probabilistic samples called `SURVEYSELECT`, which integrates common selection methods such as simple random sampling, systematic sampling, probability proportional to size sampling, and stratified allocation tools. To analyze data from complex samples, specific procedures have been programmed [@SAS_2017]: 
+
+- `SURVEYMEANS`: Estimates totals, means, proportions, and percentiles, along with their respective standard errors, confidence intervals, and hypothesis tests.
+- `SURVEYFREQ`: Estimates descriptive statistics (e.g., totals and proportions) in one- and two-way tables, provides sampling error estimates, and analyzes goodness-of-fit, independence, risks, and odds ratios.
+- `SURVEYREG` and `SURVEYLOGISTIC`: Fit linear and logistic regression models, respectively, estimating regression coefficients with associated errors and providing an exhaustive analysis of model properties.
+- `SURVEYPHREG`: Fits survival models using pseudo-maximum likelihood techniques.
 

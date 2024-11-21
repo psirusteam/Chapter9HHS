@@ -211,10 +211,70 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="using-software-to-generate-valid-inferences" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Using software to generate valid inferences<a href="using-software-to-generate-valid-inferences.html#using-software-to-generate-valid-inferences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this part, we advocate to using specialized statistical software to generate efficient estimation processes. Those packages support complex survey data analysis by specifying the survey design using appropriate commands or functions.</p>
+<p>The design and analysis of information from household surveys must include extensive use of existing computational tools. This section reviews in detail the computational approaches of the statistical software used for each of the statistical processes required to publish official figures with high levels of accuracy and reliability. Specifically, for the following processes:</p>
+<ul>
+<li>Sample selection according to the defined sampling design.</li>
+<li>Generation of sampling weights for each individual and household.</li>
+<li>Modeling of nonresponse and statistical imputation.</li>
+<li>Calibration of sampling weights and adjustments for nonresponse.</li>
+<li>Estimation of sampling errors for each indicator of interest in the statistical production tables.</li>
+<li>Analysis of multivariate relationships between survey variables.</li>
+</ul>
+<p><span class="citation">Nations (<a href="#ref-United_Nations_2005">2005, sec. 7.8</a>)</span> highlights the importance of including the structure of complex survey designs in the inference process for estimating official statistics from household surveys. It warns, with an empirical example, that failing to do so may result in biased estimates and underestimated sampling errors. Below are some key features that statistical software packages incorporate when managing data from complex survey designs, such as those found in household surveys. A more detailed review, including syntax and computational code, can be found in <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>, Appendix A)</span>.</p>
+<p>In general, these computational tools are designed to enhance the efficiency of variance approximation methods for complex samples, as well as replication techniques to estimate design-based variances <span class="citation">(<a href="#ref-Westat_2007">Westat 2007</a>)</span>. Some of these software packages are free to use, although most are licensed products requiring paid licenses. These products, in addition to providing descriptive statistics (such as means, totals, proportions, percentiles, and ratios), allow for fitting linear and logistic regression models. All resulting statistics are based on the survey design.</p>
+<p><em>R</em></p>
+<p>R is a free software increasingly used in social research, as it is likely to host the latest scientific findings implemented in this software <span class="citation">(<a href="#ref-R_2024">R Core Team 2024</a>)</span>. Being open-source, researchers can upload their own collections of computational functions to the official repository (<code>CRAN</code>) and make them available to the community. The <code>samplesize4surveys</code> package <span class="citation">(<a href="#ref-ss4s">Rojas 2020</a>)</span> determines the sample size for individuals and households in repeated, panel, and rotational household surveys. The <code>sampling</code> <span class="citation">(<a href="#ref-Yves">Tillé and Matei 2016</a>)</span> and <code>TeachingSampling</code> <span class="citation">(<a href="#ref-TS">Hugo Andrés Gutiérrez 2015</a>)</span> packages enable the selection of probabilistic samples from sampling frames under a wide variety of designs and algorithms. The <code>survey</code> package <span class="citation">(<a href="#ref-TL">Lumley 2016</a>)</span>, once the survey design is predefined using the <code>svydesign()</code> function, allows for analyzing household survey data and obtaining appropriate standard error estimates.</p>
+<p><em>STATA</em></p>
+<p>The <code>svy</code> environment provides tools for appropriate inference of official statistics from household surveys <span class="citation">(<a href="#ref-STATA_2017">STATA 2017</a>)</span>. The <code>svyset</code> command specifies variables identifying survey design features, such as sampling weights, clusters, and strata. The <code>svydescribe</code> command produces tables describing strata and sampling units at a given survey stage. Once survey design definitions are loaded, any model can be estimated, and the resulting statistics will be survey-design-based. The <code>svy</code> environment also supports predictive commands.</p>
+<p><em>SPSS</em></p>
+<p>The <code>complex samples</code> module in <code>SPSS</code> <span class="citation">(<a href="#ref-IBM_2017">IBM 2017</a>)</span> supports the selection of complex samples through user-defined sampling schemes. Next, an analysis plan must be created by assigning design variables, estimation methods, and sample unit sizes. Once the sampling plan is defined, the module enables the estimation of counts, descriptive statistics, and crosstabulations. It is also possible to estimate ratios and regression coefficients in linear models, along with corresponding hypothesis test statistics. Finally, the module allows for estimating nonlinear models, such as logistic regressions, ordinal regressions, or Cox regressions.</p>
+<p><em>SAS</em></p>
+<p>This statistical software includes a procedure for selecting probabilistic samples called <code>SURVEYSELECT</code>, which integrates common selection methods such as simple random sampling, systematic sampling, probability proportional to size sampling, and stratified allocation tools. To analyze data from complex samples, specific procedures have been programmed <span class="citation">(<a href="#ref-SAS_2017">SAS 2010</a>)</span>:</p>
+<ul>
+<li><code>SURVEYMEANS</code>: Estimates totals, means, proportions, and percentiles, along with their respective standard errors, confidence intervals, and hypothesis tests.</li>
+<li><code>SURVEYFREQ</code>: Estimates descriptive statistics (e.g., totals and proportions) in one- and two-way tables, provides sampling error estimates, and analyzes goodness-of-fit, independence, risks, and odds ratios.</li>
+<li><code>SURVEYREG</code> and <code>SURVEYLOGISTIC</code>: Fit linear and logistic regression models, respectively, estimating regression coefficients with associated errors and providing an exhaustive analysis of model properties.</li>
+<li><code>SURVEYPHREG</code>: Fits survival models using pseudo-maximum likelihood techniques.</li>
+</ul>
 
 </div>
 <!-- </div> -->
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-TS" class="csl-entry">
+Gutiérrez, Hugo Andrés. 2015. <em>TeachingSampling: Selection of Samples and Parameter Estimation in Finite Population</em>. <a href="https://CRAN.R-project.org/package=TeachingSampling">https://CRAN.R-project.org/package=TeachingSampling</a>.
+</div>
+<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
+</div>
+<div id="ref-IBM_2017" class="csl-entry">
+IBM. 2017. <em>IBM SPSS Complex Samples</em>. <a href="ftp://public.dhe.ibm.com/software/analytics/spss/documentation/statistics/23.0/en/client/Manuals/IBM_SPSS_Complex_Samples.pdf">ftp://public.dhe.ibm.com/software/analytics/spss/documentation/statistics/23.0/en/client/Manuals/IBM_SPSS_Complex_Samples.pdf</a>.
+</div>
+<div id="ref-TL" class="csl-entry">
+———. 2016. <span>“Survey: Analysis of Complex Survey Samples.”</span>
+</div>
+<div id="ref-United_Nations_2005" class="csl-entry">
+Nations, United. 2005. <em>Household Surveys in Developing and Transition Countries</em>. New York, NY: United Nations.
+</div>
+<div id="ref-R_2024" class="csl-entry">
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-ss4s" class="csl-entry">
+Rojas, Hugo Andres Gutierrez. 2020. <em>Samplesize4surveys: Sample Size Calculations for Complex Surveys</em>.
+</div>
+<div id="ref-SAS_2017" class="csl-entry">
+SAS. 2010. <em>SAS/STAT 9.22 User’s Guide - Survey Sampling and Analysis Procedures</em>. <a href="https://support.sas.com/documentation/cdl/en/statugsurveysamp/63778/PDF/default/statugsurveysamp.pdf">https://support.sas.com/documentation/cdl/en/statugsurveysamp/63778/PDF/default/statugsurveysamp.pdf</a>.
+</div>
+<div id="ref-STATA_2017" class="csl-entry">
+STATA. 2017. <em>STATA Survey Data</em>. <a href="https://www.stata.com/manuals13/svy.pdf">https://www.stata.com/manuals13/svy.pdf</a>.
+</div>
+<div id="ref-Yves" class="csl-entry">
+Tillé, Yves, and Alina Matei. 2016. <em>Sampling: Survey Sampling</em>. <a href="https://CRAN.R-project.org/package=sampling">https://CRAN.R-project.org/package=sampling</a>.
+</div>
+<div id="ref-Westat_2007" class="csl-entry">
+Westat. 2007. <em>WesVar 4.3. Users Guide.</em> <a href="http://users.nber.org/~jroth/chap1.pdf">http://users.nber.org/~jroth/chap1.pdf</a>.
+</div>
+</div>
             </section>
 
           </div>
