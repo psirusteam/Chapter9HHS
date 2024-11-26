@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>3.1 Frequencies and proportions | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="3.1 Frequencies and proportions | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="3.1 Frequencies and proportions | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="testing-for-independence.html"/>
-<link rel="next" href="nso-practical-example-1.html"/>
+<link rel="prev" href="descriptive-parameters.html"/>
+<link rel="next" href="totals-means-and-ratios.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -196,76 +196,38 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
-<div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (<span class="math inline">\(H_0\)</span>) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (<span class="math inline">\(H_1\)</span>), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter <span class="math inline">\(\theta\)</span> is equal to a particular value <span class="math inline">\(\theta_{0}\)</span>, the possible combinations of hypotheses that can be tested are:</p>
-<span class="math display">\[\begin{eqnarray*}
-\begin{cases}
-H_{0}: &amp; \theta=\theta_{0}\\
-H_{1}: &amp; \theta\neq\theta_{0}
-\end{cases}\,\,\,\,\,\,\,\,\,   
-\begin{cases}
-H_{0}: &amp; \theta=\theta_{0}\\
-H_{1}: &amp; \theta&gt;\theta_{0}
-\end{cases}\,\,\,\,\,\,\,\,\,   
-\begin{cases}
-H_{0}: &amp; \theta=\theta_{0}\\
-H_{1}: &amp; \theta&lt;\theta_{0}
-\end{cases}
-\end{eqnarray*}\]</span>
-<p>One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.</p>
-<p>In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of <span class="math inline">\(J\)</span> descriptive statistics, as shown below:</p>
+<div id="frequencies-and-proportions" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Frequencies and proportions<a href="frequencies-and-proportions.html#frequencies-and-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the most fundamental tasks in household survey analysis is estimating the number of people (size) or households in specific categories, as well as the proportions they represent within the population. These estimates are crucial because they provide a snapshot of the demographic and socioeconomic reality of a population. Policymakers and planners use this information to make decisions about resource allocation, public policy design, and the development of social programs.</p>
+<p>For example, understanding how many people live below the poverty line, how many are employed, or how many have completed a certain level of education provides valuable insights. These insights help address inequalities, support the design of targeted interventions, and promote equitable development across communities. The ability to understand the distribution of specific categories provides valuable information to address inequalities and promote equitable development.</p>
+<p>To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different poverty levels, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with <strong>weights</strong>. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:</p>
 <p><span class="math display">\[
-f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
+\widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
 \]</span></p>
-<p>where the <span class="math inline">\(a_{j}\)</span> are known constants. An estimator of this function is given by:</p>
+<p>where <span class="math inline">\(s_{hi}\)</span> is the sample of households or individuals in PSU <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span>; <span class="math inline">\(s_{1h}\)</span> is the sample of PSUs within stratum <span class="math inline">\(h\)</span>; and <span class="math inline">\(w_{hik}\)</span> is the weight (expansion factor) of unit <span class="math inline">\(k\)</span> within PSU <span class="math inline">\(i\)</span> in stratum <span class="math inline">\(h\)</span>.</p>
+<p>Subpopulation size estimates work similarly but focus on a subset of the population defined by a specific characteristic. For example, if we want to estimate the number of people in a particular category, we would identify the relevant group in the survey data and sum up their weights. This approach allows analysts to estimate not only the total population size but also the size of specific groups of interest. This way, a binary variable should be defined, <span class="math inline">\(I(y_{hik} = d)\)</span>. It will take the value one if unit <span class="math inline">\(k\)</span> from PSU <span class="math inline">\(i\)</span> in stratum <span class="math inline">\(h\)</span> belongs to category <span class="math inline">\(d\)</span> in the discrete variable <span class="math inline">\(y\)</span>. A sampling estimator for this parameter is given by the following expression:</p>
 <p><span class="math display">\[
-\widehat{f} \left( \widehat{\theta}_{1}, \ldots, \widehat{\theta}_{J} \right) = \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j}
+{\widehat{N}}_d = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ I(y_{hik} = d)
 \]</span></p>
-<p>And its variance is calculated as follows:</p>
+<p>Proportions describe the relative size of specific groups within the population. For instance, the proportion of households living below the poverty line is a critical measure for understanding socioeconomic disparities. To estimate a proportion, analysts calculate the weighted average of the binary variable. This approach ensures that the estimate accurately reflects the population distribution. As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, by recoding the original response categories into simple indicator variables <span class="math inline">\(y\)</span> with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:</p>
 <p><span class="math display">\[
-Var \left( \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j} \right) = \sum_{j=1}^{J} a_{j}^{2} \ Var\left( \widehat{\theta}_{j} \right) + 2 \times \sum_{j=1}^{J-1} \sum_{k&gt;j}^{J} a_{j} a_{k} \, Cov \left( \widehat{\theta}_{j} , \widehat{\theta}_{k} \right)
+\widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 \]</span></p>
-<p>As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators.</p>
-<p>Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a <em>superpopulation model</em>. We assume that <span class="math inline">\(y_{hik}\)</span> correspond to observations from identically distributed random variables <span class="math inline">\(Y\)</span> having means <span class="math inline">\(\mu_{y,j}\)</span> if unit <span class="math inline">\(k\)</span> belongs to domain <span class="math inline">\(j\)</span>, with <span class="math inline">\(j = 1, 2\)</span>. Then we can define the difference in population means between domains 1 and 2 as <span class="math inline">\(\mu_{y,1} - \mu_{y,2}\)</span>. As an example, consider that <span class="math inline">\(\mu_{y,1}\)</span> is the average household income for households with male heads of household, and <span class="math inline">\(\mu_{y,2}\)</span> is the average household income for households with female heads.</p>
-<p>This difference in means can be unbiasedly estimated by:</p>
+<p>As this defines a nonlinear estimator, we can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as <span class="math inline">\(z_{hik} = I(y_{hik} = d) - \widehat{p}_d\)</span>. Many statistical packages provide proportion estimates and standard errors on a percentage scale. When proportions are close to 0 or 1, special methods are used to ensure confidence intervals remain meaningful; notice that the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. To address this issue, alternative confidence interval estimates, as proposed by <span class="citation">Rust, Hsu, and Westat (<a href="#ref-Rust2007ConfidenceIF">2007</a>)</span> and <span class="citation">Dean and Pagano (<a href="#ref-DeanPagano2015">2015</a>)</span> are available. One alternative based on using the logit transformation of the estimated proportion is:</p>
 <p><span class="math display">\[
-\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
+CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2 , \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right) } \right]} {1 + exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2, \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right)}\right]}
 \]</span></p>
-<p>where <span class="math inline">\(\widehat{\overline{Y}}_{j}\)</span> is the sample estimator of <span class="math inline">\(\mu_{y,j}\)</span> (<span class="math inline">\(j = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:</p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} \neq 0
-\end{cases}
-\]</span></p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} &gt; 0
-\end{cases}
-\]</span></p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} &lt; 0
-\end{cases}
-\]</span></p>
-<p>To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</p>
-<p><span class="math display">\[
-t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
-\]</span></p>
-<p>Where:</p>
-<p><span class="math display">\[
-\widehat{se} \left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right) = \sqrt{\widehat{Var}\left(\widehat{\overline{Y}}_{1}\right) + \widehat{Var}\left(\widehat{\overline{Y}}_{2}\right) - 2 \  \widehat{Cov}\left(\widehat{\overline{Y}}_{1} \ ; \widehat{\overline{Y}}_{2} \right)}
-\]</span></p>
-<p>If a confidence interval for the difference in means is desired, it would be constructed as follows:</p>
-<p><span class="math display">\[
-\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
-\]</span></p>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-DeanPagano2015" class="csl-entry">
+Dean, Natalie, and Marcello Pagano. 2015. <span>“<span class="nocase">Evaluating Confidence Interval Methods for Binomial Proportions in Clustered Surveys</span>.”</span> <em>Journal of Survey Statistics and Methodology</em> 3 (4): 484–503. <a href="https://doi.org/10.1093/jssam/smv024">https://doi.org/10.1093/jssam/smv024</a>.
+</div>
+<div id="ref-Heeringa2017" class="csl-entry">
+Heeringa, Steven G, Brady T West, and Patricia A Berglund. 2017b. <em>Applied Survey Data Analysis, Second Edition</em>. <em>Statistics in the Social and Behavioral Sciences</em>. 2nd edition. Chapman; Hall - CRC.
+</div>
+<div id="ref-Rust2007ConfidenceIF" class="csl-entry">
+Rust, Keith F., Valerie Hsu, and Westat. 2007. <span>“Confidence Intervals for Statistics for Categorical Variables from Complex Samples.”</span> In. <a href="https://api.semanticscholar.org/CorpusID:195852485">https://api.semanticscholar.org/CorpusID:195852485</a>.
 </div>
 </div>
             </section>
@@ -273,8 +235,8 @@ t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\wid
           </div>
         </div>
       </div>
-<a href="testing-for-independence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nso-practical-example-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="descriptive-parameters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="totals-means-and-ratios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -305,7 +267,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/04Associations.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/03DescriptiveParameters.rmd",
 "text": "Edit"
 },
 "history": {

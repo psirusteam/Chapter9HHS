@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>6.4 Dealing with Suppression of Low-Quality Estimates | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="6.4 Dealing with Suppression of Low-Quality Estimates | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="6.4 Dealing with Suppression of Low-Quality Estimates | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="testing-for-independence.html"/>
-<link rel="next" href="nso-practical-example-1.html"/>
+<link rel="prev" href="reference-tables.html"/>
+<link rel="next" href="data-visualization.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -196,85 +196,37 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
-<div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (<span class="math inline">\(H_0\)</span>) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (<span class="math inline">\(H_1\)</span>), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter <span class="math inline">\(\theta\)</span> is equal to a particular value <span class="math inline">\(\theta_{0}\)</span>, the possible combinations of hypotheses that can be tested are:</p>
-<span class="math display">\[\begin{eqnarray*}
-\begin{cases}
-H_{0}: &amp; \theta=\theta_{0}\\
-H_{1}: &amp; \theta\neq\theta_{0}
-\end{cases}\,\,\,\,\,\,\,\,\,   
-\begin{cases}
-H_{0}: &amp; \theta=\theta_{0}\\
-H_{1}: &amp; \theta&gt;\theta_{0}
-\end{cases}\,\,\,\,\,\,\,\,\,   
-\begin{cases}
-H_{0}: &amp; \theta=\theta_{0}\\
-H_{1}: &amp; \theta&lt;\theta_{0}
-\end{cases}
-\end{eqnarray*}\]</span>
-<p>One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.</p>
-<p>In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of <span class="math inline">\(J\)</span> descriptive statistics, as shown below:</p>
-<p><span class="math display">\[
-f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
-\]</span></p>
-<p>where the <span class="math inline">\(a_{j}\)</span> are known constants. An estimator of this function is given by:</p>
-<p><span class="math display">\[
-\widehat{f} \left( \widehat{\theta}_{1}, \ldots, \widehat{\theta}_{J} \right) = \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j}
-\]</span></p>
-<p>And its variance is calculated as follows:</p>
-<p><span class="math display">\[
-Var \left( \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j} \right) = \sum_{j=1}^{J} a_{j}^{2} \ Var\left( \widehat{\theta}_{j} \right) + 2 \times \sum_{j=1}^{J-1} \sum_{k&gt;j}^{J} a_{j} a_{k} \, Cov \left( \widehat{\theta}_{j} , \widehat{\theta}_{k} \right)
-\]</span></p>
-<p>As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators.</p>
-<p>Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a <em>superpopulation model</em>. We assume that <span class="math inline">\(y_{hik}\)</span> correspond to observations from identically distributed random variables <span class="math inline">\(Y\)</span> having means <span class="math inline">\(\mu_{y,j}\)</span> if unit <span class="math inline">\(k\)</span> belongs to domain <span class="math inline">\(j\)</span>, with <span class="math inline">\(j = 1, 2\)</span>. Then we can define the difference in population means between domains 1 and 2 as <span class="math inline">\(\mu_{y,1} - \mu_{y,2}\)</span>. As an example, consider that <span class="math inline">\(\mu_{y,1}\)</span> is the average household income for households with male heads of household, and <span class="math inline">\(\mu_{y,2}\)</span> is the average household income for households with female heads.</p>
-<p>This difference in means can be unbiasedly estimated by:</p>
-<p><span class="math display">\[
-\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
-\]</span></p>
-<p>where <span class="math inline">\(\widehat{\overline{Y}}_{j}\)</span> is the sample estimator of <span class="math inline">\(\mu_{y,j}\)</span> (<span class="math inline">\(j = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:</p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} \neq 0
-\end{cases}
-\]</span></p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} &gt; 0
-\end{cases}
-\]</span></p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} &lt; 0
-\end{cases}
-\]</span></p>
-<p>To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</p>
-<p><span class="math display">\[
-t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
-\]</span></p>
-<p>Where:</p>
-<p><span class="math display">\[
-\widehat{se} \left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right) = \sqrt{\widehat{Var}\left(\widehat{\overline{Y}}_{1}\right) + \widehat{Var}\left(\widehat{\overline{Y}}_{2}\right) - 2 \  \widehat{Cov}\left(\widehat{\overline{Y}}_{1} \ ; \widehat{\overline{Y}}_{2} \right)}
-\]</span></p>
-<p>If a confidence interval for the difference in means is desired, it would be constructed as follows:</p>
-<p><span class="math display">\[
-\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
-\]</span></p>
+<div id="dealing-with-suppression-of-low-quality-estimates" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Dealing with Suppression of Low-Quality Estimates<a href="dealing-with-suppression-of-low-quality-estimates.html#dealing-with-suppression-of-low-quality-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>National Statistical Offices routinely produce descriptive statistics, such as totals, averages, proportions, and ratios, based on survey data. These statistics provide valuable insights into key characteristics of the population, such as income levels, employment rates, or access to education. To ensure this information reaches a wide audience, NSOs often use a variety of dissemination channels, including:</p>
+<ul>
+<li><strong>Public Reports</strong>: Comprehensive reports summarizing key findings from household surveys.</li>
+<li><strong>Online Platforms</strong>: Interactive data visualization tools and downloadable datasets on official websites.</li>
+<li><strong>Press Releases</strong>: Brief summaries of major findings designed to capture public and media attention.</li>
+</ul>
+<p>These dissemination efforts aim to make the data understandable and actionable for policymakers, researchers, and the general public. When publishing tables of results, NSOs strive for clarity and usability. Tables are typically organized to highlight trends, comparisons, and distributions of key variables. Common features of published tables include:</p>
+<ul>
+<li><strong>Aggregated Data</strong>: Grouping data by categories like age, gender, region, or socioeconomic status.</li>
+<li><strong>Confidence Intervals</strong>: Including measures of uncertainty to provide context for the estimates.</li>
+<li><strong>Metadata</strong>: Offering detailed explanations of the data collection methods, definitions, and limitations.</li>
+</ul>
+<p>By presenting data in a user-friendly format, NSOs ensure their publications are accessible to a diverse audience.</p>
+<p>Not all estimates derived from survey data meet the necessary quality standards for publication. Estimates may be suppressed if they are based on small sample sizes, have high variance, or are otherwise unreliable. NSOs use established criteria to determine when suppression is necessary, ensuring that the released data maintains its credibility. To address this issue we can use the following approaches:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Quality Thresholds</strong>: NSOs set predefined thresholds for measures like the coefficient of variation (CV) or standard errors.</li>
+<li><strong>Flagging and Suppression</strong>: Estimates that fall below these thresholds are either flagged with warnings about their reliability or omitted entirely from published tables.</li>
+<li><strong>Transparency</strong>: NSOs provide clear documentation explaining why certain estimates are suppressed, maintaining transparency and trust.</li>
+</ol>
+
 </div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="testing-for-independence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nso-practical-example-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reference-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -305,7 +257,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/04Associations.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/06Tables.rmd",
 "text": "Edit"
 },
 "history": {
