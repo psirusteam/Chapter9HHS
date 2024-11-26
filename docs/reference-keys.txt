@@ -20,7 +20,7 @@ correlations
 percentiles-and-inequality-measures
 nso-practical-example
 associations-between-variables
-cross-tabulations-and-contingency-tables
+cross-tabulations
 testing-for-independence
 tests-for-group-comparisons
 hypothesis-test-for-the-difference-of-means

@@ -130,7 +130,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations-and-contingency-tables.html"><a href="cross-tabulations-and-contingency-tables.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations and contingency tables</a></li>
+<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
 <li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
 <li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
 <ul>
@@ -198,7 +198,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
+<p>Comparing group means is a common goal in household survey analysis. For example, researchers might ask: “Is there a significant difference in average income between male and female headed households?” To answer such questions, statistical tests are used, adapted to account for the complexities of survey data, such as stratification, clustering, and unequal selection probabilities. This section explains the methods for testing differences in means, adjusted for survey design, with examples to illustrate their application.
+To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
 <div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (<span class="math inline">\(H_0\)</span>) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (<span class="math inline">\(H_1\)</span>), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter <span class="math inline">\(\theta\)</span> is equal to a particular value <span class="math inline">\(\theta_{0}\)</span>, the possible combinations of hypotheses that can be tested are:</p>
@@ -216,8 +217,8 @@ H_{0}: &amp; \theta=\theta_{0}\\
 H_{1}: &amp; \theta&lt;\theta_{0}
 \end{cases}
 \end{eqnarray*}\]</span>
-<p>One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.</p>
-<p>In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of <span class="math inline">\(J\)</span> descriptive statistics, as shown below:</p>
+<p>One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The decision about which hypothesis is true is based on the statistical evidence gathered from the data. This process is called <strong>hypothesis testing</strong>.</p>
+<p>In many cases, important parameters of interest, such as differences in means or weighted sums of means, can be expressed as a linear combination of various descriptive statistics. These combinations are often used in constructing economic indices or comparing population means. The variance of these combinations is important for understanding the precision of the estimate. That is, parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of <span class="math inline">\(J\)</span> descriptive statistics, as shown below:</p>
 <p><span class="math display">\[
 f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
 \]</span></p>
@@ -230,31 +231,16 @@ f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
 Var \left( \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j} \right) = \sum_{j=1}^{J} a_{j}^{2} \ Var\left( \widehat{\theta}_{j} \right) + 2 \times \sum_{j=1}^{J-1} \sum_{k&gt;j}^{J} a_{j} a_{k} \, Cov \left( \widehat{\theta}_{j} , \widehat{\theta}_{k} \right)
 \]</span></p>
 <p>As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators.</p>
-<p>Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a <em>superpopulation model</em>. We assume that <span class="math inline">\(y_{hik}\)</span> correspond to observations from identically distributed random variables <span class="math inline">\(Y\)</span> having means <span class="math inline">\(\mu_{y,j}\)</span> if unit <span class="math inline">\(k\)</span> belongs to domain <span class="math inline">\(j\)</span>, with <span class="math inline">\(j = 1, 2\)</span>. Then we can define the difference in population means between domains 1 and 2 as <span class="math inline">\(\mu_{y,1} - \mu_{y,2}\)</span>. As an example, consider that <span class="math inline">\(\mu_{y,1}\)</span> is the average household income for households with male heads of household, and <span class="math inline">\(\mu_{y,2}\)</span> is the average household income for households with female heads.</p>
+<p>In the context of comparing means between two populations, there are several potential hypotheses that can be tested. On the one hand, the null hypothesis may state that the means of two populations are equal. On the other, the alternative hypothesis could suggest that the means are different, or that one is greater than or less than the other. Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a <em>superpopulation model</em>. We assume that <span class="math inline">\(y_{hik}\)</span> correspond to observations from identically distributed random variables <span class="math inline">\(Y\)</span> having means <span class="math inline">\(\mu_{y,j}\)</span> if unit <span class="math inline">\(k\)</span> belongs to domain <span class="math inline">\(j\)</span>, with <span class="math inline">\(j = 1, 2\)</span>. Then we can define the difference in population means between domains 1 and 2 as <span class="math inline">\(\mu_{y,1} - \mu_{y,2}\)</span>. As an example, consider that <span class="math inline">\(\mu_{y,1}\)</span> is the average household income for households with male heads of household, and <span class="math inline">\(\mu_{y,2}\)</span> is the average household income for households with female heads.</p>
 <p>This difference in means can be unbiasedly estimated by:</p>
 <p><span class="math display">\[
 \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
 \]</span></p>
-<p>where <span class="math inline">\(\widehat{\overline{Y}}_{j}\)</span> is the sample estimator of <span class="math inline">\(\mu_{y,j}\)</span> (<span class="math inline">\(j = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:</p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} \neq 0
-\end{cases}
-\]</span></p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} &gt; 0
-\end{cases}
-\]</span></p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} &lt; 0
-\end{cases}
-\]</span></p>
-<p>To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</p>
+<p>where <span class="math inline">\(\widehat{\overline{Y}}_{j}\)</span> is the sample estimator of <span class="math inline">\(\mu_{y,j}\)</span> (<span class="math inline">\(j = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to test are typically:</p>
+<ul>
+<li>Null hypothesis: There is no difference between the means.</li>
+<li>Alternative hypothesis: There is a difference, which could be in either direction (greater or less). To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</li>
+</ul>
 <p><span class="math display">\[
 t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
 \]</span></p>
@@ -262,7 +248,7 @@ t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\wid
 <p><span class="math display">\[
 \widehat{se} \left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right) = \sqrt{\widehat{Var}\left(\widehat{\overline{Y}}_{1}\right) + \widehat{Var}\left(\widehat{\overline{Y}}_{2}\right) - 2 \  \widehat{Cov}\left(\widehat{\overline{Y}}_{1} \ ; \widehat{\overline{Y}}_{2} \right)}
 \]</span></p>
-<p>If a confidence interval for the difference in means is desired, it would be constructed as follows:</p>
+<p>If a confidence interval is needed for the difference in means, it is constructed using the estimated difference and the standard error, along with the appropriate critical value from the t-distribution. This interval provides a range of plausible values for the true difference in means, offering a more complete understanding of the data. It would be constructed as follows:</p>
 <p><span class="math display">\[
 \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)
 \]</span></p>

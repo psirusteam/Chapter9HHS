@@ -1,6 +1,19 @@
 # Associations between variables
 
-Household sample surveys often collect data on categorical variables, and assessing whether pairs of these variables are associated becomes of interest. This section will introduce the reader on the main methods currently used to describe and infer associations for pairs of categorical variables.
+Household surveys often collect data on categorical variables, such as employment status, educational attainment, or access to services. Understanding whether two categorical variables are related, or *associated*, is an important aspect of survey analysis. For example, are employment status and access to the internet connected in a meaningful way? Categorical variables are those that divide the population into distinct groups or categories. For example:
+
+- **Employment status** might have categories like "employed," "unemployed," and "not in the labor force."
+- **Educational attainment** might include categories such as "primary," "secondary," and "tertiary."
+
+This section introduces methods to describe and infer associations between pairs of categorical variables. When analyzing associations between two categorical variables, we are interested in whether the distribution of one variable depends on the categories of the other. To assess the relationship between two categorical variables, analysts examine how often different combinations of categories occur. For example, they might count how many individuals fall into each pairing of employment status and educational attainment. These counts are then used to calculate proportions, which describe the relative frequency of each pairing within the population.
+
+Analyzing associations between categorical variables is useful in many contexts, such as:
+
+- **Policy Development**: Understanding the relationship between education and employment helps design effective workforce policies.
+- **Program Evaluation**: Assessing whether access to healthcare varies by income level can inform targeted interventions.
+- **Social Research**: Studying connections between demographic factors and access to services provides insights into societal trends.
+
+In practice, this analysis often starts with a **contingency table**, a grid that shows the counts or proportions of units in each combination of categories for the two variables. For example, one axis of the table might list employment statuses, while the other lists levels of educational attainment.
 
 We start by defining some notation. Let $x$ and $y$ denote two categorical variables, having $R$ and $C$ classes respectively. In order to formulate hypothesis tests for the independence between $x$ and $y$, we need to consider a *superpopulation model*. We assume that the pairs $(x_{hik} , y_{hik})$ correspond to observations from identically distributed random vectors $(X ; Y)$, that have joint distribution specified by
 
@@ -20,13 +33,16 @@ and the corresponding population proportions as $p_{rc} = N_{rc} / N_{++}$, wher
 
 Under the superpopulation model, the population proportions $p_{rc}$ could be used to estimate (or approximate) the unknown probabilities $P_{rc}$. Since in most instances we will have samples, not censuses, the population proportions $p_{rc}$ must be estimated using weighted estimators provided in the previous sections.
 
-## Cross-tabulations and contingency tables
+## Cross-tabulations
 
-Cross-tabulations organize population frequency distribution estimates for two or more categorical variables to help explore relationships between them. Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings.
+Cross-tabulations, also known as contingency tables, are a fundamental tool in survey analysis. They organize data into a table format, showing the frequency distribution of two or more categorical variables. By summarizing relationships between these variables, cross-tabulations help researchers identify patterns and associations that might otherwise go unnoticed. This type of analysis is widely used in research and policy decision-making, as it provides a straightforward way to explore how different categories interact. For example, a contingency table might examine how employment status varies by educational attainment, or how access to the internet differs between urban and rural households.
 
-In the specialized literature, cross-tabulations are also referred to as contingency tables. Here a table is a two-dimensional array with rows indexed by $r=1,\ldots,R$ and columns indexed by $c=1,\ldots,C$. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts. A contingency table aims to succinctly represent the association between different categorical variables.
+Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as contingency tables. Here a table is a two-dimensional array with rows indexed by $r=1,\ldots,R$ and columns indexed by $c=1,\ldots,C$. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.
 
-First we consider the case of a two-way contingency table. For most household sample surveys, a typical tabular output comprises the weighted frequencies that estimate the population frequencies, as follows:
+A contingency table aims to succinctly represent the association between different categorical variables.
+It is a grid with rows and columns that represent the categories of two variables. Each cell in the table contains the frequency or proportion of observations that fall into the corresponding combination of categories. The rows might represent categories of one variable, such as "employment status" (employed, unemployed, not in the labor force). The columns might represent categories of another variable, such as "education level" (primary, secondary, tertiary). The table can also include **marginal totals**, which summarize the data for each row or column, and a **grand total**, representing the overall population.
+
+In household surveys, frequencies in contingency tables are calculated using survey weights. These weights ensure that the estimates accurately reflect the entire population, accounting for the sampling design. For each cell, the weighted frequency represents the estimated number of individuals in the population with the corresponding combination of categories. For instance: we consider the case of a two-way contingency table. For most household sample surveys, a typical tabular output comprises the weighted frequencies that estimate the population frequencies, as follows:
 
 |             |          | $y$      |          |           |
 |:-----------:|:--------:|:--------:|:--------:|:---------:|
@@ -44,7 +60,7 @@ $$
 
 and $\widehat{N}_{r+} = \sum_c \widehat{N}_{rc}$, $\widehat{N}_{+c} = \sum_r \widehat{N}_{rc}$ and $\widehat{N}_{++} = \sum_r \sum_c \widehat{N}_{rc}$.
 
-The estimated proportions from these weighted sample frequencies are obtained as follows:
+Weighted frequencies can also be converted into **proportions**, which indicate the relative size of each group compared to the total population. Proportions are particularly useful when comparing groups of different sizes or when focusing on the relative distribution of categories. The estimated proportions from these weighted sample frequencies are obtained as follows:
 
 $$
 \widehat{p}_{rc} = \frac{\widehat{N}_{rc}}{\widehat{N}_{++}}
@@ -62,56 +78,40 @@ Two-way tables can also display the estimates of population relative frequencies
 | $R$         | $\widehat{p}_{R1}$ |$\ldots$  | $\widehat{p}_{RC}$ | $\widehat{p}_{R+}$ |
 | col. marg. | $\widehat{p}_{+1}$ | $\ldots$ | $\widehat{p}_{+C}$ | $1$ |
 
+While tables are a clear way to present data, visualizations such as stacked bar charts or heatmaps can enhance understanding by highlighting patterns and differences between categories. These visuals complement contingency tables, making it easier to communicate findings to a broad audience. More on this will be elaborated in section 9.7.
+
+
 ## Testing for independence
 
-Using the estimated contingency tables, it is possible to perform independence tests to verify whether $x$ and $y$ are associated. Following @Heeringa2017, the null hypothesis that $x$ and $y$ are independent is defined as:
+In household surveys, it is often important to determine whether two categorical variables are associated or independent (i.e., whether the distribution of one variable is unaffected by the categories of the other). For example, is there a relationship between educational attainment and employment status? To answer such questions, independence tests are used. These tests compare the observed data with what would be expected if the two variables were completely unrelated. 
+
+To perform these tests, analysts rely on models that assume the data comes from a larger, hypothetical population (a *superpopulation*). The observed data from the survey is treated as a sample from this superpopulation, and the analysis aims to draw conclusions about the larger population. The starting point for testing independence is the **null hypothesis**, which assumes that the two variables are independent. This means the likelihood of being in any combination of categories is simply the product of their marginal probabilities.
+
+To test this hypothesis, observed frequencies (or proportions) in a contingency table are compared with the expected frequencies under the null hypothesis. If the observed and expected values differ significantly, the null hypothesis of independence is rejected, suggesting an association between the variables.
+This way, it is possible to perform independence tests to verify whether $x$ and $y$ are associated. Following @Heeringa2017, the null hypothesis that $x$ and $y$ are independent is defined as:
 
 $$
 H_0) \ \ P_{rc}^0 = {P_{r+} \times P_{+c}} \ \ \forall \ r=1, \ldots, R \text{ and } c=1, \ldots, C.
 $$
 
-Hence, to test the independence hypothesis we compare the estimated proportions $\widehat{p}_{rc}$ with the estimated expected population proportions under the null $P_{rc}^0$. If there is a large difference between them, then the independence hypothesis would not be supported by the data. Therefore, the following Pearson Rao-Scott adjusted test statistic $X_{RS}^2$ [@Rao1984] is defined:
+Hence, to test the independence hypothesis we compare the estimated proportions $\widehat{p}_{rc}$ with the estimated expected population proportions under the null $P_{rc}^0$. If there is a large difference between them, then the independence hypothesis would not be supported by the data. 
+
+
+Testing for independence in survey data requires adjustments to account for the sampling design, which often includes stratification, clustering, and unequal probabilities of selection. The **Rao-Scott adjustment** modifies traditional chi-square tests to incorporate these design effects. The test statistic is adjusted for the survey design using a measure called the **generalized design effect (GDEFF)**, which accounts for the complexity of the sampling design. It follows a chi-square distribution under the null hypothesis. Therefore, the following Pearson Rao-Scott adjusted test statistic $X_{RS}^2$ [@Rao1984] is defined by:
 
 $$
 X_{RS}^2 =\ \frac {n_{++}} {GDEFF} \sum_r \sum_c \frac{\left(\widehat{p}_{rc} - \widehat P_{rc}^0 \right)^2}{\widehat P_{rc}^0}
 $$
 
-where $\widehat P_{rc}^0 = \widehat p_{r+} \times \widehat p_{+c}$ estimates the cell frequencies under the null hypothesis and $GDEFF$ is an estimate of the generalized design effect given by
+where $\widehat P_{rc}^0 = \widehat p_{r+} \times \widehat p_{+c}$ estimates the cell frequencies under the null hypothesis and $GDEFF$ is an estimate of the generalized design effect (XXX citation neeeded). Under the null hypothesis of independence, the large sample distribution of $X_{RS}^2$ is $\chi^2_{[(R-1) (C-1)]}$. 
 
-$$
-GDEFF = \frac{\sum_{r}\sum_{c}\left(1 - \widehat p_{rc}\right) d^{2}\left(\widehat p_{rc}\right) - \sum_{r} \left(1 - \widehat p_{r+} \right) d^{2}\left(\widehat p_{r+}\right) - \sum_{c} \left( 1 - \widehat p_{+c} \right) d^{2} \left( \widehat p_{+c} \right)} {\left(R-1\right)\left(C-1\right)}
-$$
+When the sample size or degrees of freedom is small, adjustments to the test statistics can improve accuracy. These adjustments use an **F-distribution** instead of the chi-square distribution, making the tests more robust for smaller datasets. As mentioned by @Heeringa2017, it was @Fay1979, along with @Fellegi1980, who began proposing corrections to Pearson's chi-square statistic based on a generalized design effect. @Rao1984 later expanded the theory of generalized design effect corrections for these statistical tests, as did @thomas1987small_sample. 
 
-where $d^2 \left({\widehat \theta}\right)$ denotes the estimated design effect for the estimator ${\widehat \theta}$.
-
-Under the null hypothesis of independence, the large sample distribution of $X_{RS}^2$ is $\chi^2_{[(R-1) (C-1)]}$.
-
-As mentioned by @Heeringa2017, it was @Fay1979, along with @Fellegi1980, who began proposing corrections to Pearson's chi-square statistic based on a generalized design effect. @Rao1984 later expanded the theory of generalized design effect corrections for these statistical tests, as did @thomas1987small_sample. The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi's approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.
-
-The Rao-Scott adjusted Likelihood Ratio statistic is defined as:
-
-$$
-G_{RS}^{2} = 2 \times \frac {n_{++}} {GDEFF} \times \sum_{r} \sum_{c} \widehat p_{rc} \times \ln \left( \frac{\widehat p_{rc}}{p_{rc}^0} \right)
-$$
-
-Under the null hypothesis of independence, the large sample distribution of this test statistic is also $\chi^2_{[(R-1) (C-1)]}$. 
-
-When the number of degrees of freedom for the sample is not very large, two adjusted versions of the above test statistics might be preferable, since they enable taking this into account. The F-adjusted test statistic for independence based on Pearson's $X_{RS}^2$ is calculated as follows:
-
-$$
-F_{Pearson} = \frac{X^{2}_{R-S}}{(R-1)(C-1)} \sim F_{\left(R-1\right)\left(C-1\right) \ , \ df}
-$$
-
-where $df = \sum_{h} n_h - H$ denotes the degrees of freedom in the design.
-
-The F-adjusted teststatistic for independence based on the Rao-Scott adjusted Likelihood Ratio statistic $G_{RS}^{2}$ is calculated as:
-
-$$
-F_{LR} = \frac{G^{2}_{R-S}}{C-1} \sim F_{\left(C-1\right) \ , \ df}
-$$
+The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi's approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.
 
 ## Tests for group comparisons
 
+Comparing group means is a common goal in household survey analysis. For example, researchers might ask: "Is there a significant difference in average income between male and female headed households?" To answer such questions, statistical tests are used, adapted to account for the complexities of survey data, such as stratification, clustering, and unequal selection probabilities. This section explains the methods for testing differences in means, adjusted for survey design, with examples to illustrate their application.
 To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.
 
 ### Hypothesis Test for the Difference of Means
@@ -135,9 +135,9 @@ H_{1}: & \theta<\theta_{0}
 \end{eqnarray*}
 ```
 
-One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The process of selecting one of the two hypotheses is called a Hypothesis Test.
+One of the two hypotheses will be considered true only if the statistical evidence, which is obtained from the sample, supports it. The decision about which hypothesis is true is based on the statistical evidence gathered from the data. This process is called **hypothesis testing**.
 
-In general, some important parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of $J$ descriptive statistics, as shown below:
+In many cases, important parameters of interest, such as differences in means or weighted sums of means, can be expressed as a linear combination of various descriptive statistics. These combinations are often used in constructing economic indices or comparing population means. The variance of these combinations is important for understanding the precision of the estimate. That is, parameters can be expressed as a linear combination of measures of interest. The most common cases are differences in means, weighted sums of means used to construct economic indices, etc. Thus, consider a function that is a linear combination of $J$ descriptive statistics, as shown below:
 
 $$
 f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
@@ -157,7 +157,7 @@ $$
 
 As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators. 
 
-Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a *superpopulation model*. We assume that $y_{hik}$ correspond to observations from identically distributed random variables $Y$ having means $\mu_{y,j}$ if unit $k$ belongs to domain $j$, with $j = 1, 2$. Then we can define the difference in population means between domains 1 and 2 as $\mu_{y,1} - \mu_{y,2}$. As an example, consider that $\mu_{y,1}$ is the average household income for households with male heads of household, and $\mu_{y,2}$ is the average household income for households with female heads.
+In the context of comparing means between two populations, there are several potential hypotheses that can be tested. On the one hand, the null hypothesis may state that the means of two populations are equal. On the other, the alternative hypothesis could suggest that the means are different, or that one is greater than or less than the other. Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a *superpopulation model*. We assume that $y_{hik}$ correspond to observations from identically distributed random variables $Y$ having means $\mu_{y,j}$ if unit $k$ belongs to domain $j$, with $j = 1, 2$. Then we can define the difference in population means between domains 1 and 2 as $\mu_{y,1} - \mu_{y,2}$. As an example, consider that $\mu_{y,1}$ is the average household income for households with male heads of household, and $\mu_{y,2}$ is the average household income for households with female heads.
 
 This difference in means can be unbiasedly estimated by:
 
@@ -165,30 +165,10 @@ $$
 \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
 $$
 
-where $\widehat{\overline{Y}}_{j}$ is the sample estimator of $\mu_{y,j}$ ($j = 1, 2$). Considering the parameter of interest in this section, the hypotheses to be tested are as follows:
+where $\widehat{\overline{Y}}_{j}$ is the sample estimator of $\mu_{y,j}$ ($j = 1, 2$). Considering the parameter of interest in this section, the hypotheses to test are typically:
 
-$$
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} \neq 0
-\end{cases} 
-$$
-
-$$
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} > 0
-\end{cases}
-$$
-
-$$
-\begin{cases}
-H_0: \mu_{y,1} - \mu_{y,2} = 0 \\
-H_1: \mu_{y,1} - \mu_{y,2} < 0
-\end{cases}
-$$
-
-To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with $df$ degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.
+- Null hypothesis: There is no difference between the means.
+- Alternative hypothesis: There is a difference, which could be in either direction (greater or less). To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with $df$ degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.
 
 $$
 t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
@@ -200,7 +180,7 @@ $$
 \widehat{se} \left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right) = \sqrt{\widehat{Var}\left(\widehat{\overline{Y}}_{1}\right) + \widehat{Var}\left(\widehat{\overline{Y}}_{2}\right) - 2 \  \widehat{Cov}\left(\widehat{\overline{Y}}_{1} \ ; \widehat{\overline{Y}}_{2} \right)}
 $$
 
-If a confidence interval for the difference in means is desired, it would be constructed as follows:
+If a confidence interval is needed for the difference in means, it is constructed using the estimated difference and the standard error, along with the appropriate critical value from the t-distribution. This interval provides a range of plausible values for the true difference in means, offering a more complete understanding of the data. It would be constructed as follows:
 
 $$
 \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \ \pm \ t_{[df]} \ \widehat{se}\left( \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2} \right)

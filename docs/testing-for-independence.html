@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cross-tabulations-and-contingency-tables.html"/>
+<link rel="prev" href="cross-tabulations.html"/>
 <link rel="next" href="tests-for-group-comparisons.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -130,7 +130,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations-and-contingency-tables.html"><a href="cross-tabulations-and-contingency-tables.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations and contingency tables</a></li>
+<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
 <li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
 <li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
 <ul>
@@ -198,35 +198,21 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="testing-for-independence" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Testing for independence<a href="testing-for-independence.html#testing-for-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Using the estimated contingency tables, it is possible to perform independence tests to verify whether <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are associated. Following <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, the null hypothesis that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are independent is defined as:</p>
+<p>In household surveys, it is often important to determine whether two categorical variables are associated or independent (i.e., whether the distribution of one variable is unaffected by the categories of the other). For example, is there a relationship between educational attainment and employment status? To answer such questions, independence tests are used. These tests compare the observed data with what would be expected if the two variables were completely unrelated.</p>
+<p>To perform these tests, analysts rely on models that assume the data comes from a larger, hypothetical population (a <em>superpopulation</em>). The observed data from the survey is treated as a sample from this superpopulation, and the analysis aims to draw conclusions about the larger population. The starting point for testing independence is the <strong>null hypothesis</strong>, which assumes that the two variables are independent. This means the likelihood of being in any combination of categories is simply the product of their marginal probabilities.</p>
+<p>To test this hypothesis, observed frequencies (or proportions) in a contingency table are compared with the expected frequencies under the null hypothesis. If the observed and expected values differ significantly, the null hypothesis of independence is rejected, suggesting an association between the variables.
+This way, it is possible to perform independence tests to verify whether <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are associated. Following <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, the null hypothesis that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are independent is defined as:</p>
 <p><span class="math display">\[
 H_0) \ \ P_{rc}^0 = {P_{r+} \times P_{+c}} \ \ \forall \ r=1, \ldots, R \text{ and } c=1, \ldots, C.
 \]</span></p>
-<p>Hence, to test the independence hypothesis we compare the estimated proportions <span class="math inline">\(\widehat{p}_{rc}\)</span> with the estimated expected population proportions under the null <span class="math inline">\(P_{rc}^0\)</span>. If there is a large difference between them, then the independence hypothesis would not be supported by the data. Therefore, the following Pearson Rao-Scott adjusted test statistic <span class="math inline">\(X_{RS}^2\)</span> <span class="citation">(<a href="#ref-Rao1984">Rao and Scott 1984</a>)</span> is defined:</p>
+<p>Hence, to test the independence hypothesis we compare the estimated proportions <span class="math inline">\(\widehat{p}_{rc}\)</span> with the estimated expected population proportions under the null <span class="math inline">\(P_{rc}^0\)</span>. If there is a large difference between them, then the independence hypothesis would not be supported by the data.</p>
+<p>Testing for independence in survey data requires adjustments to account for the sampling design, which often includes stratification, clustering, and unequal probabilities of selection. The <strong>Rao-Scott adjustment</strong> modifies traditional chi-square tests to incorporate these design effects. The test statistic is adjusted for the survey design using a measure called the <strong>generalized design effect (GDEFF)</strong>, which accounts for the complexity of the sampling design. It follows a chi-square distribution under the null hypothesis. Therefore, the following Pearson Rao-Scott adjusted test statistic <span class="math inline">\(X_{RS}^2\)</span> <span class="citation">(<a href="#ref-Rao1984">Rao and Scott 1984</a>)</span> is defined by:</p>
 <p><span class="math display">\[
 X_{RS}^2 =\ \frac {n_{++}} {GDEFF} \sum_r \sum_c \frac{\left(\widehat{p}_{rc} - \widehat P_{rc}^0 \right)^2}{\widehat P_{rc}^0}
 \]</span></p>
-<p>where <span class="math inline">\(\widehat P_{rc}^0 = \widehat p_{r+} \times \widehat p_{+c}\)</span> estimates the cell frequencies under the null hypothesis and <span class="math inline">\(GDEFF\)</span> is an estimate of the generalized design effect given by</p>
-<p><span class="math display">\[
-GDEFF = \frac{\sum_{r}\sum_{c}\left(1 - \widehat p_{rc}\right) d^{2}\left(\widehat p_{rc}\right) - \sum_{r} \left(1 - \widehat p_{r+} \right) d^{2}\left(\widehat p_{r+}\right) - \sum_{c} \left( 1 - \widehat p_{+c} \right) d^{2} \left( \widehat p_{+c} \right)} {\left(R-1\right)\left(C-1\right)}
-\]</span></p>
-<p>where <span class="math inline">\(d^2 \left({\widehat \theta}\right)\)</span> denotes the estimated design effect for the estimator <span class="math inline">\({\widehat \theta}\)</span>.</p>
-<p>Under the null hypothesis of independence, the large sample distribution of <span class="math inline">\(X_{RS}^2\)</span> is <span class="math inline">\(\chi^2_{[(R-1) (C-1)]}\)</span>.</p>
-<p>As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, it was <span class="citation">Fay (<a href="#ref-Fay1979">1979</a>)</span>, along with <span class="citation">Fellegi (<a href="#ref-Fellegi1980">1980</a>)</span>, who began proposing corrections to Pearson’s chi-square statistic based on a generalized design effect. <span class="citation">Rao and Scott (<a href="#ref-Rao1984">1984</a>)</span> later expanded the theory of generalized design effect corrections for these statistical tests, as did <span class="citation">Thomas and Rao (<a href="#ref-thomas1987small_sample">1987</a>)</span>. The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi’s approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.</p>
-<p>The Rao-Scott adjusted Likelihood Ratio statistic is defined as:</p>
-<p><span class="math display">\[
-G_{RS}^{2} = 2 \times \frac {n_{++}} {GDEFF} \times \sum_{r} \sum_{c} \widehat p_{rc} \times \ln \left( \frac{\widehat p_{rc}}{p_{rc}^0} \right)
-\]</span></p>
-<p>Under the null hypothesis of independence, the large sample distribution of this test statistic is also <span class="math inline">\(\chi^2_{[(R-1) (C-1)]}\)</span>.</p>
-<p>When the number of degrees of freedom for the sample is not very large, two adjusted versions of the above test statistics might be preferable, since they enable taking this into account. The F-adjusted test statistic for independence based on Pearson’s <span class="math inline">\(X_{RS}^2\)</span> is calculated as follows:</p>
-<p><span class="math display">\[
-F_{Pearson} = \frac{X^{2}_{R-S}}{(R-1)(C-1)} \sim F_{\left(R-1\right)\left(C-1\right) \ , \ df}
-\]</span></p>
-<p>where <span class="math inline">\(df = \sum_{h} n_h - H\)</span> denotes the degrees of freedom in the design.</p>
-<p>The F-adjusted teststatistic for independence based on the Rao-Scott adjusted Likelihood Ratio statistic <span class="math inline">\(G_{RS}^{2}\)</span> is calculated as:</p>
-<p><span class="math display">\[
-F_{LR} = \frac{G^{2}_{R-S}}{C-1} \sim F_{\left(C-1\right) \ , \ df}
-\]</span></p>
+<p>where <span class="math inline">\(\widehat P_{rc}^0 = \widehat p_{r+} \times \widehat p_{+c}\)</span> estimates the cell frequencies under the null hypothesis and <span class="math inline">\(GDEFF\)</span> is an estimate of the generalized design effect (XXX citation neeeded). Under the null hypothesis of independence, the large sample distribution of <span class="math inline">\(X_{RS}^2\)</span> is <span class="math inline">\(\chi^2_{[(R-1) (C-1)]}\)</span>.</p>
+<p>When the sample size or degrees of freedom is small, adjustments to the test statistics can improve accuracy. These adjustments use an <strong>F-distribution</strong> instead of the chi-square distribution, making the tests more robust for smaller datasets. As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, it was <span class="citation">Fay (<a href="#ref-Fay1979">1979</a>)</span>, along with <span class="citation">Fellegi (<a href="#ref-Fellegi1980">1980</a>)</span>, who began proposing corrections to Pearson’s chi-square statistic based on a generalized design effect. <span class="citation">Rao and Scott (<a href="#ref-Rao1984">1984</a>)</span> later expanded the theory of generalized design effect corrections for these statistical tests, as did <span class="citation">Thomas and Rao (<a href="#ref-thomas1987small_sample">1987</a>)</span>.</p>
+<p>The Rao-Scott adjustment requires the calculation of generalized design effects, which are analytically more complex than Fellegi’s approach. Nevertheless, Rao-Scott adjusted statistics are now the standard for analyzing categorical survey data in software systems such as R, Stata and SAS.</p>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
@@ -251,7 +237,7 @@ Thomas, D. R., and J. N. K. Rao. 1987. <span>“Small-Sample Comparisons of Leve
           </div>
         </div>
       </div>
-<a href="cross-tabulations-and-contingency-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cross-tabulations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="tests-for-group-comparisons.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
