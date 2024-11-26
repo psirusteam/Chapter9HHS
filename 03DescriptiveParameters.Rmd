@@ -1,18 +1,20 @@
 # Descriptive parameters
 
-The most frequent analysis of complex household survey data consists in estimating some descriptive population parameters for a range of survey variables. Such *descriptive analysis* generally involve estimating frequencies, proportions, means, and totals. But other target parameters such as selected quantiles of numeric variables, poverty and inequality measures, and a range of indicators such as those required for monitoring the Sustainable Development Goals are becoming part of regular set of estimates needed from household sample surveys. 
+As stated before, household surveys also play a critical role in tracking progress toward global objectives, such as the **Sustainable Development Goals (SDGs)**. For this purpose, descriptive analyses often include a range of specialized indicators designed to monitor outcomes like access to education, health services, and economic opportunities. These indicators are derived from the survey data and are essential for policymakers and organizations aiming to achieve sustainable development targets.
 
-## Frequencies
+Descriptive parameters are the most commonly analyzed outputs from household survey data. These analyses focus on summarizing key characteristics of the population by estimating values for a variety of survey variables. The goal is to provide clear and meaningful insights into the population using data collected from a representative sample.
 
-### Point Estimation
+The most basic and frequently estimated parameters include **frequencies**, **proportions**, **means**, and **totals**. Means and totals provide average and cumulative values, respectively, which are useful for understanding population-level behaviors and trends. Frequencies can show the number of households/people in a specific category (e.g. number of poor people), while proportions can represent the share of households/people meeting a particular condition (e.g. poverty rate). 
 
-The accurate estimation of absolute sizes and proportions in household surveys is essential for obtaining representative data that reflects the demographic and socioeconomic reality of a population. These figures serve as the basis for public policy decision-making, resource allocation, and the design of social programs.
+In recent years, the scope of descriptive analysis has expanded beyond these basic parameters. Analysts now estimate more complex metrics, such as **quantiles** of numeric variables, which help describe the distribution of values (e.g., the median income of households). Other widely used metrics include measures of **poverty** and **inequality**, which are crucial for understanding economic disparities and informing policy decisions (e.g. FGT and Gini indicators).
 
-The ability to understand the distribution of specific categories, such as poverty status, employment status, education level, among others, provides valuable information to address inequalities and promote equitable development.
+## Frequencies and proportions
 
-### Size Estimates
+One of the most fundamental tasks in household survey analysis is estimating the number of people (size) or households in specific categories, as well as the proportions they represent within the population. These estimates are crucial because they provide a snapshot of the demographic and socioeconomic reality of a population. Policymakers and planners use this information to make decisions about resource allocation, public policy design, and the development of social programs.
 
-In this section, the processes for estimating categorical variables will be carried out. First, one of the most important parameters is the size of a population, which represents the cardinality of that set; in other words, the total number of individuals that comprise it. In terms of notation, the population size is estimated as follows:
+For example, understanding how many people live below the poverty line, how many are employed, or how many have completed a certain level of education provides valuable insights. These insights help address inequalities, support the design of targeted interventions, and promote equitable development across communities. The ability to understand the distribution of specific categories provides valuable information to address inequalities and promote equitable development.
+
+To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different poverty levels, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with **weights**. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:
 
 $$
 \widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
@@ -20,19 +22,32 @@ $$
 
 where $s_{hi}$ is the sample of households or individuals in PSU $i$ of stratum $h$; $s_{1h}$ is the sample of PSUs within stratum $h$; and $w_{hik}$ is the weight (expansion factor) of unit $k$ within PSU $i$ in stratum $h$.
 
-Similarly, the size estimate in a subpopulation, defined by a dichotomous variable $I(y_{hik} = d)$, which takes the value one if unit $k$ from PSU $i$ in stratum $h$ belongs to category $d$ in the discrete variable $y$, is given by the following expression:
+Subpopulation size estimates work similarly but focus on a subset of the population defined by a specific characteristic. For example, if we want to estimate the number of people in a particular category, we would identify the relevant group in the survey data and sum up their weights. This approach allows analysts to estimate not only the total population size but also the size of specific groups of interest. This way, a binary variable should be defined, $I(y_{hik} = d)$. It will take the value one if unit $k$ from PSU $i$ in stratum $h$ belongs to category $d$ in the discrete variable $y$. A sampling estimator for this parameter is given by the following expression:
 
 $$
 {\widehat{N}}_d = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ I(y_{hik} = d)
 $$
 
-## Totals, means, proportions, and ratios
 
-For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs. 
+Proportions describe the relative size of specific groups within the population. For instance, the proportion of households living below the poverty line is a critical measure for understanding socioeconomic disparities. To estimate a proportion, analysts calculate the weighted average of the binary variable. This approach ensures that the estimate accurately reflects the population distribution. As mentioned by @Heeringa2017, by recoding the original response categories into simple indicator variables $y$ with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:
 
-As mentioned by @Heeringa_West_Berglund_2017, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.
+$$
+\widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
+$$
 
-### Estimating totals
+As this defines a nonlinear estimator, we can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as $z_{hik} = I(y_{hik} = d) - \widehat{p}_d$. Many statistical packages provide proportion estimates and standard errors on a percentage scale. When proportions are close to 0 or 1, special methods are used to ensure confidence intervals remain meaningful; notice that the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. To address this issue, alternative confidence interval estimates, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015 are available. One alternative based on using the logit transformation of the estimated proportion is:
+
+$$
+CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2 , \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right) } \right]} {1 + exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2, \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right)}\right]}
+$$
+
+
+
+## Totals, means and ratios
+
+In household surveys, analyzing numerical data often involves estimating key descriptive measures such as means, proportions, and ratios. These measures summarize important characteristics of the population and provide valuable insights for decision-making. The estimation process can be applied to the entire population or specific subgroups, depending on the research objectives. As mentioned by @Heeringa_West_Berglund_2017, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence. 
+
+The estimation of population totals is a fundamental task in survey analysis. A total represents the sum of a specific variable (e.g., total income or total expenditure) across the entire population. For example, if the goal is to estimate the total income of all households in a country, we combine data from the sample using weights that account for the survey design and ensure representativeness. For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs. 
 
 Once the sampling design is defined, which was done in the previous section, the estimation process for the parameters of interest is carried out. For the estimation of totals with complex sampling designs that include stratification $\left(h=1,2,...,H\right)$ and subsampling in PSUs (assumed to be within stratum $h$) indexed by $i=1,2,...,m_h$, the estimator for the population total can be written as:
 
@@ -40,7 +55,7 @@ $$
 \widehat{Y} = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ y_{hik}
 $$
 
-Under full response, the Ultimate Cluster variance estimator for $\widehat{Y}$ was provided in section 9.1. Calculating the total estimate and its estimated variance is complex, but now these calculations can be easily performed using the `svytotal` function from the `survey` package in R. The confidence interval of level $1 - \alpha$ is given by the following expression:
+Under full response, the Ultimate Cluster variance estimator for $\widehat{Y}$ was provided in section 9.2. Modern statistical tools, such as the `survey` package in R, make it straightforward to calculate totals and their associated uncertainties. The confidence interval of level $1 - \alpha$ is given by the following expression:
 
 $$
 \widehat{Y} \pm z_{1 - \alpha/2} \times \sqrt{\widehat{V}_{UC} \left( \widehat{Y}\right)}
@@ -48,39 +63,17 @@ $$
 
 with $z_{1 - \alpha/2}$ denoting the quantile of the Gaussian distribution leaving an area of ${\alpha/2}$ to its right.
 
-### Estimating averages
-
-The estimation of the population means or averages is a very important task in household surveys. According to @Gutierrez_2016, an estimator of the population mean can be written as the ratio of two estimated finite population totals, as follows:
+Population means, or averages, are also very important and provide an understanding of the central tendency of a variable. For instance, the average income of households can indicate the general economic well-being of a population. A mean is calculated as the total of a variable divided by the population size. Since estimating a mean involves both totals and population sizes, the accuracy of a mean estimate depends on the accurate estimation of both components. Specialized techniques, such as resampling methods or Taylor linearization, are used to estimate the uncertainty associated with means. The estimation of the population means is a very important task in household surveys. An estimator of the population mean can be written as the ratio of two estimated finite population totals, as follows:
 
 $$
 \widehat{\overline{Y}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}y_{hik}} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}} = \frac{\widehat{Y}}{\widehat{N}}.
 $$
 
-Since $\widehat{\overline{Y}}$ is a nonlinear statistic, there is no closed-form formula for exact the variance of this estimator. For this reason, either resampling methods or Taylor series approximations must be used. The latter may be achieved remembering that for the survey mean the sampling estimating equation requires defining $\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} (y_{hik} - \theta) = 0$, therefore we can apply the variance estimator given in section 9.1 with $z_{hik} = y_{hik} - \widehat{\overline{Y}}$.
+Since $\widehat{\overline{Y}}$ is a nonlinear estimator, there is no closed-form formula for exact the variance of this estimator. For this reason, either resampling methods or Taylor series approximations must be used. The latter may be achieved remembering that for the survey mean the sampling estimating equation requires defining $\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} (y_{hik} - \theta) = 0$, therefore we can apply the variance estimator given in section 9.2 with $z_{hik} = y_{hik} - \widehat{\overline{Y}}$.
 
-### Estimating proportions
+Ratios provide insights into the relationship between two variables. For example, the ratio of household expenditures to income can reveal patterns in spending behavior. A ratio is calculated by dividing one total by another, such as total expenditures by total income. The accuracy of a ratio depends on the precise estimation of both totals. Ratios are particularly useful for creating indicators that help compare groups or track progress over time. As another example, ODS indicator N.17.6.1 is defined as the ratio of the number of broadband subscriptions per 100 inhabitants in a country or region. 
 
-When $y$ is a binary variable, the weighted mean estimates the population proportion. As mentioned by @Heeringa2017, by recoding the original response categories into simple indicator variables $y$ with possible values of 1 and 0 (e.g., 1=Yes, 0=No), the estimator for a proportion is defined as follows:
-
-$$
-\widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
-$$
-
-We can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as $z_{hik} = I(y_{hik} = d) - \widehat{p}_d$.
-
-Many statistical packages provide proportion estimates and standard errors on a percentage scale. As is well known in the specialized literature, when the estimated proportion of interest is close to zero or to one, the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter.
-
-To address this issue, alternative confidence interval estimates, as proposed by @Rust2007ConfidenceIF and @DeanPagano2015 are available. One alternative based on using the logit transformation of the estimated proportion is:
-
-$$
-CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2 , \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right) } \right]} {1 + exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2, \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right)}\right]}
-$$
-
-### Estimating ratios
-
-In many household survey analyses, it is not sufficient to examine individual variables in isolation. For example, ODS indicator N.17.6.1 is defined as the ratio of the number of broadband subscriptions per 100 inhabitants in a country or region. Ratio estimators are obtained simply by the ratio of the corresponding estimators of totals (or means) in the numerator and denominator. Another example is estimating the ratio of expenditures to income or the ratio of a particular type of expenditure (say food) over total expenditures in a household budget survey.
-
-Since the ratio is the quotient of two totals, both the numerator and the denominator are unknown quantities and thus need to be estimated. The point estimator for a ratio in complex surveys is the quotient of the estimators for the totals, as defined by:
+Since a ratio is the quotient of two estimators of totals, both the numerator and the denominator are unknown quantities and thus need to be estimated. The point estimator for a ratio in complex surveys is the quotient of the estimators for the totals, as defined by:
 
 $$
 \widehat{R} = \frac{\widehat{Y}}{\widehat{X}}
@@ -89,18 +82,15 @@ $$
 
 For variance estimation, all you need to do is specify the estimating function as $z_{hik} = y_{hik} - \widehat{R} \ x_{hik}$, when $y$ and $x$ are the numerator and denominator variables, respectively.
 
-## Variances and standard deviations
-
-Sometimes the interest lies in estimating the variance or standard deviation of a numeric survey variable $y$. This can be accomplished using the following estimators:
-
-$$
-\widehat{S_y^2} = \frac{1}{\widehat{N}-1}
-{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right)^2}
-$$
-
-and $\widehat{S_y} = \sqrt{\widehat{S_y^2}}$ for the standard deviation.
-
 ## Correlations
+
+Correlation analysis is a useful method for understanding the relationship between two numeric variables in survey data. For example, you might be interested in knowing whether household income and expenditure are related, and if so, how strongly. The Pearson correlation coefficient is commonly used to measure this relationship as it quantifies the strength and direction of a linear relationship between two variables. Its value ranges from -1 to 1:
+
+- A **positive value** indicates that as one variable increases, the other also tends to increase.
+- A **negative value** indicates that as one variable increases, the other tends to decrease.
+- A value close to **zero** suggests little to no linear relationship between the variables.
+
+When analyzing survey data, the correlation is estimated using the survey weights. These weights ensure that the estimated correlation reflects the relationships in the entire population, not just the sample. Weighted correlations adjust for the complex survey design, accounting for stratification, clustering, and unequal probabilities of selection. To compute the correlation coefficient, we look at how the variables vary together (their covariance) and normalize this by their individual variations. This normalized measure ensures the correlation is unaffected by the units of the variables, making it easier to interpret.
 
 Pearson correlation coefficients are useful for assessing the relationship between two numeric survey variables, say $x$ and $y$. These can be estimated using
 
@@ -108,11 +98,11 @@ $$
 \widehat{\rho}_{xy} = \frac {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right) \left( x_{hik} - \widehat{\overline{X}} \right)} {\sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( y_{hik} - \widehat{\overline{Y}} \right)^2} \sqrt{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ \left( x_{hik} - \widehat{\overline{X}} \right)^2}}
 $$
 
+Modern statistical software, such as R, provides functions to calculate weighted Pearson correlation coefficients directly. Tools like the `survey` package ensure that the correlations are estimated correctly, accounting for the survey design. This allows analysts to obtain accurate and meaningful measures of association.
+
 ## Percentiles and inequality measures
 
-Non-central location measures are helpful to determine location and spread of the data distribution beyond central values. Key non-central location measures include the quartiles and other quantiles or percentiles. As an example, the estimation of income percentiles in a given country may help define the onset of public policy. For example, a tax could be imposed on individuals in the top 10% of the income distribution, or transport subsidies could be provided to those in the bottom 15% of the income distribution.
-
-Quantile estimation is based on results related to weighted total estimators, by first estimating the population cumulative distribution function (CDF). The CDF for a variable $y$ in a finite population of size $N$ is defined as follows:
+Percentiles and quantiles are useful tools for analyzing the distribution of data beyond just the average. These measures divide data into segments to show how values are spread. For example, the 10th percentile indicates the value below which 10% of the data falls, while the median (50th percentile) divides the data into two equal halves. These measures help describe not only central tendencies but also the spread and variation within a dataset. For instance, identifying the top 10% of income earners might guide tax policy, while finding the bottom 15% could inform subsidy programs. The estimation of percentiles relies on the cumulative distribution function (CDF), which represents the proportion of the population with values less than or equal to a given number. Once the CDF is calculated using survey data and weights, percentiles and quantiles can be derived. The CDF for a variable $y$ in a finite population of size $N$ is defined as follows:
 
 $$
 F(t) = \frac{1}{N}\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  I(y_{hik} \leq t) 
@@ -137,11 +127,9 @@ $$
 \widehat{y}_{(q)} = y_{(j)} + \frac{q - \widehat{F}(y_{(j)})}{\widehat{F}(y_{(j+1)}) - \widehat{F}(y_{(j)})} (y_{(j+1)} - y_{(j)})
 $$
 
-For the variance estimation and confidence intervals of quantiles, @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique.
+Quantiles are inherently nonlinear measures, making their variance estimation more complex. @kovar1988bootstrap present results from a simulation study where they recommend using the *Balanced Repeated Replication* (BRR) technique.
 
-### Estimating the Gini coefficient
-
-Economic inequality is a common issue worldwide, with particular focus from international institutions. Measuring economic inequality among households is of great interest, and the Gini coefficient ($G$) is the most commonly used indicator for this purpose. The Gini coefficient ranges from 0 to 1, where $G = 0$ indicates perfect equality in wealth distribution, and higher values reflect increasing inequality.
+Economic inequality is a critical area of focus for governments and international organizations. The **Gini coefficient** is a widely used measure to quantify inequality in income or wealth distribution. It is derived by comparing the income distribution of a population to a perfectly equal distribution. In household surveys, it is calculated using weights that account for the survey design, ensuring representativeness. A normalized version of these weights is often used to simplify the calculations. The Gini coefficient ranges from 0 to 1, where 0 indicates perfect equality (everyone has the same income) and values closer to 1 indicate greater inequality. The Gini coefficient is critical for tracking changes in income distribution over time and comparing inequality levels across regions or countries.
 
 Following the estimation equation proposed by @binder1995estimating, the estimator for the Gini coefficient is given by:
 
@@ -155,9 +143,7 @@ $$
 w_{hik}^{*} = \frac{w_{hik}} {\sum_{h=1}^{H} \sum_{i \in s_{1h}}  \sum_{k \in s_{hi}} w_{hik}}
 $$
 
-and $\widehat{F}_{hik}$ represents the estimated CDF for individual $k$ in cluster $i$ of stratum $h$.
-
-@osier2009variance and @Langel_Tille_2013 provide important computational details for estimating the variance of this complex estimator.
+and $\widehat{F}_{hik}$ represents the estimated CDF for individual $k$ in cluster $i$ of stratum $h$. @osier2009variance and @Langel_Tille_2013 provide important computational details for estimating the variance of this complex estimator.
 
 ## NSO – Practical example
 
