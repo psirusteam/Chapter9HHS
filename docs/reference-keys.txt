@@ -42,7 +42,7 @@ tables
 presentation-tables
 example-of-presentation-table-and-corresponding-text---include-in-a-box.
 reference-tables
-dealing-with-suppression-of-low-quality-estimates
+low-quality-estimates
 data-visualization
 graphs-and-sampling-weights
 graphs-for-categorical-data
