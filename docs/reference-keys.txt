@@ -44,11 +44,7 @@ example-of-presentation-table-and-corresponding-text---include-in-a-box.
 reference-tables
 low-quality-estimates
 data-visualization
-graphs-and-sampling-weights
-graphs-for-categorical-data
+bar-charts
 histograms
-graphical-analysis-with-survey-tools
-box-plots
 scatter-plots
-maps
 nso-practical-example-2

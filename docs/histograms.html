@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>7.2 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="7.2 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="7.2 Histograms | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphs-for-categorical-data.html"/>
-<link rel="next" href="box-plots.html"/>
+<link rel="prev" href="bar-charts.html"/>
+<link rel="next" href="scatter-plots.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,16 +170,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>7.1</b> Graphs and sampling weights</a></li>
-<li class="chapter" data-level="7.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>7.2</b> Graphs for categorical data</a></li>
-<li class="chapter" data-level="7.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>7.3</b> Histograms</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="histograms.html"><a href="histograms.html#graphical-analysis-with-survey-tools"><i class="fa fa-check"></i><b>7.3.1</b> Graphical Analysis with Survey Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>7.4</b> Box Plots</a></li>
-<li class="chapter" data-level="7.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>7.5</b> Scatter Plots</a></li>
-<li class="chapter" data-level="7.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>7.6</b> Maps</a></li>
-<li class="chapter" data-level="7.7" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>7.7</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="7.1" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>7.1</b> Bar charts</a></li>
+<li class="chapter" data-level="7.2" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>7.2</b> Histograms</a></li>
+<li class="chapter" data-level="7.3" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>7.3</b> Scatter Plots</a></li>
+<li class="chapter" data-level="7.4" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>7.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -202,13 +196,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="histograms" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Histograms<a href="histograms.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="histograms" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Histograms<a href="histograms.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Histograms serve to present the distribution of a single numeric (continuous) survey variable or response. If one had a census, then the histogram is a powerful tool to describe the underlying distribution, even for very large datasets. When displaying sample data, however, the sampling weights must be taken into account when estimating frequencies or relative frequencies of population units having values in the specified histogram bins. Modern survey analysis tools can easily provide weighted histograms where the sampling weights are incorporated.</p>
-<p>Histograms are the precursors to density function estimates, and the later can be thought of as histograms with very large number of bins. The <code>survey</code> package in R provides functions that can plot smoothed density estimates obtained accounting for the sampling weights.</p>
-<div id="graphical-analysis-with-survey-tools" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Graphical Analysis with Survey Tools<a href="histograms.html#graphical-analysis-with-survey-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once the database containing the sample is available and the sampling design has been defined, initial visual analyses can be conducted. It is recommended to begin with graphical analyses that, thanks to the principle of representativeness, reflect the behavior of continuous variables not only in the obtained sample but also in the study population, using sampling weights for sample expansion.</p>
+<p>Histograms are often seen as precursors to density function estimates. A density estimate can be thought of as a histogram with a large number of bins, providing a smoother view of the data distribution. The <code>survey</code> package in R includes functionality for plotting smoothed density estimates that account for sampling weights, offering a more detailed representation of the population.</p>
 <p>A common example of visualization in this type of analysis is the use of histograms to represent the distribution of variables such as income. These charts allow us to observe the distribution of the variable of interest in the expanded population and to understand its shape, dispersion, and general trends.</p>
 <p>It is also common to perform graphical analyses broken down by subgroups, such as geographic areas (urban and rural) or thematic characteristics like gender (male and female). This approach helps identify key differences among specific population subgroups, for instance, by examining income distribution in men and women over the age of 18. Such breakdowns help visualize and communicate potential gaps between subgroups of interest.</p>
 <p>In this way, charts help to communicate results in an accessible manner, offering a clear and straightforward visual representation for audiences who may not be familiar with the technical details of estimation methods.</p>
@@ -228,15 +219,15 @@ Figure 7.2: Distribution of Population Income
 Figure 7.3: Histograms of Income and Expenditure by Sex
 </p>
 </div>
-</div>
+<p>Histograms, especially when weighted for survey design, are invaluable for exploring and presenting the distribution of continuous variables. Subgroup analyses further enhance their utility, enabling the identification of disparities and trends across different population segments. Combined with smoothed density estimates, histograms provide a comprehensive and accurate view of the population’s numeric variables.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphs-for-categorical-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="box-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bar-charts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="scatter-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

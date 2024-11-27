@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="low-quality-estimates.html"/>
-<link rel="next" href="graphs-and-sampling-weights.html"/>
+<link rel="next" href="bar-charts.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,16 +170,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>7.1</b> Graphs and sampling weights</a></li>
-<li class="chapter" data-level="7.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>7.2</b> Graphs for categorical data</a></li>
-<li class="chapter" data-level="7.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>7.3</b> Histograms</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="histograms.html"><a href="histograms.html#graphical-analysis-with-survey-tools"><i class="fa fa-check"></i><b>7.3.1</b> Graphical Analysis with Survey Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>7.4</b> Box Plots</a></li>
-<li class="chapter" data-level="7.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>7.5</b> Scatter Plots</a></li>
-<li class="chapter" data-level="7.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>7.6</b> Maps</a></li>
-<li class="chapter" data-level="7.7" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>7.7</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="7.1" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>7.1</b> Bar charts</a></li>
+<li class="chapter" data-level="7.2" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>7.2</b> Histograms</a></li>
+<li class="chapter" data-level="7.3" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>7.3</b> Scatter Plots</a></li>
+<li class="chapter" data-level="7.4" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>7.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -204,8 +198,15 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="data-visualization" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">7</span> Data visualization<a href="data-visualization.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In this section we discuss how to present data and estimates resulting from household surveys using graphics. While standard plots can still be used to show distributions and associations from the raw (unweighted) sample data, these can be misleading for the corresponding population distributions and associations. Therefore it is recommended that modified plots that account for survey weights be used instead. In addition, regarding the display of survey estimates, which are subject to sampling error, it is important to convey this message by presenting not only point estimates, but also standard errors or confidence intervals.</p>
-<p>Graphs are important for the exploratory analysis of the survey data, for the diagnostics of fitted models and for the presentation of results. However, often the sample data sets are very large. In addition, sampling units typically have different weights. These two difficulties may cause standard graphs to fail in facilitating the analysis or presentation.</p>
+<p>In this section we discuss how to present data and estimates resulting from household surveys using graphics. Effective graphs can reveal patterns, trends, and relationships in the data, making it easier to interpret findings and communicate them to diverse audiences. While standard plots can still be used to show distributions and associations from the raw (unweighted) sample data, these can be misleading for the corresponding population distributions and associations. Therefore it is recommended that modified plots that account for survey weights be used instead.</p>
+<p>For example, a bar chart showing income distribution should incorporate weights to properly represent the income distribution for the entire population. Similarly, scatter plots exploring associations between variables should use weighted markers or density adjustments to ensure the relationships are accurately depicted. In addition, regarding the display of survey estimates, which are subject to sampling error, it is important to convey this message by presenting not only point estimates, but also standard errors or confidence intervals.</p>
+<p>When presenting survey estimates, it is essential to recognize that these estimates are subject to sampling error. To effectively communicate this uncertainty, graphs should include measures such as standard errors or confidence intervals. For instance:</p>
+<ul>
+<li>Confidence intervals can be added to bar charts or line graphs to show the range of plausible values for an estimate.</li>
+<li>Error bars in scatter plots can illustrate the variability associated with specific data points.</li>
+</ul>
+<p>Incorporating these elements into visualizations helps ensure that viewers understand the inherent uncertainty in the survey estimates, fostering more informed interpretations. When the survey units have different sampling weights, these should be taken into account when preparing graphs with their data. The main reason is that weights can be interpreted as the number of population units that each sample unit represents. Hence, it is evident that unequal weights need to be considered in the elaboration of graphs based on such sample data.</p>
+<p>When graphs are created without considering weights, the visual representation reflects the sample characteristics rather than the population. This discrepancy can distort distributions, proportions, or relationships between variables. Incorporating weights ensures that the graphs provide a more accurate representation of the population.</p>
 </div>
             </section>
 
@@ -213,7 +214,7 @@ div.csl-indent {
         </div>
       </div>
 <a href="low-quality-estimates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphs-and-sampling-weights.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bar-charts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
