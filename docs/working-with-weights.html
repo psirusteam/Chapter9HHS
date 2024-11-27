@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.4 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>5.4 Working with weights | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.4 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="5.4 Working with weights | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.4 Percentiles and inequality measures | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="5.4 Working with weights | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="correlations.html"/>
-<link rel="next" href="nso-practical-example.html"/>
+<link rel="prev" href="linear-models.html"/>
+<link rel="next" href="model-diagnostics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -200,52 +200,42 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="percentiles-and-inequality-measures" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Percentiles and inequality measures<a href="percentiles-and-inequality-measures.html#percentiles-and-inequality-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Percentiles and quantiles are useful tools for analyzing the distribution of data beyond just the average. These measures divide data into segments to show how values are spread. For example, the 10th percentile indicates the value below which 10% of the data falls, while the median (50th percentile) divides the data into two equal halves. These measures help describe not only central tendencies but also the spread and variation within a dataset. For instance, identifying the top 10% of income earners might guide tax policy, while finding the bottom 15% could inform subsidy programs. The estimation of percentiles relies on the cumulative distribution function (CDF), which represents the proportion of the population with values less than or equal to a given number. Once the CDF is calculated using survey data and weights, percentiles and quantiles can be derived. The CDF for a variable <span class="math inline">\(y\)</span> in a finite population of size <span class="math inline">\(N\)</span> is defined as follows:</p>
-<p><span class="math display">\[
-F(t) = \frac{1}{N}\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  I(y_{hik} \leq t)
-\]</span></p>
-<p>Where <span class="math inline">\(I(y_k \leq x)\)</span> is an indicator variable that takes the value 1 if <span class="math inline">\(y_{hik}\)</span> is less than or equal to a specific value <span class="math inline">\(t\)</span>, and 0 otherwise. An estimator of the CDF in a complex sampling design is given by:</p>
-<p><span class="math display">\[
-\widehat{F}(t) = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} I(y_{hik}\leq t)}{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
-\]</span></p>
-<p>Once the CDF is estimated using the survey design weights, the <span class="math inline">\(q\)</span>-th quantile of a variable <span class="math inline">\(y\)</span> is the smallest value of <span class="math inline">\(y\)</span> such that the CDF is greater than or equal to <span class="math inline">\(q\)</span>. As is well known, the median is the value where the CDF is greater than or equal to <span class="math inline">\(1/2\)</span>. Thus, the estimated median is the smallest value where the estimated CDF is greater than or equal to <span class="math inline">\(1/2\)</span>. Following <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa2017">2017b</a>)</span>, to estimate quantiles, one first considers the order statistics denoted as <span class="math inline">\(y_{(1)}, \ldots, y_{(n)}\)</span> and finds the value of <span class="math inline">\(j\)</span> <span class="math inline">\((j=1, \ldots, n)\)</span> such that:</p>
-<p><span class="math display">\[
-\widehat{F}(y_{(j)}) \leq q\leq\widehat{F}(y_{(j+1)})
-\]</span></p>
-<p>Hence, the estimator of the <span class="math inline">\(q\)</span>-th quantile <span class="math inline">\(y_{(q)}\)</span> is given by:</p>
-<p><span class="math display">\[
-\widehat{y}_{(q)} = y_{(j)} + \frac{q - \widehat{F}(y_{(j)})}{\widehat{F}(y_{(j+1)}) - \widehat{F}(y_{(j)})} (y_{(j+1)} - y_{(j)})
-\]</span></p>
-<p>Quantiles are inherently nonlinear measures, making their variance estimation more complex. <span class="citation">Kovar, Rao, and Wu (<a href="#ref-kovar1988bootstrap">1988</a>)</span> present results from a simulation study where they recommend using the <em>Balanced Repeated Replication</em> (BRR) technique.</p>
-<p>Economic inequality is a critical area of focus for governments and international organizations. The <strong>Gini coefficient</strong> is a widely used measure to quantify inequality in income or wealth distribution. It is derived by comparing the income distribution of a population to a perfectly equal distribution. In household surveys, it is calculated using weights that account for the survey design, ensuring representativeness. A normalized version of these weights is often used to simplify the calculations. The Gini coefficient ranges from 0 to 1, where 0 indicates perfect equality (everyone has the same income) and values closer to 1 indicate greater inequality. The Gini coefficient is critical for tracking changes in income distribution over time and comparing inequality levels across regions or countries.</p>
-<p>Following the estimation equation proposed by <span class="citation">David A. Binder and Kovacevic (<a href="#ref-binder1995estimating">1995</a>)</span>, the estimator for the Gini coefficient is given by:</p>
-<p><span class="math display">\[
-\widehat{G} = \frac {2 \times \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}}  w_{hik}^{*} \widehat{F}_{hik} \ y_{hik} - 1} {\widehat{\overline{Y}}}
-\]</span></p>
-<p>where <span class="math inline">\(w_{hik}^{*}\)</span> is a normalized sampling weight, defined as</p>
-<p><span class="math display">\[
-w_{hik}^{*} = \frac{w_{hik}} {\sum_{h=1}^{H} \sum_{i \in s_{1h}}  \sum_{k \in s_{hi}} w_{hik}}
-\]</span></p>
-<p>and <span class="math inline">\(\widehat{F}_{hik}\)</span> represents the estimated CDF for individual <span class="math inline">\(k\)</span> in cluster <span class="math inline">\(i\)</span> of stratum <span class="math inline">\(h\)</span>. <span class="citation">Osier (<a href="#ref-osier2009variance">2009</a>)</span> and <span class="citation">Langel and Tillé (<a href="#ref-Langel_Tille_2013">2013</a>)</span> provide important computational details for estimating the variance of this complex estimator.</p>
+<div id="working-with-weights" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Working with weights<a href="working-with-weights.html#working-with-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When analyzing data from complex surveys, a critical question arises: how should survey weights be used in regression models? <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, two main approaches exist for incorporating weights into regression models when working with complex survey data:</p>
+<p>First, the <strong>design-based approach</strong> focuses on making inferences about the entire population. Here, survey weights are essential to ensure unbiased estimates of the regression coefficients. These weights account for the survey design, including unequal probabilities of selection. However, this approach has a limitation: it does not protect against model misspecification. If the model does not correctly describe the relationships in the population, the estimates will still be unbiased for the specified model but not necessarily meaningful for the population. If the researcher fits a poorly specified model, unbiased estimates of the regression parameters would be obtained in a model that does not correctly describe the relationships in the finite population.</p>
+<ul>
+<li>In contrast, the <strong>population-based modeling approach</strong> argues that weights are unnecessary if the model is correctly specified. This approach assumes that the relationships between the variables are well-represented by the model, regardless of the sampling design. Using weights in this case can increase the variability of the estimates, leading to unnecessarily larger standard errors.</li>
+</ul>
+<p>The choice between these two approaches depends on the context and the sensitivity of the inferences to the inclusion of weights. A practical recommendation is to fit regression models both with and without weights using statistical software and compare the results. If including weights leads to significant changes in the regression coefficients or conclusions, it indicates that the model may not be correctly specified, and weighted estimates should be preferred. On the other hand, if weights only increase the standard errors without altering the coefficients meaningfully, the model is likely well-specified, and weights may not be necessary.</p>
+<p>To address the challenges of using raw sampling weights, several adjustments have been proposed to balance accuracy and efficiency. Some are listed below:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Senate Sampling Weights</strong>: This approach scales weights so that the sum of the weights equals the sample size rather than the population size. The goal is to retain representativeness while reducing the variability of weights. This adjustment is particularly useful in large samples where the raw weights are excessively variable. This approach preserves relative differences in weights.
+<span class="math display">\[
+w^{\text{Senate}}_i = w_i \times \frac{n}{\sum w_i}
+\]</span></li>
+<li><strong>Normalized Weights</strong>: these weights are used to rescale the raw weights to sum to 1. This adjustment ensures that the overall weight does not inflate variances unnecessarily. This approach is useful when comparing models with different subsets of data or when variance inflation is a concern.
+<span class="math display">\[
+w^{\text{Normalized}}_i = \frac{w_i}{\sum w_i}
+\]</span></li>
+<li><strong>Pfeffermann Model Weights</strong>: this approach incorporates weights into the likelihood function of the regression model, allowing the model to use weights adaptively. This method combines the benefits of weighting and model-based inference. This approach also adjusts for the variability introduced by weights while retaining design-based properties. It is ideal for models requiring both descriptive and analytical inference.</li>
+</ol>
+<p>The third solution (called the <em>q-weighted approach</em>) was proposed by <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> who suggested a slightly different specification of the weights. This adjustment modifies the original weights to reflect the relationships in the data more accurately, reducing variability while still accounting for the complex survey design. It also balance the benefits of both design- and population-based approaches. The steps in this approach are as follows:</p>
+<ol style="list-style-type: decimal">
+<li>A regression model is fitted to the original survey weights, using the predictor variables in the primary regression model of interest.</li>
+<li>Predicted survey weights are obtained for each case based on the predictor variables.</li>
+<li>The original survey weights are divided by these predicted values, creating adjusted weights.</li>
+<li>These adjusted weights are then used in the final regression model.</li>
+</ol>
+<p>The q-weighted approach provides a middle ground. It retains the benefits of the design-based approach by incorporating survey weights but reduces the variance typically associated with their use. At the same time, it considers the relationships captured by the model, aligning more closely with the population-based modeling perspective. This makes it particularly useful for situations where the choice between the two paradigms is unclear or when both perspectives have merit.</p>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-binder1995estimating" class="csl-entry">
-Binder, David A., and Milojica S. Kovacevic. 1995. <span>“Estimating Some Measures of Income Inequality from Survey Data: An Application of the Estimating Equations Approach.”</span> <em>Survey Methodology</em> 21 (2): 137–45.
+<div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
+Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>
-<div id="ref-Heeringa2017" class="csl-entry">
-Heeringa, Steven G, Brady T West, and Patricia A Berglund. 2017b. <em>Applied Survey Data Analysis, Second Edition</em>. <em>Statistics in the Social and Behavioral Sciences</em>. 2nd edition. Chapman; Hall - CRC.
-</div>
-<div id="ref-kovar1988bootstrap" class="csl-entry">
-Kovar, J. G., J. N. K. Rao, and C. F. J. Wu. 1988. <span>“Bootstrap and Other Methods to Measure Errors in Survey Estimates.”</span> <em>Canadian Journal of Statistics</em> 16 (Suppl.): 25–45.
-</div>
-<div id="ref-Langel_Tille_2013" class="csl-entry">
-Langel, Matti, and Yves Tillé. 2013. <span>“Variance Estimation of the Gini Index: Revisiting a Result Several Times Published: Variance Estimation of the Gini Index.”</span> <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 176 (2): 521–40. <a href="https://doi.org/10.1111/j.1467-985X.2012.01048.x">https://doi.org/10.1111/j.1467-985X.2012.01048.x</a>.
-</div>
-<div id="ref-osier2009variance" class="csl-entry">
-Osier, Guillaume. 2009. <span>“Variance Estimation for Complex Indicators of Poverty and Inequality.”</span> <em>Journal of the European Survey Research Association</em> 3 (3): 167–95. <a href="http://ojs.ub.uni-konstanz.de/srm/article/view/369">http://ojs.ub.uni-konstanz.de/srm/article/view/369</a>.
+<div id="ref-pfeffermann2011modelling" class="csl-entry">
+Pfeffermann, Danny. 2011. <span>“Modelling of Complex Survey Data: Why Model? Why Is It a Problem? How Can We Approach It?”</span> <em>Survey Methodology</em> 37 (2): 115–36.
 </div>
 </div>
             </section>
@@ -253,8 +243,8 @@ Osier, Guillaume. 2009. <span>“Variance Estimation for Complex Indicators of P
           </div>
         </div>
       </div>
-<a href="correlations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nso-practical-example.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-diagnostics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -285,7 +275,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/03DescriptiveParameters.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/05Regression.rmd",
 "text": "Edit"
 },
 "history": {
