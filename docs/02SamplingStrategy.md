@@ -128,9 +128,9 @@ The *bootstrap* method relies on creating many new "replicated" datasets, which 
 
 2. This process of creating new samples is repeated many times, usually hundreds or thousands, to produce multiple "replicated" datasets. That is, repeat Step 1 $R$ times, and denote by $m_{hi}(r)$ the number of times that the PSU $i$ of stratum $h$ was selected for the sample in replicate $r$.
 
-3. For each replicate, *bootstrap* weights are calculated for each unit. These weights account for how often each PSU appears in the replicate and ensure that the replicated datasets remain representative of the population. The *bootstrap* weight of unit $k$ within PSU $i$ of stratum $h$ is $w_{hik} (r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)$.
+3. For each replicate, *bootstrap* weights are calculated for each unit. These weights account for how often each PSU appears in the replicate and ensure that the replicated datasets remain representative of the population. The *bootstrap* weight of unit $k$ within PSU $i$ of stratum $h$ is $w_{hik}(r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)$.
 
-4. The parameter of interest, such as a total or mean, is estimated for each replicated dataset using the *bootstrap* weights. That is, for each replica $r$, calculate an estimate $\widehat \theta_{(r)}$ of the target parameter $theta$ using the *bootstrap* weights $w_{hik} (r)$ instead of the original weights $w_{hik$. 
+4. The parameter of interest, such as a total or mean, is estimated for each replicated dataset using the *bootstrap* weights. That is, for each replica $r$, calculate an estimate $\widehat \theta_{(r)}$ of the target parameter $theta$ using the *bootstrap* weights $w_{hik}(r)$ instead of the original weights $w_{hik}$. 
 
 5. Finally, the variability of the results across all replicated datasets is used to estimate the variance. The idea is that the variation in these replicate estimates reflects the uncertainty in the original estimate. This estimate of the variance takes the following form:
 

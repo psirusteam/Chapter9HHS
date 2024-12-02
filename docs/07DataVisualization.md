@@ -24,10 +24,7 @@ The confidence intervals allow us to assess the precision of these estimates. In
 
 Furthermore, the standard deviation of `Nd` is 3,062 for the rural zone and 2,847 for the urban zone, reflecting similar variability in both zones. This suggests that the estimates are consistent in terms of relative uncertainty, without major differences in data dispersion between the zones.
 
-<div class="figure">
-<img src="www/05_graficas/03_bar_pers.png" alt="Distribution of Population by Area" width="1200" />
-<p class="caption">(\#fig:barIncome)Distribution of Population by Area</p>
-</div>
+![(\#fig:barIncome)Distribution of Population by Area](www/05_graficas/03_bar_pers.png)
 
 | Zone  | Number of Individuals (Nd) | Standard Error (Nd_se) | Lower Limit (Nd_low) | Upper Limit (Nd_upp) |
 |--------------|----------------|--------------|--------------|--------------|
@@ -52,19 +49,13 @@ In \@ref(fig:histIncome) the horizontal axis (x) represents income levels, spann
 
 The distribution shows that most of the population is concentrated at lower income levels, with a particularly high frequency near 0. As income levels rise, frequency declines sharply, indicating a right-skewed (positively skewed) distribution with a smaller proportion of people at higher income levels. The light gray bars visually emphasize this concentration at lower incomes, highlighting a significant disparity in the population's income distribution.
 
-<div class="figure">
-<img src="www/05_graficas/01_hist_ingreso.png" alt="Distribution of Population Income" width="512" />
-<p class="caption">(\#fig:histIncome)Distribution of Population Income</p>
-</div>
+![(\#fig:histIncome)Distribution of Population Income](www/05_graficas/01_hist_ingreso.png)
 
 As an example, Figure \@ref(fig:HistIncomeExpenditureSex) presents two histograms illustrating the distribution of income and expenditure by sex. In the histogram on the left, titled "Income Histograms by Sex," we observe the income distribution, where blue bars represent men and pink bars represent women. The majority of the population, both male and female, is concentrated in the lower income levels, showing a right-skewed distribution. In the lower income levels, there are more men than women, while at higher income levels, the difference is less pronounced.
 
 In the histogram on the right, titled "Expenditure Histograms by Sex," the distribution of expenditure is shown, also broken down by sex. Similar to income, most of the population of both sexes is concentrated in the lower expenditure levels, with a right-skewed trend. There is also a higher proportion of men in the lower expenditure levels, while at higher levels, the representation between sexes is more balanced. These histograms exemplify the similarity in the income and expenditure distributions between men and women, although men appear to be slightly more represented in the lower levels of both variables.
 
-<div class="figure">
-<img src="www/05_graficas/02_Hist_sex.png" alt="Histograms of Income and Expenditure by Sex" width="1200" />
-<p class="caption">(\#fig:HistIncomeExpenditureSex)Histograms of Income and Expenditure by Sex</p>
-</div>
+![(\#fig:HistIncomeExpenditureSex)Histograms of Income and Expenditure by Sex](www/05_graficas/02_Hist_sex.png)
 
 Histograms, especially when weighted for survey design, are invaluable for exploring and presenting the distribution of continuous variables. Subgroup analyses further enhance their utility, enabling the identification of disparities and trends across different population segments. Combined with smoothed density estimates, histograms provide a comprehensive and accurate view of the population's numeric variables.
 
@@ -82,10 +73,7 @@ The figure \@ref(fig:ScatterIncome), illustrates the weighted relationship betwe
 
 Although there is an upward trend, indicating that income and expenditure tend to increase together, the dispersion of points reveals that higher expenditure is not always associated with proportionally higher income. Some larger points, corresponding to observations with greater weight, are distributed across different levels of income and expenditure without concentrating in a single area. Additionally, a few isolated points at high expenditure levels may represent outliers with considerably higher-than-average expenditure. Overall, this plot suggests a positive relationship between income and expenditure, accompanied by significant variability and some exceptional cases.
 
-<div class="figure">
-<img src="www/05_graficas/02_scatterplot_ingreso_gasto.png" alt="Weighted scatterplot between income and expenditure" width="1200" />
-<p class="caption">(\#fig:ScatterIncome)Weighted scatterplot between income and expenditure</p>
-</div>
+![(\#fig:ScatterIncome)Weighted scatterplot between income and expenditure](www/05_graficas/02_scatterplot_ingreso_gasto.png)
 
 Scatter plots are a versatile and effective way to explore relationships between variables in survey data. By incorporating sampling weights and adopting strategies to manage large datasets, they can provide clear, meaningful insights into population-level patterns. Whether using weighted points, hexagonal binning, or smoothing techniques, scatter plots remain a cornerstone of data visualization for continuous variables.
 
