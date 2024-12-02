@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.1 Bar charts | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.1 Bar charts | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -199,13 +199,13 @@ div.csl-indent {
 <div id="bar-charts" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Bar charts<a href="bar-charts.html#bar-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When the data of interest are categorical, their descriptive analysis will be done using contingency tables. Bar charts are commonly used to visualize categorical data. For survey data, descriptive analysis of categorical variables typically begins with contingency tables that summarize weighted counts or proportions. These tables can then be used to create bar charts, ensuring the results reflect population-level characteristics rather than just sample data. Ideally one should also aim to display error lines overlaying bars to indicate their respective confidence interval widths, thus conveying the uncertainty of the corresponding point estimates. Obtaining the weighted counts or proportions and their confidence intervals can be easily done using tools from several software packages, e.g. the <code>survey</code> package in R.</p>
-<p>As an example, the bar chart presents a comparison of the number of individuals (<code>Nd</code>) between rural and urban zones, with error lines indicating the confidence intervals for each estimate. According to the values in the table, the urban zone shows a slightly higher <code>Nd</code> value than the rural zone, with 78,164 individuals in the urban area compared to 72,102 in the rural area. This difference suggests a higher concentration of people in the urban zone.</p>
+<p>As an example, the bar chart in Figure 9.2 presents a comparison of the number of individuals (<code>Nd</code>) between rural and urban zones, with error lines indicating the confidence intervals for each estimate. According to the values in the table, the urban zone shows a slightly higher <code>Nd</code> value than the rural zone, with 78,164 individuals in the urban area compared to 72,102 in the rural area. This difference suggests a higher concentration of people in the urban zone.</p>
 <p>The confidence intervals allow us to assess the precision of these estimates. In the rural zone, the confidence interval ranges from 66,039 to 78,165 individuals, while in the urban zone, the confidence range goes from 72,526 to 83,802 individuals. This overlap between the intervals indicates that, although the urban zone has a higher number of individuals, the difference is not pronounced enough to be statistically significant.</p>
 <p>Furthermore, the standard deviation of <code>Nd</code> is 3,062 for the rural zone and 2,847 for the urban zone, reflecting similar variability in both zones. This suggests that the estimates are consistent in terms of relative uncertainty, without major differences in data dispersion between the zones.</p>
 <div class="figure"><span style="display:block;" id="fig:barIncome"></span>
-<img src="www/05_graficas/03_bar_pers.png" alt="Distribution of Population Income" width="1200" />
+<img src="www/05_graficas/03_bar_pers.png" alt="Distribution of Population by Area" width="1200" />
 <p class="caption">
-Figure 7.1: Distribution of Population Income
+Figure 7.1: Distribution of Population by Area
 </p>
 </div>
 <table style="width:100%;">

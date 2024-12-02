@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Associations between variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Associations between variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="nso-practical-example.html"/>
-<link rel="next" href="cross-tabulations.html"/>
+<link rel="next" href="motivation-and-concepts.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -198,30 +198,6 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="associations-between-variables" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Associations between variables<a href="associations-between-variables.html#associations-between-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Household surveys often collect data on categorical variables, such as employment status, educational attainment, or access to services. Understanding whether two categorical variables are related, or <em>associated</em>, is an important aspect of survey analysis. For example, are employment status and access to the internet connected in a meaningful way? Categorical variables are those that divide the population into distinct groups or categories. For example:</p>
-<ul>
-<li><strong>Employment status</strong> might have categories like “employed,” “unemployed,” and “not in the labor force.”</li>
-<li><strong>Educational attainment</strong> might include categories such as “primary,” “secondary,” and “tertiary.”</li>
-</ul>
-<p>This section introduces methods to describe and infer associations between pairs of categorical variables. When analyzing associations between two categorical variables, we are interested in whether the distribution of one variable depends on the categories of the other. To assess the relationship between two categorical variables, analysts examine how often different combinations of categories occur. For example, they might count how many individuals fall into each pairing of employment status and educational attainment. These counts are then used to calculate proportions, which describe the relative frequency of each pairing within the population.</p>
-<p>Analyzing associations between categorical variables is useful in many contexts, such as:</p>
-<ul>
-<li><strong>Policy Development</strong>: Understanding the relationship between education and employment helps design effective workforce policies.</li>
-<li><strong>Program Evaluation</strong>: Assessing whether access to healthcare varies by income level can inform targeted interventions.</li>
-<li><strong>Social Research</strong>: Studying connections between demographic factors and access to services provides insights into societal trends.</li>
-</ul>
-<p>In practice, this analysis often starts with a <strong>contingency table</strong>, a grid that shows the counts or proportions of units in each combination of categories for the two variables. For example, one axis of the table might list employment statuses, while the other lists levels of educational attainment.</p>
-<p>We start by defining some notation. Let <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> denote two categorical variables, having <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span> classes respectively. In order to formulate hypothesis tests for the independence between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we need to consider a <em>superpopulation model</em>. We assume that the pairs <span class="math inline">\((x_{hik} , y_{hik})\)</span> correspond to observations from identically distributed random vectors <span class="math inline">\((X ; Y)\)</span>, that have joint distribution specified by</p>
-<p><span class="math display">\[
-P_{rc} = Pr \left( X = r \ ; \ Y = c \right) \quad \text{for } r=1,...,R \text{ and } c=1,...,C
-\]</span></p>
-<p>with <span class="math inline">\(\sum_r \sum_c P_{rc} = 1\)</span>.</p>
-<p>If a census could be carried out to collect data on <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> from every unit in the population, we could calculate the population counts of units having classes <span class="math inline">\((r,c)\)</span> for <span class="math inline">\((x,y)\)</span> given by:</p>
-<p><span class="math display">\[
-N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} = r \ ; \ y_{hik} = c \right)
-\]</span></p>
-<p>and the corresponding population proportions as <span class="math inline">\(p_{rc} = N_{rc} / N_{++}\)</span>, where <span class="math inline">\(N_{++} = \sum_r \sum_c N_{rc}\)</span> denotes the total number of units in the population.</p>
-<p>Under the superpopulation model, the population proportions <span class="math inline">\(p_{rc}\)</span> could be used to estimate (or approximate) the unknown probabilities <span class="math inline">\(P_{rc}\)</span>. Since in most instances we will have samples, not censuses, the population proportions <span class="math inline">\(p_{rc}\)</span> must be estimated using weighted estimators provided in the previous sections.</p>
 </div>
             </section>
 
@@ -229,7 +205,7 @@ N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} =
         </div>
       </div>
 <a href="nso-practical-example.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cross-tabulations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="motivation-and-concepts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

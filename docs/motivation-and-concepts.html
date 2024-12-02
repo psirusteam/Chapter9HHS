@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.3 Scatter Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>4.1 Motivation and concepts | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 Scatter Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="4.1 Motivation and concepts | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 Scatter Plots | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="4.1 Motivation and concepts | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="histograms.html"/>
-<link rel="next" href="nso-practical-example-2.html"/>
+<link rel="prev" href="associations-between-variables.html"/>
+<link rel="next" href="cross-tabulations.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -196,37 +196,40 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="scatter-plots" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Scatter Plots<a href="scatter-plots.html#scatter-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Scatter plots are the tool of choice to explore relationships between two continuous variables, potentially revealing patterns or trends in the data. These plots face the two challenges discussed above. First one needs to try and convey in the plot that the different sample observations carry different weights. For small to moderate sample sizes this can be done by plotting circles or dots of varying sizes where the symbol size represents the corresponding observation sampling weight. Plots like these can be obtained using standard bubble plot tools or the scatter plot available in the <code>survey</code> package in R. As stated by <span class="citation">Lumley (<a href="#ref-Lumley2010">2010</a>)</span>, when dealing with large datasets, displaying all the data points in a scatter plot can be overwhelming and cluttered. Several strategies can help address this issue:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Subsampling</strong>: Select a smaller, manageable subsample from the full dataset. The subsample should be selected with probabilities proportional to the sampling weights, ensuring that it behaves approximately like a simple random sample from the population. The resulting scatter plot maintains representativeness while being easier to interpret. The subsample obtained in this way behaves approximately as a simple random sample from the survey population.</p></li>
-<li><p><strong>Hexagonal Binned Scatter Plots</strong>: Divide the plot area into a grid of hexagons. Instead of plotting individual points, represent each hexagon with shading or size based on the total sampling weights of the points within that hexagon. This approach condenses the data into a clear and interpretable visualization. With complex household survey data, the number of points in a hexagonal bin should be replaced by the sum of the weights for points in the bin.</p></li>
-<li><p><strong>Smoothed Scatter Plots</strong>: Avoid plotting individual points altogether and instead estimate and display trends. For example, calculate specific quantiles (e.g., quartiles) of the y-axis variable conditioned on the x-axis variable and smooth these values across the range of the x-axis. This approach highlights trends while minimizing visual clutter.</p></li>
-</ol>
-<p>The figure <a href="scatter-plots.html#fig:ScatterIncome">7.4</a>, illustrates the weighted relationship between income and expenditure in a population. In this plot, the size of the points represents the weight assigned to each observation. A high concentration of points is observed at lower income and expenditure levels, suggesting that most of the population has low income and low expenditure.</p>
-<p>Although there is an upward trend, indicating that income and expenditure tend to increase together, the dispersion of points reveals that higher expenditure is not always associated with proportionally higher income. Some larger points, corresponding to observations with greater weight, are distributed across different levels of income and expenditure without concentrating in a single area. Additionally, a few isolated points at high expenditure levels may represent outliers with considerably higher-than-average expenditure. Overall, this plot suggests a positive relationship between income and expenditure, accompanied by significant variability and some exceptional cases.</p>
-<div class="figure"><span style="display:block;" id="fig:ScatterIncome"></span>
-<img src="www/05_graficas/02_scatterplot_ingreso_gasto.png" alt="Weighted scatterplot between income and expenditure" width="1200" />
-<p class="caption">
-Figure 7.4: Weighted scatterplot between income and expenditure
-</p>
-</div>
-<p>Scatter plots are a versatile and effective way to explore relationships between variables in survey data. By incorporating sampling weights and adopting strategies to manage large datasets, they can provide clear, meaningful insights into population-level patterns. Whether using weighted points, hexagonal binning, or smoothing techniques, scatter plots remain a cornerstone of data visualization for continuous variables.</p>
-</div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Lumley2010" class="csl-entry">
-Lumley, Thomas. 2010. <em>Complex Surveys: A Guide to Analysis Using r</em>. <em>Wiley Series in Survey Methodology</em>. John Wiley; Sons.
-</div>
+<div id="motivation-and-concepts" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Motivation and concepts<a href="motivation-and-concepts.html#motivation-and-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Household surveys often collect data on categorical variables, such as employment status, educational attainment, or access to services. Understanding whether two categorical variables are related, or <em>associated</em>, is an important aspect of survey analysis. For example, are employment status and access to the internet connected in a meaningful way? Categorical variables are those that divide the population into distinct groups or categories. For example:</p>
+<ul>
+<li><p><strong>Employment status</strong> might have categories like “employed,” “unemployed,” and “not in the labor force”;</p></li>
+<li><p><strong>Educational attainment</strong> might include categories such as “primary,” “secondary,” and “tertiary.”</p></li>
+</ul>
+<p>This section introduces methods to describe and infer associations between pairs of categorical variables. When analyzing associations between two categorical variables, we are interested in whether the distribution of one variable depends on the categories of the other. To assess the relationship between two categorical variables, analysts examine how often different combinations of categories occur. For example, they might count how many individuals fall into each pairing of employment status and educational attainment. These counts are then used to calculate proportions, which describe the relative frequency of each pairing within the population.</p>
+<p>Analyzing associations between categorical variables is useful in many contexts, such as:</p>
+<ul>
+<li><p><strong>Policy Development</strong>: Understanding the relationship between education and employment helps design effective workforce policies;</p></li>
+<li><p><strong>Program Evaluation</strong>: Assessing whether access to healthcare varies by income level can inform targeted interventions;</p></li>
+<li><p><strong>Social Research</strong>: Studying connections between demographic factors and access to services provides insights into societal trends.</p></li>
+</ul>
+<p>In practice, this analysis often starts with a <strong>contingency table</strong>, a grid that shows the counts or proportions of units in each combination of categories for the two variables. For example, one axis of the table might list employment statuses, while the other lists levels of educational attainment.</p>
+<p>We start by defining some notation. Let <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> denote two categorical variables, having <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span> classes respectively. In order to formulate hypothesis tests for the independence between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we need to consider a <em>superpopulation model</em>. We assume that the pairs <span class="math inline">\((x_{hik} , y_{hik})\)</span> correspond to observations from identically distributed random vectors <span class="math inline">\((X ; Y)\)</span>, that have joint distribution specified by</p>
+<p><span class="math display">\[
+P_{rc} = Pr \left( X = r \ ; \ Y = c \right) \quad \text{for } r=1,...,R \text{ and } c=1,...,C
+\]</span></p>
+<p>with <span class="math inline">\(\sum_r \sum_c P_{rc} = 1\)</span>.</p>
+<p>If a census could be carried out to collect data on <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> from every unit in the population, we could calculate the population counts of units having classes <span class="math inline">\((r,c)\)</span> for <span class="math inline">\((x,y)\)</span> given by:</p>
+<p><span class="math display">\[
+N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} = r \ ; \ y_{hik} = c \right)
+\]</span></p>
+<p>and the corresponding population proportions as <span class="math inline">\(p_{rc} = N_{rc} / N_{++}\)</span>, where <span class="math inline">\(N_{++} = \sum_r \sum_c N_{rc}\)</span> denotes the total number of units in the population.</p>
+<p>Under the superpopulation model, the population proportions <span class="math inline">\(p_{rc}\)</span> could be used to estimate (or approximate) the unknown probabilities <span class="math inline">\(P_{rc}\)</span>. Since in most instances we will have samples, not censuses, the population proportions <span class="math inline">\(p_{rc}\)</span> must be estimated using weighted estimators provided in the previous sections.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="histograms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nso-practical-example-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="associations-between-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cross-tabulations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -257,7 +260,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/07DataVisualization.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/04Associations.rmd",
 "text": "Edit"
 },
 "history": {

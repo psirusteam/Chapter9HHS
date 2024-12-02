@@ -20,6 +20,7 @@ correlations
 percentiles-and-inequality-measures
 nso-practical-example
 associations-between-variables
+motivation-and-concepts
 cross-tabulations
 testing-for-independence
 tests-for-group-comparisons

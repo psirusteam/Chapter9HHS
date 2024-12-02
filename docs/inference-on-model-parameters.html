@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.6 Inference on Model Parameters | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.6 Inference on Model Parameters | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -201,30 +201,30 @@ div.csl-indent {
 <p>After confirming that the model fits well and satisfies its assumptions, the next step is to assess whether the independent variables significantly contribute to explaining the dependent variable. This is done by testing the significance of the regression coefficients. If a coefficient is statistically significant, it suggests that the associated variable has a meaningful relationship with the dependent variable.</p>
 <p>Given the distributional properties of the regression coefficient estimators, a natural test statistic for evaluating the significance of these parameters is based on the t-distribution and is described as follows:</p>
 <p><span class="math display">\[
-t = \frac{\hat{\beta}_{k}-\beta_{k}}{se\left(\hat{\beta}_{k}\right)}\sim t_{n-p}
+t = \frac{\widehat{\beta}_{j}-\beta_{j}}{se\left(\widehat{\beta}_{j}\right)}\sim t_{df - p}
 \]</span></p>
-<p>Where <span class="math inline">\(p\)</span> is the number of model parameters and <span class="math inline">\(n\)</span> is the sample size of the survey. The test statistic above evaluates the hypotheses <span class="math inline">\(H_{0}:\beta_{k}=0\)</span> versus the alternative <span class="math inline">\(H_{1}:\beta_{k}\neq0\)</span>. Similarly, a confidence interval of <span class="math inline">\((1-\alpha)\times100\%\)</span> for <span class="math inline">\(\beta_{k}\)</span> can be constructed, as follows:</p>
+<p>where the degrees of freedom (<span class="math inline">\(df\)</span>) for a household survey (complex samples) is given by the number of PSUs <span class="math inline">\(m\)</span> minus the number of strata <span class="math inline">\(H\)</span> and <span class="math inline">\(p\)</span> is the number of predictor variables in the fitted model.</p>
+<p>This test statistic evaluates the hypotheses <span class="math inline">\(H_{0}:\beta_{j}=0\)</span> versus the alternative <span class="math inline">\(H_{1}:\beta_{j}\neq0\)</span>. Similarly, a confidence interval of <span class="math inline">\((1-\alpha)\times100\%\)</span> for <span class="math inline">\(\beta_{j}\)</span> can be constructed, as follows:</p>
 <p><span class="math display">\[
-\hat{\beta}_{k}\pm t_{1-\frac{\alpha}{2},\,df}\,se\left(\hat{\beta}_{k}\right)
+\widehat{\beta}_{j}\pm t_{1-\frac{\alpha}{2},\,df}\,se\left(\widehat{\beta}_{j}\right)
 \]</span></p>
-<p>Where the degrees of freedom (<span class="math inline">\(df\)</span>) for the interval in a household survey (complex samples) is given by the number of final stage clusters minus the number of primary stage strata <span class="math inline">\(\left(df=\sum_{h}a_{h}-H\right)\)</span>.</p>
 <div id="estimation-and-prediction" class="section level3 hasAnchor" number="5.6.1">
 <h3><span class="header-section-number">5.6.1</span> Estimation and Prediction<a href="inference-on-model-parameters.html#estimation-and-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>According to <span class="citation">Neter, Wasserman, and Kutner (<a href="#ref-neter1996applied">1996</a>)</span>, linear regression models are essentially used for two purposes. One is to explain the variable of interest in terms of covariates that may be found in surveys, administrative records, censuses, etc. Additionally, they are also used to predict values of the variable under study, either within the range of values collected in the sample or outside of it. The first purpose has been addressed throughout this chapter, and the second is achieved as follows:</p>
+<p>According to <span class="citation">Neter, Wasserman, and Kutner (<a href="#ref-neter1996applied">1996</a>)</span>, linear regression models are essentially used for two purposes. One is to explain the variable of interest in terms of predictors that may be found in surveys, administrative records, censuses, etc. Additionally, they are also used to predict values of the variable under study, either within the range of values collected in the sample or outside of this range. The first purpose has been addressed throughout this chapter, and the second is achieved as follows:</p>
 <p><span class="math display">\[
-\hat{E}(y_{i}\mid\boldsymbol{x}_{obs,i})=\boldsymbol{x}_{obs,i}\hat{\boldsymbol{\beta}}
+\widehat{E}(y_{k}\mid\boldsymbol{x}_{obs,k}) = \boldsymbol{x}_{obs,k} \widehat{\boldsymbol{\beta}}
 \]</span></p>
-<p>The variance of the estimation is calculated as follows:</p>
+<p>The variance of the predicted value is estimated as follows:</p>
 <p><span class="math display">\[
-var\left(\hat{E}\left(y_{i}\mid x_{obs,i}\right)\right)
-=  x&#39;_{obs,i}cov\left(\hat{\beta}\right)x{}_{obs,i}
+\widehat {Var} \left(\widehat{E}\left(y_{k}\mid \boldsymbol{x}_{obs,k}\right)\right)
+=  \boldsymbol{x}&#39;_{obs,k} \ \widehat {Cov} \left(\widehat{\beta}\right) \ \boldsymbol{x}_{obs,k}
 \]</span></p>
 
 </div>
 </div>
 <!-- </div> -->
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-neter1996applied" class="csl-entry">
 Neter, John, William Wasserman, and Michael H. Kutner. 1996. <em>Applied Linear Statistical Models</em>. McGraw-Hill.
 </div>

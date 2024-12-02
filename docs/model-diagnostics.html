@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.5 Model Diagnostics | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.5 Model Diagnostics | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -200,52 +200,55 @@ div.csl-indent {
 <h2><span class="header-section-number">5.5</span> Model Diagnostics<a href="model-diagnostics.html#model-diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When using statistical models with household survey data, it is essential to evaluate the quality of the models to ensure the validity of the conclusions. This involves a series of checks and analyses that focus on the assumptions and performance of the model. These checks help confirm whether the model adequately describes the data and whether the results can be trusted. Model diagnostics begin with evaluating whether the model fits the data well. This involves analyzing several aspects:</p>
 <ul>
-<li><strong>Model fit</strong>: It is important to determine whether the model provides an adequate fit to the data.</li>
-<li><strong>Distribution of errors</strong>: Examine whether the errors are normally distributed.</li>
-<li><strong>Error variance</strong>: Check whether the errors have constant variance.</li>
-<li><strong>Error independence</strong>: Verify that the errors can be assumed to be uncorrelated.</li>
-<li><strong>Influential data points</strong>: Identify if any data points have an unusually large influence on the estimated regression model.</li>
-<li><strong>Outliers</strong>: Detect points that do not follow the general trend of the data, known as outliers.</li>
+<li><p><strong>Model fit</strong>: It is important to determine whether the model provides an adequate fit to the data, i.e. explains a good portion of the variability of the response;</p></li>
+<li><p><strong>Distribution of errors</strong>: Examine whether the errors are normally distributed;</p></li>
+<li><p><strong>Error variance</strong>: Check whether the errors have constant variance;</p></li>
+<li><p><strong>Error independence</strong>: Verify that the errors can be assumed to be uncorrelated;</p></li>
+<li><p><strong>Influential data points</strong>: Identify if any data points have an unusually large influence on the estimated regression model;</p></li>
+<li><p><strong>Outliers</strong>: Detect points that do not follow the general trend of the data, known as outliers.</p></li>
 </ul>
 <div id="coefficient-of-determination" class="section level3 hasAnchor" number="5.5.1">
 <h3><span class="header-section-number">5.5.1</span> Coefficient of determination<a href="model-diagnostics.html#coefficient-of-determination" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The coefficient of determination, also known as the multiple correlation coefficient (<span class="math inline">\(R^{2}\)</span>), is a common measure of goodness-of-fit in a regression model. This coefficient estimates the proportion of variance in the dependent variable explained by the model and ranges between 0 and 1. A value close to 1 indicates that the model explains a large proportion of the variability, while a value near 0 suggests the opposite. For surveys with complex sampling designs, the weighted estimator of <span class="math inline">\(R^{2}\)</span> is given by:</p>
+<p>The coefficient of determination, also known as the multiple correlation coefficient (<span class="math inline">\(R^{2}\)</span>), is a common measure of goodness-of-fit in a regression model. This coefficient estimates the proportion of variance in the dependent variable explained by the model and ranges between 0 and 1. A value close to 1 indicates that the model explains a large proportion of that variability, while a value near 0 suggests the opposite. For surveys with complex sampling designs, the weighted estimator of <span class="math inline">\(R^{2}\)</span> is given by:</p>
 <p><span class="math display">\[
-\widehat{R}_{\omega}^{2} = 1-\frac{\widehat{SSE}_{\omega}}{\widehat{SST}_{\omega}}
+\widehat{R}_{\omega}^{2} = 1 - \frac{\widehat{SSE}_{\omega}} {\widehat{SST}_{\omega}}
 \]</span></p>
-<p>Where <span class="math inline">\(\widehat{SSE}_{\omega}\)</span> is the weighted sum of squared errors, defined as:</p>
+<p>Where <span class="math inline">\(\widehat{SSE}_{\omega}\)</span> is the weighted sum of squared errors given by</p>
 <p><span class="math display">\[
-\widehat{SSE}_{\omega}  =  \sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-x_{h\alpha i}\hat{\beta}\right)^{2}
+\widehat{SSE}_{\omega} = \sum_{h}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} \left(y_{hik} - x_{hik} \widehat{\beta}\right)^{2}
+\]</span></p>
+<p>and <span class="math inline">\(\widehat{SST}_{\omega}\)</span> is the total weighted sum of squares given by</p>
+<p><span class="math display">\[
+\widehat{SST}_{\omega} = \sum_{h}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} \left(y_{hik} - \widehat{\overline Y} \right)^{2}
 \]</span></p>
 <p>This estimator adjusts the <span class="math inline">\(R^{2}\)</span> calculation to reflect the characteristics of the sampling design, such as stratification and unequal selection probabilities, ensuring that survey weights are considered when evaluating the goodness-of-fit of the model.</p>
 </div>
 <div id="standardized-residuals" class="section level3 hasAnchor" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> Standardized Residuals<a href="model-diagnostics.html#standardized-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Residuals are the differences between observed and predicted values. Analyzing residuals is critical for diagnosing whether the model violates key assumptions. For example:</p>
+<p><em>Residuals</em> are the differences between observed and predicted values. Analyzing residuals is critical for diagnosing whether the model violates key assumptions. For example:</p>
 <ul>
-<li>Residuals should show no specific pattern when plotted against predicted values or independent variables.</li>
-<li>If the residuals exhibit a pattern, this could indicate non-constant variance (heteroscedasticity).</li>
-<li>Graphical analysis is often used to detect issues, with plots of residuals against predicted values serving as a common diagnostic tool.</li>
+<li><p>Residuals should show no specific pattern when plotted against predicted values or independent variables;</p></li>
+<li><p>If the residuals exhibit a pattern, this could indicate non-constant variance (heteroscedasticity) or a non-linear relationship.</p></li>
 </ul>
-<p>A careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the fitting procedure. To analyze the residuals, Pearson residuals <span class="citation">(<a href="#ref-Heeringa_West_Berglund_2017">Steven G. Heeringa, West, and Berglund 2017a</a>)</span> are defined as follows:</p>
+<p>Graphical analysis is often used to detect issues, with plots of residuals against predicted values serving as a common diagnostic tool. A careful study of the residuals should help the researcher conclude whether the fitting process has not violated the assumptions or if, on the contrary, one or more assumptions are not met, requiring a review of the model specification or of the fitting procedure. To analyze the residuals, Pearson residuals <span class="citation">(<a href="#ref-Heeringa_West_Berglund_2017">Steven G. Heeringa, West, and Berglund 2017a</a>)</span> are defined as follows:</p>
 <p><span class="math display">\[
-r_{p_{i}}  =  \left(y_{i}-\mu_{i}\left(\hat{\beta}_{\omega}\right)\right)\sqrt{\frac{\omega_{i}}{V\left(\hat{\mu}_{i}\right)}}
+r_{p_{k}} = \left( y_{k} - \widehat \mu_{k} \right) \sqrt{\frac{w_{k}} {V\left(\hat{\mu}_{k}\right)}}
 \]</span></p>
-<p>Where <span class="math inline">\(\mu_{i}\)</span> is the expected value of <span class="math inline">\(y_{i}\)</span>, and <span class="math inline">\(\omega_{i}\)</span> is the survey weight for the i-th individual in the complex sample design. Finally, <span class="math inline">\(V(\mu_{i})\)</span> is the variance function of the outcome. These residuals are used to perform normality and constant variance analyses.</p>
-<p>If the assumption of constant variance is not met, the estimators remain unbiased and consistent, but they are no longer efficient. That is, they are no longer the best in the sense that they no longer have the smallest variance among all unbiased estimators. One way to analyze the assumption of constant variance in the errors is through graphical analysis. This is done by plotting the model residuals against <span class="math inline">\(\hat{y}\)</span> or the model residuals against <span class="math inline">\(X_{i}\)</span>. If these plots reveal any pattern other than a constant cloud of points, it can be concluded that the error variance is not constant.</p>
+<p>Where <span class="math inline">\(\widehat \mu_{k}\)</span> is the estimated expected value of <span class="math inline">\(y_{k}\)</span> under the fitted model, and <span class="math inline">\(w_{k}\)</span> is the survey weight for unit <span class="math inline">\(k\)</span> in the complex sample dataset. Finally, <span class="math inline">\(V(\widehat \mu_{k})\)</span> is the variance function of the outcome. These residuals are used to perform normality and constant variance analyses.</p>
+<p>If the assumption of constant variance is not met, the estimators remain unbiased and consistent, but they are no longer efficient. That is, they are no longer the best in the sense that they no longer have the smallest variance among all unbiased estimators. One way to analyze the assumption of constant variance in the errors is through graphical analysis. This is done by plotting the model residuals against <span class="math inline">\(\widehat {y}\)</span> or the model residuals against <span class="math inline">\(x_{k}\)</span>. If these plots reveal any pattern other than a cloud of points with constant spread, it can be concluded that the error variance is not constant.</p>
 </div>
 <div id="influential-observations" class="section level3 hasAnchor" number="5.5.3">
 <h3><span class="header-section-number">5.5.3</span> Influential Observations<a href="model-diagnostics.html#influential-observations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another set of techniques used for model analysis involves examining influential observations. Certain data points can have a disproportionately large impact on the model. These influential points may not necessarily be outliers but could still affect model parameters significantly. An observation is deemed influential if, when removed from the data set, it causes a significant change in the model fit. It is important to note that an influential point may or may not be an outlier. To detect influential observations, it is essential to clarify what type of influence is being sought. For instance, an observation may be influential for parameter estimation but not for error variance estimation. Common techniques for identifying influential observations include:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Cook’s Distance</strong>: Measures the impact of removing a data point on the overall model fit.</li>
-<li><strong><span class="math inline">\(D_fBeta_{(i)}\)</span> Statistic</strong>: This statistic assesses the effect of removing a data point on individual regression coefficients, and measures the change in the estimated regression coefficient vector when the observation is removed.</li>
-<li><strong><span class="math inline">\(D_{f}Fits_{\left(i\right)}\)</span> Statistic</strong>: it evaluates the influence of a data point on the overall model fit, and measures the change in the model fit when a particular observation is removed.</li>
+<li><p><strong>Cook’s Distance</strong>: Measures the impact of removing a data point on the overall model fit.</p></li>
+<li><p><strong><span class="math inline">\(D_fBeta_{(i)}\)</span> Statistic</strong>: This statistic assesses the effect of removing a data point on individual regression coefficients, and measures the change in the estimated regression coefficient vector when the observation is removed.</p></li>
+<li><p><strong><span class="math inline">\(D_{f}Fits_{\left(i\right)}\)</span> Statistic</strong>: it evaluates the influence of a data point on the overall model fit, and measures the change in the model fit when a particular observation is removed.</p></li>
 </ol>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
 Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>

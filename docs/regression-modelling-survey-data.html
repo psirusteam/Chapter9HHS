@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Regression: modelling survey data | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Regression: modelling survey data | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -198,14 +198,12 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="regression-modelling-survey-data" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Regression: modelling survey data<a href="regression-modelling-survey-data.html#regression-modelling-survey-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Regression modeling is a powerful tool for analyzing relationships between variables in survey data. It allows researchers to estimate how one or more independent variables (predictors) influence a dependent variable (outcome). For instance, consider a researcher who is modeling household income (dependent variable) as a function of education level and employment status (independent variables) using survey data.</p>
-<p>Unlike standard regression analysis, household survey data often comes from complex sampling designs that include stratification, clustering, and unequal probabilities of selection. These features must be accounted for to ensure valid inferences.</p>
-<p>In this section, we explore how survey weights and sampling design features are incorporated into regression models. We also discuss a parsimonious solution to the challenges posed by weighting. Ignoring the sampling design can lead to:</p>
+<p>Regression modeling is a powerful tool for analyzing relationships between variables in survey data. It allows researchers to estimate how one or more independent variables (predictors) influence a dependent variable (outcome). For instance, consider a researcher who is modeling household income (dependent variable) as a function of education level and employment status (independent variables) using household survey data. Such data are often obtained from surveys that adopted complex sampling designs that include stratification, clustering, and unequal probabilities of selection. These features must be accounted for to ensure valid inferences when fitting regression models, since ignoring the sampling design can lead to:</p>
 <ul>
-<li><strong>Biased Estimates</strong>: Unequal probabilities of selection mean some household/individuals represent more of the population than others. Without weights, the model may disproportionately reflect oversampled groups.</li>
-<li><strong>Underestimated Standard Errors</strong>: Clustering and stratification affect the variability of estimates. Ignoring these features can result in overly narrow confidence intervals and inflated significance levels.</li>
+<li><p><strong>Biased Estimates</strong>: Unequal probabilities of selection mean some household/individuals represent more of the population than others. Without weights, the model may disproportionately reflect oversampled groups.</p></li>
+<li><p><strong>Underestimated Standard Errors</strong>: Clustering and stratification affect the variability of estimates. Ignoring these features can result in overly narrow confidence intervals and inflated significance levels.</p></li>
 </ul>
-<p>Modeling survey data requires careful consideration of the sampling design to ensure valid inferences. Incorporating survey weights and adjusting for clustering and stratification allows researchers to produce accurate, representative, and reliable results.</p>
+<p>In this section, we explore how survey weights and sampling design features are incorporated into regression model specification and fitting. We also discuss a parsimonious solution to the challenges posed by weighting. Modeling survey data requires careful consideration of the sampling design to ensure valid inferences. Incorporating survey weights and adjusting for clustering and stratification allows researchers to produce accurate, representative, and reliable results.</p>
 </div>
             </section>
 

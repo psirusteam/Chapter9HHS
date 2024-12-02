@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>4.2 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="4.2 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="4.2 Cross-tabulations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="associations-between-variables.html"/>
+<link rel="prev" href="motivation-and-concepts.html"/>
 <link rel="next" href="testing-for-independence.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -196,12 +196,11 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cross-tabulations" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Cross-tabulations<a href="cross-tabulations.html#cross-tabulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Cross-tabulations, also known as contingency tables, are a fundamental tool in survey analysis. They organize data into a table format, showing the frequency distribution of two or more categorical variables. By summarizing relationships between these variables, cross-tabulations help researchers identify patterns and associations that might otherwise go unnoticed. This type of analysis is widely used in research and policy decision-making, as it provides a straightforward way to explore how different categories interact. For example, a contingency table might examine how employment status varies by educational attainment, or how access to the internet differs between urban and rural households.</p>
-<p>Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as contingency tables. Here a table is a two-dimensional array with rows indexed by <span class="math inline">\(r=1,\ldots,R\)</span> and columns indexed by <span class="math inline">\(c=1,\ldots,C\)</span>. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.</p>
-<p>A contingency table aims to succinctly represent the association between different categorical variables.
-It is a grid with rows and columns that represent the categories of two variables. Each cell in the table contains the frequency or proportion of observations that fall into the corresponding combination of categories. The rows might represent categories of one variable, such as “employment status” (employed, unemployed, not in the labor force). The columns might represent categories of another variable, such as “education level” (primary, secondary, tertiary). The table can also include <strong>marginal totals</strong>, which summarize the data for each row or column, and a <strong>grand total</strong>, representing the overall population.</p>
+<div id="cross-tabulations" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Cross-tabulations<a href="cross-tabulations.html#cross-tabulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cross-tabulations, also known as contingency tables, are a fundamental tool in survey analysis. They organize data into a table format, showing the frequency distribution of two or more categorical variables. By summarizing relationships between these variables, cross-tabulations help researchers identify patterns and associations that might otherwise go unnoticed. This type of analysis is widely used in research and policy decision-making, as it provides a straightforward way to explore how different variables interact. For example, a contingency table might examine how employment status varies by educational attainment, or how access to the internet differs between urban and rural households.</p>
+<p>Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as <em>contingency tables</em>. Here a table is a two-dimensional array with rows indexed by <span class="math inline">\(r=1, \ldots, R\)</span> and columns indexed by <span class="math inline">\(c=1, \ldots, C\)</span>. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.</p>
+<p>A contingency table aims to succinctly represent the association between different categorical variables. It is a grid with rows and columns that represent the categories of two variables. Each cell in the table contains the frequency or proportion of observations that fall into the corresponding combination of categories. The rows might represent categories of a domain defining variable such as “education level” (primary, secondary, tertiary). The columns might represent categories of another variable, such as “employment status” (employed, unemployed, not in the labor force). The table can also include <strong>marginal totals</strong>, which summarize the data for each row or column, and a <strong>grand total</strong>, representing the overall population.</p>
 <p>In household surveys, frequencies in contingency tables are calculated using survey weights. These weights ensure that the estimates accurately reflect the entire population, accounting for the sampling design. For each cell, the weighted frequency represents the estimated number of individuals in the population with the corresponding combination of categories. For instance: we consider the case of a two-way contingency table. For most household sample surveys, a typical tabular output comprises the weighted frequencies that estimate the population frequencies, as follows:</p>
 <table>
 <colgroup>
@@ -267,7 +266,7 @@ It is a grid with rows and columns that represent the categories of two variable
 <p><span class="math display">\[
 \widehat{p}_{rc} = \frac{\widehat{N}_{rc}}{\widehat{N}_{++}}
 \]</span></p>
-<p><span class="math inline">\(\widehat{p}_{r+} = \sum_c \widehat{N}_{r+} / \widehat{N}_{++}\)</span>, and <span class="math inline">\(\widehat{p}_{+c} = \sum_r \widehat{N}_{rc} / \widehat{N}_{++}\)</span>.</p>
+<p><span class="math inline">\(\widehat{p}_{r+} = \widehat{N}_{r+} / \widehat{N}_{++}\)</span>, and <span class="math inline">\(\widehat{p}_{+c} = \widehat{N}_{+c} / \widehat{N}_{++}\)</span>.</p>
 <p>Two-way tables can also display the estimates of population relative frequencies, as shown below:</p>
 <table>
 <colgroup>
@@ -331,7 +330,7 @@ It is a grid with rows and columns that represent the categories of two variable
           </div>
         </div>
       </div>
-<a href="associations-between-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="motivation-and-concepts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="testing-for-independence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

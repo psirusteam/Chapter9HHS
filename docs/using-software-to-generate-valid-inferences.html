@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.3 Using software to generate valid inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.3 Using software to generate valid inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -200,11 +200,11 @@ div.csl-indent {
 <h2><span class="header-section-number">2.3</span> Using software to generate valid inferences<a href="using-software-to-generate-valid-inferences.html#using-software-to-generate-valid-inferences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The design and analysis of information from household surveys must include extensive use of existing computational tools. This section reviews in detail the computational approaches of the statistical software used for each of the statistical processes required to publish official figures with high levels of accuracy and reliability. Specifically, for the following processes:</p>
 <ul>
-<li>Sample selection according to the defined sampling design.</li>
-<li>Generation of sampling weights for each individual and household.</li>
-<li>Modeling of nonresponse and statistical imputation.</li>
-<li>Calibration of sampling weights and adjustments for nonresponse.</li>
-<li>Estimation of sampling errors for each indicator of interest in the statistical production tables.</li>
+<li>Sample selection according to the defined sampling design;</li>
+<li>Generation of sampling weights for each individual and household;</li>
+<li>Modeling of nonresponse and statistical imputation;</li>
+<li>Calibration of sampling weights and adjustments for nonresponse;</li>
+<li>Estimation of sampling errors for each indicator of interest in the statistical production tables;</li>
 <li>Analysis of multivariate relationships between survey variables.</li>
 </ul>
 <p><span class="citation">Nations (<a href="#ref-United_Nations_2005">2005, sec. 7.8</a>)</span> highlights the importance of including the structure of complex survey designs in the inference process for estimating official statistics from household surveys. It warns, with an empirical example, that failing to do so may result in biased estimates and underestimated sampling errors. Below are some key features that statistical software packages incorporate when managing data from complex survey designs, such as those found in household surveys. A more detailed review, including syntax and computational code, can be found in <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>, Appendix A)</span>.</p>
@@ -218,16 +218,16 @@ div.csl-indent {
 <p><em>SAS</em></p>
 <p>This statistical software includes a procedure for selecting probabilistic samples called <code>SURVEYSELECT</code>, which integrates common selection methods such as simple random sampling, systematic sampling, probability proportional to size sampling, and stratified allocation tools. To analyze data from complex samples, specific procedures have been programmed <span class="citation">(<a href="#ref-SAS_2017">SAS 2010</a>)</span>:</p>
 <ul>
-<li><code>SURVEYMEANS</code>: Estimates totals, means, proportions, and percentiles, along with their respective standard errors, confidence intervals, and hypothesis tests.</li>
-<li><code>SURVEYFREQ</code>: Estimates descriptive statistics (e.g., totals and proportions) in one- and two-way tables, provides sampling error estimates, and analyzes goodness-of-fit, independence, risks, and odds ratios.</li>
-<li><code>SURVEYREG</code> and <code>SURVEYLOGISTIC</code>: Fit linear and logistic regression models, respectively, estimating regression coefficients with associated errors and providing an exhaustive analysis of model properties.</li>
+<li><code>SURVEYMEANS</code>: Estimates totals, means, proportions, and percentiles, along with their respective standard errors, confidence intervals, and hypothesis tests;</li>
+<li><code>SURVEYFREQ</code>: Estimates descriptive statistics (e.g., totals and proportions) in one- and two-way tables, provides sampling error estimates, and analyzes goodness-of-fit, independence, risks, and odds ratios;</li>
+<li><code>SURVEYREG</code> and <code>SURVEYLOGISTIC</code>: Fit linear and logistic regression models, respectively, estimating regression coefficients with associated errors and providing an exhaustive analysis of model properties;</li>
 <li><code>SURVEYPHREG</code>: Fits survival models using pseudo-maximum likelihood techniques.</li>
 </ul>
 
 </div>
 <!-- </div> -->
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-TS" class="csl-entry">
 Gutiérrez, Hugo Andrés. 2015. <em>TeachingSampling: Selection of Samples and Parameter Estimation in Finite Population</em>. <a href="https://CRAN.R-project.org/package=TeachingSampling">https://CRAN.R-project.org/package=TeachingSampling</a>.
 </div>

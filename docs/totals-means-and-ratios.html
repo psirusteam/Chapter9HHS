@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.2 Totals, means and ratios | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.2 Totals, means and ratios | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -198,20 +198,21 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="totals-means-and-ratios" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Totals, means and ratios<a href="totals-means-and-ratios.html#totals-means-and-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In household surveys, analyzing numerical data often involves estimating key descriptive measures such as means, proportions, and ratios. These measures summarize important characteristics of the population and provide valuable insights for decision-making. The estimation process can be applied to the entire population or specific subgroups, depending on the research objectives. As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.</p>
+<p>In household surveys, analyzing numerical data often involves estimating key descriptive measures such as means, totals, and ratios. These measures summarize important characteristics of the population and provide valuable insights for decision-making. The estimation process can be applied to the entire population or specific subgroups, depending on the research objectives. As mentioned by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.</p>
 <p>The estimation of population totals is a fundamental task in survey analysis. A total represents the sum of a specific variable (e.g., total income or total expenditure) across the entire population. For example, if the goal is to estimate the total income of all households in a country, we combine data from the sample using weights that account for the survey design and ensure representativeness. For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs.</p>
 <p>Once the sampling design is defined, which was done in the previous section, the estimation process for the parameters of interest is carried out. For the estimation of totals with complex sampling designs that include stratification <span class="math inline">\(\left(h=1,2,...,H\right)\)</span> and subsampling in PSUs (assumed to be within stratum <span class="math inline">\(h\)</span>) indexed by <span class="math inline">\(i=1,2,...,m_h\)</span>, the estimator for the population total can be written as:</p>
 <p><span class="math display">\[
 \widehat{Y} = \sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ y_{hik}
 \]</span></p>
-<p>Under full response, the Ultimate Cluster variance estimator for <span class="math inline">\(\widehat{Y}\)</span> was provided in section 9.2. Modern statistical tools, such as the <code>survey</code> package in R, make it straightforward to calculate totals and their associated uncertainties. The confidence interval of level <span class="math inline">\(1 - \alpha\)</span> is given by the following expression:</p>
+<p>Under full response, the Ultimate Cluster variance estimator for <span class="math inline">\(\widehat{Y}\)</span> was provided in section 9.2. Modern statistical tools, such as the <code>survey</code> package in R, make it straightforward to calculate totals and their associated uncertainties.</p>
+<p>The confidence interval of level <span class="math inline">\(1 - \alpha\)</span> for the population total <span class="math inline">\(Y\)</span> is given by:</p>
 <p><span class="math display">\[
 \widehat{Y} \pm z_{1 - \alpha/2} \times \sqrt{\widehat{V}_{UC} \left( \widehat{Y}\right)}
 \]</span></p>
 <p>with <span class="math inline">\(z_{1 - \alpha/2}\)</span> denoting the quantile of the Gaussian distribution leaving an area of <span class="math inline">\({\alpha/2}\)</span> to its right.</p>
-<p>Population means, or averages, are also very important and provide an understanding of the central tendency of a variable. For instance, the average income of households can indicate the general economic well-being of a population. A mean is calculated as the total of a variable divided by the population size. Since estimating a mean involves both totals and population sizes, the accuracy of a mean estimate depends on the accurate estimation of both components. Specialized techniques, such as resampling methods or Taylor linearization, are used to estimate the uncertainty associated with means. The estimation of the population means is a very important task in household surveys. An estimator of the population mean can be written as the ratio of two estimated finite population totals, as follows:</p>
+<p>Population means, or averages, are also very important and provide an understanding of the central tendency of a variable. For instance, the average income of households can indicate the general economic well-being of a population. A mean is calculated as the total of a variable divided by the population size. Since estimating a mean involves both totals and population sizes, the accuracy of a mean estimate depends on the accurate estimation of both components. Specialized techniques, such as resampling methods or Taylor linearization, are used to estimate the uncertainty associated with means. The estimation of the population means is a very important task in household surveys. An estimator of the population mean can be written as the ratio of two estimated population totals, as follows:</p>
 <p><span class="math display">\[
-\widehat{\overline{Y}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}y_{hik}} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}} = \frac{\widehat{Y}}{\widehat{N}}.
+\widehat{\overline{Y}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} \ y_{hik}} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}} = \frac{\widehat{Y}}{\widehat{N}}.
 \]</span></p>
 <p>Since <span class="math inline">\(\widehat{\overline{Y}}\)</span> is a nonlinear estimator, there is no closed-form formula for exact the variance of this estimator. For this reason, either resampling methods or Taylor series approximations must be used. The latter may be achieved remembering that for the survey mean the sampling estimating equation requires defining <span class="math inline">\(\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} (y_{hik} - \theta) = 0\)</span>, therefore we can apply the variance estimator given in section 9.2 with <span class="math inline">\(z_{hik} = y_{hik} - \widehat{\overline{Y}}\)</span>.</p>
 <p>Ratios provide insights into the relationship between two variables. For example, the ratio of household expenditures to income can reveal patterns in spending behavior. A ratio is calculated by dividing one total by another, such as total expenditures by total income. The accuracy of a ratio depends on the precise estimation of both totals. Ratios are particularly useful for creating indicators that help compare groups or track progress over time. As another example, ODS indicator N.17.6.1 is defined as the ratio of the number of broadband subscriptions per 100 inhabitants in a country or region.</p>
@@ -220,10 +221,10 @@ div.csl-indent {
 \widehat{R} = \frac{\widehat{Y}}{\widehat{X}}
 = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ y_{hik}}{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}}  w_{hik} \ x_{hik}}
 \]</span></p>
-<p>For variance estimation, all you need to do is specify the estimating function as <span class="math inline">\(z_{hik} = y_{hik} - \widehat{R} \ x_{hik}\)</span>, when <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> are the numerator and denominator variables, respectively.</p>
+<p>For variance estimation, all you need to do is specify the estimating function as <span class="math inline">\(z_{hik} = y_{hik} - \widehat{R} \ x_{hik}\)</span>, when <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> are the numerator and denominator variables, respectively, and apply the variace estimator given in section 9.2.</p>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
 Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>

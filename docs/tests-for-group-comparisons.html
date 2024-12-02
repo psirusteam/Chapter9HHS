@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>4.4 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="4.4 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="4.4 Tests for group comparisons | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -196,12 +196,12 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Comparing group means is a common goal in household survey analysis. For example, researchers might ask: “Is there a significant difference in average income between male and female headed households?” To answer such questions, statistical tests are used, adapted to account for the complexities of survey data, such as stratification, clustering, and unequal selection probabilities. This section explains the methods for testing differences in means, adjusted for survey design, with examples to illustrate their application.
-To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
-<div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tests-for-group-comparisons" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Tests for group comparisons<a href="tests-for-group-comparisons.html#tests-for-group-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Comparing group means is a common goal in household survey analysis. For example, researchers might ask: “Is there a significant difference in average income between male and female headed households?” To answer such questions, statistical tests are used, adapted to account for the complexities of survey data, such as stratification, clustering, and unequal selection probabilities. This section explains the methods for testing differences in means, adjusted for survey design, with examples to illustrate their application.</p>
+<p>To determine whether the means of two groups are significantly different we will introduce t-test and contrasts adjusted for the sampling design.</p>
+<div id="hypothesis-test-for-the-difference-of-means" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Hypothesis Test for the Difference of Means<a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A hypothesis test is a statistical procedure used to evaluate evidence in favor of or against a statement or assumption about a population. In this process, a null hypothesis (<span class="math inline">\(H_0\)</span>) is proposed, representing the initial statement that needs to be tested, and an alternative hypothesis (<span class="math inline">\(H_1\)</span>), which is the statement opposing the null hypothesis. These statements may be based on some belief or past experience and will be tested using the evidence gathered from the survey data. If it is suspected that the parameter <span class="math inline">\(\theta\)</span> is equal to a particular value <span class="math inline">\(\theta_{0}\)</span>, the possible combinations of hypotheses that can be tested are:</p>
 <span class="math display">\[\begin{eqnarray*}
 \begin{cases}
@@ -222,7 +222,7 @@ H_{1}: &amp; \theta&lt;\theta_{0}
 <p><span class="math display">\[
 f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
 \]</span></p>
-<p>where the <span class="math inline">\(a_{j}\)</span> are known constants. An estimator of this function is given by:</p>
+<p>where the <span class="math inline">\(a_{j}\)</span> are <em>known</em> constants. An estimator of this function is given by:</p>
 <p><span class="math display">\[
 \widehat{f} \left( \widehat{\theta}_{1}, \ldots, \widehat{\theta}_{J} \right) = \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j}
 \]</span></p>
@@ -231,16 +231,19 @@ f \left( \theta_{1}, \ldots,\theta_{J}\right) = \sum_{j=1}^{J}a_{j}\theta_{j}
 Var \left( \sum_{j=1}^{J} a_{j} \widehat{\theta}_{j} \right) = \sum_{j=1}^{J} a_{j}^{2} \ Var\left( \widehat{\theta}_{j} \right) + 2 \times \sum_{j=1}^{J-1} \sum_{k&gt;j}^{J} a_{j} a_{k} \, Cov \left( \widehat{\theta}_{j} , \widehat{\theta}_{k} \right)
 \]</span></p>
 <p>As seen in the variance expression for the estimator, it requires the variances of the individual estimators, as well as the covariances of pairs of estimators.</p>
-<p>In the context of comparing means between two populations, there are several potential hypotheses that can be tested. On the one hand, the null hypothesis may state that the means of two populations are equal. On the other, the alternative hypothesis could suggest that the means are different, or that one is greater than or less than the other. Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a <em>superpopulation model</em>. We assume that <span class="math inline">\(y_{hik}\)</span> correspond to observations from identically distributed random variables <span class="math inline">\(Y\)</span> having means <span class="math inline">\(\mu_{y,j}\)</span> if unit <span class="math inline">\(k\)</span> belongs to domain <span class="math inline">\(j\)</span>, with <span class="math inline">\(j = 1, 2\)</span>. Then we can define the difference in population means between domains 1 and 2 as <span class="math inline">\(\mu_{y,1} - \mu_{y,2}\)</span>. As an example, consider that <span class="math inline">\(\mu_{y,1}\)</span> is the average household income for households with male heads of household, and <span class="math inline">\(\mu_{y,2}\)</span> is the average household income for households with female heads.</p>
-<p>This difference in means can be unbiasedly estimated by:</p>
+<p>In the context of comparing means between two populations, there are several potential hypotheses that can be tested. On the one hand, the null hypothesis may state that the means of two populations are equal. On the other, the alternative hypothesis could suggest that the means are different, or that one is greater than or less than the other.</p>
+<p>Of particular interest is analyzing the difference in population means. In order to formulate the hypothesis tests for this case, we need to consider a <em>superpopulation model</em>. We assume that <span class="math inline">\(y_{hik}\)</span> correspond to observations from identically distributed random variables <span class="math inline">\(Y\)</span> having means <span class="math inline">\(\mu_{y,j}\)</span> if unit <span class="math inline">\(k\)</span> belongs to domain <span class="math inline">\(j\)</span>, with <span class="math inline">\(j = 1, 2\)</span>. Then we can define the difference in population means between domains 1 and 2 as <span class="math inline">\(\mu_{y,1} - \mu_{y,2}\)</span>. As an example, consider that <span class="math inline">\(\mu_{y,1}\)</span> is the average household income for households with male heads of household, and <span class="math inline">\(\mu_{y,2}\)</span> is the average household income for households with female heads.</p>
+<p>This difference in means can be consistently estimated by:</p>
 <p><span class="math display">\[
 \widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}
 \]</span></p>
-<p>where <span class="math inline">\(\widehat{\overline{Y}}_{j}\)</span> is the sample estimator of <span class="math inline">\(\mu_{y,j}\)</span> (<span class="math inline">\(j = 1, 2\)</span>). Considering the parameter of interest in this section, the hypotheses to test are typically:</p>
+<p>where <span class="math inline">\(\widehat{\overline{Y}}_{j}\)</span> is the sample estimator of <span class="math inline">\(\mu_{y,j}\)</span> (<span class="math inline">\(j = 1, 2\)</span>).</p>
+<p>Considering the parameter of interest in this section, the hypotheses to test are typically:</p>
 <ul>
 <li>Null hypothesis: There is no difference between the means.</li>
-<li>Alternative hypothesis: There is a difference, which could be in either direction (greater or less). To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs (Primary Sampling Units) and the number of strata.</li>
+<li>Alternative hypothesis: There is a difference, which could be in either direction (greater or less).</li>
 </ul>
+<p>To test one of these hypothesis, the following test statistic is used, which follows a t-student distribution with <span class="math inline">\(df\)</span> degrees of freedom, calculated as the difference between the number of PSUs <span class="math inline">\(m\)</span> in the sample and the number of strata <span class="math inline">\(H\)</span>.</p>
 <p><span class="math display">\[
 t = \frac{\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}} {se\left(\widehat{\overline{Y}}_{1} - \widehat{\overline{Y}}_{2}\right)} \sim t_{[df]}
 \]</span></p>

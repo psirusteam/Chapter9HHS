@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.1 Frequencies and proportions | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.1 Frequencies and proportions | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -198,9 +198,9 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="frequencies-and-proportions" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Frequencies and proportions<a href="frequencies-and-proportions.html#frequencies-and-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One of the most fundamental tasks in household survey analysis is estimating the number of people (size) or households in specific categories, as well as the proportions they represent within the population. These estimates are crucial because they provide a snapshot of the demographic and socioeconomic reality of a population. Policymakers and planners use this information to make decisions about resource allocation, public policy design, and the development of social programs.</p>
-<p>For example, understanding how many people live below the poverty line, how many are employed, or how many have completed a certain level of education provides valuable insights. These insights help address inequalities, support the design of targeted interventions, and promote equitable development across communities. The ability to understand the distribution of specific categories provides valuable information to address inequalities and promote equitable development.</p>
-<p>To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different poverty levels, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with <strong>weights</strong>. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:</p>
+<p>One of the most fundamental tasks in household survey analysis is estimating the size of subpopulations, namely the number of people or households in specific categories, as well as the proportions they represent within the population. These estimates are crucial because they provide a snapshot of the demographic and socioeconomic profile of a population. Policymakers and planners use this information to make decisions about resource allocation, public policy design, and the development of social programs.</p>
+<p>For example, understanding how many people live below the poverty line, how many are unemployed, or how many have completed a certain level of education provides valuable insights. These insights help address inequalities, support the design of targeted interventions, and promote equitable development across communities. The ability to understand the distribution across categories provides valuable information to address inequalities and promote equitable development.</p>
+<p>To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different poverty levels, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with <em>sampling weights</em>. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:</p>
 <p><span class="math display">\[
 \widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
 \]</span></p>
@@ -213,13 +213,14 @@ div.csl-indent {
 <p><span class="math display">\[
 \widehat{p}_d = \frac{\widehat{N}_d}{\widehat{N}} = \frac{\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}\ I(y_{hik} = d)} {\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik}}
 \]</span></p>
-<p>As this defines a nonlinear estimator, we can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the estimating function as <span class="math inline">\(z_{hik} = I(y_{hik} = d) - \widehat{p}_d\)</span>. Many statistical packages provide proportion estimates and standard errors on a percentage scale. When proportions are close to 0 or 1, special methods are used to ensure confidence intervals remain meaningful; notice that the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. To address this issue, alternative confidence interval estimates, as proposed by <span class="citation">Rust, Hsu, and Westat (<a href="#ref-Rust2007ConfidenceIF">2007</a>)</span> and <span class="citation">Dean and Pagano (<a href="#ref-DeanPagano2015">2015</a>)</span> are available. One alternative based on using the logit transformation of the estimated proportion is:</p>
+<p>As this defines a nonlinear estimator, we can apply Taylor linearization to obtain the approximate variance of the above estimator by defining the corresponding estimating function as <span class="math inline">\(z_{hik} = I(y_{hik} = d) - \widehat{p}_d\)</span>. Many statistical packages provide proportion estimates and standard errors on a percentage scale.</p>
+<p>When the target proportions are close to 0 or 1, special methods are used to ensure confidence intervals remain meaningful; notice that the limits of the traditional symmetric normal confidence intervals may fall outside the permissible range for proportions. This would have no interpretation due to the nature of the parameter. To address this issue, alternative confidence interval estimates, as proposed by <span class="citation">Rust, Hsu, and Westat (<a href="#ref-Rust2007ConfidenceIF">2007</a>)</span> and <span class="citation">Dean and Pagano (<a href="#ref-DeanPagano2015">2015</a>)</span> are available. One alternative based on using the logit transformation of the estimated proportion is:</p>
 <p><span class="math display">\[
 CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2 , \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right) } \right]} {1 + exp \left[ ln \left( \frac{\widehat{p}_d} {1 - \widehat{p}_d} \right) \pm \frac{t_{1-\alpha/2, \, df} \times se \left( \widehat{p}_d \right)} {\widehat{p}_d \left( 1 - \widehat{p}_d \right)}\right]}
 \]</span></p>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-DeanPagano2015" class="csl-entry">
 Dean, Natalie, and Marcello Pagano. 2015. <span>“<span class="nocase">Evaluating Confidence Interval Methods for Binomial Proportions in Clustered Surveys</span>.”</span> <em>Journal of Survey Statistics and Methodology</em> 3 (4): 484–503. <a href="https://doi.org/10.1093/jssam/smv024">https://doi.org/10.1093/jssam/smv024</a>.
 </div>

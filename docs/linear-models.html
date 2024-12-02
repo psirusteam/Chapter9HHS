@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.3 Linear models | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -198,51 +198,52 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="linear-models" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Linear models<a href="linear-models.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A regression model seeks to explain how changes in one or more independent variables affect a dependent variable. In its simplest form, linear regression examines the relationship between a single independent variable and a dependent variable. The dependent variable is the outcome of interest, while the independent variable represents factors that may influence it. The model also includes an error term, which captures unexplained variability in the data.</p>
+<p>A regression model seeks to explain how changes in one or more independent (explanatory) variables affect a dependent (response) variable. In its simplest form, linear regression examines the relationship between a single independent variable and a dependent variable. The dependent variable is the outcome of interest, while the independent variable represents factors that may influence it. The model also includes an error term, which captures unexplained variability in the data.</p>
 <div id="basic-definitions" class="section level3 hasAnchor" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Basic Definitions<a href="linear-models.html#basic-definitions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As noted by <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span>, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>, who highlighted the challenges posed by complex sampling designs. Later, <span class="citation">Fuller (<a href="#ref-fuller1975regression">1975</a>)</span> developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.</p>
 <p>As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, <span class="citation">B. V. Shah, Holt, and Folsom (<a href="#ref-shah1977inference">1977</a>)</span> discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.</p>
 <p>Similarly, <span class="citation">David A. Binder (<a href="#ref-binder1983variances">1983a</a>)</span> obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. <span class="citation">Skinner, Holt, and Smith (<a href="#ref-skinner1989analysis">1989</a>)</span> studied the properties of variance estimators for regression coefficients under complex sample designs. Later, <span class="citation">Fuller (<a href="#ref-fuller2002regression">2002</a>)</span> provided a summary of estimation methods for regression models containing information related to complex samples. Finally, <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the “<em>q-weighted</em>” method, which is recommended in this document.</p>
-<p>A simple linear regression model is defined as <span class="math inline">\(y=\beta_{0}+\beta_{1}x+\varepsilon\)</span>, where <span class="math inline">\(y\)</span> represents the dependent variable, <span class="math inline">\(x\)</span> is the independent variable, and <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> are the model parameters. The variable <span class="math inline">\(\varepsilon\)</span> is known as the random error of the model and is defined as <span class="math inline">\(\varepsilon=y-\hat{y}=y-\beta_{0}+\beta_{1}x\)</span>.</p>
-<p>For more complex situations, multiple linear regression models allow for the inclusion of several independent variables. This approach helps to account for the simultaneous effects of multiple factors on the outcome. In these models, each independent variable is associated with a coefficient, which indicates the strength and direction of its relationship with the dependent variable. Notice that, a positive coefficient suggests that as the independent variable increases, the dependent variable also increases. Generalizing the previous model, multiple linear regression models are defined by allowing the dependent variable to interact with more than two variables, as presented below:</p>
+<p>A simple linear regression model is defined as <span class="math inline">\(y = \beta_{0} + \beta_{1}x + \varepsilon\)</span>, where <span class="math inline">\(y\)</span> represents the dependent variable, <span class="math inline">\(x\)</span> is the independent variable, and <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> are the model parameters. The variable <span class="math inline">\(\varepsilon\)</span> is known as the <em>random error</em> of the model.</p>
+<p>For more complex situations, multiple linear regression models allow for the inclusion of several independent variables. This approach helps to account for the simultaneous effects of multiple factors on the outcome. In these models, each independent variable is associated with a coefficient, which indicates the strength and direction of its relationship with the dependent variable. Notice that a positive coefficient suggests that as the corresponding independent variable increases, the dependent variable also increases. Generalizing the previous model, multiple linear regression models are defined by allowing the dependent variable to interact with two or more variables, as presented below:</p>
 <p><span class="math display">\[
-y  =  \boldsymbol{x}\boldsymbol{\beta}+\varepsilon
-  =  \sum_{j=0}^{p}\beta_{j}x_{j}+\varepsilon
-=  \beta_{0}+\beta_{1}x_{1}+\cdots+\beta_{p}x_{p}+\varepsilon
+y  =  \boldsymbol{x} \boldsymbol{\beta} + \varepsilon
+  =  \sum_{j=0}^{p} \beta_{j}x_{j} + \varepsilon
+=  \beta_{0} + \beta_{1} x_{1} + \cdots + \beta_{p} x_{p} + \varepsilon
 \]</span></p>
 <p>Another way to write the multiple regression model is:</p>
 <p><span class="math display">\[
-y_{i}  =  x_{i}\boldsymbol{\beta}+\varepsilon_{i}
+y_{k}  =  \boldsymbol{x}_{k} \boldsymbol{\beta} + \varepsilon_{k}
 \]</span></p>
-<p>Where, <span class="math inline">\(x_{i}=\left[1\,x_{1i}\,\ldots\,x_{pi}\right]\)</span> and <span class="math inline">\(\boldsymbol{\beta}^{T}=\left[\beta_{0}\,\,\beta_{1}\,\,\ldots\,\,\beta_{p}\right]\)</span>.</p>
-<p>The subscript <span class="math inline">\(i\)</span> refers to the sample element or respondent in the dataset. Regression models are built on several assumptions about the data. <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> present some considerations for regression models, which are described below:</p>
+<p>Where, <span class="math inline">\(\boldsymbol{x}_{k} = \left( 1 \ , x_{1k} \ , \ldots\ , x_{pk} \right)\)</span> and <span class="math inline">\(\boldsymbol{\beta} = \left( \beta_{0} \ , \ , \beta_{1} \ , \ldots \ , \beta_{p} \right)^{T}\)</span>.</p>
+<p>The subscript <span class="math inline">\(k\)</span> refers to the sample element or respondent in the dataset. Regression models are built on several assumptions about the data. <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> present some considerations for regression models, which are described below:</p>
 <ul>
-<li><span class="math inline">\(E\left(\varepsilon_{i}\mid x_{i}\right)=0\)</span>. That is, the average error for any given value of the independent variable is assumed to be zero, meaning that the model does not systematically over- or under-predict outcomes.</li>
-<li><span class="math inline">\(Var\left(\varepsilon_{i}\mid x_{i}\right)=\sigma_{y,x}^{2}\)</span>. That is, the variability of the errors should be consistent across all levels of the independent variables, a property known as homoscedasticity (homogeneity of variance).</li>
-<li><span class="math inline">\(\varepsilon_{i}\mid x_{i}\sim N\left(0,\,\sigma_{y,x}^{2}\right)\)</span> (normality of errors), meaning that the residuals conditioned on the covariates follow a normal distribution. This property also extends to the response variable <span class="math inline">\(y_{i}\)</span>.</li>
-<li><span class="math inline">\(cov\left(\varepsilon_{i},\,\varepsilon_{j}\mid x_{i},x_{j}\right)\)</span>. That is, the errors for different observations should be independent, meaning that the outcome for one observation does not influence another. This way, the residuals in different observed units should not be correlated with the values given by their predictor variables.</li>
+<li><p><span class="math inline">\(E\left(\varepsilon_{k}\mid x_{k}\right) = 0\)</span>. That is, the average error for any given value of the independent variable is assumed to be zero, meaning that the model does not systematically over- or under-predict outcomes.</p></li>
+<li><p><span class="math inline">\(Var\left(\varepsilon_{k}\mid x_{k}\right)=\sigma_{y|x}^{2}\)</span>. That is, the variability of the errors should be constant across all levels of the independent variables, a property known as homoscedasticity (homogeneity of variance).</p></li>
+<li><p><span class="math inline">\(\varepsilon_{k}\mid x_{k}\sim N\left(0,\,\sigma_{y|x}^{2}\right)\)</span> (normality of errors), meaning that the residuals conditioned on the covariates follow a normal distribution. This property also extends to the response variable <span class="math inline">\(y_{k}\)</span>.</p></li>
+<li><p><span class="math inline">\(cov\left(\varepsilon_{k},\,\varepsilon_{l}\mid x_{k},x_{l}\right) = 0 \ \forall k \neq l\)</span>. That is, the errors for different observations should be independent, meaning that the outcome for one observation does not influence another. This way, the residuals in different observed units should not be correlated with the values given by their predictor variables.</p></li>
 </ul>
-<p>When these assumptions are met, regression models can provide accurate and unbiased estimates of relationships between variables. The predicted values from the model represent the expected outcomes based on the observed values of the independent variables. This makes regression a useful tool for understanding patterns in data and making informed predictions.
-Once the linear regression model and its assumptions are defined, it can be deduced that the best unbiased linear estimator is defined as the expected value of the dependent variable conditioned on the independent variables <span class="math inline">\(x\)</span>, as:</p>
+<p>When these assumptions are met, regression models can provide accurate and unbiased estimates of relationships between variables. The predicted values from the model represent the expected outcomes based on the observed values of the independent variables. This makes regression a useful tool for understanding patterns in data and making informed predictions.</p>
+<p>Once the linear regression model and its assumptions are defined, it can be deduced that the best unbiased linear estimator is defined as the expected value of the dependent variable conditioned on the independent variables <span class="math inline">\(x\)</span>, as:</p>
 <p><span class="math display">\[
-E\left(y\mid x\right)=\hat{\beta}_{0}+\hat{\beta_{1}}x_{1}+\hat{\beta}_{2}x_{2}+\cdots+\hat{\beta}_{p}x_{p}
+E\left( y \mid x \right) = \hat{\beta}_{0} + \hat{\beta_{1}} x_{1} + \hat{\beta}_{2} x_{2} + \cdots + \hat{\beta}_{p} x_{p}
 \]</span></p>
 </div>
 <div id="estimation-of-parameters" class="section level3 hasAnchor" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Estimation of Parameters<a href="linear-models.html#estimation-of-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When working with survey data, the goal of regression analysis is to estimate the relationships between variables. If a complete census were available, the calculation of regression parameters would be straightforward because we would have all the data. However, in practice, we work with survey samples, which introduce additional complexities, particularly when these samples are drawn using complex designs. When estimating the parameters of a linear regression model considering that the observed information comes from surveys with complex samples, the standard approach to estimating regression coefficients and their standard errors is altered. The main reason for this change is that data collected through a complex survey generally does not have an identical distribution, and the assumption of independence cannot be maintained since the sample design is constructed with dependencies (as most complex designs include stratification, clustering, unequal selection probabilities, etc.).</p>
-<p>In this context, when fitting regression models with such datasets, using conventional estimators derived from traditional methods (such as maximum likelihood, for example) will induce bias because these methods assume the data are independently and identically distributed and come from a specific probability distribution (binomial, Poisson, exponential, normal, etc.). Instead, according to <span class="citation">Wolter (<a href="#ref-Wolter_2007">2007</a>)</span>, robust non-parametric methods based on Taylor linearization or variance estimation methods using replication are used to eliminate bias by including the sampling design in the analyses.</p>
+<p>When working with survey data, the goal of regression analysis is to estimate the relationships between variables <em>in the population</em>. If a complete census were available, the calculation of regression parameters would be straightforward because we would have all the data. However, in practice, we work with survey samples, which introduce additional complexities, particularly when these samples are drawn using complex designs.</p>
+<p>When estimating the parameters of a linear regression model considering that the observed information comes from surveys with complex samples, the standard approach to estimating regression coefficients and their standard errors is altered. The main reason for this change is that data collected through a complex survey generally does not have an identical distribution, and the assumption of independence cannot be maintained since the sample design is constructed with dependencies (as most complex designs include stratification, clustering, unequal selection probabilities, etc.).</p>
+<p>In this context, when fitting regression models with such datasets, using conventional estimators derived from traditional methods (such as maximum likelihood, for example) will induce bias because these methods assume the sample data are independently and identically distributed and come from a specific probability distribution (binomial, Poisson, exponential, normal, etc.).</p>
 <p>For illustrative purposes, the estimation of the parameter <span class="math inline">\(\beta_{1}\)</span> and its variance for a simple linear regression will be shown. The extension to multiple regression parameter estimation is algebraically complex and beyond the scope of this book. Below is the estimation of the slope and its variance in a simple linear regression model:</p>
 <p><span class="math display">\[
-\hat{\beta_{1}} = \frac{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(y_{h\alpha i}-\hat{\bar{y}}_{\omega}\right)\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)}{\sum_{h}^{H}\sum_{\alpha}^{a_{h}}\sum_{i=1}^{n_{h\alpha}}\omega_{h\alpha i}\left(x_{h\alpha i}-\hat{\bar{x}}_{\omega}\right)^{2}}
+\widehat{\beta_{1}} = \frac{\sum_{h}^{H} \sum_{i \in s_{1h}}\sum_{k \in s_{hi}} w_{h i k} \left(y_{h i k} - \widehat{\overline{Y}} \right) \left(x_{h i k} - \widehat{\overline{X}} \right)} {\sum_{h}^{H} \sum_{i \in s_{1h}}\sum_{k \in s_{hi}} w_{h i k} \left(x_{h i k} - \widehat{\overline{X}} \right)^{2}}
 \]</span></p>
 <p>Understanding the uncertainty in the estimated parameters is essential for making valid inferences. In regression analysis with complex samples, variance estimation involves calculating measures that reflect the variability introduced by the sampling design. These calculations often rely on weighted sums and include adjustments for dependencies in the data.</p>
 <p>For multiple regression, the variance of each coefficient is computed while considering its relationship with other coefficients. This results in a variance-covariance matrix, which summarizes the variability and relationships between all the estimated coefficients. The matrix provides a comprehensive view of the precision of the estimates and is a key tool for interpreting regression results. As a generalization, according to <span class="citation">Kish and Frankel (<a href="#ref-kish1974inference">1974</a>)</span>, the variance estimation of coefficients in a multiple linear regression model requires weighted totals for the squares and cross-products of all combinations of <span class="math inline">\(y\)</span> and <span class="math inline">\(x = \{1, x_{1}, \ldots, x_{p}\}\)</span>.</p>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-binder1983variances" class="csl-entry">
 Binder, David A. 1983a. <span>“On the Variances of Asymptotically Normal Estimators from Complex Surveys.”</span> <em>International Statistical Review</em> 51: 279–92.
 </div>
@@ -266,9 +267,6 @@ Shah, B. V., M. M. Holt, and R. F. Folsom. 1977. <span>“Inference about Regres
 </div>
 <div id="ref-skinner1989analysis" class="csl-entry">
 Skinner, Chris J, Daniell Holt, and Tom M F Smith. 1989. <em>Analysis of Complex Surveys</em>. New York: John Wiley; Sons.
-</div>
-<div id="ref-Wolter_2007" class="csl-entry">
-Wolter, Kirk M. 2007. <em>Introduction to Variance Estimation</em>. 2nd ed. Statistics for Social and Behavioral Sciences. Springer.
 </div>
 </div>
             </section>

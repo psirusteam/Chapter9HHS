@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.1 To weight or not to weight? | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.1 To weight or not to weight? | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -198,14 +198,23 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="to-weight-or-not-to-weight" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> To weight or not to weight?<a href="to-weight-or-not-to-weight.html#to-weight-or-not-to-weight" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When performing regression analysis on survey data, a key question arises: should we include survey weights in the estimation of regression parameters and their associated standard errors? This question has sparked debate among researchers (XXXXX citation needed), as there are trade-offs between accounting for the complex design features and simplifying the model for ease of interpretation and efficiency.</p>
-<p>On the one hand, when including sampling features we are making sure to achieve <strong>Population Representativeness</strong>, because survey weights ensure that the regression model reflects the true population distribution, correcting for oversampling or undersampling of certain groups. Also we will obtain <strong>accurate Variance Estimates</strong>, because we are adjusting for stratification, clustering, and unequal selection probabilities, providing valid standard errors and confidence intervals.</p>
+<p>When performing regression analysis on survey data, a key question arises: should we include survey weights in the estimation of regression parameters and their associated standard errors? This question has sparked debate among researchers - <span class="citation">Skinner, Holt, and Smith (<a href="#ref-skinner1989analysis">1989</a>)</span>, <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> - as there are trade-offs between accounting for the complex design features and simplifying the model for ease of interpretation and efficiency.</p>
+<p>On the one hand, when including sampling features we are making sure to achieve <strong>Population Representativeness</strong>, because survey weights ensure that the regression model reflects the true population distribution, correcting for oversampling or undersampling of certain groups. Also we will obtain <strong>accurate variance estimates</strong>, because we are adjusting for stratification, clustering, and unequal selection probabilities, providing valid standard errors and confidence intervals.</p>
 <p>On the other hand, including sampling design features may yield to an <strong>increasing of variance</strong>, and can inflate the variance of parameter estimates, particularly if the weights vary widely. Also, extreme or highly variable weights can lead to unstable estimates, where certain observations disproportionately influence the model, making it unstable. For explanatory or analytical purposes (e.g., understanding relationships between variables), unweighted models can sometimes provide more efficient and stable estimates.</p>
-<p>To answer the question: when to Weight?, we can distinguish two scenarios:</p>
+<p>To answer the question: when to weight?, we can distinguish two scenarios:</p>
 <ul>
-<li><strong>Descriptive Inference</strong>: Always weight. The primary goal is to reflect the population, and survey weights are essential for accuracy.</li>
-<li><strong>Analytical Inference</strong>: Consider unweighted or adjusted-weight models. If the goal is to explore relationships or test hypotheses, weighting may not always be necessary, particularly if the model adjusts for key design variables (e.g., strata or clusters).</li>
+<li><p><strong>Descriptive Inference</strong>: Always weight. The primary goal is to reflect the population, and survey weights are essential for accuracy.</p></li>
+<li><p><strong>Analytical Inference</strong>: Consider unweighted or weight-adjusted models. If the goal is to explore relationships or test hypotheses, weighting may not always be necessary, particularly if the model structure includes key design variables (e.g., strata or clusters).</p></li>
 </ul>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-pfeffermann2011modelling" class="csl-entry">
+Pfeffermann, Danny. 2011. <span>“Modelling of Complex Survey Data: Why Model? Why Is It a Problem? How Can We Approach It?”</span> <em>Survey Methodology</em> 37 (2): 115–36.
+</div>
+<div id="ref-skinner1989analysis" class="csl-entry">
+Skinner, Chris J, Daniell Holt, and Tom M F Smith. 1989. <em>Analysis of Complex Surveys</em>. New York: John Wiley; Sons.
+</div>
 </div>
             </section>
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.3 Low-Quality Estimates | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.3 Low-Quality Estimates | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -200,22 +200,22 @@ div.csl-indent {
 <h2><span class="header-section-number">6.3</span> Low-Quality Estimates<a href="low-quality-estimates.html#low-quality-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>National Statistical Offices routinely produce descriptive statistics, such as totals, averages, proportions, and ratios, based on survey data. These statistics provide valuable insights into key characteristics of the population, such as income levels, employment rates, or access to education. To ensure this information reaches a wide audience, NSOs often use a variety of dissemination channels, including:</p>
 <ul>
-<li><strong>Public Reports</strong>: Comprehensive reports summarizing key findings from household surveys.</li>
-<li><strong>Online Platforms</strong>: Interactive data visualization tools and downloadable datasets on official websites.</li>
-<li><strong>Press Releases</strong>: Brief summaries of major findings designed to capture public and media attention.</li>
+<li><p><strong>Public Reports</strong>: Comprehensive reports summarizing key findings from household surveys;</p></li>
+<li><p><strong>Online Platforms</strong>: Interactive data visualization tools and downloadable datasets on official websites;</p></li>
+<li><p><strong>Press Releases</strong>: Brief summaries of major findings designed to capture public and media attention.</p></li>
 </ul>
 <p>These dissemination efforts aim to make the data understandable and actionable for policymakers, researchers, and the general public. When publishing tables of results, NSOs strive for clarity and usability. Tables are typically organized to highlight trends, comparisons, and distributions of key variables. Common features of published tables include:</p>
 <ul>
-<li><strong>Aggregated Data</strong>: Grouping data by categories like age, gender, region, or socioeconomic status.</li>
-<li><strong>Confidence Intervals</strong>: Including measures of uncertainty to provide context for the estimates.</li>
-<li><strong>Metadata</strong>: Offering detailed explanations of the data collection methods, definitions, and limitations.</li>
+<li><p><strong>Aggregated Data</strong>: Grouping data by domain defining variables like age, sex, region, or socioeconomic status;</p></li>
+<li><p><strong>Confidence Intervals</strong>: Including measures of uncertainty to provide context for the estimates;</p></li>
+<li><p><strong>Metadata</strong>: Offering detailed explanations of the data collection methods, definitions, and limitations.</p></li>
 </ul>
 <p>By presenting data in a user-friendly format, NSOs ensure their publications are accessible to a diverse audience.</p>
 <p>Not all estimates derived from survey data meet the necessary quality standards for publication. Estimates may be suppressed if they are based on small sample sizes, have high variance, or are otherwise unreliable. NSOs use established criteria to determine when suppression is necessary, ensuring that the released data maintains its credibility. To address this issue we can use the following approaches:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Quality Thresholds</strong>: NSOs set predefined thresholds for measures like the coefficient of variation (CV) or standard errors.</li>
-<li><strong>Flagging and Suppression</strong>: Estimates that fall below these thresholds are either flagged with warnings about their reliability or omitted entirely from published tables.</li>
-<li><strong>Transparency</strong>: NSOs provide clear documentation explaining why certain estimates are suppressed, maintaining transparency and trust.</li>
+<li><p><strong>Quality Thresholds</strong>: NSOs set predefined thresholds for measures like the coefficient of variation (CV) or standard errors;</p></li>
+<li><p><strong>Flagging and Suppression</strong>: Estimates that fall below these thresholds are either flagged with warnings about their reliability or omitted entirely from published tables;</p></li>
+<li><p><strong>Transparency</strong>: NSOs provide clear documentation explaining why certain estimates are suppressed, maintaining transparency and trust.</p></li>
 </ol>
 
 </div>

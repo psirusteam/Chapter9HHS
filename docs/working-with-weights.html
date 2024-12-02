@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.4 Working with weights | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.4 Working with weights | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -200,33 +200,35 @@ div.csl-indent {
 <h2><span class="header-section-number">5.4</span> Working with weights<a href="working-with-weights.html#working-with-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When analyzing data from complex surveys, a critical question arises: how should survey weights be used in regression models? <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>)</span> addresses the problem of how to correctly weight regression models and whether expansion factors should be used to estimate regression coefficients when working with complex survey data. In this context, two main approaches exist for incorporating weights into regression models when working with complex survey data:</p>
 <p>First, the <strong>design-based approach</strong> focuses on making inferences about the entire population. Here, survey weights are essential to ensure unbiased estimates of the regression coefficients. These weights account for the survey design, including unequal probabilities of selection. However, this approach has a limitation: it does not protect against model misspecification. If the model does not correctly describe the relationships in the population, the estimates will still be unbiased for the specified model but not necessarily meaningful for the population. If the researcher fits a poorly specified model, unbiased estimates of the regression parameters would be obtained in a model that does not correctly describe the relationships in the finite population.</p>
-<ul>
-<li>In contrast, the <strong>population-based modeling approach</strong> argues that weights are unnecessary if the model is correctly specified. This approach assumes that the relationships between the variables are well-represented by the model, regardless of the sampling design. Using weights in this case can increase the variability of the estimates, leading to unnecessarily larger standard errors.</li>
-</ul>
-<p>The choice between these two approaches depends on the context and the sensitivity of the inferences to the inclusion of weights. A practical recommendation is to fit regression models both with and without weights using statistical software and compare the results. If including weights leads to significant changes in the regression coefficients or conclusions, it indicates that the model may not be correctly specified, and weighted estimates should be preferred. On the other hand, if weights only increase the standard errors without altering the coefficients meaningfully, the model is likely well-specified, and weights may not be necessary.</p>
+<p>In contrast, the <strong>model-based approach</strong> argues that weights are unnecessary if the model is correctly specified for the sample, and the sampling is non-informative. This approach assumes that the relationships between the variables are well-represented by the model, regardless of the sampling design. Using weights in this case can increase the variability of the estimates, leading to unnecessarily larger standard errors.</p>
+<p>The choice between these two approaches depends on the context and the sensitivity of the inferences to the inclusion of weights. A practical recommendation is to fit regression models both with and without weights using statistical software and compare the results. If including weights leads to significant changes in the regression coefficients or conclusions, it indicates that either the model may not be correctly specified or the sampling was informative, and therefore weighted estimates should be preferred. On the other hand, if weights only increase the standard errors without altering the coefficients meaningfully, the model is likely well-specified, and weights may not be necessary.</p>
 <p>To address the challenges of using raw sampling weights, several adjustments have been proposed to balance accuracy and efficiency. Some are listed below:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Senate Sampling Weights</strong>: This approach scales weights so that the sum of the weights equals the sample size rather than the population size. The goal is to retain representativeness while reducing the variability of weights. This adjustment is particularly useful in large samples where the raw weights are excessively variable. This approach preserves relative differences in weights.
-<span class="math display">\[
-w^{\text{Senate}}_i = w_i \times \frac{n}{\sum w_i}
-\]</span></li>
-<li><strong>Normalized Weights</strong>: these weights are used to rescale the raw weights to sum to 1. This adjustment ensures that the overall weight does not inflate variances unnecessarily. This approach is useful when comparing models with different subsets of data or when variance inflation is a concern.
-<span class="math display">\[
-w^{\text{Normalized}}_i = \frac{w_i}{\sum w_i}
-\]</span></li>
+<li><strong>Senate Sampling Weights</strong>: This approach scales weights so that the sum of the weights equals the sample size rather than the population size. The goal is to retain representativeness while reducing the variability of weights. This adjustment is particularly useful in large samples where the raw weights are excessively variable. This approach preserves relative differences in weights.</li>
+</ol>
+<p><span class="math display">\[
+w^{\text{Senate}}_k = w_k \times \frac{n}{\sum w_k}
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Normalized Weights</strong>: these weights are used to rescale the raw weights to sum to 1. This adjustment ensures that the overall weight does not inflate variances unnecessarily. This approach is useful when comparing models with different subsets of data or when variance inflation is a concern.</li>
+</ol>
+<p><span class="math display">\[
+w^{\text{Normalized}}_k = \frac{w_k}{\sum w_k}
+\]</span></p>
+<ol start="3" style="list-style-type: decimal">
 <li><strong>Pfeffermann Model Weights</strong>: this approach incorporates weights into the likelihood function of the regression model, allowing the model to use weights adaptively. This method combines the benefits of weighting and model-based inference. This approach also adjusts for the variability introduced by weights while retaining design-based properties. It is ideal for models requiring both descriptive and analytical inference.</li>
 </ol>
 <p>The third solution (called the <em>q-weighted approach</em>) was proposed by <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> who suggested a slightly different specification of the weights. This adjustment modifies the original weights to reflect the relationships in the data more accurately, reducing variability while still accounting for the complex survey design. It also balance the benefits of both design- and population-based approaches. The steps in this approach are as follows:</p>
 <ol style="list-style-type: decimal">
-<li>A regression model is fitted to the original survey weights, using the predictor variables in the primary regression model of interest.</li>
-<li>Predicted survey weights are obtained for each case based on the predictor variables.</li>
-<li>The original survey weights are divided by these predicted values, creating adjusted weights.</li>
-<li>These adjusted weights are then used in the final regression model.</li>
+<li><p>A regression model is fitted to the original survey weights, using the predictor variables in the primary regression model of interest.</p></li>
+<li><p>Predicted survey weights are obtained for each case based on the predictor variables.</p></li>
+<li><p>The original survey weights are divided by these predicted weight values, creating adjusted weights.</p></li>
+<li><p>These adjusted weights are then used in the final regression model.</p></li>
 </ol>
-<p>The q-weighted approach provides a middle ground. It retains the benefits of the design-based approach by incorporating survey weights but reduces the variance typically associated with their use. At the same time, it considers the relationships captured by the model, aligning more closely with the population-based modeling perspective. This makes it particularly useful for situations where the choice between the two paradigms is unclear or when both perspectives have merit.</p>
+<p>The q-weighted approach provides a middle ground. It retains the benefits of the design-based approach by incorporating survey weights but reduces the variance typically associated with their use. At the same time, it considers the relationships captured by the model, aligning more closely with the model-based perspective. This makes it particularly useful for situations where the choice between the two paradigms is unclear or when both perspectives have merit.</p>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Heeringa_West_Berglund_2017" class="csl-entry">
 Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied Survey Data Analysis</em>. Chapman and Hall CRC Statistics in the Social and Behavioral Sciences Series. CRC Press.
 </div>

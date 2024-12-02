@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Introduction | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-27" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +64,6 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -130,13 +129,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.1</b> Cross-tabulations</a></li>
-<li class="chapter" data-level="4.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="4.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis Test for the Difference of Means</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
@@ -203,18 +203,18 @@ div.csl-indent {
 <li><strong>Principle 3:</strong> To facilitate a correct interpretation of the data, statistical agencies must present information according to scientific standards, including details on the sources, methods, and procedures used.</li>
 <li><strong>Principle 4:</strong> Statistical agencies are entitled to comment on erroneous interpretation and misuse of statistics.</li>
 </ul>
-<p>This chapter emphasizes empowering users to analyze household survey data accurately. The advent of the computer revolution, coupled with greater access to computational tools, has led to increased use of statistical data, including household survey data. Sometimes this data is used for purely descriptive purposes. Other times, however, its use is made for analytical purposes, involving the testing of hypothesis or the construction of models, when the objective is to draw conclusions that are also applicable to populations other than the one from which the sample was extracted. IHowever, when using standard statistical software for such analyses, results can be biased or misleading if the complex survey design is not properly accounted for.</p>
-<p>The primary focus of this chapter is to present relevant models, methods, and software that enable users to incorporate complex survey designs into their analyses effectively. What makes such data special for those who intend to use them for analytical purposes? Household survey data present unique challenges for analytical purposes because they are collected through complex sampling methods that often involve:</p>
+<p>This chapter emphasizes empowering users to analyze household survey data accurately. The advent of the computer revolution, coupled with greater access to computational tools, has led to increased use of statistical data, including household survey data. Sometimes this data is used for purely descriptive purposes. Other times, however, its use is made for analytical purposes, involving the testing of hypothesis or the construction of models, when the objective is to draw conclusions that are also applicable to populations other than the one from which the sample was extracted. When using standard statistical software for such analyses, results can be biased or misleading if the complex sampling design is not properly accounted for.</p>
+<p>The primary focus of this chapter is to present relevant models, methods, and software that enable users to incorporate complex designs into their analyses effectively. What makes household survey data special or challenging for those who intend to use them for analytical purposes is because they are collected through complex sampling methods that often involve:</p>
 <ul>
-<li><strong>Stratification</strong>: Dividing the population into comprehensive distinct subgroups before sampling.</li>
-<li><strong>Clustering</strong>: Grouping sampling units to simplify data collection.</li>
-<li><strong>Unequal probabilities of selection</strong>: Giving some sampling units a higher chance of being selected than others.</li>
+<li><strong>Stratification</strong>: Dividing the population into comprehensive distinct subgroups before sampling;</li>
+<li><strong>Clustering</strong>: Grouping units and sampling groups rather than units to simplify data collection;</li>
+<li><strong>Unequal probabilities of selection</strong>: Giving units different probabilities of being selected;</li>
 <li><strong>Weighting adjustments</strong>: Correcting for non-response and/or improving precision.</li>
 </ul>
-<p>Standard data analysis methods and software ignore these features, leading to biased estimates of both the target parameters and their associated variances. In this chapter we analyze the impact of simplifications made when using standard data analysis methods and software, and present the necessary adjustments to these procedures in order to appropriately incorporate the aspects highlighted here into the analysis.</p>
-<p>In section 9.1, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from probability sample surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.2, we begin the journey with simple descriptive statistics: means, ratios, proportions and other typical descriptive parameters. Section 9.3 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables, and also consider the problem of correlation and association. Section 9.4 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.5 presents a summary of ideas and tools for survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.</p>
-<p>The primary purpose of this chapter is to define and explain the fundamental concepts of the design-based paradigm in household surveys and demonstrate how to analyze complex household survey data. Throughout the chapter, national experiences are highlighted to illustrate how National Statistics Offices (NSOs) manage different stages of household survey data analysis. These practical examples provide a useful guide for applying the concepts and methods discussed in real-world contexts.</p>
-<p>By the end of the chapter, readers will be equipped with the knowledge and tools needed to analyze household survey data effectively while accounting for the complexities of survey design.</p>
+<p>Standard data analysis methods and software ignore these features, leading to biased estimates of both the target parameters and their associated variances. Here we analyze the impact of simplifications made when using standard data analysis methods and software, and present the necessary adjustments to these methods in order to appropriately incorporate the aspects highlighted above into the analysis.</p>
+<p>Section 9.1 provides guidance on the preparation of a plan for the analysis of the household survey data. Such plans are important both to guide survey development and subsequently any secondary survey data analysis. In section 9.2, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from probability sample surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.3, we begin the journey with simple descriptive statistics: means, ratios, proportions and other typical descriptive parameters. Section 9.4 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables, and also consider the problem of correlation and association. Section 9.5 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.6 presents a summary of ideas and tools for survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.</p>
+<p>The primary purpose of this chapter is to present and explain the fundamental concepts of the design-based paradigm in household surveys and demonstrate how to analyze complex household survey data. Throughout the chapter, national experiences are highlighted to illustrate how National Statistics Offices (NSOs) manage different stages of household survey data analysis. These practical examples provide a useful guide for applying the concepts and methods discussed in real-world contexts.</p>
+<p>By the end of the chapter, readers will be equipped with the knowledge and tools needed to analyze household survey data effectively while accounting for the complexities of survey designs adopted in such surveys.</p>
 
 </div>
             </section>
