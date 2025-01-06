@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>1.3 Quality Control for Secondary Users | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="1.3 Quality Control for Secondary Users | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="1.3 Quality Control for Secondary Users | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="secondary-data-users.html"/>
+<link rel="next" href="accounting-for-the-sampling-design.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -195,32 +195,25 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</h1>
-<p class="author"><em>Andrés Gutiérrez<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, Pedro Luis do Nascimento Silva<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></em></p>
-<p class="date"><em>2025-01-06</em></p>
-</div>
-<div id="abstract" class="section level1 unnumbered hasAnchor">
-<h1>Abstract<a href="index.html#abstract" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Analyzing complex household survey data requires knowing and properly applying the foundations of <em>design-based inference</em>. The researcher will be faced to a small dataset containing information that will allow her to make conclusions over the whole population.</p>
-<p>The purpose of any analysis on this kind is not to make conclusions about the sample itself – which in most of the cases is a small subset of the population - but to the the whole population and possibly domains or population subgroups of interest. Having that into account, the first step in any analysis plan should be devoted to understanding and specifying the sampling design used to draw the sample and the findings on the field related to nonresponse and lack of coverage.</p>
-<p>This chapter covers three main topics of analysis: descriptive statistics; comparisons and associations; and modeling of survey data. First, we introduce simple descriptive statistics, such as totals, means, frequencies and proportions, quantiles and some graphics; next, we delve deeper on relationships between the survey variables. All these analyses rely on the representativity principle of the design-based inference. This way, the reader will find a strong focus, not only on point estimates, but also on uncertainty measures. The chapter also presents a short discussion on the different approaches that can be used to estimate variances; the best way to visualize the estimates; and some NSO practical experiences.</p>
+<div id="quality-control-for-secondary-users" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Quality Control for Secondary Users<a href="quality-control-for-secondary-users.html#quality-control-for-secondary-users" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A standard quality control process for secondary data users would consist of the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Load the Data and Metadata</strong>: Ensure that the survey microdata is properly linked to metadata describing the key aspects of the sampling design (stratification and clustering identifiers, unequal probabilities of selection) and estimation processes (weights, replicate weights if any, non-response correction, calibration, etc.).</p></li>
+<li><p><strong>Replicate Published Estimates</strong>: Recreate some of the estimates provided by the survey producers, including measures of precision, to confirm that the data and sampling design aspects have been correctly interpreted and loaded.</p></li>
+<li><p><strong>Compare Scenarios</strong>: When the user is capable of replicating published estimates, she can then proceed towards the required new analysis for which no previous results are available. Repeat this analysis under two scenarios: ignoring and accounting for the sampling design. Compare the results and assess the impact of incorporating the sample design.</p></li>
+<li><p><strong>Finalize the Analysis</strong>: Use only the results that account for the sampling design in the final interpretation, ensuring that the design effects are appropriately incorporated.</p></li>
+</ol>
 
 </div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Comisión Económica para América Latina y el Caribe (CEPAL) - <a href="mailto:andres.gutierrez@cepal.org" class="email">andres.gutierrez@cepal.org</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>SCIENCE, <a href="mailto:pedronsilva@gmail.com" class="email">pedronsilva@gmail.com</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="secondary-data-users.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="accounting-for-the-sampling-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -251,7 +244,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/index.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/01AnalysisPlan.rmd",
 "text": "Edit"
 },
 "history": {

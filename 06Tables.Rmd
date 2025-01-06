@@ -77,7 +77,7 @@ Finally, these practices collectively improve the usability of the table, making
 
 The recommendations provided here to reference tables should also apply to longer tables provided as databases, but these can have additional resources if they are embedded on websites. For example, there may be support for users to sort tables using the values in each column, which would be useful for large tables where the user may be looking for the higher (or lower) values in a given column.
 
-## Low-Quality Estimates
+## Dissemination of Estimates
 
 National Statistical Offices routinely produce descriptive statistics, such as totals, averages, proportions, and ratios, based on survey data. These statistics provide valuable insights into key characteristics of the population, such as income levels, employment rates, or access to education. To ensure this information reaches a wide audience, NSOs often use a variety of dissemination channels, including:
 
@@ -95,13 +95,10 @@ These dissemination efforts aim to make the data understandable and actionable f
 
 - **Metadata**: Offering detailed explanations of the data collection methods, definitions, and limitations.
 
-By presenting data in a user-friendly format, NSOs ensure their publications are accessible to a diverse audience.
-
-Not all estimates derived from survey data meet the necessary quality standards for publication. Estimates may be suppressed if they are based on small sample sizes, have high variance, or are otherwise unreliable. NSOs use established criteria to determine when suppression is necessary, ensuring that the released data maintains its credibility. To address this issue we can use the following approaches:
+By presenting data in a user-friendly format, NSOs ensure their publications are accessible to a diverse audience. Chapter 10 provides more detailed discussion on presentation of survey findings. However, we note that not all estimates derived from survey data meet the necessary quality standards for publication. Estimates may be suppressed if they are based on small sample sizes, have high variance, or are otherwise unreliable. NSOs use established criteria to determine when suppression is necessary, ensuring that the released data maintains its credibility. To address this issue we can use the following approaches:
 
 1. **Quality Thresholds**: NSOs set predefined thresholds for measures like the coefficient of variation (CV) or standard errors;
 
 2. **Flagging and Suppression**: Estimates that fall below these thresholds are either flagged with warnings about their reliability or omitted entirely from published tables;
 
 3. **Transparency**: NSOs provide clear documentation explaining why certain estimates are suppressed, maintaining transparency and trust.
-

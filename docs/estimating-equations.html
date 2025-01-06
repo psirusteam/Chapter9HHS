@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>2.3 Estimating Equations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="2.3 Estimating Equations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="2.3 Estimating Equations | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="approaches-to-variance-estimation.html"/>
+<link rel="next" href="ultimate-cluster.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -109,14 +109,11 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="accounting-for-the-sampling-design.html"><a href="accounting-for-the-sampling-design.html"><i class="fa fa-check"></i><b>2</b> Accounting for the Sampling Design</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>2.1</b> Parameters and Estimators</a></li>
-<li class="chapter" data-level="2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html"><i class="fa fa-check"></i><b>2.2</b> Approaches to Variance Estimation</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#estimating-equations"><i class="fa fa-check"></i><b>2.2.1</b> Estimating Equations</a></li>
-<li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
-<li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="the-design-effect.html"><a href="the-design-effect.html"><i class="fa fa-check"></i><b>2.3</b> The Design Effect</a></li>
-<li class="chapter" data-level="2.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.4</b> Using Software to Generate Valid Inferences</a></li>
+<li class="chapter" data-level="2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html"><i class="fa fa-check"></i><b>2.2</b> Approaches to Variance Estimation</a></li>
+<li class="chapter" data-level="2.3" data-path="estimating-equations.html"><a href="estimating-equations.html"><i class="fa fa-check"></i><b>2.3</b> Estimating Equations</a></li>
+<li class="chapter" data-level="2.4" data-path="ultimate-cluster.html"><a href="ultimate-cluster.html"><i class="fa fa-check"></i><b>2.4</b> Ultimate Cluster</a></li>
+<li class="chapter" data-level="2.5" data-path="bootstrap.html"><a href="bootstrap.html"><i class="fa fa-check"></i><b>2.5</b> Bootstrap</a></li>
+<li class="chapter" data-level="2.6" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.6</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -195,32 +192,30 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</h1>
-<p class="author"><em>Andrés Gutiérrez<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, Pedro Luis do Nascimento Silva<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></em></p>
-<p class="date"><em>2025-01-06</em></p>
-</div>
-<div id="abstract" class="section level1 unnumbered hasAnchor">
-<h1>Abstract<a href="index.html#abstract" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Analyzing complex household survey data requires knowing and properly applying the foundations of <em>design-based inference</em>. The researcher will be faced to a small dataset containing information that will allow her to make conclusions over the whole population.</p>
-<p>The purpose of any analysis on this kind is not to make conclusions about the sample itself – which in most of the cases is a small subset of the population - but to the the whole population and possibly domains or population subgroups of interest. Having that into account, the first step in any analysis plan should be devoted to understanding and specifying the sampling design used to draw the sample and the findings on the field related to nonresponse and lack of coverage.</p>
-<p>This chapter covers three main topics of analysis: descriptive statistics; comparisons and associations; and modeling of survey data. First, we introduce simple descriptive statistics, such as totals, means, frequencies and proportions, quantiles and some graphics; next, we delve deeper on relationships between the survey variables. All these analyses rely on the representativity principle of the design-based inference. This way, the reader will find a strong focus, not only on point estimates, but also on uncertainty measures. The chapter also presents a short discussion on the different approaches that can be used to estimate variances; the best way to visualize the estimates; and some NSO practical experiences.</p>
-
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Comisión Económica para América Latina y el Caribe (CEPAL) - <a href="mailto:andres.gutierrez@cepal.org" class="email">andres.gutierrez@cepal.org</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>SCIENCE, <a href="mailto:pedronsilva@gmail.com" class="email">pedronsilva@gmail.com</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
+<div id="estimating-equations" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Estimating Equations<a href="estimating-equations.html#estimating-equations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many population parameters can be written/obtained as solutions of <em>population estimating equations</em>. Variance estimation for these sample-based methods follows a consistent framework. Although the details can be technical, the key idea is that the same principles used to estimate totals can be applied to estimate variances. This generality makes the method simple and versatile, allowing it to be well implemented in widely used software like the <code>R survey</code> package and the <code>Stata svy</code> functions. These tools automate much of the process, making it accessible for users to estimate both population parameters and their associated uncertainties.</p>
+<p>A generic population <em>estimating equation</em> is given by $_{i U} z_i () = 0 $, where <span class="math inline">\(z_i(\bullet)\)</span> is an <em>estimating function</em> evaluated for unit <span class="math inline">\(i\)</span> and <span class="math inline">\(\theta\)</span> is a population parameter of interest. These equations provide a general way to define and calculate many population parameters, such as totals, means, and ratios. The concept is straightforward: population parameters can be defined as solutions to specific equations that involve all the units in the population. This approach is flexible and can be adapted to calculate many different types of parameters.</p>
+<ul>
+<li><p>For the case of the population total, take <span class="math inline">\(z_i(\theta) = y_i - \theta / N\)</span>. The corresponding population estimation equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta / N) = 0\)</span>. Solving for <span class="math inline">\(\theta\)</span> gives the population total <span class="math inline">\(\theta_U = \sum _{i \in U} y_i \ = \ Y\)</span>.</p></li>
+<li><p>For ratios of population totals, taking <span class="math inline">\(z_i(\theta) = y_i - \theta x_i\)</span>, the corresponding population estimating equation is given by <span class="math inline">\(\sum _{i \in U} (y_i - \theta x_i) = 0\)</span>. Solving for <span class="math inline">\(\theta\)</span> gives the <em>population ratio</em> <span class="math inline">\(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\)</span>.</p></li>
+<li><p>Similarly, for population means, take <span class="math inline">\(z_i(\theta) = y_i - \theta\)</span>.</p></li>
+</ul>
+<p>The idea of defining population parameters as solutions to population estimating equations allows defining a general method for obtaining corresponding sample estimators. It is a matter of using the <em>sample estimating equations</em> <span class="math inline">\(\sum _{k \in s} d_k \, z_k (\theta) = 0\)</span>. Under <em>probability sampling</em>, full response and with <span class="math inline">\(d_k = 1 / \pi_k\)</span>, the sample sum in the left hand side is unbiased towards the population sum in the corresponding population estimating equation. Solving the sample estimating equation yields consistent estimators for the corresponding population parameters.</p>
+<p>A consistent estimator for the variance of non-linear estimators obtained as solutions of sample estimating equations, derived using <em>Taylor Linearization</em>, is given by:</p>
+<p><span class="math display">\[
+\widehat V_{TL} (\widehat \theta) = \left[ \widehat J ( \widehat \theta) \right] ^{-1} \widehat V_p \left[ \sum _{k \in s} d_k \, z_k (\widehat \theta)\right] \left[ \widehat J ( \widehat \theta) \right] ^{-1}
+\]</span></p>
+<p>Where <span class="math inline">\(\widehat J (\widehat \theta) = \sum _{k \in s} d_k \, \left[ \partial{z_k ( \theta)} / \partial \theta \right]_{\theta = \widehat \theta}\)</span>.</p>
+<p>This approach implies that one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals and their variances. Its simplicity and generality have enabled the development of software such as the <code>R survey</code> package, the <code>Stata svy</code> functions and others.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="approaches-to-variance-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ultimate-cluster.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -251,7 +246,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/index.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/02SamplingStrategy.rmd",
 "text": "Edit"
 },
 "history": {
