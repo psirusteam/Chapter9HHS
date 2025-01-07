@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2025-01-06" />
+<meta name="date" content="2025-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -115,8 +115,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
 <li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="the-design-effect.html"><a href="the-design-effect.html"><i class="fa fa-check"></i><b>2.3</b> The Design Effect</a></li>
-<li class="chapter" data-level="2.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.4</b> Using Software to Generate Valid Inferences</a></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -126,7 +125,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>3.4</b> Percentiles and inequality measures</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
+<li class="chapter" data-level="4" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between categorical variables</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
 <li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
@@ -199,7 +198,7 @@ div.csl-indent {
 <h2><span class="header-section-number">3.1</span> Frequencies and proportions<a href="frequencies-and-proportions.html#frequencies-and-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the most fundamental tasks in household survey analysis is estimating the size of subpopulations, namely the number of people or households in specific categories, as well as the proportions they represent within the population. These estimates are crucial because they provide a snapshot of the demographic and socioeconomic profile of a population. Policymakers and planners use this information to make decisions about resource allocation, public policy design, and the development of social programs.</p>
 <p>For example, understanding how many people live below the poverty line, how many are unemployed, or how many have completed a certain level of education provides valuable insights. These insights help address inequalities, support the design of targeted interventions, and promote equitable development across communities. The ability to understand the distribution across categories provides valuable information to address inequalities and promote equitable development.</p>
-<p>To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different poverty levels, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with <em>sampling weights</em>. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:</p>
+<p>To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different income quintiles, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with <em>sampling weights</em>. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:</p>
 <p><span class="math display">\[
 \widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
 \]</span></p>

@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2025-01-06" />
+<meta name="date" content="2025-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -115,8 +115,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
 <li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="the-design-effect.html"><a href="the-design-effect.html"><i class="fa fa-check"></i><b>2.3</b> The Design Effect</a></li>
-<li class="chapter" data-level="2.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.4</b> Using Software to Generate Valid Inferences</a></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -126,7 +125,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>3.4</b> Percentiles and inequality measures</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
+<li class="chapter" data-level="4" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between categorical variables</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
 <li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
@@ -204,8 +203,8 @@ div.csl-indent {
 <li><p><strong>Classification or Domain Variables</strong>: These are variables used to subdivide the population into meaningful groups for analysis. For example, geographic areas (e.g., states or provinces), age groups, or sex might define rows in a table. These variables are often chosen to meet reporting requirements, such as providing estimates by province in national household surveys. A typical list of domain defining variables would include: geographic levels (provinces, etc.); type of region (urban x rural); sex; age groups; education; race / etchnicity; etc.</p></li>
 <li><p><strong>Response or Survey Variables</strong>: These are the variables being analyzed to understand how they vary across the defined domains. For instance, continuous survey variables (like income) might be used to create columns in a table, summarizing means, medians, or other statistics. These variables are all others that we do not use as classification ones. Categorical survey variables (like employment status) will generate a column for each category where the corresponding cross-classified frequencies will appear, with one row for each of the classes of the domain defining variables.</p></li>
 </ol>
-<p>An important consideration when defining domains has to do with sample design, namely when defining strata and sample sizes. For most national household sample surveys, providing breakdown by province or state is required, and therefore stratification by provinces will be essential. Also, if precision requirements must be satisfied at the province level, then sample sizes that meet such requirements must be computed by province and then summed to obtain the country level sample size.</p>
-<p>For domains defined by characteristics that are unavailable from the sampling frame, say age groups, for the case of household surveys that use area sampling, sample size calculations must take into account what the required total sample size must be such that estimates for the rarest group meet precision specifications. As an example, suppose that estimates are required by age groups such as young adults (18 to 29), adults (30 to 49), ageing adults (50 to 59) and elderly (60 and over). Assuming that the population distribution by these age groups is such that the ageing adults is the rarest group with 12.5% of the total population, and if a minimum sample size of 500 individuals in this group is required, then the total sample must be at least 500 / 0.125 = 4,000. That is, in order for the full sample to provide an expected sample of about 500 ageing adults we must sample at least 4,000 individuals for the survey.</p>
+<p>As discussed throughout Chapter 7, an important consideration when defining domains is related to sample design, particularly when defining strata and sample sizes. For most national household sample surveys, providing breakdowns by province or state is required, and therefore stratification by province will be essential. Additionally, if precision requirements must be met at the provincial level, sample sizes that satisfy these requirements must be computed for each province and then summed to obtain the national sample size.</p>
+<p>For instance, for domains defined by characteristics that are unavailable from the sampling frame, say age groups, for the case of household surveys that use area sampling, sample size calculations must take into account what the required total sample size must be such that estimates for the rarest group meet precision specifications. As an example, suppose that estimates are required by age groups such as young adults (18 to 29), adults (30 to 49), ageing adults (50 to 59) and elderly (60 and over). Assuming that the population distribution by these age groups is such that the ageing adults is the rarest group with 12.5% of the total population, and if a minimum sample size of 500 individuals in this group is required, then the total sample must be at least 500 / 0.125 = 4,000. That is, in order for the full sample to provide an expected sample of about 500 ageing adults we must sample at least 4,000 individuals for the survey.</p>
 </div>
             </section>
 

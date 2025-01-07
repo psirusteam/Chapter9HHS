@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.4 Using Software to Generate Valid Inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>2.3 Using Software to Generate Valid Inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.4 Using Software to Generate Valid Inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="2.3 Using Software to Generate Valid Inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.4 Using Software to Generate Valid Inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="2.3 Using Software to Generate Valid Inferences | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2025-01-06" />
+<meta name="date" content="2025-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-design-effect.html"/>
+<link rel="prev" href="approaches-to-variance-estimation.html"/>
 <link rel="next" href="descriptive-parameters.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -115,8 +115,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
 <li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="the-design-effect.html"><a href="the-design-effect.html"><i class="fa fa-check"></i><b>2.3</b> The Design Effect</a></li>
-<li class="chapter" data-level="2.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.4</b> Using Software to Generate Valid Inferences</a></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -126,7 +125,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>3.4</b> Percentiles and inequality measures</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
+<li class="chapter" data-level="4" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between categorical variables</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
 <li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
@@ -195,19 +194,24 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-software-to-generate-valid-inferences" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Using Software to Generate Valid Inferences<a href="using-software-to-generate-valid-inferences.html#using-software-to-generate-valid-inferences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The design and analysis of household surveys must include extensive use of existing computational tools. This section reviews in detail the computational approaches of the statistical software used for each of the statistical processes required to publish official figures with high levels of accuracy and reliability. Specifically, for the following processes:</p>
-<ul>
-<li>Sample selection according to the defined sampling design;</li>
-<li>Calculation of sampling weights for each individual and household;</li>
-<li>Modeling of nonresponse and statistical imputation;</li>
-<li>Calibration of sampling weights and adjustments for nonresponse;</li>
-<li>Estimation of standard errors for each indicator of interest to be included in the production tables;</li>
-<li>Analysis of multivariate relationships between survey variables.</li>
-</ul>
+<div id="using-software-to-generate-valid-inferences" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Using Software to Generate Valid Inferences<a href="using-software-to-generate-valid-inferences.html#using-software-to-generate-valid-inferences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The design and analysis of household surveys must make extensive use of existing computational tools. This section reviews some computational approaches within statistical software that are used for each of the statistical processes required to publish official figures with appropriate levels of accuracy and reliability. Key processes that analysts should focus on include: modeling nonresponse and statistical imputation, estimating standard errors for each indicator of interest to be included in the production tables, and analyzing multivariate relationships between survey variables.</p>
 <p><span class="citation">Nations (<a href="#ref-United_Nations_2005">2005, sec. 7.8</a>)</span> highlights the importance of including the structure of complex survey designs in the inference process for estimating official statistics from household surveys. It warns, with an empirical example, that failing to do so may result in biased estimates and underestimated sampling errors. Below are some key features that statistical software packages incorporate when managing data from complex survey designs, such as those found in household surveys. A more detailed review, including syntax and computational code, can be found in <span class="citation">Steven G. Heeringa, West, and Berglund (<a href="#ref-Heeringa_West_Berglund_2017">2017a</a>, Appendix A)</span>.</p>
 <p>In general, these computational tools are designed to enhance the efficiency of variance approximation methods for complex samples, as well as replication techniques to estimate design-based variances <span class="citation">(<a href="#ref-Westat_2007">Westat 2007</a>)</span>. Some of these software packages are free to use, although most are licensed products requiring paid licenses. These products, in addition to providing descriptive statistics (such as means, totals, proportions, percentiles, and ratios), allow for fitting linear and logistic regression models. All resulting statistics are based on the survey design.</p>
+<p>Software packages designed for survey analysis often report the design effect (<span class="math inline">\(DEFF\)</span>) when processing survey data. This estimate provides a critical measure of how the complexities of the sampling design—such as clustering, stratification, and unequal weights—affect the precision of estimates compared to a simple random sample (SRS) of the same size. By including DEFF in their output, these tools enable researchers to assess the efficiency of their sampling designs and interpret the variability in their data more accurately.</p>
+<p>As defined by <span class="citation">Kish (<a href="#ref-Kish_1965">1965, 258</a>)</span>, the <span class="math inline">\(DEFF\)</span> is the ratio between the actual variance of a complex sample and the variance of a simple random sample (SRS) of the same size. This measure is estimated as:</p>
+<p><span class="math display">\[
+DEFF = \frac{\widehat {V}_p \left( \hat{\theta} \right)}{\widehat {V}_{SRS}(\hat{\theta})}
+\]</span></p>
+<p>where <span class="math inline">\(\widehat {V}_p \left( \hat{\theta} \right)\)</span> represents the estimated variance of an estimator <span class="math inline">\(\hat{\theta}\)</span> under a complex sampling design <span class="math inline">\(p(s)\)</span>, and <span class="math inline">\(\widehat {V}_{SRS}(\hat{\theta})\)</span> denotes the estimated variance of the same estimator under a simple random sampling design. The design effect measures the clustering effect introduced by using a complex sampling design compared to SRS for inferring a finite population parameter <span class="math inline">\(\theta\)</span>. According to <span class="citation">Nations (<a href="#ref-United_Nations_2008">2008, 49</a>)</span>, the design effect can be interpreted in three ways: as the factor by which variance increases under a complex design compared to SRS, as an indicator of how much less efficient the complex design is in terms of precision, or as a reflection of how much larger the sample size would need to be under the complex design to match the variance achieved by SRS. <span class="citation">Park et al. (<a href="#ref-Park_2003">2003</a>)</span> proposes that the design effect of a survey can be decomposed into three multiplicative components:</p>
+<ol style="list-style-type: decimal">
+<li>The effect due to unequal weighting: this component tends to slightly increase variance if sampling weights are unequal. Uniform weights avoid such increases, making self-weighting designs desirable for household surveys.</li>
+<li>The effect due to stratification: this component reduces variance when stratification is optimal, though the reduction is usually modest.</li>
+<li>The effect due to multi-stage sampling: this component typically increases the variance of survey estimates because units within the same cluster tend to be more similar to each other than to units in other clusters.</li>
+</ol>
+<p>In practice, <span class="math inline">\(DEFF\)</span> is especially useful when evaluating the quality of survey estimates and planning future surveys. For instance, a large <span class="math inline">\(DEFF\)</span> indicates that the complex design introduces significant clustering effects or inefficiencies, which can inflate variances and reduce the precision of key estimates. Conversely, a <span class="math inline">\(DEFF\)</span> close to unity suggests that the design features have minimal impact on variance. Understanding these effects allows researchers to decide whether adjustments to weighting, stratification, or sampling stages are needed in future data collection efforts.</p>
+<p>Statistical software packages such as Stata, R, SAS, and SPSS automatically calculate the design effect within their survey analysis modules. These computations require users to input specific details about the survey design, including sampling weights, strata, and cluster identifiers. Next, we provide a non-comprehensive summary of features and capabilities available in major statistical software:.</p>
 <p><em>R</em></p>
 <p>R is a free software increasingly used in social research, as it is likely to host the latest scientific findings implemented in this software <span class="citation">(<a href="#ref-R_2024">R Core Team 2024</a>)</span>. Being open-source, researchers can upload their own collections of computational functions to the official repository (<code>CRAN</code>) and make them available to the community. The <code>samplesize4surveys</code> package <span class="citation">(<a href="#ref-ss4s">Rojas 2020</a>)</span> determines the sample size for individuals and households in repeated, panel, and rotational household surveys. The <code>sampling</code> <span class="citation">(<a href="#ref-Yves">Tillé and Matei 2016</a>)</span> and <code>TeachingSampling</code> <span class="citation">(<a href="#ref-TS">Gutiérrez 2015</a>)</span> packages enable the selection of probabilistic samples from sampling frames under a wide variety of designs and algorithms. The <code>survey</code> package <span class="citation">(<a href="#ref-TL">Lumley 2016</a>)</span>, once the survey design is predefined using the <code>svydesign()</code> function, allows for analyzing household survey data and obtaining appropriate standard error estimates.</p>
 <p><em>STATA</em></p>
@@ -236,11 +240,20 @@ Heeringa, Steven G., Brady T. West, and Patricia A. Berglund. 2017a. <em>Applied
 <div id="ref-IBM_2017" class="csl-entry">
 IBM. 2017. <em>IBM SPSS Complex Samples</em>. <a href="ftp://public.dhe.ibm.com/software/analytics/spss/documentation/statistics/23.0/en/client/Manuals/IBM_SPSS_Complex_Samples.pdf">ftp://public.dhe.ibm.com/software/analytics/spss/documentation/statistics/23.0/en/client/Manuals/IBM_SPSS_Complex_Samples.pdf</a>.
 </div>
+<div id="ref-Kish_1965" class="csl-entry">
+Kish, Leslie. 1965. <em>Survey Sampling</em>. New York: John Wiley &amp; Sons.
+</div>
 <div id="ref-TL" class="csl-entry">
 ———. 2016. <span>“Survey: Analysis of Complex Survey Samples.”</span>
 </div>
 <div id="ref-United_Nations_2005" class="csl-entry">
 Nations, United. 2005. <em>Household Surveys in Developing and Transition Countries</em>. New York, NY: United Nations.
+</div>
+<div id="ref-United_Nations_2008" class="csl-entry">
+———. 2008. <em>Designing Household Survey Samples: Practical Guidelines</em>. Studies in Methods / United Nations, Department of Economic and Social Affairs, Statistics Division Series f. New York, NY: United Nations.
+</div>
+<div id="ref-Park_2003" class="csl-entry">
+Park, Inho, Marianne Winglee, Jay Clark, Keith Rust, Andrea Sedlak, and David Morganstein. 2003. <span>“Design Effects and Survey Planning.”</span> <em>Proceedings of the 2003 Joint Statistical Meetings - Section on Survey Research Methods</em>, 8.
 </div>
 <div id="ref-R_2024" class="csl-entry">
 R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
@@ -266,7 +279,7 @@ Westat. 2007. <em>WesVar 4.3. Users Guide.</em> <a href="http://users.nber.org/~
           </div>
         </div>
       </div>
-<a href="the-design-effect.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="approaches-to-variance-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="descriptive-parameters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

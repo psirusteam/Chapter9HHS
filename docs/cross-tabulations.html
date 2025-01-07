@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2025-01-06" />
+<meta name="date" content="2025-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -115,8 +115,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
 <li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="the-design-effect.html"><a href="the-design-effect.html"><i class="fa fa-check"></i><b>2.3</b> The Design Effect</a></li>
-<li class="chapter" data-level="2.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.4</b> Using Software to Generate Valid Inferences</a></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -126,7 +125,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>3.4</b> Percentiles and inequality measures</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
+<li class="chapter" data-level="4" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between categorical variables</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
 <li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
@@ -198,7 +197,7 @@ div.csl-indent {
 <div id="cross-tabulations" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Cross-tabulations<a href="cross-tabulations.html#cross-tabulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Cross-tabulations, also known as contingency tables, are a fundamental tool in survey analysis. They organize data into a table format, showing the frequency distribution of two or more categorical variables. By summarizing relationships between these variables, cross-tabulations help researchers identify patterns and associations that might otherwise go unnoticed. This type of analysis is widely used in research and policy decision-making, as it provides a straightforward way to explore how different variables interact. For example, a contingency table might examine how employment status varies by educational attainment, or how access to the internet differs between urban and rural households.</p>
-<p>Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as <em>contingency tables</em>. Here a table is a two-dimensional array with rows indexed by <span class="math inline">\(r=1, \ldots, R\)</span> and columns indexed by <span class="math inline">\(c=1, \ldots, C\)</span>. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.</p>
+<p>Procedures for assessing independence can be used to determine whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as <em>contingency tables</em>. Here a table is a two-dimensional array with rows indexed by <span class="math inline">\(r=1, \ldots, R\)</span> and columns indexed by <span class="math inline">\(c=1, \ldots, C\)</span>. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.</p>
 <p>A contingency table aims to succinctly represent the association between different categorical variables. It is a grid with rows and columns that represent the categories of two variables. Each cell in the table contains the frequency or proportion of observations that fall into the corresponding combination of categories. The rows might represent categories of a domain defining variable such as “education level” (primary, secondary, tertiary). The columns might represent categories of another variable, such as “employment status” (employed, unemployed, not in the labor force). The table can also include <strong>marginal totals</strong>, which summarize the data for each row or column, and a <strong>grand total</strong>, representing the overall population.</p>
 <p>In household surveys, frequencies in contingency tables are calculated using survey weights. These weights ensure that the estimates accurately reflect the entire population, accounting for the sampling design. For each cell, the weighted frequency represents the estimated number of individuals in the population with the corresponding combination of categories. For instance: we consider the case of a two-way contingency table. For most household sample surveys, a typical tabular output comprises the weighted frequencies that estimate the population frequencies, as follows:</p>
 <table>

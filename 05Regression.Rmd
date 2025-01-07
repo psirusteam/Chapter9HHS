@@ -1,10 +1,6 @@
 # Regression: modelling survey data
 
-Regression modeling is a powerful tool for analyzing relationships between variables in survey data. It allows researchers to estimate how one or more independent variables (predictors) influence a dependent variable (outcome). For instance, consider a researcher who is modeling household income (dependent variable) as a function of education level and employment status (independent variables) using household survey data. Such data are often obtained from surveys that adopted complex sampling designs that include stratification, clustering, and unequal probabilities of selection. These features must be accounted for to ensure valid inferences when fitting regression models, since ignoring the sampling design can lead to:
-
-- **Biased Estimates**: Unequal probabilities of selection mean some household/individuals represent more of the population than others. Without weights, the model may disproportionately reflect oversampled groups.
-
-- **Underestimated Standard Errors**: Clustering and stratification affect the variability of estimates. Ignoring these features can result in overly narrow confidence intervals and inflated significance levels.
+Regression modeling is a powerful tool for analyzing relationships between variables in survey data. It allows researchers to estimate how one or more independent variables (predictors) influence a dependent variable (outcome). For instance, consider a researcher who is modeling household income (dependent variable) as a function of education level and employment status (independent variables) using household survey data. Such data are often obtained from surveys that adopted complex sampling designs that include stratification, clustering, and unequal probabilities of selection. 
 
 In this section, we explore how survey weights and sampling design features are incorporated into regression model specification and fitting. We also discuss a parsimonious solution to the challenges posed by weighting. Modeling survey data requires careful consideration of the sampling design to ensure valid inferences. Incorporating survey weights and adjusting for clustering and stratification allows researchers to produce accurate, representative, and reliable results. 
 
@@ -37,12 +33,6 @@ On the other hand, **combined inference** seeks to integrate the information fro
 A regression model seeks to explain how changes in one or more independent (explanatory) variables affect a dependent (response) variable. In its simplest form, linear regression examines the relationship between a single independent variable and a dependent variable. The dependent variable is the outcome of interest, while the independent variable represents factors that may influence it. The model also includes an error term, which captures unexplained variability in the data. 
 
 ### Basic Definitions
-
-As noted by @Heeringa_West_Berglund_2017, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were @kish1974inference, who highlighted the challenges posed by complex sampling designs. Later, @fuller1975regression developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.
-
-As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, @shah1977inference discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.
-
-Similarly, @binder1983variances obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. @skinner1989analysis studied the properties of variance estimators for regression coefficients under complex sample designs. Later, @fuller2002regression provided a summary of estimation methods for regression models containing information related to complex samples. Finally, @pfeffermann2011modelling discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the “*q-weighted*” method, which is recommended in this document.
 
 A simple linear regression model is defined as $y = \beta_{0} + \beta_{1}x + \varepsilon$, where $y$ represents the dependent variable, $x$ is the independent variable, and $\beta_{0}$ and $\beta_{1}$ are the model parameters. The variable $\varepsilon$ is known as the *random error* of the model.
 
@@ -79,6 +69,12 @@ Once the linear regression model and its assumptions are defined, it can be dedu
 $$
 E\left( y \mid x \right) = \hat{\beta}_{0} + \hat{\beta_{1}} x_{1} + \hat{\beta}_{2} x_{2} + \cdots + \hat{\beta}_{p} x_{p}
 $$
+
+As noted by @Heeringa_West_Berglund_2017, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were @kish1974inference, who highlighted the challenges posed by complex sampling designs. Later, @fuller1975regression developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.
+
+As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, @shah1977inference discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.
+
+Similarly, @binder1983variances obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. @skinner1989analysis studied the properties of variance estimators for regression coefficients under complex sample designs. Later, @fuller2002regression provided a summary of estimation methods for regression models containing information related to complex samples. Finally, @pfeffermann2011modelling discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the “*q-weighted*” method, which is recommended in this document.
 
 ### Estimation of Parameters
 

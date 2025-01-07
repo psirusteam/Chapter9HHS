@@ -2,7 +2,7 @@
 
 When analysing household survey data, ignoring the sampling design undermines the representativeness, accuracy, and credibility of survey-based findings, which can lead to incorrect decisions. This is why accounting for the sampling design is essential when analyzing household survey data to ensure valid and unbiased estimates. As seen in the previous chapters, regular household surveys have two major characteristics:
 
-* They use *complex sampling designs* (e.g., stratification, clustering, and unequal probabilities of selection) to represent the population efficiently. Ignoring the design can lead to biased population-level inferences.
+* They use *complex sampling designs* (e.g., stratification, clustering, and unequal probabilities of selection) to represent the population efficiently.
 
 * They define *sampling weights* for each sampling unit (primary, and remaining ones) to properly represent the population.
 
@@ -61,7 +61,7 @@ $$
 Where $d_{kj} = 1 / \pi_{kj}$ and $\pi_{kj} = Pr(k,j \in s), \, \forall \, k,j \in U$. This result assumes that the sampling design $p(s)$ is such that $\pi_{kj} > 0 \,\, \forall \, k,j \in U$. Considering the sampling design is crucial for the computation of variance. For example, consider a population of size $N = 6$, and a sample of size $n = 3$. Let's assume that the following sample values were observed: $(y_1 = 10, y_2 = 14, y_3 = 18)$. If the sampling design is simple random sampling without replacement, the above formula becomes:
 
 $$
-\widehat {V_p} \left( \widehat{Y}_{HT} \right) = \frac{N^2}{n} \left( 1 - \frac{n}{N} \right) S^2_{y_s}
+\widehat {V}_{SRS} \left( \widehat{Y}_{HT} \right) = \frac{N^2}{n} \left( 1 - \frac{n}{N} \right) S^2_{y_s}
 $$
 
 Where $S^2_{y_s}$ is the sample variance. After a simple algebraic manipulation, the formula becomes $\widehat {V_p} \left( \widehat{Y}_{HT} \right) = \frac{36}{3} \cdot \left(1 - \frac{3}{6} \right) 16 = 96$. A naive analyst might incorrectly compute the variance using the following formula, which ignores the sampling design: $\frac{N^2}{n}S^2_{y_s} = 192$.
@@ -92,7 +92,7 @@ With the help of modern software, all of these approaches can be implemented eff
 
 Many population parameters can be written/obtained as solutions of *population estimating equations*. Variance estimation for these sample-based methods follows a consistent framework. Although the details can be technical, the key idea is that the same principles used to estimate totals can be applied to estimate variances. This generality makes the method simple and versatile, allowing it to be well implemented in widely used software like the `R survey` package and the `Stata svy` functions. These tools automate much of the process, making it accessible for users to estimate both population parameters and their associated uncertainties.
 
-A generic population *estimating equation* is given by $\sum_{i \in U} z_i (\theta) = 0 $, where $z_i(\bullet)$ is an *estimating function* evaluated for unit $i$ and $\theta$ is a population parameter of interest. These equations provide a general way to define and calculate many population parameters, such as totals, means, and ratios. The concept is straightforward: population parameters can be defined as solutions to specific equations that involve all the units in the population. This approach is flexible and can be adapted to calculate many different types of parameters.
+A generic population *estimating equation* is given by $\sum_{i \in U} z_i (\theta) = 0$, where $z_i(\cdot)$ is an *estimating function* evaluated for unit $i$ and $\theta$ is a population parameter of interest. These equations provide a general way to define and calculate many population parameters, such as totals, means, and ratios. The concept is straightforward: population parameters can be defined as solutions to specific equations that involve all the units in the population. This approach is flexible and can be adapted to calculate many different types of parameters.
 
 * For the case of the population total, take $z_i(\theta) = y_i - \theta / N$. The corresponding population estimation equation is given by $\sum _{i \in U} (y_i - \theta / N) = 0$. Solving for $\theta$ gives the population total $\theta_U = \sum _{i \in U} y_i \ = \ Y$. 
 
@@ -124,14 +124,14 @@ The method considers only the variation between statistics computed at the level
 
 * The survey dataset contains all the information regarding PSUs, strata and weights.
 
-Consider a multi-stage sampling design, in which $m_{h}$ PSUs are selected in stratum $h,$ $h=1,\ldots ,H$. Let $\pi_{hi}$ be the inclusion probability of PSU $i$ in stratum $h$, and by $\widehat{Y}_{hi}$ an unbiased estimator of the total $Y_{hi}$ of the survey variable $y$ for the $i$-th PSU in stratum $h$. Hence an unbiased estimator of the population total $Y = \sum_{h=1}^{H} \sum_{i \in U_{1h}} Y_{hi}$ is given by $\widehat{Y}_{UC} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} d_{hi} \widehat{Y}_{hi}$. The *Ultimate Cluster* estimator of the corresponding variance is given by:
+Consider a multi-stage sampling design, in which $m_{h}$ PSUs are selected in stratum $h$, with $h=1, \ldots ,H$. Let $\widehat{Y}_{hi} = \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} d_{hik} \ y_{hik}$ denote an estimate of the population total $Y_h$ in stratum $h$ based on the single PSU $i$ sampled in this stratum. Then an unbiased estimator of the population total $Y = \sum_{h=1}^{H} \sum_{i \in U_{1h}} Y_{hi}$ is given by $\widehat{Y}_{UC} = \sum_{h=1}^{H} \widehat{Y}_{h}$ where $\widehat{Y}_{h} = \frac{1}{m_{h}} \sum_{i \in s_{1h}} \widehat{Y}_{hi}$. The *Ultimate Cluster* estimator of the corresponding variance is given by:
 
 $$
-\widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{m_{h}}
-{m_{h}-1} \sum_{i \in s_{1h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{m_{h}} \right) ^{2}
+\widehat{V}_{UC} \left( \widehat{Y}\right) = \sum_{h=1}^{H} \frac{m_{h}}
+{m_{h}-1} \sum_{i \in s_{1h}} \left( \widehat{Y}_{hi} - \widehat{Y}_{h} \right) ^{2}
 $$
 
-where $U_{1h}$ and $s_{1h}$ are the population and sample sets of PSUs in stratum $h$, $d_{hi} = 1 / \pi_{hi}$, $\widehat{Y}_{h} = \sum_{i \in s_{1h}} d_{hi} \widehat{Y}_{hi}$ for $h=1,\ldots ,H$. (See for example, [@Shah1993], p. 4).
+where $U_{1h}$ and $s_{1h}$ are the population and sample sets of PSUs in stratum $h$, for $h=1,\ldots ,H$. (See for example, [@Shah1993], p. 4).
 
 Although the method was originally proposed for estimation of variances of estimated totals, it can also be applied in combination with *Taylor Linearization* and *Estimating Equations* approaches to obtain variance estimates for estimators of many other population quantities that can be obtained as solutions to sample estimating equations. This makes the method versatile and useful for a wide range of applications in survey analysis.
 
@@ -141,13 +141,13 @@ The *Ultimate Cluster* method is particularly attractive because of its simplici
 
 ### Bootstrap
 
-Replication methods for variance estimation are based on the idea of re-sampling from the available sample, computing the estimates from each replica, and then using the variability between the estimates across replicas to estimate the variance. They are particularly useful when the user does not have access to information on stratum and/or PSUs identifiers in the database, since the *Ultimate Cluster* method cannot be used in such cases. 
+Replication methods for variance estimation are based on the idea of re-sampling from the available sample, computing the estimates from each replica, and then using the variability between the estimates across replicas to estimate the variance. They are particularly useful when the user does not have access to information on stratum and/or PSUs identifiers in the database, and the *Ultimate Cluster* method cannot be used in such cases. 
 
 The *bootstrap* method comprises a powerful and flexible approach for estimating variances in surveys and many other contexts. Originally proposed by @Efron1979, the version commonly used for household surveys is called the Rao-Wu-Yue Rescaling Bootstrap [@Rao1992]. This method is well-suited for stratified multi-stage sampling designs and has become widely used for variance estimation with complex survey data.
 
-Conceptually, the *bootstrap* method relies on creating many new "replicated" datasets, which are slightly different versions of the original sample. These replicated datasets mimic the process of repeatedly drawing samples from the population. By analyzing the variation in results across these datasets, we can estimate how much uncertainty there is in our estimates from the original sample. In practice, the method can be applied by creating multiple columns of weights in the original sample data set, with weights modified to mimic the process of re-sampling from the available sample. The method is implemented by the steps that follow.
+Conceptually, the *bootstrap* method relies on creating many new "replicated" datasets, which are slightly different versions of the original sample. These replicated datasets mimic the process of repeatedly drawing samples from the population. By analyzing the variation in results across these datasets, we can estimate how much uncertainty there is in our estimates from the original sample. In practice, the method can be applied by creating multiple columns of weights in the original sample data set, with weights modified to mimic the process of re-sampling from the available sample. The creation of these multiple columns of weights should be done by the National Statistical Office following the steps outlined below.
 
-1. First, we create a new sample for each stratum by randomly selecting primary sampling units (PSUs) from the original sample, allowing PSUs to be selected more than once (with replacement). Each selected PSU is included in the new dataset along with all its associated data and lower level units. The size of this random sample with replacement is of $m_h - 1$ PSUs in each of the $H$ design strata. 
+1. First, create a new sample for each stratum by randomly selecting primary sampling units (PSUs) from the original sample, allowing PSUs to be selected more than once (with replacement). Each selected PSU is included in the new dataset along with all its associated data and lower level units. The size of this random sample with replacement is of $m_h - 1$ PSUs in each of the $H$ design strata. 
 
 2. This process of creating new samples is repeated many times, usually hundreds or thousands, to produce multiple "replicated" datasets. That is, repeat Step 1 $R$ times, and denote by $m_{hi}(r)$ the number of times that the PSU $i$ of stratum $h$ was selected for the sample in replicate $r$.
 
@@ -165,30 +165,36 @@ where $\tilde \theta = \frac 1 R \sum_{r=1}^R \widehat \theta_{(r)}$ is the aver
 
 Whenever the original sampling weights $w_{hik}$ receive non-response adjustments or are calibrated, the corresponding non-response adjustments and/or calibration of the basic weights must be repeated for each replica, so that the variance estimates adequately reflect the effects of the calibration and non-response adjustments on the uncertainty of the point estimates. This ensures that the variance estimates accurately reflect the additional uncertainty introduced by these adjustments.
 
-The bootstrap method has several advantages. It works well for complex survey designs and can handle a wide range of parameters, including those that are difficult to estimate using traditional methods, such as medians or other nonlinear statistics. It also provides a way to estimate variances when other methods are not available or practical to use. The method is particularly helpful for survey users who may not have access to specialized software for calculating variances.
+The bootstrap method has several advantages. It works well for complex survey designs and can handle a wide range of parameters, including those that are difficult to estimate using traditional methods, such as medians or other nonlinear statistics. It also provides a way to estimate variances when other methods are not available or practical to use. The method is particularly helpful for users analyzing a survey that does not provide the corresponding design variables (strata and PSUs) but does provide a set of replicated weights. Notice that, given the simplicity of the method, users should not feel restricted to using specialized software for calculating variances under this approach.
 
 Many modern statistical software tools, including the `survey` package in R, support bootstrap replication and variance estimation, making it accessible to a wide range of users. While the bootstrap method is computationally intensive, requiring many replicas to be created and processed, it is highly effective. It provides robust variance estimates even for complex parameters and remains one of the most flexible tools for analyzing survey data.
-
-## The Design Effect
-
-
-
 
 
 ## Using Software to Generate Valid Inferences
 
-The design and analysis of household surveys must include extensive use of existing computational tools. This section reviews in detail the computational approaches of the statistical software used for each of the statistical processes required to publish official figures with high levels of accuracy and reliability. Specifically, for the following processes:
-
-* Sample selection according to the defined sampling design;
-* Calculation of sampling weights for each individual and household;
-* Modeling of nonresponse and statistical imputation;
-* Calibration of sampling weights and adjustments for nonresponse;
-* Estimation of standard errors for each indicator of interest to be included in the production tables;
-* Analysis of multivariate relationships between survey variables.
+The design and analysis of household surveys must make extensive use of existing computational tools. This section reviews some computational approaches within statistical software that are used for each of the statistical processes required to publish official figures with appropriate levels of accuracy and reliability. Key processes that analysts should focus on include: modeling nonresponse and statistical imputation, estimating standard errors for each indicator of interest to be included in the production tables, and analyzing multivariate relationships between survey variables.
 
 @United_Nations_2005[Section 7.8] highlights the importance of including the structure of complex survey designs in the inference process for estimating official statistics from household surveys. It warns, with an empirical example, that failing to do so may result in biased estimates and underestimated sampling errors. Below are some key features that statistical software packages incorporate when managing data from complex survey designs, such as those found in household surveys. A more detailed review, including syntax and computational code, can be found in @Heeringa_West_Berglund_2017[Appendix A].
 
 In general, these computational tools are designed to enhance the efficiency of variance approximation methods for complex samples, as well as replication techniques to estimate design-based variances [@Westat_2007]. Some of these software packages are free to use, although most are licensed products requiring paid licenses. These products, in addition to providing descriptive statistics (such as means, totals, proportions, percentiles, and ratios), allow for fitting linear and logistic regression models. All resulting statistics are based on the survey design.
+
+Software packages designed for survey analysis often report the design effect ($DEFF$) when processing survey data. This estimate provides a critical measure of how the complexities of the sampling design—such as clustering, stratification, and unequal weights—affect the precision of estimates compared to a simple random sample (SRS) of the same size. By including DEFF in their output, these tools enable researchers to assess the efficiency of their sampling designs and interpret the variability in their data more accurately. 
+
+As defined by @Kish_1965[p. 258], the $DEFF$ is the ratio between the actual variance of a complex sample and the variance of a simple random sample (SRS) of the same size. This measure is estimated as:  
+
+$$
+DEFF = \frac{\widehat {V}_p \left( \hat{\theta} \right)}{\widehat {V}_{SRS}(\hat{\theta})}
+$$
+
+where $\widehat {V}_p \left( \hat{\theta} \right)$ represents the estimated variance of an estimator $\hat{\theta}$ under a complex sampling design $p(s)$, and $\widehat {V}_{SRS}(\hat{\theta})$ denotes the estimated variance of the same estimator under a simple random sampling design. The design effect measures the clustering effect introduced by using a complex sampling design compared to SRS for inferring a finite population parameter $\theta$. According to @United_Nations_2008[p. 49], the design effect can be interpreted in three ways: as the factor by which variance increases under a complex design compared to SRS, as an indicator of how much less efficient the complex design is in terms of precision, or as a reflection of how much larger the sample size would need to be under the complex design to match the variance achieved by SRS. @Park_2003 proposes that the design effect of a survey can be decomposed into three multiplicative components: 
+
+1. The effect due to unequal weighting: this component tends to slightly increase variance if sampling weights are unequal. Uniform weights avoid such increases, making self-weighting designs desirable for household surveys. 
+2. The effect due to stratification: this component reduces variance when stratification is optimal, though the reduction is usually modest.
+3. The effect due to multi-stage sampling: this component typically increases the variance of survey estimates because units within the same cluster tend to be more similar to each other than to units in other clusters.  
+
+In practice, $DEFF$ is especially useful when evaluating the quality of survey estimates and planning future surveys. For instance, a large $DEFF$ indicates that the complex design introduces significant clustering effects or inefficiencies, which can inflate variances and reduce the precision of key estimates. Conversely, a $DEFF$ close to unity suggests that the design features have minimal impact on variance. Understanding these effects allows researchers to decide whether adjustments to weighting, stratification, or sampling stages are needed in future data collection efforts. 
+
+Statistical software packages such as Stata, R, SAS, and SPSS automatically calculate the design effect within their survey analysis modules. These computations require users to input specific details about the survey design, including sampling weights, strata, and cluster identifiers. Next, we provide a non-comprehensive summary of features and capabilities available in major statistical software:.
 
 *R*
 

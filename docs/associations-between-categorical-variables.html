@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Associations between categorical variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
+  <title>4 Associations between categorical variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA</title>
   <meta name="description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Associations between categorical variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta property="og:title" content="4 Associations between categorical variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Chapter 9 of UN Household Survey Handbook" />
   <meta name="github-repo" content="psirusteam/Chapter9HHS" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Associations between categorical variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
+  <meta name="twitter:title" content="4 Associations between categorical variables | CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA" />
   
   <meta name="twitter:description" content="Chapter 9 of UN Household Survey Handbook" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2024-11-08" />
+<meta name="date" content="2025-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="nso-practical-example.html"/>
-<link rel="next" href="cross-tabulations-and-contingency-tables.html"/>
+<link rel="next" href="motivation-and-concepts.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -100,82 +100,78 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="the-golden-pair-sample-design-and-estimator.html"><a href="the-golden-pair-sample-design-and-estimator.html"><i class="fa fa-check"></i><b>1</b> The golden pair: sample design and estimator</a>
+<li class="chapter" data-level="1" data-path="planning-and-preparation-for-analysis.html"><a href="planning-and-preparation-for-analysis.html"><i class="fa fa-check"></i><b>1</b> Planning and Preparation for Analysis</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>1.1</b> Parameters and estimators</a></li>
-<li class="chapter" data-level="1.2" data-path="uncertainty-in-household-surveys.html"><a href="uncertainty-in-household-surveys.html"><i class="fa fa-check"></i><b>1.2</b> Uncertainty in household surveys</a></li>
-<li class="chapter" data-level="1.3" data-path="ultimate-cluster-method.html"><a href="ultimate-cluster-method.html"><i class="fa fa-check"></i><b>1.3</b> Ultimate Cluster Method</a></li>
-<li class="chapter" data-level="1.4" data-path="bootstrap-method.html"><a href="bootstrap-method.html"><i class="fa fa-check"></i><b>1.4</b> Bootstrap Method</a></li>
-<li class="chapter" data-level="1.5" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>1.5</b> Using software to generate valid inferences</a></li>
+<li class="chapter" data-level="1.1" data-path="primary-data-producers.html"><a href="primary-data-producers.html"><i class="fa fa-check"></i><b>1.1</b> Primary data producers</a></li>
+<li class="chapter" data-level="1.2" data-path="secondary-data-users.html"><a href="secondary-data-users.html"><i class="fa fa-check"></i><b>1.2</b> Secondary Data Users</a></li>
+<li class="chapter" data-level="1.3" data-path="quality-control-for-secondary-users.html"><a href="quality-control-for-secondary-users.html"><i class="fa fa-check"></i><b>1.3</b> Quality Control for Secondary Users</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>2</b> Descriptive parameters</a>
+<li class="chapter" data-level="2" data-path="accounting-for-the-sampling-design.html"><a href="accounting-for-the-sampling-design.html"><i class="fa fa-check"></i><b>2</b> Accounting for the Sampling Design</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="frequencies.html"><a href="frequencies.html"><i class="fa fa-check"></i><b>2.1</b> Frequencies</a>
+<li class="chapter" data-level="2.1" data-path="parameters-and-estimators.html"><a href="parameters-and-estimators.html"><i class="fa fa-check"></i><b>2.1</b> Parameters and Estimators</a></li>
+<li class="chapter" data-level="2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html"><i class="fa fa-check"></i><b>2.2</b> Approaches to Variance Estimation</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="frequencies.html"><a href="frequencies.html#point-estimation"><i class="fa fa-check"></i><b>2.1.1</b> Point Estimation</a></li>
-<li class="chapter" data-level="2.1.2" data-path="frequencies.html"><a href="frequencies.html#size-estimates"><i class="fa fa-check"></i><b>2.1.2</b> Size Estimates</a></li>
+<li class="chapter" data-level="2.2.1" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#estimating-equations"><i class="fa fa-check"></i><b>2.2.1</b> Estimating Equations</a></li>
+<li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
+<li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html"><i class="fa fa-check"></i><b>2.2</b> Totals, means, proportions, and ratios</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-totals"><i class="fa fa-check"></i><b>2.2.1</b> Estimating totals</a></li>
-<li class="chapter" data-level="2.2.2" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-averages"><i class="fa fa-check"></i><b>2.2.2</b> Estimating averages</a></li>
-<li class="chapter" data-level="2.2.3" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-proportions"><i class="fa fa-check"></i><b>2.2.3</b> Estimating proportions</a></li>
-<li class="chapter" data-level="2.2.4" data-path="totals-means-proportions-and-ratios.html"><a href="totals-means-proportions-and-ratios.html#estimating-ratios"><i class="fa fa-check"></i><b>2.2.4</b> Estimating ratios</a></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="variances-and-standard-deviations.html"><a href="variances-and-standard-deviations.html"><i class="fa fa-check"></i><b>2.3</b> Variances and standard deviations</a></li>
-<li class="chapter" data-level="2.4" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>2.4</b> Correlations</a></li>
-<li class="chapter" data-level="2.5" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>2.5</b> Percentiles and inequality measures</a>
+<li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html#estimating-the-gini-coefficient"><i class="fa fa-check"></i><b>2.5.1</b> Estimating the Gini coefficient</a></li>
+<li class="chapter" data-level="3.1" data-path="frequencies-and-proportions.html"><a href="frequencies-and-proportions.html"><i class="fa fa-check"></i><b>3.1</b> Frequencies and proportions</a></li>
+<li class="chapter" data-level="3.2" data-path="totals-means-and-ratios.html"><a href="totals-means-and-ratios.html"><i class="fa fa-check"></i><b>3.2</b> Totals, means and ratios</a></li>
+<li class="chapter" data-level="3.3" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>3.3</b> Correlations</a></li>
+<li class="chapter" data-level="3.4" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>3.4</b> Percentiles and inequality measures</a></li>
+<li class="chapter" data-level="3.5" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>2.6</b> NSO – Practical example</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>3</b> Associations between categorical variables</a>
+<li class="chapter" data-level="4" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between categorical variables</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="cross-tabulations-and-contingency-tables.html"><a href="cross-tabulations-and-contingency-tables.html"><i class="fa fa-check"></i><b>3.1</b> Cross-tabulations and contingency tables</a></li>
-<li class="chapter" data-level="3.2" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>3.2</b> Testing for independence</a></li>
-<li class="chapter" data-level="3.3" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>3.3</b> Tests for group comparisons</a>
+<li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
+<li class="chapter" data-level="4.3" data-path="testing-for-independence.html"><a href="testing-for-independence.html"><i class="fa fa-check"></i><b>4.3</b> Testing for independence</a></li>
+<li class="chapter" data-level="4.4" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html"><i class="fa fa-check"></i><b>4.4</b> Tests for group comparisons</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>3.3.1</b> Hypothesis Test for the Difference of Means</a></li>
-<li class="chapter" data-level="3.3.2" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#contrasts"><i class="fa fa-check"></i><b>3.3.2</b> Contrasts</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tests-for-group-comparisons.html"><a href="tests-for-group-comparisons.html#hypothesis-test-for-the-difference-of-means"><i class="fa fa-check"></i><b>4.4.1</b> Hypothesis Test for the Difference of Means</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>3.4</b> NSO – Practical example</a></li>
+<li class="chapter" data-level="4.5" data-path="nso-practical-example-1.html"><a href="nso-practical-example-1.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>4</b> Regression: modelling survey data</a>
+<li class="chapter" data-level="5" data-path="regression-modelling-survey-data.html"><a href="regression-modelling-survey-data.html"><i class="fa fa-check"></i><b>5</b> Regression: modelling survey data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="to-weight-or-not-to-weight.html"><a href="to-weight-or-not-to-weight.html"><i class="fa fa-check"></i><b>4.1</b> To weight or not to weight?</a></li>
-<li class="chapter" data-level="4.2" data-path="some-inferential-approaches-to-modelling-data.html"><a href="some-inferential-approaches-to-modelling-data.html"><i class="fa fa-check"></i><b>4.2</b> Some inferential approaches to modelling data</a></li>
-<li class="chapter" data-level="4.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
+<li class="chapter" data-level="5.1" data-path="to-weight-or-not-to-weight.html"><a href="to-weight-or-not-to-weight.html"><i class="fa fa-check"></i><b>5.1</b> To weight or not to weight?</a></li>
+<li class="chapter" data-level="5.2" data-path="some-inferential-approaches-to-modelling-data.html"><a href="some-inferential-approaches-to-modelling-data.html"><i class="fa fa-check"></i><b>5.2</b> Some inferential approaches to modelling data</a></li>
+<li class="chapter" data-level="5.3" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>5.3</b> Linear models</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>4.3.1</b> Basic Definitions</a></li>
-<li class="chapter" data-level="4.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters-in-a-regression-model-with-complex-samples"><i class="fa fa-check"></i><b>4.3.2</b> Estimation of Parameters in a Regression Model with Complex Samples</a></li>
-<li class="chapter" data-level="4.3.3" data-path="linear-models.html"><a href="linear-models.html#the-pfeffermann-weighting-approach"><i class="fa fa-check"></i><b>4.3.3</b> The Pfeffermann Weighting Approach</a></li>
-<li class="chapter" data-level="4.3.4" data-path="linear-models.html"><a href="linear-models.html#model-diagnostics"><i class="fa fa-check"></i><b>4.3.4</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="5.3.1" data-path="linear-models.html"><a href="linear-models.html#basic-definitions"><i class="fa fa-check"></i><b>5.3.1</b> Basic Definitions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="linear-models.html"><a href="linear-models.html#estimation-of-parameters"><i class="fa fa-check"></i><b>5.3.2</b> Estimation of Parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="logistic-models.html"><a href="logistic-models.html"><i class="fa fa-check"></i><b>4.4</b> Logistic models</a>
+<li class="chapter" data-level="5.4" data-path="working-with-weights.html"><a href="working-with-weights.html"><i class="fa fa-check"></i><b>5.4</b> Working with weights</a></li>
+<li class="chapter" data-level="5.5" data-path="model-diagnostics.html"><a href="model-diagnostics.html"><i class="fa fa-check"></i><b>5.5</b> Model Diagnostics</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="logistic-models.html"><a href="logistic-models.html#logistic-regression-model-for-proportions"><i class="fa fa-check"></i><b>4.4.1</b> Logistic Regression Model for Proportions</a></li>
+<li class="chapter" data-level="5.5.1" data-path="model-diagnostics.html"><a href="model-diagnostics.html#coefficient-of-determination"><i class="fa fa-check"></i><b>5.5.1</b> Coefficient of determination</a></li>
+<li class="chapter" data-level="5.5.2" data-path="model-diagnostics.html"><a href="model-diagnostics.html#standardized-residuals"><i class="fa fa-check"></i><b>5.5.2</b> Standardized Residuals</a></li>
+<li class="chapter" data-level="5.5.3" data-path="model-diagnostics.html"><a href="model-diagnostics.html#influential-observations"><i class="fa fa-check"></i><b>5.5.3</b> Influential Observations</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>4.5</b> NSO – Practical example</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>5</b> Data visualization</a>
+<li class="chapter" data-level="5.6" data-path="inference-on-model-parameters.html"><a href="inference-on-model-parameters.html"><i class="fa fa-check"></i><b>5.6</b> Inference on Model Parameters</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="graphs-and-sampling-weights.html"><a href="graphs-and-sampling-weights.html"><i class="fa fa-check"></i><b>5.1</b> Graphs and sampling weights</a></li>
-<li class="chapter" data-level="5.2" data-path="graphs-for-categorical-data.html"><a href="graphs-for-categorical-data.html"><i class="fa fa-check"></i><b>5.2</b> Graphs for categorical data</a></li>
-<li class="chapter" data-level="5.3" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>5.3</b> Histograms</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="histograms.html"><a href="histograms.html#graphical-analysis-with-survey-tools"><i class="fa fa-check"></i><b>5.3.1</b> Graphical Analysis with Survey Tools</a></li>
+<li class="chapter" data-level="5.6.1" data-path="inference-on-model-parameters.html"><a href="inference-on-model-parameters.html#estimation-and-prediction"><i class="fa fa-check"></i><b>5.6.1</b> Estimation and Prediction</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="box-plots.html"><a href="box-plots.html"><i class="fa fa-check"></i><b>5.4</b> Box Plots</a></li>
-<li class="chapter" data-level="5.5" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>5.5</b> Scatter Plots</a></li>
-<li class="chapter" data-level="5.6" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5.6</b> Maps</a></li>
-<li class="chapter" data-level="5.7" data-path="nso-practical-example-3.html"><a href="nso-practical-example-3.html"><i class="fa fa-check"></i><b>5.7</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> Tables</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="presentation-tables.html"><a href="presentation-tables.html"><i class="fa fa-check"></i><b>6.1</b> Presentation tables</a></li>
-<li class="chapter" data-level="6.2" data-path="example-of-presentation-table-and-corresponding-text---include-in-a-box..html"><a href="example-of-presentation-table-and-corresponding-text---include-in-a-box..html"><i class="fa fa-check"></i><b>6.2</b> Example of presentation table and corresponding text - include in a box.</a></li>
-<li class="chapter" data-level="6.3" data-path="reference-tables.html"><a href="reference-tables.html"><i class="fa fa-check"></i><b>6.3</b> Reference tables</a></li>
+<li class="chapter" data-level="6.1" data-path="presentation-tables.html"><a href="presentation-tables.html"><i class="fa fa-check"></i><b>6.1</b> Presentation tables</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="presentation-tables.html"><a href="presentation-tables.html#example-of-presentation-table-and-corresponding-text---include-in-a-box."><i class="fa fa-check"></i><b>6.1.1</b> Example of presentation table and corresponding text - include in a box.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="reference-tables.html"><a href="reference-tables.html"><i class="fa fa-check"></i><b>6.2</b> Reference tables</a></li>
+<li class="chapter" data-level="6.3" data-path="dissemination-of-estimates.html"><a href="dissemination-of-estimates.html"><i class="fa fa-check"></i><b>6.3</b> Dissemination of Estimates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="bar-charts.html"><a href="bar-charts.html"><i class="fa fa-check"></i><b>7.1</b> Bar charts</a></li>
+<li class="chapter" data-level="7.2" data-path="histograms.html"><a href="histograms.html"><i class="fa fa-check"></i><b>7.2</b> Histograms</a></li>
+<li class="chapter" data-level="7.3" data-path="scatter-plots.html"><a href="scatter-plots.html"><i class="fa fa-check"></i><b>7.3</b> Scatter Plots</a></li>
+<li class="chapter" data-level="7.4" data-path="nso-practical-example-2.html"><a href="nso-practical-example-2.html"><i class="fa fa-check"></i><b>7.4</b> NSO – Practical example</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -198,20 +194,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="associations-between-categorical-variables" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Associations between categorical variables<a href="associations-between-categorical-variables.html#associations-between-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Household sample surveys often collect data on categorical variables, and assessing whether pairs of these variables are associated becomes of interest. This section will introduce the reader on the main methods currently used to describe and infer associations for pairs of categorical variables.</p>
-<p>We start by defining some notation. Let <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> denote two categorical variables, having <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span> classes respectively. In order to formulate hypothesis tests for the independence between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we need to consider a <em>superpopulation model</em>. We assume that the pairs <span class="math inline">\((x_{hik} , y_{hik})\)</span> correspond to observations from identically distributed random vectors <span class="math inline">\((X ; Y)\)</span>, that have joint distribution specified by</p>
-<p><span class="math display">\[
-P_{rc} = Pr \left( X = r \ ; \ Y = c \right) \quad \text{for } r=1,...,R \text{ and } c=1,...,C
-\]</span></p>
-<p>with <span class="math inline">\(\sum_r \sum_c P_{rc} = 1\)</span>.</p>
-<p>If a census could be carried out to collect data on <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> from every unit in the population, we could calculate the population counts of units having classes <span class="math inline">\((r,c)\)</span> for <span class="math inline">\((x,y)\)</span> given by:</p>
-<p><span class="math display">\[
-N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} = r \ ; \ y_{hik} = c \right)
-\]</span></p>
-<p>and the corresponding population proportions as <span class="math inline">\(p_{rc} = N_{rc} / N_{++}\)</span>, where <span class="math inline">\(N_{++} = \sum_r \sum_c N_{rc}\)</span> denotes the total number of units in the population.</p>
-<p>Under the superpopulation model, the population proportions <span class="math inline">\(p_{rc}\)</span> could be used to estimate (or approximate) the unknown probabilities <span class="math inline">\(P_{rc}\)</span>. Since in most instances we will have samples, not censuses, the population proportions <span class="math inline">\(p_{rc}\)</span> must be estimated using weighted estimators provided in the previous sections.</p>
+<div id="associations-between-categorical-variables" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Associations between categorical variables<a href="associations-between-categorical-variables.html#associations-between-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </div>
             </section>
 
@@ -219,7 +203,7 @@ N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} =
         </div>
       </div>
 <a href="nso-practical-example.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cross-tabulations-and-contingency-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="motivation-and-concepts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -250,7 +234,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/Chapter9HHS/03Associations.rmd",
+"link": "https://github.com/psirusteam/Chapter9HHS/04Associations.rmd",
 "text": "Edit"
 },
 "history": {

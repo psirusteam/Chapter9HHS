@@ -23,14 +23,14 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2025-01-06" />
+<meta name="date" content="2025-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="associations-between-variables.html"/>
+<link rel="prev" href="associations-between-categorical-variables.html"/>
 <link rel="next" href="cross-tabulations.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -115,8 +115,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
 <li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="the-design-effect.html"><a href="the-design-effect.html"><i class="fa fa-check"></i><b>2.3</b> The Design Effect</a></li>
-<li class="chapter" data-level="2.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.4</b> Using Software to Generate Valid Inferences</a></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -126,7 +125,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>3.4</b> Percentiles and inequality measures</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
+<li class="chapter" data-level="4" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between categorical variables</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
 <li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
@@ -203,12 +202,7 @@ div.csl-indent {
 <li><p><strong>Educational attainment</strong> might include categories such as “primary,” “secondary,” and “tertiary.”</p></li>
 </ul>
 <p>This section introduces methods to describe and infer associations between pairs of categorical variables. When analyzing associations between two categorical variables, we are interested in whether the distribution of one variable depends on the categories of the other. To assess the relationship between two categorical variables, analysts examine how often different combinations of categories occur. For example, they might count how many individuals fall into each pairing of employment status and educational attainment. These counts are then used to calculate proportions, which describe the relative frequency of each pairing within the population.</p>
-<p>Analyzing associations between categorical variables is useful in many contexts, such as:</p>
-<ul>
-<li><p><strong>Policy Development</strong>: Understanding the relationship between education and employment helps design effective workforce policies;</p></li>
-<li><p><strong>Program Evaluation</strong>: Assessing whether access to healthcare varies by income level can inform targeted interventions;</p></li>
-<li><p><strong>Social Research</strong>: Studying connections between demographic factors and access to services provides insights into societal trends.</p></li>
-</ul>
+<p>Analyzing associations between categorical variables is useful in various contexts, such as policy development, where understanding the relationship between education and employment helps design effective workforce policies; program evaluation, where assessing whether access to healthcare varies by income level can inform targeted interventions; and social research, where studying connections between demographic factors and access to services provides insights into societal trends.</p>
 <p>In practice, this analysis often starts with a <strong>contingency table</strong>, a grid that shows the counts or proportions of units in each combination of categories for the two variables. For example, one axis of the table might list employment statuses, while the other lists levels of educational attainment.</p>
 <p>We start by defining some notation. Let <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> denote two categorical variables, having <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span> classes respectively. In order to formulate hypothesis tests for the independence between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we need to consider a <em>superpopulation model</em>. We assume that the pairs <span class="math inline">\((x_{hik} , y_{hik})\)</span> correspond to observations from identically distributed random vectors <span class="math inline">\((X ; Y)\)</span>, that have joint distribution specified by</p>
 <p><span class="math display">\[
@@ -227,7 +221,7 @@ N_{rc} = \sum_{h=1}^H \sum_{i \in U_{1h}} \sum_{k \in U_{hi}} I \left( x_{hik} =
           </div>
         </div>
       </div>
-<a href="associations-between-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="associations-between-categorical-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="cross-tabulations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

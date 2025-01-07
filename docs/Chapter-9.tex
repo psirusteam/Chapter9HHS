@@ -87,7 +87,7 @@
 
 \title{CHAPTER 9: ANALYSIS OF HOUSEHOLD SURVEY DATA}
 \author{Andrés Gutiérrez\footnote{Comisión Económica para América Latina y el Caribe (CEPAL) - \href{mailto:andres.gutierrez@cepal.org}{\nolinkurl{andres.gutierrez@cepal.org}}}, Pedro Luis do Nascimento Silva\footnote{SCIENCE, \href{mailto:pedronsilva@gmail.com}{\nolinkurl{pedronsilva@gmail.com}}}}
-\date{2024-12-02}
+\date{2025-01-07}
 
 \begin{document}
 \maketitle
@@ -123,9 +123,13 @@ A key concern for every agency that produces statistical information is ensuring
   \textbf{Principle 4:} Statistical agencies are entitled to comment on erroneous interpretation and misuse of statistics.
 \end{itemize}
 
-This chapter emphasizes empowering users to analyze household survey data accurately. The advent of the computer revolution, coupled with greater access to computational tools, has led to increased use of statistical data, including household survey data. Sometimes this data is used for purely descriptive purposes. Other times, however, its use is made for analytical purposes, involving the testing of hypothesis or the construction of models, when the objective is to draw conclusions that are also applicable to populations other than the one from which the sample was extracted. When using standard statistical software for such analyses, results can be biased or misleading if the complex sampling design is not properly accounted for.
+The advent of the computer revolution, coupled with greater access to computational tools, has led to increased use of statistical data, including household survey data. Sometimes this data is used for mostly \emph{descriptive purposes}, such as estimating population means or obtaining estimates of population frequency distributions. Other times, however, its use is made for \emph{analytical purposes}, involving the testing of hypothesis or the construction of models, when the objective is to draw conclusions that are also applicable to populations other than the one from which the sample was extracted. When using standard statistical software for such analyses, results can be biased or misleading if the complex sampling design is not properly accounted for.
 
-The primary focus of this chapter is to present relevant models, methods, and software that enable users to incorporate complex designs into their analyses effectively. What makes household survey data special or challenging for those who intend to use them for analytical purposes is because they are collected through complex sampling methods that often involve:
+Household surveys also play a critical role in tracking progress toward global objectives, such as the \textbf{Sustainable Development Goals (SDGs)}. For this purpose, descriptive analyses often include a range of specialized indicators designed to monitor outcomes like access to education, health services, and economic opportunities. These indicators are derived from the survey data and are essential for policymakers and organizations aiming to achieve sustainable development targets.
+
+This chapter aims to empower users to analyze household survey data accurately and effectively. It does this by presenting relevant models, methods, and software that enables the data analyst to understand key steps in the data analysis process and to incorporate complex designs into their analyses. It relies on the fundamental concepts of the design-based paradigm for survey design and analysis.
+
+What makes household survey data special or challenging for those who intend to analyse them is because they are collected through complex sampling methods that often involve:
 
 \begin{itemize}
 \tightlist
@@ -141,23 +145,27 @@ The primary focus of this chapter is to present relevant models, methods, and so
 
 Standard data analysis methods and software ignore these features, leading to biased estimates of both the target parameters and their associated variances. Here we analyze the impact of simplifications made when using standard data analysis methods and software, and present the necessary adjustments to these methods in order to appropriately incorporate the aspects highlighted above into the analysis.
 
-Section 9.1 provides guidance on the preparation of a plan for the analysis of the household survey data. Such plans are important both to guide survey development and subsequently any secondary survey data analysis. In section 9.2, a short discussion on the fundamental principles of the design-based inference is presented, emphasizing that conclusions taken from probability sample surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). In section 9.3, we begin the journey with simple descriptive statistics: means, ratios, proportions and other typical descriptive parameters. Section 9.4 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. In this section we present standard tests to compare means and measure the degree of association between variables, and also consider the problem of correlation and association. Section 9.5 focuses on modelling survey outcomes. We first involve the reader in an discussion on the role of weighting when estimating regression coefficients. Then, we introduce some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.6 presents a summary of ideas and tools for survey data visualization showing the best practices for creating graphics and maps in a context where uncertainty measures of estimates are important.
+Different readers of the chapter may find some of its parts more useful than others. Here we describe contents of each of the sections, so that readers may direct their attention to the topics of relevance to them. Section 9.1 provides guidance on the preparation of a plan for the analysis of the household survey data. Such plans are important both to guide survey development and subsequently any secondary survey data analysis.
 
-The primary purpose of this chapter is to present and explain the fundamental concepts of the design-based paradigm in household surveys and demonstrate how to analyze complex household survey data. Throughout the chapter, national experiences are highlighted to illustrate how National Statistics Offices (NSOs) manage different stages of household survey data analysis. These practical examples provide a useful guide for applying the concepts and methods discussed in real-world contexts.
+Section 9.2 provides a short discussion on the fundamental principles of the design-based inference, emphasizing that conclusions taken from probability sample surveys should be based on a pair: the point estimate and it associated margin of error (or any related measure). Section 9.3 begins the journey with the key tools for descriptive analysis: means, ratios, proportions and other typical descriptive parameters.
 
-By the end of the chapter, readers will be equipped with the knowledge and tools needed to analyze household survey data effectively while accounting for the complexities of survey designs adopted in such surveys.
+Section 9.4 is devoted to more complex parameters that allow comparisons of the phenomenon of interest between subgroups for continuous and discrete variables. It also presents standard tests to compare means and measure the degree of correlation and association between variables.
 
-\hypertarget{planning-analysis}{%
-\chapter{Planning Analysis}\label{planning-analysis}}
+Section 9.5 focuses on modelling survey outcomes. It starts with a discussion on the role of weighting when estimating regression coefficients, followed by presentation of some proper approaches to estimate complex parameters in linear and logistic regression models. Finally, section 9.6 presents a summary of ideas and tools for survey data visualization, showing the best practices for creating graphics in a context where sampling imbalance and uncertainty are important.
 
-Planning the analysis stage of a survey is an essential part of the overall survey planning process. Following the \textbf{Generic Statistical Business Process Model (GSBPM)} (\url{https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51}), this step corresponds to the subprocess labeled as \emph{2.1 - Design Outputs}. At this stage, it is important to distinguish between two groups of analysts: primary data producers and secondary data users.
+Throughout the chapter, practical examples are provided to illustrate how National Statistics Offices (NSOs) conduct various types of household survey data analysis. These examples provide a useful guide for applying the concepts and methods discussed in real-world contexts. By the end of the chapter, readers will be equipped with the knowledge and tools needed to analyze household survey data effectively while accounting for the complexities of survey designs adopted in such surveys.
 
-Proper planning and understanding of the survey design are crucial for both primary data producers and secondary data users. For primary data producers, creating a comprehensive tabular plan ensures alignment with survey objectives. For secondary users, clear research questions and attention to survey metadata enable accurate and meaningful analyses.
+\hypertarget{planning-and-preparation-for-analysis}{%
+\chapter{Planning and Preparation for Analysis}\label{planning-and-preparation-for-analysis}}
+
+Planning the analysis stage of a survey is an essential part of the overall survey planning process. Following the \textbf{Generic Statistical Business Process Model (GSBPM)} (\url{https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51}), this step corresponds to the subprocess labeled as \emph{2.1 - Design Outputs}.
+
+At this stage, it is important to distinguish between two groups of users: primary data producers and secondary data users. Proper planning and understanding of the survey design are crucial for both. For primary data producers, creating a comprehensive tabular plan ensures alignment with survey objectives. For secondary users, clear research questions and attention to survey metadata enable accurate and meaningful analyses.
 
 \hypertarget{primary-data-producers}{%
 \section{Primary data producers}\label{primary-data-producers}}
 
-They are responsible for planning and executing the survey to collect the intended data. For them, planning the analysis typically involves preparing a \emph{tabular plan} --- a document specifying the core set of tables to be produced once the survey data becomes available. This plan helps to ensure that the survey results align with the stated needs and objectives of the survey (see chapter 2).
+They are responsible for planning and executing the survey to collect the intended data. For them, planning the analysis typically involves preparing a \emph{tabular plan} --- a document specifying the core set of tables to be produced once the survey data becomes available. This plan helps to ensure that the survey results align with the stated needs and objectives of the survey (see chapter 2). It also helps those designing the survey questionnaire(s) to ensure that all items needed are included, and possibly, help avoid adding items / questions that are not really needed for the intended analysis (see chapter 4).
 
 Preparing a \emph{tabular plan} generally requires defining three sets of specifications:
 
@@ -171,130 +179,151 @@ Preparing a \emph{tabular plan} generally requires defining three sets of specif
   \textbf{Response or Survey Variables}: These are the variables being analyzed to understand how they vary across the defined domains. For instance, continuous survey variables (like income) might be used to create columns in a table, summarizing means, medians, or other statistics. These variables are all others that we do not use as classification ones. Categorical survey variables (like employment status) will generate a column for each category where the corresponding cross-classified frequencies will appear, with one row for each of the classes of the domain defining variables.
 \end{enumerate}
 
-An important consideration when defining domains has to do with sample design, namely when defining strata and sample sizes. For most national household sample surveys, providing breakdown by province or state is required, and therefore stratification by provinces will be essential. Also, if precision requirements must be satisfied at the province level, then sample sizes that meet such requirements must be computed by province and then summed to obtain the country level sample size.
+As discussed throughout Chapter 7, an important consideration when defining domains is related to sample design, particularly when defining strata and sample sizes. For most national household sample surveys, providing breakdowns by province or state is required, and therefore stratification by province will be essential. Additionally, if precision requirements must be met at the provincial level, sample sizes that satisfy these requirements must be computed for each province and then summed to obtain the national sample size.
 
-For domains defined by characteristics that are unavailable from the sampling frame, say age groups, for the case of household surveys that use area sampling, sample size calculations must take into account what the required total sample size must be such that estimates for the rarest group meet precision specifications. As an example, suppose that estimates are required by age groups such as young adults (18 to 29), adults (30 to 49), ageing adults (50 to 59) and elderly (60 and over). Assuming that the population distribution by these age groups is such that the ageing adults is the rarest group with 12.5\% of the total population, and if a minimum sample size of 500 individuals in this group is required, then the total sample must be at least 500 / 0.125 = 4,000. That is, in order for the full sample to provide an expected sample of about 500 ageing adults we must sample at least 4,000 individuals for the survey.
+For instance, for domains defined by characteristics that are unavailable from the sampling frame, say age groups, for the case of household surveys that use area sampling, sample size calculations must take into account what the required total sample size must be such that estimates for the rarest group meet precision specifications. As an example, suppose that estimates are required by age groups such as young adults (18 to 29), adults (30 to 49), ageing adults (50 to 59) and elderly (60 and over). Assuming that the population distribution by these age groups is such that the ageing adults is the rarest group with 12.5\% of the total population, and if a minimum sample size of 500 individuals in this group is required, then the total sample must be at least 500 / 0.125 = 4,000. That is, in order for the full sample to provide an expected sample of about 500 ageing adults we must sample at least 4,000 individuals for the survey.
 
 \hypertarget{secondary-data-users}{%
 \section{Secondary Data Users}\label{secondary-data-users}}
 
-Secondary data users are all those who will access and analyze the survey data after it has been released, typically with access to only the public datasets and documentation provided by the data producers. Their first task is to define clear research questions and locate the relevant survey data and documentation (metadata). Good survey metadata must describe the sampling design and estimation methods used (including details about stratification, clustering, and survey weights), both for descriptive parameters and for the corresponding measures of precision.
+Secondary data users are all those who will access and analyze the survey data after it has been released, typically with access only to the public datasets and documentation provided by the data producers or curators. Their first task is to define clear research questions and locate the relevant survey data and documentation (metadata). Good survey metadata must describe the sampling design and estimation methods used (including details about stratification, clustering, and survey weights), both for descriptive parameters and for the corresponding measures of precision.
 
 For example, based on the aforementioned, a well-defined research question posed by some secondary data user, can be such as \textbf{``Do rural households face digital exclusion compared to urban households?''}. Notice that it directs the analysis towards estimating relevant parameters and precision measures.
 
 The question might involve testing whether the proportion of rural households with internet access is significantly lower than that of urban households. This clarity allows for more direct and accurate analyses. The null hypothesis behind this question is that \(H_0) P_{Rural} = P_{Urban}\), which we wish to test against the alternative \(H_A) P_{Rural} < P_{Urban}\), where \(P\) denotes the proportion of households having internet access in the domain identified.
 
-A related but different set of hypothesis could be \(H_0) C_{Rural} = C_{Urban}\) versus \(H_A) C_{Rural} > C_{Urban}\) where \(C\) denotes the average cost of connection for internet access in the specified domain. Listing the research questions in this way would enable the subsequent analysis to progress more directly towards the estimation of the relevant parameters from the survey data, and corresponding precision measures, both of which are required to compute test statistics that would provide the evidence required to answer them.
+A related but different set of hypothesis could be \(H_0) C_{Rural} = C_{Urban}\) versus \(H_A) C_{Rural} > C_{Urban}\) where \(C\) denotes the average cost of connection for broadband internet access in the specified domain. Listing the research questions in this way would enable the subsequent analysis to progress more directly towards the estimation of the relevant parameters from the survey data, and corresponding precision measures, both of which are required to compute test statistics that would provide the evidence required to answer them.
 
-But in order for such estimation to take place, the secondary data user will first have to find out details about how the sampling and estimation were done for the particular survey at hand. As we will discuss in subsequent sections of this chapter, it is essential to account for the survey weights when computing point estimates of both descriptive or model parameters, and to account for structural components of the sampling design and estimation process (stratification, clustering, unequal inclusion probabilities, non-response adjustment and calibration of survey weights, if any) when estimating variances or other measures of precision of the point estimates.
+In order for such estimation to take place, the secondary data user must first find out details about how the sampling was conducted so that the user can incorporate the sampling design features provided in the database during the analysis stage. As we will discuss in subsequent sections of this chapter, it is essential to account for the survey weights (see Chapter 8) when computing point estimates of both descriptive and model parameters, and to account for the structural components of the sampling design and estimation process (stratification, clustering, unequal inclusion probabilities, non-response adjustment, and calibration of survey weights, if any) when estimating variances or other measures of precision for the point estimates.
 
 Users that disregard such aspects of the sampling design do so at their peril, and may end up producing biased estimates that will lead to incorrect inferences and decisions. The recommended practice is for data producers to provide sufficient detail about such sampling aspects as part of the metadata released with survey microdata, in order to enable secondary data users to consider these aspects when conducting their analyses of interest.
 
-\hypertarget{quality-control-for-secondary-analysts}{%
-\subsection{Quality Control for Secondary Analysts}\label{quality-control-for-secondary-analysts}}
+\hypertarget{quality-control-for-secondary-users}{%
+\section{Quality Control for Secondary Users}\label{quality-control-for-secondary-users}}
 
-A standard quality control step for secondary data analysts would consist of the following steps:
+A standard quality control process for secondary data users would consist of the following steps:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Load the Data and Metadata}: Ensure that the survey microdata is properly linked to metadata describing the sampling design and estimation processes;
+  \textbf{Load the Data and Metadata}: Ensure that the survey microdata is properly linked to metadata describing the key aspects of the sampling design (stratification and clustering identifiers, unequal probabilities of selection) and estimation processes (weights, replicate weights if any, non-response correction, calibration, etc.).
 \item
-  \textbf{Replicate Published Estimates}: Recreate some of the estimates provided by the survey producers, including measures of precision, to confirm that the data and design have been correctly interpreted and loaded;
+  \textbf{Replicate Published Estimates}: Recreate some of the estimates provided by the survey producers, including measures of precision, to confirm that the data and sampling design aspects have been correctly interpreted and loaded.
 \item
-  \textbf{Compare Scenarios}: When the analyst is capable of replicating published estimates, she can then proceed towards the required new analysis for which no previous results are available. Repeat this analysis under two scenarios: ignoring and accounting for the sampling design. Compare the results and assess the impact of incorporating the sample design;
+  \textbf{Compare Scenarios}: When the user is capable of replicating published estimates, she can then proceed towards the required new analysis for which no previous results are available. Repeat this analysis under two scenarios: ignoring and accounting for the sampling design. Compare the results and assess the impact of incorporating the sample design.
 \item
   \textbf{Finalize the Analysis}: Use only the results that account for the sampling design in the final interpretation, ensuring that the design effects are appropriately incorporated.
 \end{enumerate}
 
 \hypertarget{accounting-for-the-sampling-design}{%
-\chapter{Accounting for the sampling design}\label{accounting-for-the-sampling-design}}
+\chapter{Accounting for the Sampling Design}\label{accounting-for-the-sampling-design}}
 
-When analysing household survey data, ignoring the sampling design undermines the representativeness, accuracy, and credibility of survey-based findings, which can lead to incorrect decisions. This is why accounting for the sampling design is essential when analyzing household survey data to ensure valid and unbiased estimates. As seen in the previous chapters, regular household surveys has two major characteristics:
+When analysing household survey data, ignoring the sampling design undermines the representativeness, accuracy, and credibility of survey-based findings, which can lead to incorrect decisions. This is why accounting for the sampling design is essential when analyzing household survey data to ensure valid and unbiased estimates. As seen in the previous chapters, regular household surveys have two major characteristics:
 
 \begin{itemize}
 \item
-  They use \emph{complex sampling designs} (e.g., stratification, clustering, and unequal probabilities of selection) to represent the population efficiently. Ignoring the design can lead to biased population-level inferences.
+  They use \emph{complex sampling designs} (e.g., stratification, clustering, and unequal probabilities of selection) to represent the population efficiently.
 \item
   They define \emph{sampling weights} for each sampling unit (primary, and remaining ones) to properly represent the population.
 \end{itemize}
 
-To illustrate this fact, we provide a simple example. Suppose a country has two regions: Region A with 100 people, and Region B with 900 people. Wealthy people lives in Region A, with an average income of \$10,000, less wealthy people live in Region B, with average income of \$2,000. The true population mean income is \$2,800, because:
+To illustrate this fact, we provide a simple example. Suppose a country has two regions: Region A with 100 people, and Region B with 900 people. Wealthy people live in Region A, with an average income of \$10,000, less wealthy people live in Region B, with average income of \$2,000. The true population average income is \$2,800, because:
 
 \[
 \theta = \frac{(100 \times 10,000) + (900 \times 2,000)}{100 + 900} = 2,800.
 \]
 
-Suppose a survey is conducted where 50 people are sampled from each Region. After data collection, it was found that the sample mean for Region A was \$10,000, while the sample mean for Region B was \$2,000. If the sampling design is ignored, all units in the sample will receive equal weights, regardless of their population sizes. This way, the mean income is biasedly estimated by:
+Suppose a survey is conducted where 50 people are sampled from each Region. After data collection, it was found that the sample mean for Region A was \$10,000, while the sample mean for Region B was \$2,000. If the sampling design is ignored, all units in the sample will receive equal weights, regardless of their corresponding population sizes. This way, the average income is estimated with severe bias as:
 
 \[
 \hat \theta = \frac{(50 \times 10,000) + (50 \times 2,000)}{100} = 6,000.
 \]
 
-When the sampling design is considered, weights are applied proportional to the population sizes of each neighborhood. This way, units in Region A would receive a weight of \(\frac{100}{50} = 2\), while units in Region B would receive a weight of \(\frac{900}{50} = 18\). In this escnario, the mean income is unbiasedly estimated by:
+despite the fact that both sample averages within regions are perfect estimates of the corresponding population averages.
+
+When the sampling design is considered, weights are applied proportional to the population sizes of each region. This way, units in Region A would receive a weight of \(\frac{100}{50} = 2\), while units in Region B would receive a weight of \(\frac{900}{50} = 18\). In this escnario, the average income is unbiasedly estimated as:
 
 \[
 \hat \theta = \frac{(2 \times 50 \times 10,000) + (18 \times 50 \times 2,000)}{(2 \times 50) + (18 \times 50)} = 2,800.
 \]
 
-Ignoring the sampling design causes that Region A (smaller but wealthier) dominates the estimate, even though it represents only 10\% of the country. This creates a bias, making the average income seem higher than it actually is for the whole population. By considering the sampling design and using weights, and strata, the estimate correctly reflects the true contribution of each Region, avoiding bias.
+Ignoring the sampling design (and corresponding weights) causes that Region A (smaller but wealthier) dominates the estimate, even though its population represents only 10\% of the country's population. This creates a bias, making the average population income seem higher than it actually is. By considering the sampling design (the sample was stratified by region, with equal allocation), and using weights, the latest estimate correctly reflects the true contribution of each Region to the global average, thus avoiding bias.
 
-In real applications, to account for the sampling design, we must ensure that primary sampling units (PSU), strata, and weights are available in the survey dataset to enable adequate analysis. Alternatively, when such information is not available, the dataset should at least contain replicate weights, or the analyst should have clear guidance on how to compute both point and variance estimates.
+Another crucial aspect to take into account is clustering. Most household sample surveys select an area sample, with clusters defined by census enumeration areas or similar groups of households. Then from within each sampled cluster, a sub-sample of households is selected for the survey. While such designs are cost efficient, they imply some loss in precision for the resulting estimates.
 
-This section discusses how survey data from a sample can be used to draw conclusions about an entire population using a design-based approach. This method assumes that the sample is selected through a well-defined probability sampling process, which ensures that every unit in the population has a known, non-zero chance of being included. Sampling weights, which reflect how much each sampled unit represents in the population, are essential tools in this approach. These weights allow analysts to make estimates that account for the sampling process and produce results that are representative of the population. A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Not accounting for it may lead to biased estimates and misleading conclusions.
+Consider a toy example where clusters are city blocks, and a sample of 10 households is selected within each cluster to be surveyed. Suppose the target parameter is the proportion of households which have electricity provided from a city grid. Assuming that each cluster either is included or excluded from the grid, a sample of 1,000 households obtained from such a design would be as precise as sample of only 100 households, if they were sampled by simple random sampling. The reason is that after observing a single household in each cluster, the other 9 we sample there are not brining in any new information. Any analysis of the full sample of households would fool the user to believe that the estimates are as precise as having sampled 1,000 households at random from the population, which was not the case, and standard errors would be severely underestimated.
+
+In real applications, to enable adequate analysis that accounts for the sampling design, survey datasets must contain identifiers for strata and primary sampling units (PSU), as well as weights for relevants units of analysis (households, individuals, etc.). Alternatively, when such information is not available, the dataset should at least contain replicate weights, and the user should have clear guidance on how to compute both point and variance estimates.
+
+This section discusses how survey data from a sample can be used to draw conclusions about an entire population using a design-based approach. This approach assumes that the sample is selected through a well-defined probability sampling process, which ensures that every unit in the population has a known, non-zero chance of being sampled. Sampling weights, which reflect how much each sampled unit represents in the population, are essential tools in this approach. These weights allow users to make estimates that account for the sampling process and produce results that are representative of the population. A well-described survey design facilitates statistical analysis, supports effective data interpretation, and enables meaningful insights into complex phenomena. Not accounting for it may lead to biased estimates and misleading conclusions, as illustrated.
 
 \hypertarget{parameters-and-estimators}{%
-\section{Parameters and estimators}\label{parameters-and-estimators}}
+\section{Parameters and Estimators}\label{parameters-and-estimators}}
 
-Two common goals when analyzing survey data are to estimate the value of a characteristic for the whole population, such as total income, and to estimate the average value of that characteristic, such as the average income per person. These are referred to as the population total and the population mean, respectively. The design-based approach incorporates the probability sampling design in the inferential process.
+Two common goals when analyzing survey data are to estimate the value of a characteristic for the whole population, such as total income, and to estimate the average value of that characteristic, such as the average income per person. These are referred to as the \emph{population total} and the \emph{population mean}, respectively. The design-based approach incorporates the probability sampling design in the inferential process.
 
 Under probability sampling, every unit in the population has a known chance of being included in the sample. The \emph{sample inclusion probabilities} are then used to calculate \emph{basic sampling weights}. When the design is properly incorporated, estimates for population totals and means are unbiased. This means that, on average, the estimates will equal the true population values if the survey were to be repeated many times under the same conditions.
 
-The estimators used to make inferences about the parameters of the population use the sampling weights to create weighted sums of the survey data, which serve as estimates for the population values. If the weights are appropriately applied, the resulting estimates are consistent with the true values in the population.
+The estimators used to make inferences about the population parameters use the sampling weights to create weighted sums of the survey data, which serve as estimates for the population parameters. If the weights are appropriately applied, the resulting estimates are consistent with the true values in the population.
 
-As stated in the previous chapter, in some situations, the original sampling weights need adjustments to improve the accuracy of survey estimates. Adjustments may account for survey non-response, where weights of responding units are corrected to account for units that were selected for the survey but did not participate. These adjusted weights help to minimize biases in the estimates and make the results more reliable. If calibration was performed, the weights are modified to ensure that the weighted sums aligns more closely with known characteristics of the population, such as age or sex distributions.
+As stated in Chapter 8, in some situations, the basic sampling weights need adjustments to improve the accuracy of survey estimates. Adjustments may account for survey non-response, where weights of responding units are corrected to account for units that were selected for the survey but did not participate. These adjusted weights help to minimize biases in the estimates and make the results more reliable. If calibration was performed, the weights are modified to ensure that the weighted sums align more closely with known population distributions, such as age or sex distributions.
 
-The \emph{population total} \(Y = \sum _{U} y_k\) and \emph{mean} \(\overline Y = \frac Y N\) of a survey variable \(y\) can be estimated by weighted estimators given by \(\widehat Y _{HT} = \sum _{s} d_k \ y_k\) and \(\overline y_{H} = \frac {\widehat Y_{HT}} {\widehat N_{HT}} = \frac {\sum_{s} d_k \ y_k} {\sum_{s} d_k}\), respectively. When the survey weights are calibrated and/or non-response adjusted, the above expressions may still be used, but with the calibrated or non-response adjusted weights, \(w_k\) say, replacing the design weights \(d_k\), for all \(k \in s\).
+The \emph{population total} \(Y = \sum _{U} y_k\) and \emph{mean} \(\overline Y = \frac Y N\) of a survey variable \(y\) can be estimated by weighted estimators given by \(\widehat Y _{HT} = \sum _{s} d_k \ y_k\) and \(\overline y_{H} = \frac {\widehat Y_{HT}} {\widehat N_{HT}} = \frac {\sum_{s} d_k \ y_k} {\sum_{s} d_k}\), respectively. The basic design weights \(d_k = 1 / \pi_k\) are given by the reciprocals of the sample inclusion probabilities of the sampled units (denoted \(\pi_k\)), for all \(k \in s\).
+
+When the survey weights are calibrated and/or non-response adjusted, the above expressions may still be used, but with the calibrated or non-response adjusted weights, \(w_k\) say, replacing the basic design weights \(d_k\), for all \(k \in s\).
 
 Here \(s = \left\{ k_1, \ldots, k_n \right\} \subset U\) denotes the set of units in a sample selected from the population \(U\) using a \emph{probability sampling design} \(p(s)\), that ensures strictly positive first order inclusion probabilities \(\pi_k = Pr(k \in s), \, \forall \, k \in U\). These inclusion probabilities are assumed known \(\forall \, k \in s\), at least to the data producers.
 
-An important part of survey analysis is understanding the level of uncertainty in the estimates. Since we are working with a sample and not the entire population, there will always be some variability in the results. This variability is measured using the \emph{sampling variance} of the estimate, which indicates how much the estimate might differ from the true population value in repeated samples. While there are theoretical formulas to calculate this variance, these can be complex and rely on information that is not always available to analysts. Under the design-based framework and assuming full response, \(\widehat Y _{HT}\) is unbiased for \(Y\) and its sampling variance can be estimated unbiasedly by
+An important part of survey analysis is understanding the level of uncertainty in the estimates. Since we are working with a sample and not the entire population, there will always be some variability in the estimates. This variability is measured using either the \emph{sampling variance}, the \emph{standard error} or the \emph{coefficient of variation} (\emph{cv}) of the estimates. The latter two are functions of the first, and serve to indicate by how much the estimate might differ from the true population value in absolute (\emph{se}) or relative (\emph{cv}) terms. Under the design-based framework and assuming full response, \(\widehat Y _{HT}\) is unbiased for \(Y\) and its sampling variance can be estimated unbiasedly by
 
 \[
 \widehat {V_p} \left( \widehat{Y}_{HT} \right) = \sum_{k \in s} \sum_{j \in s} \left( d_k d_j - d_{kj} \right) y_k y_j
 \]
 
-Where \(d_{kj} = 1 / \pi_{kj}\) and \(\pi_{kj} = Pr(k,j \in s), \, \forall \, k,j \in U\). This result assumes that the sampling design \(p(s)\) is such that \(\pi_{kj} > 0 \,\, \forall \, k,j \in U\).
+Where \(d_{kj} = 1 / \pi_{kj}\) and \(\pi_{kj} = Pr(k,j \in s), \, \forall \, k,j \in U\). This result assumes that the sampling design \(p(s)\) is such that \(\pi_{kj} > 0 \,\, \forall \, k,j \in U\). Considering the sampling design is crucial for the computation of variance. For example, consider a population of size \(N = 6\), and a sample of size \(n = 3\). Let's assume that the following sample values were observed: \((y_1 = 10, y_2 = 14, y_3 = 18)\). If the sampling design is simple random sampling without replacement, the above formula becomes:
 
-While the above formula for variance estimation is general and covers the vast majority of sample designs used in the practice of household sample surveys, it is not used in practice because the second order inclusion probabilities \(\pi_{kj}\) (and corresponding pairwise weights \(d_{kj}\)) are generally unknown to survey data analysts. In fact, even data producers do not compute such pairwise weights, since there are more efficient methods for variance estimation that do not require having such weights.
+\[
+\widehat {V}_{SRS} \left( \widehat{Y}_{HT} \right) = \frac{N^2}{n} \left( 1 - \frac{n}{N} \right) S^2_{y_s}
+\]
 
-For this reason, simpler and more efficient methods are often used in practice, allowing analysts to quantify the uncertainty without requiring overly detailed information about the sampling design.
+Where \(S^2_{y_s}\) is the sample variance. After a simple algebraic manipulation, the formula becomes \(\widehat {V_p} \left( \widehat{Y}_{HT} \right) = \frac{36}{3} \cdot \left(1 - \frac{3}{6} \right) 16 = 96\). A naive analyst might incorrectly compute the variance using the following formula, which ignores the sampling design: \(\frac{N^2}{n}S^2_{y_s} = 192\).
+
+Notice that the estimate for the population total is \(\widehat{Y}_{HT} = 84\). The proper standard error is \(\sqrt{\widehat {V_p} \left( \widehat{Y}_{HT} \right)} = \sqrt{96} \approx 9.80\). The 95\% confidence interval is \(84 \pm 19.25 = [64.75, 103.25]\). Using the naive variance, an incorrect 95\% confidence interval is \([56.80, 111.20]\). The naive confidence interval is wider than the correct confidence interval, and it overestimates the uncertainty in the total. This example clearly demonstrates the importance of considering the sampling design when calculating variances and confidence intervals. Ignoring the sampling design can lead to incorrect inferences.
+
+While the formula for variance estimation \(\widehat {V_p}\) is general and covers the vast majority of sample designs used in the practice of household sample surveys, it is not used in practice because the second order inclusion probabilities \(\pi_{kj}\) (and corresponding pairwise weights \(d_{kj}\)) are generally unknown to secondary survey data users. In fact, even data producers do not compute such pairwise weights, since there are more efficient methods for variance estimation that do not require having such weights.
+
+For this reason, simpler and more efficient methods are often used in practice, allowing users to quantify the uncertainty without requiring overly detailed information about the sampling design.
 
 \hypertarget{approaches-to-variance-estimation}{%
 \section{Approaches to Variance Estimation}\label{approaches-to-variance-estimation}}
 
-When working with household surveys, the sample is usually only a small subset of the entire population. Because of this, it is important to provide not only the main estimates of interest, such as totals or averages, but also the level of uncertainty in these estimates. This uncertainty is often expressed as measures of variance or confidence intervals, which help us understand how much the estimates might differ if the survey was repeated.
+When working with household surveys, the sample is usually only a small subset of the entire population. Because of this, it is important to provide not only the main estimates of interest, such as totals or averages, but also the level of uncertainty in these estimates.
 
-Understanding and estimating uncertainty is a critical part of analyzing household survey data; by using proper methods, analysts can measure the reliability of their estimates. There are several methods to estimate the uncertainty in survey results:
-* One common approach is based on approximate formulas like \emph{Taylor linearization}, which simplifies complex relationships between variables into linear ones;
+Understanding and estimating uncertainty is a critical part of analyzing household survey data; by using proper methods, users can measure the reliability of their estimates. There are several methods to estimate the uncertainty in survey results.
 
 \begin{itemize}
 \item
-  The \emph{ultimate cluster} method, is used in surveys that collect data through multi-stage sampling, where groups of people (clusters) are selected at different stages, exactly as household survey data is collected;
+  \emph{Estimating Equations} \citep{Binder1983}, which comprises a unifying idea of sampling theory, provides a flexible framework for estimating totals, means, ratios, and other parameters as well as their corresponding variances.
 \item
-  Estimating equations \citep{Binder1983}, which comprises a unifying idea of sampling theory, provides a flexible framework for estimating totals, means, ratios, and other parameters as well as their corresponding variances.
+  \emph{Taylor Linearization} is an approach that relies on approximating complex non-linear statistics by linear ones, and then estimating the variance / se / cv of the linear approximating quantity.
+\item
+  The \emph{Ultimate Cluster} method is often used in surveys that collect data through stratified multi-stage sampling, and relies on computing the variance between quantities calculated at the level of the primary sampling units (PSU). It is often combined with \emph{Taylor Linearization} for obtaining estimates of variances of non-linear statistics, such as means, ratios, etc.
+\item
+  The \emph{Bootstrap} and other replication methods rely on sampling repeatedly from the observed sample, computing estimates from each replica, and then using the variability between the estimates to estimate the variance / se / cv of the main estimate.
 \end{itemize}
 
+With the help of modern software, all of these approaches can be implemented efficiently, ensuring accurate and meaningful analysis of survey data.
+
 \hypertarget{estimating-equations}{%
-\subsection{Estimating equations}\label{estimating-equations}}
+\subsection{Estimating Equations}\label{estimating-equations}}
 
-With the help of modern software, these methods can be implemented efficiently, ensuring accurate and meaningful analysis of survey data. Many population parameters can be written/obtained as solutions for \emph{population estimating equations}. Variance estimation for these sample-based methods follows a consistent framework. Although the details can be technical, the key idea is that the same principles used to estimate totals can be applied to estimate variances. This generality makes the method simple and versatile, allowing it to be implemented in widely used software like the \texttt{R\ survey} package and the \texttt{Stata\ svy} functions. These tools automate much of the process, making it accessible for analysts to estimate both population parameters and their associated uncertainties.
+Many population parameters can be written/obtained as solutions of \emph{population estimating equations}. Variance estimation for these sample-based methods follows a consistent framework. Although the details can be technical, the key idea is that the same principles used to estimate totals can be applied to estimate variances. This generality makes the method simple and versatile, allowing it to be well implemented in widely used software like the \texttt{R\ survey} package and the \texttt{Stata\ svy} functions. These tools automate much of the process, making it accessible for users to estimate both population parameters and their associated uncertainties.
 
-A generic population \emph{estimating equation} is given by \$\sum\_\{i \in U\} z\_i (\theta) = 0 \$, where \(z_i(\bullet)\) is an \emph{estimating function} evaluated for unit \(i\) and \(\theta\) is a population parameter of interest. These equations provide a general way to define and calculate many population parameters, such as totals, means, and ratios. The concept is straightforward: population parameters can be defined as solutions to specific equations that involve all the units in the population. This approach is flexible and can be adapted to calculate many different types of parameters.
+A generic population \emph{estimating equation} is given by \(\sum_{i \in U} z_i (\theta) = 0\), where \(z_i(\cdot)\) is an \emph{estimating function} evaluated for unit \(i\) and \(\theta\) is a population parameter of interest. These equations provide a general way to define and calculate many population parameters, such as totals, means, and ratios. The concept is straightforward: population parameters can be defined as solutions to specific equations that involve all the units in the population. This approach is flexible and can be adapted to calculate many different types of parameters.
 
 \begin{itemize}
 \item
-  For the case of the population total, take \(z_i(\theta) = y_i - \theta / N\). The corresponding population estimation equation is given by \(\sum _{i \in U} (y_i - \theta / N) = 0\), and solving for \(\theta\) gives the population total \(\theta_U = \sum _{i \in U} y_i \ = \ Y\).
+  For the case of the population total, take \(z_i(\theta) = y_i - \theta / N\). The corresponding population estimation equation is given by \(\sum _{i \in U} (y_i - \theta / N) = 0\). Solving for \(\theta\) gives the population total \(\theta_U = \sum _{i \in U} y_i \ = \ Y\).
 \item
   For ratios of population totals, taking \(z_i(\theta) = y_i - \theta x_i\), the corresponding population estimating equation is given by \(\sum _{i \in U} (y_i - \theta x_i) = 0\). Solving for \(\theta\) gives the \emph{population ratio} \(\theta_U = \sum _{i \in U} y_i / \sum _{i \in U} x_i \ = \ R\).
 \item
@@ -303,66 +332,68 @@ A generic population \emph{estimating equation} is given by \$\sum\_\{i \in U\} 
 
 The idea of defining population parameters as solutions to population estimating equations allows defining a general method for obtaining corresponding sample estimators. It is a matter of using the \emph{sample estimating equations} \(\sum _{k \in s} d_k \, z_k (\theta) = 0\). Under \emph{probability sampling}, full response and with \(d_k = 1 / \pi_k\), the sample sum in the left hand side is unbiased towards the population sum in the corresponding population estimating equation. Solving the sample estimating equation yields consistent estimators for the corresponding population parameters.
 
-A consistent estimator for the variance of estimators obtained as solutions of sample estimating equations can be obtained as:
+A consistent estimator for the variance of non-linear estimators obtained as solutions of sample estimating equations, derived using \emph{Taylor Linearization}, is given by:
 
 \[
-\widehat V_p (\widehat \theta) = \left[ \widehat J ( \widehat \theta) \right] ^{-1} \widehat V_p \left[ \sum _{k \in s} d_k \, z_k (\widehat \theta)\right] \left[ \widehat J ( \widehat \theta) \right] ^{-1}
+\widehat V_{TL} (\widehat \theta) = \left[ \widehat J ( \widehat \theta) \right] ^{-1} \widehat V_p \left[ \sum _{k \in s} d_k \, z_k (\widehat \theta)\right] \left[ \widehat J ( \widehat \theta) \right] ^{-1}
 \]
 
 Where \(\widehat J (\widehat \theta) = \sum _{k \in s} d_k \, \left[ \partial{z_k ( \theta)} / \partial \theta \right]_{\theta = \widehat \theta}\).
 
-This approach implies that one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals. Its simplicity and generality have enabled the development of software such as the \texttt{R\ survey} package, the \texttt{Stata\ svy} functions and others.
+This approach implies that one is able to estimate many population parameters and corresponding variances using essentially well known methods for estimating totals and their variances. Its simplicity and generality have enabled the development of software such as the \texttt{R\ survey} package, the \texttt{Stata\ svy} functions and others.
 
-\hypertarget{ultimate-cluster-method}{%
-\subsection{Ultimate Cluster Method}\label{ultimate-cluster-method}}
+\hypertarget{ultimate-cluster}{%
+\subsection{Ultimate Cluster}\label{ultimate-cluster}}
 
-The \emph{Ultimate Cluster} method is a straightforward and powerful approach for estimating the uncertainty (variance) of totals in surveys that use multi-stage cluster sampling designs. This method, proposed by \citet{Hansen1953}, simplifies the complex nature of multi-stage designs by focusing only on the variation between the largest groups, known as Primary Sampling Units (PSUs). It assumes that the PSUs were selected randomly and independently, even if they were not actually chosen this way in the sampling process. This assumption allows for a simpler analysis while still providing reliable variance estimates.
+The \emph{Ultimate Cluster} is a straightforward and powerful approach for estimating the variance of totals in surveys that use stratified multi-stage cluster sampling designs. This method, proposed by \citet{Hansen1953}, simplifies the complex nature of multi-stage designs by focusing only on the variation between the largest groups, known as Primary Sampling Units (PSUs). It assumes that, within each sampling stratum, PSUs were sampled independently with replacement (potentially with unequal probabilities), even if they were actually selected without replacement in the actual sampling process.
 
-The method considers only the variation between information available at the level of PSUs, and assumes that these would have been selected with replacement from the PSU population. This idea is simple, but quite powerful, because it allows to accommodate a variety of sampling designs, involving stratification and selection with unequal probabilities (with or without replacement) of both PSUs as well as lower level sampling units (households and individuals). The requirements for the application of this method are:
+The method considers only the variation between statistics computed at the level of PSUs. This method allows for a simpler variance estimation, while still providing reliable variance estimates. This idea is simple, but quite powerful, because it allows to accommodate a variety of sampling designs, involving stratification and selection with unequal probabilities (with or without replacement) of both PSUs as well as lower level sampling units (households and individuals). The requirements for the application of this method are the following:
 
 \begin{itemize}
 \item
-  One has unbiased estimators of totals for the variable of interest for each sampled PSU;
+  Unbiased estimates of totals for the variable(s) of interest are available for each sampled PSU;
 \item
   Data are available for at least two sampled PSUs in each stratum (if the sample is stratified in the first stage);
 \item
   The survey dataset contains all the information regarding PSUs, strata and weights.
 \end{itemize}
 
-Consider a multi-stage sampling design, in which \(m_{h}\) PSUs are selected in stratum \(h,\) \(h=1,\ldots ,H\). Let \(\pi_{hi}\) be the inclusion probability of PSU \(i\) in stratum \(h\), and by \(\widehat{Y}_{hi}\) an unbiased estimator of the total \(Y_{hi}\) of the survey variable \(y\) for the \(i\)-th PSU in stratum \(h\). Hence an unbiased estimator of the population total \(Y = \sum_{h=1}^{H} \sum_{i \in U_{1h}} Y_{hi}\) is given by \(\widehat{Y}_{UC} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} d_{hi} \widehat{Y}_{hi}\), and the \emph{ultimate cluster} estimator of the corresponding variance is given by:
+Consider a multi-stage sampling design, in which \(m_{h}\) PSUs are selected in stratum \(h\), with \(h=1, \ldots ,H\). Let \(\widehat{Y}_{hi} = \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} d_{hik} \ y_{hik}\) denote an estimate of the population total \(Y_h\) in stratum \(h\) based on the single PSU \(i\) sampled in this stratum. Then an unbiased estimator of the population total \(Y = \sum_{h=1}^{H} \sum_{i \in U_{1h}} Y_{hi}\) is given by \(\widehat{Y}_{UC} = \sum_{h=1}^{H} \widehat{Y}_{h}\) where \(\widehat{Y}_{h} = \frac{1}{m_{h}} \sum_{i \in s_{1h}} \widehat{Y}_{hi}\). The \emph{Ultimate Cluster} estimator of the corresponding variance is given by:
 
 \[
-\widehat{V}_{UC} \left( \widehat{Y}_{UC}\right) = \sum_{h=1}^{H} \frac{m_{h}}
-{m_{h}-1} \sum_{i \in s_{1h}} \left( d_{hi} \widehat{Y}_{hi} - \frac{\widehat{Y}_{h}}{m_{h}} \right) ^{2}
+\widehat{V}_{UC} \left( \widehat{Y}\right) = \sum_{h=1}^{H} \frac{m_{h}}
+{m_{h}-1} \sum_{i \in s_{1h}} \left( \widehat{Y}_{hi} - \widehat{Y}_{h} \right) ^{2}
 \]
 
-where \(U_{1h}\) and \(s_{1h}\) are the population and sample sets of PSUs in stratum \(h\), \(d_{hi} = 1 / \pi_{hi}\), \(\widehat{Y}_{h} = \sum_{i \in s_{1h}} d_{hi} \widehat{Y}_{hi}\) for \(h=1,\ldots ,H\). (See for example, \citep{Shah1993}, p.~4).
+where \(U_{1h}\) and \(s_{1h}\) are the population and sample sets of PSUs in stratum \(h\), for \(h=1,\ldots ,H\). (See for example, \citep{Shah1993}, p.~4).
 
-Although the method was originally proposed for estimation of variances of estimated totals, it can also be applied in combination with estimating equations approach to obtain variance estimates for estimators of other population quantities that can be obtained as solutions to sample estimating equations. This makes the method versatile and useful for a wide range of applications in survey analysis.
+Although the method was originally proposed for estimation of variances of estimated totals, it can also be applied in combination with \emph{Taylor Linearization} and \emph{Estimating Equations} approaches to obtain variance estimates for estimators of many other population quantities that can be obtained as solutions to sample estimating equations. This makes the method versatile and useful for a wide range of applications in survey analysis.
 
-One key assumption of the method is that, within strata, the PSUs were selected independently and with replacement. In reality, most surveys select PSUs without replacement, which is a more efficient design. However, the variance estimates produced by the \emph{Ultimate Cluster} method are generally close enough to be useful, even under these conditions. This practical simplicity is why the method is widely used in survey analysis.
+One key assumption of the method is that, within strata, the PSUs were selected independently and with replacement. In reality, most surveys select PSUs without replacement, which provides for more efficient designs. However, the variance estimates produced by the \emph{Ultimate Cluster} method are generally close enough to be useful, even under these conditions, provided the sampling fraction of PSUs is small.
 
-The \emph{Ultimate Cluster} method is particularly attractive because of its simplicity. Survey practitioners often prefer it over more complex approaches that account for all stages of the sampling design. Although these detailed methods may provide slightly more accurate variance estimates, they are significantly harder to implement and require more detailed information about the sampling process. In contrast, this method offers a reasonable approximation that works well for most practical purposes, especially for estimating totals or averages. A discussion about Quality of this approximation and alternatives can be found in \citep{SSW92}, p.~153.
+The \emph{Ultimate Cluster} method is particularly attractive because of its simplicity. Survey practitioners often prefer it over more complex approaches that account for all stages of the sampling design. Although these detailed methods may provide slightly more accurate variance estimates, they are harder to implement and require more detailed information about the sampling process. In contrast, this method offers a reasonable approximation that works well for most practical purposes, especially for estimating totals or averages. A discussion about Quality of this approximation and alternatives can be found in \citep{SSW92}, p.~153.
 
-\hypertarget{bootstrap-method}{%
-\subsection{Bootstrap Method}\label{bootstrap-method}}
+\hypertarget{bootstrap}{%
+\subsection{Bootstrap}\label{bootstrap}}
 
-When the user does not have access to information of PSUs or strata in the database, the \emph{Ultimate Cluster} method cannot be used, and some other methods should be considered. Among them, we have replication-based methods; in particular, the \emph{bootstrap} method, which comprises a powerful and flexible approach for estimating variances in surveys, particularly when dealing with complex survey designs that involve multiple stages or stratification. Originally proposed by \citet{Efron1979}, the version commonly used for household surveys is called the Rao-Wu-Yue Rescaling Bootstrap \citep{Rao1992}. This method is well-suited for stratified multi-stage sampling designs and has become a widely used tool for variance estimation with complex survey data.
+Replication methods for variance estimation are based on the idea of re-sampling from the available sample, computing the estimates from each replica, and then using the variability between the estimates across replicas to estimate the variance. They are particularly useful when the user does not have access to information on stratum and/or PSUs identifiers in the database, and the \emph{Ultimate Cluster} method cannot be used in such cases.
 
-The \emph{bootstrap} method relies on creating many new ``replicated'' datasets, which are slightly different versions of the original sample. These replicated datasets mimic the process of repeatedly drawing samples from the population. By analyzing the variation in results across these datasets, we can estimate how much uncertainty there is in our estimates from the original sample.
+The \emph{bootstrap} method comprises a powerful and flexible approach for estimating variances in surveys and many other contexts. Originally proposed by \citet{Efron1979}, the version commonly used for household surveys is called the Rao-Wu-Yue Rescaling Bootstrap \citep{Rao1992}. This method is well-suited for stratified multi-stage sampling designs and has become widely used for variance estimation with complex survey data.
+
+Conceptually, the \emph{bootstrap} method relies on creating many new ``replicated'' datasets, which are slightly different versions of the original sample. These replicated datasets mimic the process of repeatedly drawing samples from the population. By analyzing the variation in results across these datasets, we can estimate how much uncertainty there is in our estimates from the original sample. In practice, the method can be applied by creating multiple columns of weights in the original sample data set, with weights modified to mimic the process of re-sampling from the available sample. The creation of these multiple columns of weights should be done by the National Statistical Office following the steps outlined below.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  First, we create a new sample for each stratum by randomly selecting primary sampling units (PSUs) from the original sample, allowing PSUs to be selected more than once (with replacement). Each selected PSU is included in the new dataset along with all its associated data. The size of this random sample with replacement is of \(m_h - 1\) PSUs in each of the \(H\) design strata.
+  First, create a new sample for each stratum by randomly selecting primary sampling units (PSUs) from the original sample, allowing PSUs to be selected more than once (with replacement). Each selected PSU is included in the new dataset along with all its associated data and lower level units. The size of this random sample with replacement is of \(m_h - 1\) PSUs in each of the \(H\) design strata.
 \item
   This process of creating new samples is repeated many times, usually hundreds or thousands, to produce multiple ``replicated'' datasets. That is, repeat Step 1 \(R\) times, and denote by \(m_{hi}(r)\) the number of times that the PSU \(i\) of stratum \(h\) was selected for the sample in replicate \(r\).
 \item
-  For each replicate, \emph{bootstrap} weights are calculated for each unit. These weights account for how often each PSU appears in the replicate and ensure that the replicated datasets remain representative of the population. The \emph{bootstrap} weight of unit \(k\) within PSU \(i\) of stratum \(h\) is \(w_{hik}(r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)\).
+  For each replicate \(r\), \emph{bootstrap} weights are calculated for each unit. These weights account for how often each PSU appears in the replicate and ensure that the replicated datasets remain representative for the population. The \emph{bootstrap} weight for unit \(k\) within PSU \(i\) of stratum \(h\) in replica \(r\) is \(w_{hik}(r) = w_{hik} \times \frac {m_h}{m_h - 1} \times m_{hi}(r)\).
 \item
-  The parameter of interest, such as a total or mean, is estimated for each replicated dataset using the \emph{bootstrap} weights. That is, for each replica \(r\), calculate an estimate \(\widehat \theta_{(r)}\) of the target parameter \(theta\) using the \emph{bootstrap} weights \(w_{hik}(r)\) instead of the original weights \(w_{hik}\).
+  The parameter of interest, such as a total or mean, is estimated for each replica using the \emph{bootstrap} weights for that replica. That is, for each replica \(r\), calculate an estimate \(\widehat \theta_{(r)}\) of the target parameter \(theta\) using the \emph{bootstrap} weights \(w_{hik}(r)\) instead of the original weights \(w_{hik}\).
 \item
-  Finally, the variability of the results across all replicated datasets is used to estimate the variance. The idea is that the variation in these replicate estimates reflects the uncertainty in the original estimate. This estimate of the variance takes the following form:
+  Finally, the variability of the results across all replicas is used to estimate the variance. The idea is that the variation in these replicate estimates reflects the uncertainty in the original estimate. This estimate of the variance takes the following form:
 \end{enumerate}
 
 \[
@@ -373,34 +404,43 @@ where \(\tilde \theta = \frac 1 R \sum_{r=1}^R \widehat \theta_{(r)}\) is the av
 
 Whenever the original sampling weights \(w_{hik}\) receive non-response adjustments or are calibrated, the corresponding non-response adjustments and/or calibration of the basic weights must be repeated for each replica, so that the variance estimates adequately reflect the effects of the calibration and non-response adjustments on the uncertainty of the point estimates. This ensures that the variance estimates accurately reflect the additional uncertainty introduced by these adjustments.
 
-The bootstrap method has several advantages. It works well for complex survey designs and can handle a wide range of parameters, including those that are difficult to estimate using traditional methods, such as medians or other nonlinear statistics. It also provides a way to estimate variances when other methods are not available or practical to use. The method is particularly helpful for survey analysts who may not have access to specialized software for calculating variances.
+The bootstrap method has several advantages. It works well for complex survey designs and can handle a wide range of parameters, including those that are difficult to estimate using traditional methods, such as medians or other nonlinear statistics. It also provides a way to estimate variances when other methods are not available or practical to use. The method is particularly helpful for users analyzing a survey that does not provide the corresponding design variables (strata and PSUs) but does provide a set of replicated weights. Notice that, given the simplicity of the method, users should not feel restricted to using specialized software for calculating variances under this approach.
 
-Many modern statistical software tools, including the \texttt{survey} package in R, support bootstrap replication and variance estimation, making it accessible to a wide range of users. While the bootstrap method is computationally intensive, requiring many replicated datasets to be created and analyzed, it is highly effective. It provides robust variance estimates even for complex parameters and remains one of the most flexible tools for analyzing survey data.
+Many modern statistical software tools, including the \texttt{survey} package in R, support bootstrap replication and variance estimation, making it accessible to a wide range of users. While the bootstrap method is computationally intensive, requiring many replicas to be created and processed, it is highly effective. It provides robust variance estimates even for complex parameters and remains one of the most flexible tools for analyzing survey data.
 
 \hypertarget{using-software-to-generate-valid-inferences}{%
-\section{Using software to generate valid inferences}\label{using-software-to-generate-valid-inferences}}
+\section{Using Software to Generate Valid Inferences}\label{using-software-to-generate-valid-inferences}}
 
-The design and analysis of information from household surveys must include extensive use of existing computational tools. This section reviews in detail the computational approaches of the statistical software used for each of the statistical processes required to publish official figures with high levels of accuracy and reliability. Specifically, for the following processes:
-
-\begin{itemize}
-\tightlist
-\item
-  Sample selection according to the defined sampling design;
-\item
-  Generation of sampling weights for each individual and household;
-\item
-  Modeling of nonresponse and statistical imputation;
-\item
-  Calibration of sampling weights and adjustments for nonresponse;
-\item
-  Estimation of sampling errors for each indicator of interest in the statistical production tables;
-\item
-  Analysis of multivariate relationships between survey variables.
-\end{itemize}
+The design and analysis of household surveys must make extensive use of existing computational tools. This section reviews some computational approaches within statistical software that are used for each of the statistical processes required to publish official figures with appropriate levels of accuracy and reliability. Key processes that analysts should focus on include: modeling nonresponse and statistical imputation, estimating standard errors for each indicator of interest to be included in the production tables, and analyzing multivariate relationships between survey variables.
 
 \citet[Section 7.8]{United_Nations_2005} highlights the importance of including the structure of complex survey designs in the inference process for estimating official statistics from household surveys. It warns, with an empirical example, that failing to do so may result in biased estimates and underestimated sampling errors. Below are some key features that statistical software packages incorporate when managing data from complex survey designs, such as those found in household surveys. A more detailed review, including syntax and computational code, can be found in \citet[Appendix A]{Heeringa_West_Berglund_2017}.
 
 In general, these computational tools are designed to enhance the efficiency of variance approximation methods for complex samples, as well as replication techniques to estimate design-based variances \citep{Westat_2007}. Some of these software packages are free to use, although most are licensed products requiring paid licenses. These products, in addition to providing descriptive statistics (such as means, totals, proportions, percentiles, and ratios), allow for fitting linear and logistic regression models. All resulting statistics are based on the survey design.
+
+Software packages designed for survey analysis often report the design effect (\(DEFF\)) when processing survey data. This estimate provides a critical measure of how the complexities of the sampling design---such as clustering, stratification, and unequal weights---affect the precision of estimates compared to a simple random sample (SRS) of the same size. By including DEFF in their output, these tools enable researchers to assess the efficiency of their sampling designs and interpret the variability in their data more accurately.
+
+As defined by \citet[p.~258]{Kish_1965}, the \(DEFF\) is the ratio between the actual variance of a complex sample and the variance of a simple random sample (SRS) of the same size. This measure is estimated as:
+
+\[
+DEFF = \frac{\widehat {V}_p \left( \hat{\theta} \right)}{\widehat {V}_{SRS}(\hat{\theta})}
+\]
+
+where \(\widehat {V}_p \left( \hat{\theta} \right)\) represents the estimated variance of an estimator \(\hat{\theta}\) under a complex sampling design \(p(s)\), and \(\widehat {V}_{SRS}(\hat{\theta})\) denotes the estimated variance of the same estimator under a simple random sampling design. The design effect measures the clustering effect introduced by using a complex sampling design compared to SRS for inferring a finite population parameter \(\theta\). According to \citet[p.~49]{United_Nations_2008}, the design effect can be interpreted in three ways: as the factor by which variance increases under a complex design compared to SRS, as an indicator of how much less efficient the complex design is in terms of precision, or as a reflection of how much larger the sample size would need to be under the complex design to match the variance achieved by SRS. \citet{Park_2003} proposes that the design effect of a survey can be decomposed into three multiplicative components:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The effect due to unequal weighting: this component tends to slightly increase variance if sampling weights are unequal. Uniform weights avoid such increases, making self-weighting designs desirable for household surveys.
+\item
+  The effect due to stratification: this component reduces variance when stratification is optimal, though the reduction is usually modest.
+\item
+  The effect due to multi-stage sampling: this component typically increases the variance of survey estimates because units within the same cluster tend to be more similar to each other than to units in other clusters.
+\end{enumerate}
+
+In practice, \(DEFF\) is especially useful when evaluating the quality of survey estimates and planning future surveys. For instance, a large \(DEFF\) indicates that the complex design introduces significant clustering effects or inefficiencies, which can inflate variances and reduce the precision of key estimates. Conversely, a \(DEFF\) close to unity suggests that the design features have minimal impact on variance. Understanding these effects allows researchers to decide whether adjustments to weighting, stratification, or sampling stages are needed in future data collection efforts.
+
+Statistical software packages such as Stata, R, SAS, and SPSS automatically calculate the design effect within their survey analysis modules. These computations require users to input specific details about the survey design, including sampling weights, strata, and cluster identifiers. Next, we provide a non-comprehensive summary of features and capabilities available in major statistical software:.
 
 \emph{R}
 
@@ -408,7 +448,7 @@ R is a free software increasingly used in social research, as it is likely to ho
 
 \emph{STATA}
 
-The \texttt{svy} environment provides tools for appropriate inference of official statistics from household surveys \citep{STATA_2017}. The \texttt{svyset} command specifies variables identifying survey design features, such as sampling weights, clusters, and strata. The \texttt{svydescribe} command produces tables describing strata and sampling units at a given survey stage. Once survey design definitions are loaded, any model can be estimated, and the resulting statistics will be survey-design-based. The \texttt{svy} environment also supports predictive commands.
+The \texttt{svy} environment provides tools for appropriate inference from household surveys \citep{STATA_2017}. The \texttt{svyset} command specifies variables identifying survey design features, such as sampling weights, clusters, and strata. The \texttt{svydescribe} command produces tables describing strata and sampling units at a given survey stage. Once survey design definitions are loaded, any model can be estimated, and the resulting statistics will be survey-design-based. The \texttt{svy} environment also supports predictive commands.
 
 \emph{SPSS}
 
@@ -433,13 +473,11 @@ This statistical software includes a procedure for selecting probabilistic sampl
 \hypertarget{descriptive-parameters}{%
 \chapter{Descriptive parameters}\label{descriptive-parameters}}
 
-As stated before, household surveys play a critical role in tracking progress toward global objectives, such as the \textbf{Sustainable Development Goals (SDGs)}. For this purpose, descriptive analyses often include a range of specialized indicators designed to monitor outcomes like access to education, health services, and economic opportunities. These indicators are derived from the survey data and are essential for policymakers and organizations aiming to achieve sustainable development targets.
-
 Descriptive parameters are the most commonly analyzed outputs from household survey data. These analyses focus on summarizing key characteristics of the population by estimating values for a variety of survey variables. The goal is to provide clear and meaningful insights into the population using data collected from a representative sample.
 
 The most basic and frequently estimated parameters include \textbf{frequencies}, \textbf{proportions}, \textbf{means}, and \textbf{totals}. Means and totals provide average and cumulative values, respectively, which are useful for understanding population-level behaviors and trends. Frequencies can show the number of households/people in a specific category (e.g.~number of poor people), while proportions can represent the share of households/people meeting a particular condition (e.g.~poverty rate).
 
-In recent years, the scope of descriptive analysis has expanded beyond these basic parameters. Analysts now estimate more complex metrics, such as \textbf{quantiles} of numeric variables, which help describe the distribution of values (e.g., the median income of households). Other widely used metrics include measures of \textbf{poverty} and \textbf{inequality} indicators, which are crucial for understanding economic disparities and informing policy decisions (e.g.~FGT and Gini indices) - see \citet{Jacob2024}.
+In recent years, the scope of descriptive analysis has expanded beyond these basic parameters. Analysts now estimate more complex metrics, such as \textbf{quantiles} of numeric variables, which help describe the distribution of values (e.g., the median income of households). There are also metrics for particular types of analysis, such as poverty (FGT indices), inequality (Gini, Theil, Atkinson), polarization (Wolfson, DER), etc. - see \citet{Jacob2024}.
 
 \hypertarget{frequencies-and-proportions}{%
 \section{Frequencies and proportions}\label{frequencies-and-proportions}}
@@ -448,7 +486,7 @@ One of the most fundamental tasks in household survey analysis is estimating the
 
 For example, understanding how many people live below the poverty line, how many are unemployed, or how many have completed a certain level of education provides valuable insights. These insights help address inequalities, support the design of targeted interventions, and promote equitable development across communities. The ability to understand the distribution across categories provides valuable information to address inequalities and promote equitable development.
 
-To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different poverty levels, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with \emph{sampling weights}. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:
+To estimate the size of a population or subpopulation, analysts focus on categorical variables, which divide the population into distinct groups. For example, categories could represent different income quintiles, employment statuses, or education levels. The size of a population refers to the total number of individuals or households in the survey data who fall into a specific category. Population size estimates are calculated by combining the information collected from survey samples with \emph{sampling weights}. These weights indicate how many people or households each surveyed unit represents in the broader population. A sampling estimator of a population size is given by the following expression:
 
 \[
 \widehat{N} = \sum_{h=1}^{H} \sum_{i \in s_{1h}} \sum_{k \in s_{hi}} w_{hik}
@@ -479,9 +517,9 @@ CI \left( \widehat{p}_d \ ; \ 1 - \alpha \right) = \frac {exp \left[ ln \left( \
 \hypertarget{totals-means-and-ratios}{%
 \section{Totals, means and ratios}\label{totals-means-and-ratios}}
 
-In household surveys, analyzing numerical data often involves estimating key descriptive measures such as means, totals, and ratios. These measures summarize important characteristics of the population and provide valuable insights for decision-making. The estimation process can be applied to the entire population or specific subgroups, depending on the research objectives. As mentioned by \citet{Heeringa_West_Berglund_2017}, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory. Estimators of population means, proportions and ratios are all dependent on estimating component population totals, as we show in the sequence.
+In household surveys, analyzing numerical data often involves estimating key descriptive measures such as means, totals, and ratios. These measures summarize important characteristics of the population and provide valuable insights for decision-making. The estimation process can be applied to the entire population or specific subgroups, depending on the research objectives. As mentioned by \citet{Heeringa_West_Berglund_2017}, the estimation of population totals or averages for a variable of interest, along with the estimation of corresponding variances, has played a crucial role in the development of probability sampling theory.
 
-The estimation of population totals is a fundamental task in survey analysis. A total represents the sum of a specific variable (e.g., total income or total expenditure) across the entire population. For example, if the goal is to estimate the total income of all households in a country, we combine data from the sample using weights that account for the survey design and ensure representativeness. For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs.
+The estimation of population totals is a fundamental task in survey analysis. Note that population means, proportions and ratios are all dependent on population totals. A total represents the sum of a specific variable (e.g., total income or total expenditure) across the entire population. For example, if the goal is to estimate the total income of all households in a country, we combine data from the sample using weights that account for the survey design and ensure representativeness. For single numeric survey variables, the simplest estimates are for totals and means. Ratios are often used to obtain summaries that relate two numeric variables. Estimates for such parameters can be obtained either for the entire population or disaggregated by domains of interest, depending on the research needs.
 
 Once the sampling design is defined, which was done in the previous section, the estimation process for the parameters of interest is carried out. For the estimation of totals with complex sampling designs that include stratification \(\left(h=1,2,...,H\right)\) and subsampling in PSUs (assumed to be within stratum \(h\)) indexed by \(i=1,2,...,m_h\), the estimator for the population total can be written as:
 
@@ -507,7 +545,7 @@ Population means, or averages, are also very important and provide an understand
 
 Since \(\widehat{\overline{Y}}\) is a nonlinear estimator, there is no closed-form formula for exact the variance of this estimator. For this reason, either resampling methods or Taylor series approximations must be used. The latter may be achieved remembering that for the survey mean the sampling estimating equation requires defining \(\sum_{h=1}^{H}\sum_{i \in s_{1h}} \sum_{ k \in s_{hi}} w_{hik} (y_{hik} - \theta) = 0\), therefore we can apply the variance estimator given in section 9.2 with \(z_{hik} = y_{hik} - \widehat{\overline{Y}}\).
 
-Ratios provide insights into the relationship between two variables. For example, the ratio of household expenditures to income can reveal patterns in spending behavior. A ratio is calculated by dividing one total by another, such as total expenditures by total income. The accuracy of a ratio depends on the precise estimation of both totals. Ratios are particularly useful for creating indicators that help compare groups or track progress over time. As another example, ODS indicator N.17.6.1 is defined as the ratio of the number of broadband subscriptions per 100 inhabitants in a country or region.
+Ratios provide insights into the relationship between two variables. For example, the ratio of household expenditures to income can reveal patterns in spending behavior. A ratio is calculated by dividing one total by another, such as total expenditures by total income. The accuracy of a ratio depends on the precise estimation of both totals. Ratios are particularly useful for creating indicators that help compare groups or track progress over time. As another example, SDG indicator N.2.1.1 is defined as the prevalence of undernourishment. This indicator can be estimated using a ratio of two continuous variables: food consumption (measured in calories or energy intake) and dietary energy requirements (calculated based on factors like age, sex, and physical activity level).
 
 Since a ratio is the quotient of two estimators of totals, both the numerator and the denominator are unknown quantities and thus need to be estimated. The point estimator for a ratio in complex surveys is the quotient of the estimators for the totals, as defined by:
 
@@ -592,8 +630,8 @@ and \(\widehat{F}_{hik}\) represents the estimated CDF for individual \(k\) in c
 
 In this subsection a NSO will share how they do disseminate its results on basic descriptive statistics, how they publish the resulting tables and how do they deal with the suppression of estimates that do not reach expected quality.
 
-\hypertarget{associations-between-variables}{%
-\chapter{Associations between variables}\label{associations-between-variables}}
+\hypertarget{associations-between-categorical-variables}{%
+\chapter{Associations between categorical variables}\label{associations-between-categorical-variables}}
 
 \hypertarget{motivation-and-concepts}{%
 \section{Motivation and concepts}\label{motivation-and-concepts}}
@@ -609,16 +647,7 @@ Household surveys often collect data on categorical variables, such as employmen
 
 This section introduces methods to describe and infer associations between pairs of categorical variables. When analyzing associations between two categorical variables, we are interested in whether the distribution of one variable depends on the categories of the other. To assess the relationship between two categorical variables, analysts examine how often different combinations of categories occur. For example, they might count how many individuals fall into each pairing of employment status and educational attainment. These counts are then used to calculate proportions, which describe the relative frequency of each pairing within the population.
 
-Analyzing associations between categorical variables is useful in many contexts, such as:
-
-\begin{itemize}
-\item
-  \textbf{Policy Development}: Understanding the relationship between education and employment helps design effective workforce policies;
-\item
-  \textbf{Program Evaluation}: Assessing whether access to healthcare varies by income level can inform targeted interventions;
-\item
-  \textbf{Social Research}: Studying connections between demographic factors and access to services provides insights into societal trends.
-\end{itemize}
+Analyzing associations between categorical variables is useful in various contexts, such as policy development, where understanding the relationship between education and employment helps design effective workforce policies; program evaluation, where assessing whether access to healthcare varies by income level can inform targeted interventions; and social research, where studying connections between demographic factors and access to services provides insights into societal trends.
 
 In practice, this analysis often starts with a \textbf{contingency table}, a grid that shows the counts or proportions of units in each combination of categories for the two variables. For example, one axis of the table might list employment statuses, while the other lists levels of educational attainment.
 
@@ -645,7 +674,7 @@ Under the superpopulation model, the population proportions \(p_{rc}\) could be 
 
 Cross-tabulations, also known as contingency tables, are a fundamental tool in survey analysis. They organize data into a table format, showing the frequency distribution of two or more categorical variables. By summarizing relationships between these variables, cross-tabulations help researchers identify patterns and associations that might otherwise go unnoticed. This type of analysis is widely used in research and policy decision-making, as it provides a straightforward way to explore how different variables interact. For example, a contingency table might examine how employment status varies by educational attainment, or how access to the internet differs between urban and rural households.
 
-Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as \emph{contingency tables}. Here a table is a two-dimensional array with rows indexed by \(r=1, \ldots, R\) and columns indexed by \(c=1, \ldots, C\). Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.
+Procedures for assessing independence can be used to determine whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as \emph{contingency tables}. Here a table is a two-dimensional array with rows indexed by \(r=1, \ldots, R\) and columns indexed by \(c=1, \ldots, C\). Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.
 
 A contingency table aims to succinctly represent the association between different categorical variables. It is a grid with rows and columns that represent the categories of two variables. Each cell in the table contains the frequency or proportion of observations that fall into the corresponding combination of categories. The rows might represent categories of a domain defining variable such as ``education level'' (primary, secondary, tertiary). The columns might represent categories of another variable, such as ``employment status'' (employed, unemployed, not in the labor force). The table can also include \textbf{marginal totals}, which summarize the data for each row or column, and a \textbf{grand total}, representing the overall population.
 
@@ -845,14 +874,7 @@ In this part an NSO will share its experiences on dealing with statistical compa
 \hypertarget{regression-modelling-survey-data}{%
 \chapter{Regression: modelling survey data}\label{regression-modelling-survey-data}}
 
-Regression modeling is a powerful tool for analyzing relationships between variables in survey data. It allows researchers to estimate how one or more independent variables (predictors) influence a dependent variable (outcome). For instance, consider a researcher who is modeling household income (dependent variable) as a function of education level and employment status (independent variables) using household survey data. Such data are often obtained from surveys that adopted complex sampling designs that include stratification, clustering, and unequal probabilities of selection. These features must be accounted for to ensure valid inferences when fitting regression models, since ignoring the sampling design can lead to:
-
-\begin{itemize}
-\item
-  \textbf{Biased Estimates}: Unequal probabilities of selection mean some household/individuals represent more of the population than others. Without weights, the model may disproportionately reflect oversampled groups.
-\item
-  \textbf{Underestimated Standard Errors}: Clustering and stratification affect the variability of estimates. Ignoring these features can result in overly narrow confidence intervals and inflated significance levels.
-\end{itemize}
+Regression modeling is a powerful tool for analyzing relationships between variables in survey data. It allows researchers to estimate how one or more independent variables (predictors) influence a dependent variable (outcome). For instance, consider a researcher who is modeling household income (dependent variable) as a function of education level and employment status (independent variables) using household survey data. Such data are often obtained from surveys that adopted complex sampling designs that include stratification, clustering, and unequal probabilities of selection.
 
 In this section, we explore how survey weights and sampling design features are incorporated into regression model specification and fitting. We also discuss a parsimonious solution to the challenges posed by weighting. Modeling survey data requires careful consideration of the sampling design to ensure valid inferences. Incorporating survey weights and adjusting for clustering and stratification allows researchers to produce accurate, representative, and reliable results.
 
@@ -893,12 +915,6 @@ A regression model seeks to explain how changes in one or more independent (expl
 \hypertarget{basic-definitions}{%
 \subsection{Basic Definitions}\label{basic-definitions}}
 
-As noted by \citet{Heeringa_West_Berglund_2017}, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were \citet{kish1974inference}, who highlighted the challenges posed by complex sampling designs. Later, \citet{fuller1975regression} developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.
-
-As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, \citet{shah1977inference} discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.
-
-Similarly, \citet{binder1983variances} obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. \citet{skinner1989analysis} studied the properties of variance estimators for regression coefficients under complex sample designs. Later, \citet{fuller2002regression} provided a summary of estimation methods for regression models containing information related to complex samples. Finally, \citet{pfeffermann2011modelling} discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the ``\emph{q-weighted}'' method, which is recommended in this document.
-
 A simple linear regression model is defined as \(y = \beta_{0} + \beta_{1}x + \varepsilon\), where \(y\) represents the dependent variable, \(x\) is the independent variable, and \(\beta_{0}\) and \(\beta_{1}\) are the model parameters. The variable \(\varepsilon\) is known as the \emph{random error} of the model.
 
 For more complex situations, multiple linear regression models allow for the inclusion of several independent variables. This approach helps to account for the simultaneous effects of multiple factors on the outcome. In these models, each independent variable is associated with a coefficient, which indicates the strength and direction of its relationship with the dependent variable. Notice that a positive coefficient suggests that as the corresponding independent variable increases, the dependent variable also increases. Generalizing the previous model, multiple linear regression models are defined by allowing the dependent variable to interact with two or more variables, as presented below:
@@ -937,6 +953,12 @@ Once the linear regression model and its assumptions are defined, it can be dedu
 \[
 E\left( y \mid x \right) = \hat{\beta}_{0} + \hat{\beta_{1}} x_{1} + \hat{\beta}_{2} x_{2} + \cdots + \hat{\beta}_{p} x_{p}
 \]
+
+As noted by \citet{Heeringa_West_Berglund_2017}, the first authors to empirically discuss the impact of complex sampling designs on regression model inferences were \citet{kish1974inference}, who highlighted the challenges posed by complex sampling designs. Later, \citet{fuller1975regression} developed a variance estimator for regression model parameters based on Taylor linearization with unequal weighting of observations under stratified and two-stage sampling designs.
+
+As is well known, the use of regression model theory requires certain statistical assumptions to be met, which can sometimes be challenging to verify in practice. In this regard, \citet{shah1977inference} discuss some aspects related to the violation of these assumptions and provide appropriate methods for making inferences about the estimated parameters of linear regression models using survey data.
+
+Similarly, \citet{binder1983variances} obtained the sampling distributions of estimators for regression parameters in finite populations and related variance estimators in the context of complex samples. \citet{skinner1989analysis} studied the properties of variance estimators for regression coefficients under complex sample designs. Later, \citet{fuller2002regression} provided a summary of estimation methods for regression models containing information related to complex samples. Finally, \citet{pfeffermann2011modelling} discussed various approaches to fitting linear regression models to complex survey data, presenting empirical support for the use of the ``\emph{q-weighted}'' method, which is recommended in this document.
 
 \hypertarget{estimation-of-parameters}{%
 \subsection{Estimation of Parameters}\label{estimation-of-parameters}}
@@ -1230,8 +1252,8 @@ Finally, these practices collectively improve the usability of the table, making
 
 The recommendations provided here to reference tables should also apply to longer tables provided as databases, but these can have additional resources if they are embedded on websites. For example, there may be support for users to sort tables using the values in each column, which would be useful for large tables where the user may be looking for the higher (or lower) values in a given column.
 
-\hypertarget{low-quality-estimates}{%
-\section{Low-Quality Estimates}\label{low-quality-estimates}}
+\hypertarget{dissemination-of-estimates}{%
+\section{Dissemination of Estimates}\label{dissemination-of-estimates}}
 
 National Statistical Offices routinely produce descriptive statistics, such as totals, averages, proportions, and ratios, based on survey data. These statistics provide valuable insights into key characteristics of the population, such as income levels, employment rates, or access to education. To ensure this information reaches a wide audience, NSOs often use a variety of dissemination channels, including:
 
@@ -1255,9 +1277,7 @@ These dissemination efforts aim to make the data understandable and actionable f
   \textbf{Metadata}: Offering detailed explanations of the data collection methods, definitions, and limitations.
 \end{itemize}
 
-By presenting data in a user-friendly format, NSOs ensure their publications are accessible to a diverse audience.
-
-Not all estimates derived from survey data meet the necessary quality standards for publication. Estimates may be suppressed if they are based on small sample sizes, have high variance, or are otherwise unreliable. NSOs use established criteria to determine when suppression is necessary, ensuring that the released data maintains its credibility. To address this issue we can use the following approaches:
+By presenting data in a user-friendly format, NSOs ensure their publications are accessible to a diverse audience. Chapter 10 provides more detailed discussion on presentation of survey findings. However, we note that not all estimates derived from survey data meet the necessary quality standards for publication. Estimates may be suppressed if they are based on small sample sizes, have high variance, or are otherwise unreliable. NSOs use established criteria to determine when suppression is necessary, ensuring that the released data maintains its credibility. To address this issue we can use the following approaches:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}

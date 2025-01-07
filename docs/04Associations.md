@@ -1,4 +1,4 @@
-# Associations between variables
+# Associations between categorical variables
 
 ## Motivation and concepts
 
@@ -10,13 +10,7 @@ Household surveys often collect data on categorical variables, such as employmen
 
 This section introduces methods to describe and infer associations between pairs of categorical variables. When analyzing associations between two categorical variables, we are interested in whether the distribution of one variable depends on the categories of the other. To assess the relationship between two categorical variables, analysts examine how often different combinations of categories occur. For example, they might count how many individuals fall into each pairing of employment status and educational attainment. These counts are then used to calculate proportions, which describe the relative frequency of each pairing within the population.
 
-Analyzing associations between categorical variables is useful in many contexts, such as:
-
-- **Policy Development**: Understanding the relationship between education and employment helps design effective workforce policies;
-
-- **Program Evaluation**: Assessing whether access to healthcare varies by income level can inform targeted interventions;
-
-- **Social Research**: Studying connections between demographic factors and access to services provides insights into societal trends.
+Analyzing associations between categorical variables is useful in various contexts, such as policy development, where understanding the relationship between education and employment helps design effective workforce policies; program evaluation, where assessing whether access to healthcare varies by income level can inform targeted interventions; and social research, where studying connections between demographic factors and access to services provides insights into societal trends.
 
 In practice, this analysis often starts with a **contingency table**, a grid that shows the counts or proportions of units in each combination of categories for the two variables. For example, one axis of the table might list employment statuses, while the other lists levels of educational attainment.
 
@@ -42,7 +36,7 @@ Under the superpopulation model, the population proportions $p_{rc}$ could be us
 
 Cross-tabulations, also known as contingency tables, are a fundamental tool in survey analysis. They organize data into a table format, showing the frequency distribution of two or more categorical variables. By summarizing relationships between these variables, cross-tabulations help researchers identify patterns and associations that might otherwise go unnoticed. This type of analysis is widely used in research and policy decision-making, as it provides a straightforward way to explore how different variables interact. For example, a contingency table might examine how employment status varies by educational attainment, or how access to the internet differs between urban and rural households.
 
-Tests of independence can be used to assess whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as *contingency tables*. Here a table is a two-dimensional array with rows indexed by $r=1, \ldots, R$ and columns indexed by $c=1, \ldots, C$. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.
+Procedures for assessing independence can be used to determine whether the cross-classified variables are related or independent. This type of analysis is important in many research and decision-making settings. In the specialized literature, cross-tabulations are also referred to as *contingency tables*. Here a table is a two-dimensional array with rows indexed by $r=1, \ldots, R$ and columns indexed by $c=1, \ldots, C$. Such tables are widely used in household survey analysis as they summarize the relationship between categorical variables in terms of frequency counts.
 
 A contingency table aims to succinctly represent the association between different categorical variables. It is a grid with rows and columns that represent the categories of two variables. Each cell in the table contains the frequency or proportion of observations that fall into the corresponding combination of categories. The rows might represent categories of a domain defining variable such as "education level" (primary, secondary, tertiary). The columns might represent categories of another variable, such as "employment status" (employed, unemployed, not in the labor force). The table can also include **marginal totals**, which summarize the data for each row or column, and a **grand total**, representing the overall population.
 

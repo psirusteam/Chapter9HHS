@@ -12,7 +12,6 @@ approaches-to-variance-estimation
 estimating-equations
 ultimate-cluster
 bootstrap
-the-design-effect
 using-software-to-generate-valid-inferences
 descriptive-parameters
 frequencies-and-proportions
@@ -20,7 +19,7 @@ totals-means-and-ratios
 correlations
 percentiles-and-inequality-measures
 nso-practical-example
-associations-between-variables
+associations-between-categorical-variables
 motivation-and-concepts
 cross-tabulations
 testing-for-independence

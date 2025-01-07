@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Pedro Luis do Nascimento Silva" />
 
 
-<meta name="date" content="2025-01-06" />
+<meta name="date" content="2025-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -115,8 +115,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.2" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#ultimate-cluster"><i class="fa fa-check"></i><b>2.2.2</b> Ultimate Cluster</a></li>
 <li class="chapter" data-level="2.2.3" data-path="approaches-to-variance-estimation.html"><a href="approaches-to-variance-estimation.html#bootstrap"><i class="fa fa-check"></i><b>2.2.3</b> Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="the-design-effect.html"><a href="the-design-effect.html"><i class="fa fa-check"></i><b>2.3</b> The Design Effect</a></li>
-<li class="chapter" data-level="2.4" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.4</b> Using Software to Generate Valid Inferences</a></li>
+<li class="chapter" data-level="2.3" data-path="using-software-to-generate-valid-inferences.html"><a href="using-software-to-generate-valid-inferences.html"><i class="fa fa-check"></i><b>2.3</b> Using Software to Generate Valid Inferences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-parameters.html"><a href="descriptive-parameters.html"><i class="fa fa-check"></i><b>3</b> Descriptive parameters</a>
 <ul>
@@ -126,7 +125,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="percentiles-and-inequality-measures.html"><a href="percentiles-and-inequality-measures.html"><i class="fa fa-check"></i><b>3.4</b> Percentiles and inequality measures</a></li>
 <li class="chapter" data-level="3.5" data-path="nso-practical-example.html"><a href="nso-practical-example.html"><i class="fa fa-check"></i><b>3.5</b> NSO – Practical example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="associations-between-variables.html"><a href="associations-between-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between variables</a>
+<li class="chapter" data-level="4" data-path="associations-between-categorical-variables.html"><a href="associations-between-categorical-variables.html"><i class="fa fa-check"></i><b>4</b> Associations between categorical variables</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="motivation-and-concepts.html"><a href="motivation-and-concepts.html"><i class="fa fa-check"></i><b>4.1</b> Motivation and concepts</a></li>
 <li class="chapter" data-level="4.2" data-path="cross-tabulations.html"><a href="cross-tabulations.html"><i class="fa fa-check"></i><b>4.2</b> Cross-tabulations</a></li>
@@ -210,7 +209,7 @@ div.csl-indent {
 \]</span></p>
 <p>Where <span class="math inline">\(d_{kj} = 1 / \pi_{kj}\)</span> and <span class="math inline">\(\pi_{kj} = Pr(k,j \in s), \, \forall \, k,j \in U\)</span>. This result assumes that the sampling design <span class="math inline">\(p(s)\)</span> is such that <span class="math inline">\(\pi_{kj} &gt; 0 \,\, \forall \, k,j \in U\)</span>. Considering the sampling design is crucial for the computation of variance. For example, consider a population of size <span class="math inline">\(N = 6\)</span>, and a sample of size <span class="math inline">\(n = 3\)</span>. Let’s assume that the following sample values were observed: <span class="math inline">\((y_1 = 10, y_2 = 14, y_3 = 18)\)</span>. If the sampling design is simple random sampling without replacement, the above formula becomes:</p>
 <p><span class="math display">\[
-\widehat {V_p} \left( \widehat{Y}_{HT} \right) = \frac{N^2}{n} \left( 1 - \frac{n}{N} \right) S^2_{y_s}
+\widehat {V}_{SRS} \left( \widehat{Y}_{HT} \right) = \frac{N^2}{n} \left( 1 - \frac{n}{N} \right) S^2_{y_s}
 \]</span></p>
 <p>Where <span class="math inline">\(S^2_{y_s}\)</span> is the sample variance. After a simple algebraic manipulation, the formula becomes <span class="math inline">\(\widehat {V_p} \left( \widehat{Y}_{HT} \right) = \frac{36}{3} \cdot \left(1 - \frac{3}{6} \right) 16 = 96\)</span>. A naive analyst might incorrectly compute the variance using the following formula, which ignores the sampling design: <span class="math inline">\(\frac{N^2}{n}S^2_{y_s} = 192\)</span>.</p>
 <p>Notice that the estimate for the population total is <span class="math inline">\(\widehat{Y}_{HT} = 84\)</span>. The proper standard error is <span class="math inline">\(\sqrt{\widehat {V_p} \left( \widehat{Y}_{HT} \right)} = \sqrt{96} \approx 9.80\)</span>. The 95% confidence interval is <span class="math inline">\(84 \pm 19.25 = [64.75, 103.25]\)</span>. Using the naive variance, an incorrect 95% confidence interval is <span class="math inline">\([56.80, 111.20]\)</span>. The naive confidence interval is wider than the correct confidence interval, and it overestimates the uncertainty in the total. This example clearly demonstrates the importance of considering the sampling design when calculating variances and confidence intervals. Ignoring the sampling design can lead to incorrect inferences.</p>
